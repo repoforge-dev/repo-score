@@ -1,114 +1,142 @@
 # RepoScore
 
-**RepoScore** analyzes GitHub repositories and produces a quality score based on:
+Analyze any GitHub repository and generate a structured quality score.
 
-- 📄 **Documentation** — README completeness, contributing guides, etc.
-- 🔍 **Discoverability** — Topics, description, license presence
-- 🏗️ **Structure** — Conventional files like `.gitignore`, CI configs, tests
-- 📊 **Metadata** — Stars, forks, open issues, last commit activity
+RepoScore evaluates documentation, structure, maintenance activity, discoverability signals, and adoption metrics to help developers quickly understand repository quality.
 
----
+RepoScore powers the analysis engine behind RepoForge.
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js >= 18
-- A GitHub Personal Access Token (for higher API rate limits)
-
-### Installation
-
-```bash
-npm install
-```
-
-### Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-PORT=3000
-GITHUB_TOKEN=your_github_personal_access_token
-```
-
-### Running the Server
-
-```bash
-# Development (with auto-reload)
-npm run dev
-
-# Production
-npm start
-```
+https://repoforge.dev
 
 ---
 
-## API Endpoints
+## Example
 
-### `POST /api/analyze`
+Example repository analysis:
 
-Analyzes a GitHub repository and returns a RepoScore.
+GET
 
-**Request Body:**
+/api/analyze?repo=vercel/next.js
+
+Example response:
+
 ```json
 {
-  "repoUrl": "https://github.com/owner/repo"
-}
-```
-
-**Response:**
-```json
-{
-  "repo": "owner/repo",
-  "score": 82,
-  "breakdown": {
-    "metadata": 20,
-    "readme": 35,
-    "structure": 27
+  "repo": "vercel/next.js",
+  "repoType": "framework",
+  "language": "javascript",
+  "repoScore": 92,
+  "scores": {
+    "documentation": 95,
+    "structure": 90,
+    "maintenance": 91,
+    "discoverability": 88,
+    "adoption": 96
   }
 }
 ```
 
 ---
 
-### `GET /api/badge/:owner/:repo`
+## What RepoScore Measures
 
-Returns an SVG badge displaying the RepoScore for the given repository.
+RepoScore evaluates repositories across multiple dimensions.
 
-**Example:**
-```
-GET /api/badge/facebook/react
-```
+Documentation
+Quality of README content, examples, and usage instructions.
 
-**Response:** An SVG image suitable for embedding in a README.
+Structure
+Repository organization and project layout.
 
----
+Maintenance
+Commit activity, issue backlog, and repository updates.
 
-## Project Structure
+Discoverability
+GitHub topics, metadata, and repository signals.
 
-```
-reposcore/
-├── src/
-│   ├── server.js                  # Express app entry point
-│   ├── routes/
-│   │   ├── analyze.js             # POST /api/analyze
-│   │   └── badge.js               # GET /api/badge/:owner/:repo
-│   ├── github/
-│   │   └── githubClient.js        # GitHub API wrapper
-│   ├── analyzers/
-│   │   ├── metadataAnalyzer.js    # Stars, forks, license, topics
-│   │   ├── readmeAnalyzer.js      # README presence and quality
-│   │   └── structureAnalyzer.js   # Repo file structure checks
-│   ├── scoring/
-│   │   └── scoreEngine.js         # Combines analyzer results into a score
-│   └── utils/
-│       └── repoParser.js          # Parses GitHub URLs into owner/repo
-├── package.json
-└── README.md
-```
+Adoption
+Stars, forks, and ecosystem usage indicators.
+
+Some repository types may also include additional signals depending on classification.
 
 ---
 
-## License
+## Repo Analysis Pages
 
-MIT
+RepoForge automatically generates repository analysis pages.
+
+Example:
+
+https://repoforge.dev/repos/vercel/next.js
+
+These pages show:
+
+RepoScore
+Repository type
+Score breakdown
+Improvement suggestions
+Badge integration
+
+---
+
+## Add the RepoScore Badge
+
+Add RepoScore to your repository README.
+
+Markdown:
+
+```md
+![RepoScore](https://repoforge.dev/badge/owner/repo)
+```
+
+Example:
+
+```md
+![RepoScore](https://repoforge.dev/badge/vercel/next.js)
+```
+
+---
+
+## Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/repoforge-dev/repo-score.git
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run locally:
+
+```bash
+node server.js
+```
+
+Server runs on:
+
+http://localhost:3000
+
+---
+
+## Roadmap
+
+* Expand repository dataset scanning
+* Improve repository classification
+* Improve scoring model accuracy
+* Expand improvement suggestions
+* AuthorityLayer integration
+
+---
+
+## RepoForge
+
+RepoScore is part of RepoForge.
+
+RepoForge builds developer infrastructure for analyzing, securing, and monetizing open source repositories.
+
+https://repoforge.dev
