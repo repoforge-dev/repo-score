@@ -12,26 +12,26 @@ https://repoforge.dev
 
 ## Example
 
-Example repository analysis:
+AuthorityLayer repository analysis example:
 
 GET
 
-/api/analyze?repo=vercel/next.js
+/api/analyze?repo=repoforge-dev/authority-layer
 
 Example response:
 
 ```json
 {
-  "repo": "vercel/next.js",
-  "repoType": "framework",
-  "language": "javascript",
-  "repoScore": 92,
+  "repo": "repoforge-dev/authority-layer",
+  "repoType": "ai-tooling",
+  "language": "typescript",
+  "repoScore": 86,
   "scores": {
-    "documentation": 95,
-    "structure": 90,
-    "maintenance": 91,
-    "discoverability": 88,
-    "adoption": 96
+    "documentation": 88,
+    "structure": 85,
+    "maintenance": 82,
+    "discoverability": 80,
+    "adoption": 75
   }
 }
 ```
@@ -67,7 +67,7 @@ RepoForge automatically generates repository analysis pages.
 
 Example:
 
-https://repoforge.dev/repos/vercel/next.js
+https://repoforge.dev/repos/repoforge-dev/authority-layer
 
 These pages show:
 
