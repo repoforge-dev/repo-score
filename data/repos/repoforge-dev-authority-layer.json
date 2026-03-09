@@ -1,0 +1,271 @@
+{
+  "cachedAt": "2026-03-09T02:47:33.606Z",
+  "snapshot": {
+    "owner": "repoforge-dev",
+    "repo": "authority-layer",
+    "repoMetadata": {
+      "name": "authority-layer",
+      "description": "Runtime guardrails for AI agents that enforce token budgets, loop limits, and tool rate limits locally.",
+      "stargazers_count": 2,
+      "forks_count": 0,
+      "open_issues_count": 0,
+      "language": "TypeScript",
+      "topics": [
+        "agent-runtime",
+        "agentic-ai",
+        "ai-agents",
+        "ai-guardrails",
+        "ai-infrastructure",
+        "execution-limits",
+        "llm-guardrails",
+        "nodejs",
+        "runtime-guardrails",
+        "runtime-safety",
+        "token-cost-control",
+        "typescript"
+      ],
+      "default_branch": "main",
+      "updated_at": "2026-03-05T00:43:06Z",
+      "homepage": "",
+      "archived": false
+    },
+    "readmeContent": "# AuthorityLayer\n\n[![CI](https://github.com/032383justin/authority-layer/actions/workflows/ci.yml/badge.svg)](https://github.com/032383justin/authority-layer/actions/workflows/ci.yml)\n[![npm version](https://img.shields.io/npm/v/authority-layer?color=blue)](https://www.npmjs.com/package/authority-layer)\n[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)\n[![Node.js >= 18](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)\n\nHard execution and budget limits for autonomous agents — enforced locally.\n\n✔ No telemetry  \n✔ Works fully offline  \n✔ Fail-closed by default  \n✔ Zero runtime dependencies\n\n---\n\n## Why AuthorityLayer Exists\n\nAutonomous AI agents can fail in expensive, hard-to-detect ways:\n\n- **Runaway token spend** — a looping agent burns thousands of dollars before anyone notices\n- **Infinite tool loops** — agents retry the same failing call indefinitely\n- **Retry storms** — cascading failures hammer external APIs with no ceiling\n- **Cascading tool call explosions** — one agent spawns sub-calls that spawn more\n\nMost tooling detects these problems after they happen — in dashboards, alerts, or post-run analytics.\n\nAuthorityLayer prevents them inside the runtime, before cost or damage accumulates.\n\nIt helps developers:\n\n- prevent runaway LLM costs\n- stop infinite agent loops\n- limit AI agent tool calls per run and per minute\n- enforce runtime safety for autonomous agents\n\n---\n\n## Live Enforcement Demo (10-second example)\n\n![AuthorityLayer enforcement demo](https://raw.githubusercontent.com/032383justin/authority-layer/main/docs/assets/enforcement-demo.svg)\n\n---\n\n## Quick Start\n\n```bash\nnpm install authority-layer\n```\n\nVerify the install:\n\n```bash\nnpx authority-layer doctor\n```\n\n```\nAuthorityLayer Doctor  authority-layer@0.1.2\n\n  ✔  Node.js version >= 18                  pass\n  ✔  crypto module (sha256)                 pass\n  ✔  AUTHORITY_LAYER_DISABLE not set        pass\n  ✔  core module loads offline              pass\n  ✔  AuthorityLayer instantiates            pass\n\nAll checks passed. AuthorityLayer is ready.\n```\n\n## CLI Tools\n\n| Command | What it does |\n|---------|-------------|\n| `npx authority-layer doctor` | Verify your installation passes all environment checks |\n| `npx authority-layer simulate` | Run a live enforcement simulation — see a halt in action without writing any code |\n\n---\n\n## Minimal Integration\n\n```typescript\nimport { AuthorityLayer, EnforcementHalt } from \"authority-layer\";\n\nconst authority = new AuthorityLayer({\n  budget:       { dailyUSD: 50 },           // Hard USD spend cap\n  loopGuard:    { maxToolCallsPerRun: 25 }, // Max tool calls per run\n  toolThrottle: { maxCallsPerMinute: 60 },  // Sliding-window rate cap\n});\n\ntry {\n  await authority.wrap(async () => {\n    const result = await authority.tool(\"llm.chat\", () =>\n      callYourModel(prompt)\n    );\n    authority.recordSpend(calculateCostUSD(result));\n  });\n} catch (err) {\n  if (err instanceof EnforcementHalt) {\n    console.error(err.enforcement);\n    // { status: \"halted\", reason: \"budget_exceeded\", limit: 50, spent: 52.14, event_id: \"evt_...\" }\n  }\n}\n```\n\n---\n\n## Enforcement Primitives\n\nAuthorityLayer V1 provides three composable enforcement primitives. Each is opt-in — omit a config key to disable it.\n\nThese primitives enforce boundaries directly inside the execution loop — not in dashboards or external monitoring.\n\n| Primitive | Config key | What it enforces |\n|-----------|------------|------------------|\n| **Budget cap** | `budget.dailyUSD` | Cumulative USD spend across the process lifetime. Halts when spend exceeds the cap. → [docs](./docs/enforcement.md#1-budget-cap) |\n| **Loop guard** | `loopGuard.maxToolCallsPerRun` | Total tool calls per `wrap()` invocation. Counter resets each run. → [docs](./docs/enforcement.md#2-loop-guard) |\n| **Tool throttle** | `toolThrottle.maxCallsPerMinute` | Rate of tool calls using a sliding 60-second window — no fixed buckets. → [docs](./docs/enforcement.md#3-tool-throttle) |\n\nWhen a primitive breaches, AuthorityLayer throws a typed `EnforcementHalt` error with a structured `.enforcement` object. Execution never crashes silently.\n\n---\n\n## How AuthorityLayer Is Different\n\nMost AI guardrail tools focus on moderation or observability. AuthorityLayer focuses on **runtime enforcement**.\n\n| Tool type | What it does |\n|-----------|-------------|\n| Prompt guardrails | Filter or rewrite prompts and outputs |\n| Observability platforms | Analyze agent behavior after execution |\n| Cost analytics | Track and report token usage |\n| **AuthorityLayer** | Enforces hard limits **during** execution — halts immediately when a boundary is crossed |\n\n---\n\n## Documentation\n\n| Topic | File |\n|------|------|\n| Concepts & philosophy | [docs/concepts.md](./docs/concepts.md) |\n| Enforcement primitives | [docs/enforcement.md](./docs/enforcement.md) |\n| API reference | [docs/api.md](./docs/api.md) |\n| Integrity chain | [docs/integrity.md](./docs/integrity.md) |\n| Example run | `npm run example` |\n\n---\n\nAuthorityLayer is designed as a minimal enforcement primitive — not a platform, dashboard, or governance system.\n\n---\n\n## License\n\nMIT © 2025 AuthorityLayer Contributors\n\n[GitHub](https://github.com/032383justin/authority-layer) · [npm](https://www.npmjs.com/package/authority-layer) · [Issues](https://github.com/032383justin/authority-layer/issues)\n",
+    "fileTree": [
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": "DOCTRINE.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "demo.cast",
+        "type": "blob"
+      },
+      {
+        "path": "demo.svg",
+        "type": "blob"
+      },
+      {
+        "path": "docs",
+        "type": "tree"
+      },
+      {
+        "path": "docs/api.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/assets",
+        "type": "tree"
+      },
+      {
+        "path": "docs/assets/enforcement-demo.gif",
+        "type": "blob"
+      },
+      {
+        "path": "docs/assets/enforcement-demo.svg",
+        "type": "blob"
+      },
+      {
+        "path": "docs/assets/social-preview.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/concepts.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/enforcement.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/integrity.md",
+        "type": "blob"
+      },
+      {
+        "path": "examples",
+        "type": "tree"
+      },
+      {
+        "path": "examples/minimal-agent",
+        "type": "tree"
+      },
+      {
+        "path": "examples/minimal-agent/example.ts",
+        "type": "blob"
+      },
+      {
+        "path": "examples/minimal-agent/package-lock.json",
+        "type": "blob"
+      },
+      {
+        "path": "examples/minimal-agent/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "examples/minimal-agent/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "examples/openai-agent.ts",
+        "type": "blob"
+      },
+      {
+        "path": "examples/run.js",
+        "type": "blob"
+      },
+      {
+        "path": "package-lock.json",
+        "type": "blob"
+      },
+      {
+        "path": "package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core/.npmignore",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/package-lock.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core/src/AuthorityLayer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/EnforcementHalt.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/cli.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/cli",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core/src/cli/simulate.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/doctor.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/enforcement",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core/src/enforcement/budgetGuard.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/enforcement/loopGuard.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/enforcement/toolThrottle.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/integrity",
+        "type": "tree"
+      },
+      {
+        "path": "packages/core/src/integrity/hashChain.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/src/types.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/core/tsconfig.json",
+        "type": "blob"
+      }
+    ],
+    "packageJson": {
+      "name": "authority-layer-repo",
+      "private": true,
+      "workspaces": [
+        "packages/core"
+      ],
+      "scripts": {
+        "example": "npm run -w authority-layer build && node examples/run.js"
+      }
+    }
+  },
+  "analysis": {
+    "repo": "repoforge-dev/authority-layer",
+    "repoType": "ai-tooling",
+    "language": "typescript",
+    "repoScore": 62,
+    "scores": {
+      "documentation": 100,
+      "structure": 40,
+      "discoverability": 85,
+      "maintenance": 75,
+      "adoption": 0,
+      "agentSafety": 65
+    },
+    "improvements": [
+      "Explain how contributors can run, test, and contribute to the project.",
+      "Use a clear source layout such as `src/` or `lib/`.",
+      "Add a visible test suite or test directory.",
+      "Set a homepage or docs URL in the repository metadata.",
+      "Grow adoption and contribution signals to improve maintenance confidence.",
+      "Increase project visibility and usage signals to strengthen adoption confidence.",
+      "Explain how agent or LLM behaviors are evaluated before release.",
+      "Describe permissions, sandboxing, or approval boundaries for automation."
+    ],
+    "analyzedAt": "2026-03-09T02:47:33.604Z"
+  }
+}

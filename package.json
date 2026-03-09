@@ -1,0 +1,25 @@
+{
+  "name": "reposcore",
+  "version": "1.0.0",
+  "description": "RepoForge backend service for GitHub repository analysis and RepoScore badges.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "scan:github": "node scanners/githubScanner.js"
+  },
+  "keywords": [
+    "github",
+    "repository",
+    "analysis",
+    "badge",
+    "repoforge",
+    "reposcore"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,3868 @@
+{
+  "cachedAt": "2026-03-09T02:29:40.826Z",
+  "snapshot": {
+    "owner": "trekhleb",
+    "repo": "javascript-algorithms",
+    "repoMetadata": {
+      "name": "javascript-algorithms",
+      "description": "📝 Algorithms and data structures implemented in JavaScript with explanations and links to further readings",
+      "stargazers_count": 195750,
+      "forks_count": 31105,
+      "open_issues_count": 393,
+      "language": "JavaScript",
+      "topics": [
+        "algorithm",
+        "algorithms",
+        "computer-science",
+        "data-structures",
+        "interview",
+        "interview-preparation",
+        "javascript",
+        "javascript-algorithms"
+      ],
+      "default_branch": "master",
+      "updated_at": "2026-03-09T00:56:34Z",
+      "homepage": "",
+      "archived": false
+    },
+    "readmeContent": "# JavaScript Algorithms and Data Structures\n\n> 🇺🇦 UKRAINE [IS BEING ATTACKED](https://war.ukraine.ua/) BY RUSSIAN ARMY. CIVILIANS ARE GETTING KILLED. RESIDENTIAL AREAS ARE GETTING BOMBED.\n> - Help Ukraine via:\n>   - [Serhiy Prytula Charity Foundation](https://prytulafoundation.org/en/)\n>   - [Come Back Alive Charity Foundation](https://savelife.in.ua/en/donate-en/)\n>   - [National Bank of Ukraine](https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi)\n> - More info on [war.ukraine.ua](https://war.ukraine.ua/) and [MFA of Ukraine](https://twitter.com/MFA_Ukraine)\n\n<hr/>\n\n[![CI](https://github.com/trekhleb/javascript-algorithms/workflows/CI/badge.svg)](https://github.com/trekhleb/javascript-algorithms/actions?query=workflow%3ACI+branch%3Amaster)\n[![codecov](https://codecov.io/gh/trekhleb/javascript-algorithms/branch/master/graph/badge.svg)](https://codecov.io/gh/trekhleb/javascript-algorithms)\n![repo size](https://img.shields.io/github/repo-size/trekhleb/javascript-algorithms.svg)\n\nThis repository contains JavaScript based examples of many\npopular algorithms and data structures.\n\nEach algorithm and data structure has its own separate README\nwith related explanations and links for further reading (including ones\nto YouTube videos).\n\n_Read this in other languages:_\n[_简体中文_](README.zh-CN.md),\n[_繁體中文_](README.zh-TW.md),\n[_한국어_](README.ko-KR.md),\n[_日本語_](README.ja-JP.md),\n[_Polski_](README.pl-PL.md),\n[_Français_](README.fr-FR.md),\n[_Español_](README.es-ES.md),\n[_Português_](README.pt-BR.md),\n[_Русский_](README.ru-RU.md),\n[_Türkçe_](README.tr-TR.md),\n[_Italiano_](README.it-IT.md),\n[_Bahasa Indonesia_](README.id-ID.md),\n[_Українська_](README.uk-UA.md),\n[_Arabic_](README.ar-AR.md),\n[_Tiếng Việt_](README.vi-VN.md),\n[_Deutsch_](README.de-DE.md),\n[_Uzbek_](README.uz-UZ.md),\n[_עברית_](README.he-IL.md)\n\n## Data Structures\n\nA data structure is a particular way of organizing and storing data in a computer so that it can\nbe accessed and modified efficiently. More precisely, a data structure is a collection of data\nvalues, the relationships among them, and the functions or operations that can be applied to\nthe data.\n\nRemember that each data has its own trade-offs. And you need to pay attention more to why you're choosing a certain data structure than to how to implement it.\n\n`B` - Beginner, `A` - Advanced\n\n* `B` [Linked List](src/data-structures/linked-list)\n* `B` [Doubly Linked List](src/data-structures/doubly-linked-list)\n* `B` [Queue](src/data-structures/queue)\n* `B` [Stack](src/data-structures/stack)\n* `B` [Hash Table](src/data-structures/hash-table)\n* `B` [Heap](src/data-structures/heap) - max and min heap versions\n* `B` [Priority Queue](src/data-structures/priority-queue)\n* `A` [Trie](src/data-structures/trie)\n* `A` [Tree](src/data-structures/tree)\n  * `A` [Binary Search Tree](src/data-structures/tree/binary-search-tree)\n  * `A` [AVL Tree](src/data-structures/tree/avl-tree)\n  * `A` [Red-Black Tree](src/data-structures/tree/red-black-tree)\n  * `A` [Segment Tree](src/data-structures/tree/segment-tree) - with min/max/sum range queries examples\n  * `A` [Fenwick Tree](src/data-structures/tree/fenwick-tree) (Binary Indexed Tree)\n* `A` [Graph](src/data-structures/graph) (both directed and undirected)\n* `A` [Disjoint Set](src/data-structures/disjoint-set) - a union–find data structure or merge–find set\n* `A` [Bloom Filter](src/data-structures/bloom-filter)\n* `A` [LRU Cache](src/data-structures/lru-cache/) - Least Recently Used (LRU) cache\n\n## Algorithms\n\nAn algorithm is an unambiguous specification of how to solve a class of problems. It is\na set of rules that precisely define a sequence of operations.\n\n`B` - Beginner, `A` - Advanced\n\n### Algorithms by Topic\n\n* **Math**\n  * `B` [Bit Manipulation](src/algorithms/math/bits) - set/get/update/clear bits, multiplication/division by two, make negative etc.\n  * `B` [Binary Floating Point](src/algorithms/math/binary-floating-point) - binary representation of the floating-point numbers.\n  * `B` [Factorial](src/algorithms/math/factorial)\n  * `B` [Fibonacci Number](src/algorithms/math/fibonacci) - classic and closed-form versions\n  * `B` [Prime Factors](src/algorithms/math/prime-factors) - finding prime factors and counting them using Hardy-Ramanujan's theorem\n  * `B` [Primality Test](src/algorithms/math/primality-test) (trial division method)\n  * `B` [Euclidean Algorithm](src/algorithms/math/euclidean-algorithm) - calculate the Greatest Common Divisor (GCD)\n  * `B` [Least Common Multiple](src/algorithms/math/least-common-multiple) (LCM)\n  * `B` [Sieve of Eratosthenes](src/algorithms/math/sieve-of-eratosthenes) - finding all prime numbers up to any given limit\n  * `B` [Is Power of Two](src/algorithms/math/is-power-of-two) - check if the number is power of two (naive and bitwise algorithms)\n  * `B` [Pascal's Triangle](src/algorithms/math/pascal-triangle)\n  * `B` [Complex Number](src/algorithms/math/complex-number) - complex numbers and basic operations with them\n  * `B` [Radian & Degree](src/algorithms/math/radian) - radians to degree and backwards conversion\n  * `B` [Fast Powering](src/algorithms/math/fast-powering)\n  * `B` [Horner's method](src/algorithms/math/horner-method) - polynomial evaluation\n  * `B` [Matrices](src/algorithms/math/matrix) - matrices and basic matrix operations (multiplication, transposition, etc.)\n  * `B` [Euclidean Distance](src/algorithms/math/euclidean-distance) - distance between two points/vectors/matrices\n  * `A` [Integer Partition](src/algorithms/math/integer-partition)\n  * `A` [Square Root](src/algorithms/math/square-root) - Newton's method\n  * `A` [Liu Hui π Algorithm](src/algorithms/math/liu-hui) - approximate π calculations based on N-gons\n  * `A` [Discrete Fourier Transform](src/algorithms/math/fourier-transform) - decompose a function of time (a signal) into the frequencies that make it up\n* **Sets**\n  * `B` [Cartesian Product](src/algorithms/sets/cartesian-product) - product of multiple sets\n  * `B` [Fisher–Yates Shuffle](src/algorithms/sets/fisher-yates) - random permutation of a finite sequence\n  * `A` [Power Set](src/algorithms/sets/power-set) - all subsets of a set (bitwise, backtracking, and cascading solutions)\n  * `A` [Permutations](src/algorithms/sets/permutations) (with and without repetitions)\n  * `A` [Combinations](src/algorithms/sets/combinations) (with and without repetitions)\n  * `A` [Longest Common Subsequence](src/algorithms/sets/longest-common-subsequence) (LCS)\n  * `A` [Longest Increasing Subsequence](src/algorithms/sets/longest-increasing-subsequence)\n  * `A` [Shortest Common Supersequence](src/algorithms/sets/shortest-common-supersequence) (SCS)\n  * `A` [Knapsack Problem](src/algorithms/sets/knapsack-problem) - \"0/1\" and \"Unbound\" ones\n  * `A` [Maximum Subarray](src/algorithms/sets/maximum-subarray) - \"Brute Force\" and \"Dynamic Programming\" (Kadane's) versions\n  * `A` [Combination Sum](src/algorithms/sets/combination-sum) - find all combinations that form specific sum\n* **Strings**\n  * `B` [Hamming Distance](src/algorithms/string/hamming-distance) - number of positions at which the symbols are different\n  * `B` [Palindrome](src/algorithms/string/palindrome) - check if the string is the same in reverse\n  * `A` [Levenshtein Distance](src/algorithms/string/levenshtein-distance) - minimum edit distance between two sequences\n  * `A` [Knuth–Morris–Pratt Algorithm](src/algorithms/string/knuth-morris-pratt) (KMP Algorithm) - substring search (pattern matching)\n  * `A` [Z Algorithm](src/algorithms/string/z-algorithm) - substring search (pattern matching)\n  * `A` [Rabin Karp Algorithm](src/algorithms/string/rabin-karp) - substring search\n  * `A` [Longest Common Substring](src/algorithms/string/longest-common-substring)\n  * `A` [Regular Expression Matching](src/algorithms/string/regular-expression-matching)\n* **Searches**\n  * `B` [Linear Search](src/algorithms/search/linear-search)\n  * `B` [Jump Search](src/algorithms/search/jump-search) (or Block Search) - search in sorted array\n  * `B` [Binary Search](src/algorithms/search/binary-search) - search in sorted array\n  * `B` [Interpolation Search](src/algorithms/search/interpolation-search) - search in uniformly distributed sorted array\n* **Sorting**\n  * `B` [Bubble Sort](src/algorithms/sorting/bubble-sort)\n  * `B` [Selection Sort](src/algorithms/sorting/selection-sort)\n  * `B` [Insertion Sort](src/algorithms/sorting/insertion-sort)\n  * `B` [Heap Sort](src/algorithms/sorting/heap-sort)\n  * `B` [Merge Sort](src/algorithms/sorting/merge-sort)\n  * `B` [Quicksort](src/algorithms/sorting/quick-sort) - in-place and non-in-place implementations\n  * `B` [Shellsort](src/algorithms/sorting/shell-sort)\n  * `B` [Counting Sort](src/algorithms/sorting/counting-sort)\n  * `B` [Radix Sort](src/algorithms/sorting/radix-sort)\n  * `B` [Bucket Sort](src/algorithms/sorting/bucket-sort)\n* **Linked Lists**\n  * `B` [Straight Traversal](src/algorithms/linked-list/traversal)\n  * `B` [Reverse Traversal](src/algorithms/linked-list/reverse-traversal)\n* **Trees**\n  * `B` [Depth-First Search](src/algorithms/tree/depth-first-search) (DFS)\n  * `B` [Breadth-First Search](src/algorithms/tree/breadth-first-search) (BFS)\n* **Graphs**\n  * `B` [Depth-First Search](src/algorithms/graph/depth-first-search) (DFS)\n  * `B` [Breadth-First Search](src/algorithms/graph/breadth-first-search) (BFS)\n  * `B` [Kruskal’s Algorithm](src/algorithms/graph/kruskal) - finding Minimum Spanning Tree (MST) for weighted undirected graph\n  * `A` [Dijkstra Algorithm](src/algorithms/graph/dijkstra) - finding the shortest paths to all graph vertices from single vertex\n  * `A` [Bellman-Ford Algorithm](src/algorithms/graph/bellman-ford) - finding the shortest paths to all graph vertices from single vertex\n  * `A` [Floyd-Warshall Algorithm](src/algorithms/graph/floyd-warshall) - find the shortest paths between all pairs of vertices\n  * `A` [Detect Cycle](src/algorithms/graph/detect-cycle) - for both directed and undirected graphs (DFS and Disjoint Set based versions)\n  * `A` [Prim’s Algorithm](src/algorithms/graph/prim) - finding Minimum Spanning Tree (MST) for weighted undirected graph\n  * `A` [Topological Sorting](src/algorithms/graph/topological-sorting) - DFS method\n  * `A` [Articulation Points](src/algorithms/graph/articulation-points) - Tarjan's algorithm (DFS based)\n  * `A` [Bridges](src/algorithms/graph/bridges) - DFS based algorithm\n  * `A` [Eulerian Path and Eulerian Circuit](src/algorithms/graph/eulerian-path) - Fleury's algorithm - Visit every edge exactly once\n  * `A` [Hamiltonian Cycle](src/algorithms/graph/hamiltonian-cycle) - Visit every vertex exactly once\n  * `A` [Strongly Connected Components](src/algorithms/graph/strongly-connected-components) - Kosaraju's algorithm\n  * `A` [Travelling Salesman Problem](src/algorithms/graph/travelling-salesman) - shortest possible route that visits each city and returns to the origin city\n* **Cryptography**\n  * `B` [Polynomial Hash](src/algorithms/cryptography/polynomial-hash) - rolling hash function based on polynomial\n  * `B` [Rail Fence Cipher](src/algorithms/cryptography/rail-fence-cipher) - a transposition cipher algorithm for encoding messages\n  * `B` [Caesar Cipher](src/algorithms/cryptography/caesar-cipher) - simple substitution cipher\n  * `B` [Hill Cipher](src/algorithms/cryptography/hill-cipher) - substitution cipher based on linear algebra\n* **Machine Learning**\n  * `B` [NanoNeuron](https://github.com/trekhleb/nano-neuron) - 7 simple JS functions that illustrate how machines can actually learn (forward/backward propagation)\n  * `B` [k-NN](src/algorithms/ml/knn) - k-nearest neighbors classification algorithm\n  * `B` [k-Means](src/algorithms/ml/k-means) - k-Means clustering algorithm\n* **Image Processing**\n  * `B` [Seam Carving](src/algorithms/image-processing/seam-carving) - content-aware image resizing algorithm\n* **Statistics**\n  * `B` [Weighted Random](src/algorithms/statistics/weighted-random) - select the random item from the list based on items' weights\n* **Evolutionary algorithms**\n  * `A` [Genetic algorithm](https://github.com/trekhleb/self-parking-car-evolution) - example of how the genetic algorithm may be applied for training the self-parking cars\n* **Uncategorized**\n  * `B` [Tower of Hanoi](src/algorithms/uncategorized/hanoi-tower)\n  * `B` [Square Matrix Rotation](src/algorithms/uncategorized/square-matrix-rotation) - in-place algorithm\n  * `B` [Jump Game](src/algorithms/uncategorized/jump-game) - backtracking, dynamic programming (top-down + bottom-up) and greedy examples\n  * `B` [Unique Paths](src/algorithms/uncategorized/unique-paths) - backtracking, dynamic programming and Pascal's Triangle based examples\n  * `B` [Rain Terraces](src/algorithms/uncategorized/rain-terraces) - trapping rain water problem (dynamic programming and brute force versions)\n  * `B` [Recursive Staircase](src/algorithms/uncategorized/recursive-staircase) - count the number of ways to reach to the top (4 solutions)\n  * `B` [Best Time To Buy Sell Stocks](src/algorithms/uncategorized/best-time-to-buy-sell-stocks) - divide and conquer and one-pass examples\n  * `B` [Valid Parentheses](src/algorithms/stack/valid-parentheses) - check if a string has valid parentheses (using stack)\n  * `A` [N-Queens Problem](src/algorithms/uncategorized/n-queens)\n  * `A` [Knight's Tour](src/algorithms/uncategorized/knight-tour)\n\n### Algorithms by Paradigm\n\nAn algorithmic paradigm is a generic method or approach which underlies the design of a class\nof algorithms. It is an abstraction higher than the notion of an algorithm, just as an\nalgorithm is an abstraction higher than a computer program.\n\n* **Brute Force** - look at all the possibilities and selects the best solution\n  * `B` [Linear Search](src/algorithms/search/linear-search)\n  * `B` [Rain Terraces](src/algorithms/uncategorized/rain-terraces) - trapping rain water problem\n  * `B` [Recursive Staircase](src/algorithms/uncategorized/recursive-staircase) - count the number of ways to reach the top\n  * `A` [Maximum Subarray](src/algorithms/sets/maximum-subarray)\n  * `A` [Travelling Salesman Problem](src/algorithms/graph/travelling-salesman) - shortest possible route that visits each city and returns to the origin city\n  * `A` [Discrete Fourier Transform](src/algorithms/math/fourier-transform) - decompose a function of time (a signal) into the frequencies that make it up\n* **Greedy** - choose the best option at the current time, without any consideration for the future\n  * `B` [Jump Game](src/algorithms/uncategorized/jump-game)\n  * `A` [Unbound Knapsack Problem](src/algorithms/sets/knapsack-problem)\n  * `A` [Dijkstra Algorithm](src/algorithms/graph/dijkstra) - finding the shortest path to all graph vertices\n  * `A` [Prim’s Algorithm](src/algorithms/graph/prim) - finding Minimum Spanning Tree (MST) for weighted undirected graph\n  * `A` [Kruskal’s Algorithm](src/algorithms/graph/kruskal) - finding Minimum Spanning Tree (MST) for weighted undirected graph\n* **Divide and Conquer** - divide the problem into smaller parts and then solve those parts\n  * `B` [Binary Search](src/algorithms/search/binary-search)\n  * `B` [Tower of Hanoi](src/algorithms/uncategorized/hanoi-tower)\n  * `B` [Pascal's Triangle](src/algorithms/math/pascal-triangle)\n  * `B` [Euclidean Algorithm](src/algorithms/math/euclidean-algorithm) - calculate the Greatest Common Divisor (GCD)\n  * `B` [Merge Sort](src/algorithms/sorting/merge-sort)\n  * `B` [Quicksort](src/algorithms/sorting/quick-sort)\n  * `B` [Tree Depth-First Search](src/algorithms/tree/depth-first-search) (DFS)\n  * `B` [Graph Depth-First Search](src/algorithms/graph/depth-first-search) (DFS)\n  * `B` [Matrices](src/algorithms/math/matrix) - generating and traversing the matrices of different shapes\n  * `B` [Jump Game](src/algorithms/uncategorized/jump-game)\n  * `B` [Fast Powering](src/algorithms/math/fast-powering)\n  * `B` [Best Time To Buy Sell Stocks](src/algorithms/uncategorized/best-time-to-buy-sell-stocks) - divide and conquer and one-pass examples\n  * `A` [Permutations](src/algorithms/sets/permutations) (with and without repetitions)\n  * `A` [Combinations](src/algorithms/sets/combinations) (with and without repetitions)\n  * `A` [Maximum Subarray](src/algorithms/sets/maximum-subarray)\n* **Dynamic Programming** - build up a solution using previously found sub-solutions\n  * `B` [Fibonacci Number](src/algorithms/math/fibonacci)\n  * `B` [Jump Game](src/algorithms/uncategorized/jump-game)\n  * `B` [Unique Paths](src/algorithms/uncategorized/unique-paths)\n  * `B` [Rain Terraces](src/algorithms/uncategorized/rain-terraces) - trapping rain water problem\n  * `B` [Recursive Staircase](src/algorithms/uncategorized/recursive-staircase) - count the number of ways to reach the top\n  * `B` [Seam Carving](src/algorithms/image-processing/seam-carving) - content-aware image resizing algorithm\n  * `A` [Levenshtein Distance](src/algorithms/string/levenshtein-distance) - minimum edit distance between two sequences\n  * `A` [Longest Common Subsequence](src/algorithms/sets/longest-common-subsequence) (LCS)\n  * `A` [Longest Common Substring](src/algorithms/string/longest-common-substring)\n  * `A` [Longest Increasing Subsequence](src/algorithms/sets/longest-increasing-subsequence)\n  * `A` [Shortest Common Supersequence](src/algorithms/sets/shortest-common-supersequence)\n  * `A` [0/1 Knapsack Problem](src/algorithms/sets/knapsack-problem)\n  * `A` [Integer Partition](src/algorithms/math/integer-partition)\n  * `A` [Maximum Subarray](src/algorithms/sets/maximum-subarray)\n  * `A` [Bellman-Ford Algorithm](src/algorithms/graph/bellman-ford) - finding the shortest path to all graph vertices\n  * `A` [Floyd-Warshall Algorithm](src/algorithms/graph/floyd-warshall) - find the shortest paths between all pairs of vertices\n  * `A` [Regular Expression Matching](src/algorithms/string/regular-expression-matching)\n* **Backtracking** - similarly to brute force, try to generate all possible solutions, but each time you generate the next solution, you test\nif it satisfies all conditions and only then continue generating subsequent solutions. Otherwise, backtrack and go on a\ndifferent path to finding a solution. Normally the DFS traversal of state-space is being used.\n  * `B` [Jump Game](src/algorithms/uncategorized/jump-game)\n  * `B` [Unique Paths](src/algorithms/uncategorized/unique-paths)\n  * `B` [Power Set](src/algorithms/sets/power-set) - all subsets of a set\n  * `A` [Hamiltonian Cycle](src/algorithms/graph/hamiltonian-cycle) - Visit every vertex exactly once\n  * `A` [N-Queens Problem](src/algorithms/uncategorized/n-queens)\n  * `A` [Knight's Tour](src/algorithms/uncategorized/knight-tour)\n  * `A` [Combination Sum](src/algorithms/sets/combination-sum) - find all combinations that form specific sum\n* **Branch & Bound** - remember the lowest-cost solution found at each stage of the backtracking\nsearch, and use the cost of the lowest-cost solution found so far as a lower bound on the cost of\na least-cost solution to the problem in order to discard partial solutions with costs larger than the\nlowest-cost solution found so far. Normally, BFS traversal in combination with DFS traversal of state-space\ntree is being used.\n\n## How to use this repository\n\n**Install all dependencies**\n\n```\nnpm install\n```\n\n**Run ESLint**\n\nYou may want to run it to check code quality.\n\n```\nnpm run lint\n```\n\n**Run all tests**\n\n```\nnpm test\n```\n\n**Run tests by name**\n\n```\nnpm test -- 'LinkedList'\n```\n\n**Troubleshooting**\n\nIf linting or testing is failing, try to delete the `node_modules` folder and re-install npm packages:\n\n```\nrm -rf ./node_modules\nnpm i\n```\n\nAlso, make sure that you're using the correct Node version (`>=16`). If you're using [nvm](https://github.com/nvm-sh/nvm) for Node version management you may run `nvm use` from the root folder of the project and the correct version will be picked up.\n\n**Playground**\n\nYou may play with data-structures and algorithms in `./src/playground/playground.js` file and write\ntests for it in `./src/playground/__test__/playground.test.js`.\n\nThen just, simply run the following command to test if your playground code works as expected:\n\n```\nnpm test -- 'playground'\n```\n\n## Useful Information\n\n### References\n\n- [▶ Data Structures and Algorithms on YouTube](https://www.youtube.com/playlist?list=PLLXdhg_r2hKA7DPDsunoDZ-Z769jWn4R8)\n- [✍🏻 Data Structure Sketches](https://okso.app/showcase/data-structures)\n\n### Big O Notation\n\n*Big O notation* is used to classify algorithms according to how their running time or space requirements grow as the input size grows.\nOn the chart below, you may find the most common orders of growth of algorithms specified in Big O notation.\n\n![Big O graphs](./assets/big-o-graph.png)\n\nSource: [Big O Cheat Sheet](http://bigocheatsheet.com/).\n\nBelow is the list of some of the most used Big O notations and their performance comparisons against different sizes of the input data.\n\n| Big O Notation | Type        | Computations for 10 elements | Computations for 100 elements | Computations for 1000 elements  |\n| -------------- | ----------- | ---------------------------- | ----------------------------- | ------------------------------- |\n| **O(1)**       | Constant    | 1                            | 1                             | 1                               |\n| **O(log N)**   | Logarithmic | 3                            | 6                             | 9                               |\n| **O(N)**       | Linear      | 10                           | 100                           | 1000                            |\n| **O(N log N)** | n log(n)    | 30                           | 600                           | 9000                            |\n| **O(N^2)**     | Quadratic   | 100                          | 10000                         | 1000000                         |\n| **O(2^N)**     | Exponential | 1024                         | 1.26e+29                      | 1.07e+301                       |\n| **O(N!)**      | Factorial   | 3628800                      | 9.3e+157                      | 4.02e+2567                      |\n\n### Data Structure Operations Complexity\n\n| Data Structure          | Access    | Search    | Insertion | Deletion  | Comments  |\n| ----------------------- | :-------: | :-------: | :-------: | :-------: | :-------- |\n| **Array**               | 1         | n         | n         | n         |           |\n| **Stack**               | n         | n         | 1         | 1         |           |\n| **Queue**               | n         | n         | 1         | 1         |           |\n| **Linked List**         | n         | n         | 1         | n         |           |\n| **Hash Table**          | -         | n         | n         | n         | In case of perfect hash function costs would be O(1) |\n| **Binary Search Tree**  | n         | n         | n         | n         | In case of balanced tree costs would be O(log(n)) |\n| **B-Tree**              | log(n)    | log(n)    | log(n)    | log(n)    |           |\n| **Red-Black Tree**      | log(n)    | log(n)    | log(n)    | log(n)    |           |\n| **AVL Tree**            | log(n)    | log(n)    | log(n)    | log(n)    |           |\n| **Bloom Filter**        | -         | 1         | 1         | -         | False positives are possible while searching |\n\n### Array Sorting Algorithms Complexity\n\n| Name                  | Best            | Average             | Worst               | Memory    | Stable    | Comments  |\n| --------------------- | :-------------: | :-----------------: | :-----------------: | :-------: | :-------: | :-------- |\n| **Bubble sort**       | n               | n<sup>2</sup>       | n<sup>2</sup>       | 1         | Yes       |           |\n| **Insertion sort**    | n               | n<sup>2</sup>       | n<sup>2</sup>       | 1         | Yes       |           |\n| **Selection sort**    | n<sup>2</sup>   | n<sup>2</sup>       | n<sup>2</sup>       | 1         | No        |           |\n| **Heap sort**         | n&nbsp;log(n)   | n&nbsp;log(n)       | n&nbsp;log(n)       | 1         | No        |           |\n| **Merge sort**        | n&nbsp;log(n)   | n&nbsp;log(n)       | n&nbsp;log(n)       | n         | Yes       |           |\n| **Quick sort**        | n&nbsp;log(n)   | n&nbsp;log(n)       | n<sup>2</sup>       | log(n)    | No        | Quicksort is usually done in-place with O(log(n)) stack space |\n| **Shell sort**        | n&nbsp;log(n)   | depends on gap sequence   | n&nbsp;(log(n))<sup>2</sup>  | 1         | No         |           |\n| **Counting sort**     | n + r           | n + r               | n + r               | n + r     | Yes       | r - biggest number in array |\n| **Radix sort**        | n * k           | n * k               | n * k               | n + k     | Yes       | k - length of longest key |\n\n## Project Backers\n\n> You may support this project via ❤️️ [GitHub](https://github.com/sponsors/trekhleb) or ❤️️ [Patreon](https://www.patreon.com/trekhleb).\n\n[Folks who are backing this project](https://github.com/trekhleb/javascript-algorithms/blob/master/BACKERS.md) `∑ = 1`\n\n## Author\n\n[@trekhleb](https://trekhleb.dev)\n\nA few more [projects](https://trekhleb.dev/projects/) and [articles](https://trekhleb.dev/blog/) about JavaScript and algorithms on [trekhleb.dev](https://trekhleb.dev)\n",
+    "fileTree": [
+      {
+        "path": ".babelrc",
+        "type": "blob"
+      },
+      {
+        "path": ".editorconfig",
+        "type": "blob"
+      },
+      {
+        "path": ".eslintrc",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/CI.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".husky",
+        "type": "tree"
+      },
+      {
+        "path": ".husky/pre-commit",
+        "type": "blob"
+      },
+      {
+        "path": ".npmrc",
+        "type": "blob"
+      },
+      {
+        "path": ".nvmrc",
+        "type": "blob"
+      },
+      {
+        "path": "BACKERS.md",
+        "type": "blob"
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "type": "blob"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.ar-AR.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.de-DE.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.es-ES.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.he-IL.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.id-ID.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.it-IT.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.pl-PL.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.tr-TR.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.uz-UZ.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.vi-VN.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.zh-TW.md",
+        "type": "blob"
+      },
+      {
+        "path": "assets",
+        "type": "tree"
+      },
+      {
+        "path": "assets/big-o-graph.png",
+        "type": "blob"
+      },
+      {
+        "path": "jest.config.js",
+        "type": "blob"
+      },
+      {
+        "path": "package-lock.json",
+        "type": "blob"
+      },
+      {
+        "path": "package.json",
+        "type": "blob"
+      },
+      {
+        "path": "src",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher/__test__/caesarCipher.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/caesar-cipher/caesarCipher.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/hill-cipher",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/hill-cipher/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/hill-cipher/_test_",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/hill-cipher/_test_/hillCipher.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/hill-cipher/hillCipher.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/PolynomialHash.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/SimplePolynomialHash.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/__test__/PolynomialHash.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/polynomial-hash/__test__/SimplePolynomialHash.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/rail-fence-cipher",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/rail-fence-cipher/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/rail-fence-cipher/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/cryptography/rail-fence-cipher/__test__/railFenceCipher.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/cryptography/rail-fence-cipher/railFenceCipher.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/articulation-points",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/articulation-points/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/articulation-points/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/articulation-points/__test__/articulationPoints.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/articulation-points/articulationPoints.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bellman-ford",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/bellman-ford/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bellman-ford/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/bellman-ford/__test__/bellmanFord.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bellman-ford/bellmanFord.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/breadth-first-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/breadth-first-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/breadth-first-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/breadth-first-search/__test__/breadthFirstSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/breadth-first-search/breadthFirstSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bridges",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/bridges/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bridges/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/bridges/__test__/graphBridges.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/bridges/graphBridges.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/depth-first-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/depth-first-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/depth-first-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/depth-first-search/__test__/depthFirstSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/depth-first-search/depthFirstSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/__test__/detectDirectedCycle.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycle.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/__test__/detectUndirectedCycleUsingDisjointSet.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/detectDirectedCycle.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/detectUndirectedCycle.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/detect-cycle/detectUndirectedCycleUsingDisjointSet.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.de-DE.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.es-ES.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.he-IL.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/README.zh-TW.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/__test__/dijkstra.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/dijkstra.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-01.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-02.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-03.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-04.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-05.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-06.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-07.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-08.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-09.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-10.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-11.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-12.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-13.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-14.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-15.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/dijkstra/images/dijkstra-16.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/eulerian-path",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/eulerian-path/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/eulerian-path/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/eulerian-path/__test__/eulerianPath.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/eulerian-path/eulerianPath.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/floyd-warshall",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/floyd-warshall/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/floyd-warshall/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/floyd-warshall/__test__/floydWarshall.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/floyd-warshall/floydWarshall.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/hamiltonian-cycle",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/hamiltonian-cycle/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/hamiltonian-cycle/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/hamiltonian-cycle/__test__/hamiltonianCycle.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/hamiltonian-cycle/hamiltonianCycle.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal/__test__/kruskal.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/kruskal/kruskal.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/prim",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/prim/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/prim/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/prim/__test__/prim.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/prim/prim.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/strongly-connected-components",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/strongly-connected-components/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/strongly-connected-components/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/strongly-connected-components/__test__/stronglyConnectedComponents.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/strongly-connected-components/stronglyConnectedComponents.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/topological-sorting",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/topological-sorting/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/topological-sorting/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/topological-sorting/__test__/topologicalSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/topological-sorting/topologicalSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/travelling-salesman",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/travelling-salesman/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/travelling-salesman/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/graph/travelling-salesman/__test__/bfTravellingSalesman.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/graph/travelling-salesman/bfTravellingSalesman.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/__tests__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/__tests__/resizeImageWidth.node.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/__tests__/test-image-after.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/__tests__/test-image-before.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/seam-carving/resizeImageWidth.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/image-processing/utils",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/image-processing/utils/imageData.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/__test__/reverseTraversal.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/reverse-traversal/reverseTraversal.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/__test__/traversal.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/linked-list/traversal/traversal.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/__tests__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/__tests__/bitsToFloat.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/__tests__/floatAsBinaryString.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/bitsToFloat.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/floatAsBinaryString.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/images/02-half-precision-floating-point-number-explained.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/images/03-scientific-notation.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/binary-floating-point/testCases.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/bits/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/bitLength.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/bitsDiff.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/clearBit.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/countSetBits.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/divideByTwo.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/fullAdder.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/getBit.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/isEven.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/isPositive.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/isPowerOfTwo.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/multiply.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/multiplyByTwo.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/multiplyUnsigned.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/setBit.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/switchSign.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/__test__/updateBit.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/bitLength.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/bitsDiff.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/clearBit.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/countSetBits.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/divideByTwo.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/fullAdder.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/getBit.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/isEven.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/isPositive.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/isPowerOfTwo.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/multiply.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/multiplyByTwo.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/multiplyUnsigned.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/setBit.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/switchSign.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/bits/updateBit.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/complex-number",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/complex-number/ComplexNumber.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/complex-number/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/complex-number/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/complex-number/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/complex-number/__test__/ComplexNumber.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithm.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/__test__/euclideanAlgorithmIterative.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/euclideanAlgorithm.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-algorithm/euclideanAlgorithmIterative.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-distance",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-distance/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-distance/__tests__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-distance/__tests__/euclideanDistance.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/euclidean-distance/euclideanDistance.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.ka-GE.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.tr-TR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/factorial/__test__/factorial.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/__test__/factorialRecursive.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/factorial.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/factorial/factorialRecursive.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering/__test__/fastPowering.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fast-powering/fastPowering.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/README.ka-GE.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/__test__/fibonacci.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/__test__/fibonacciNth.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/__test__/fibonacciNthClosedForm.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/fibonacci.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/fibonacciNth.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fibonacci/fibonacciNthClosedForm.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/__test__/FourierTester.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/__test__/discreteFourierTransform.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/__test__/fastFourierTransform.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/__test__/inverseDiscreteFourierTransform.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/discreteFourierTransform.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/fastFourierTransform.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/fourier-transform/inverseDiscreteFourierTransform.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/horner-method",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/__test__/classicPolynome.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/__test__/hornerMethod.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/classicPolynome.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/horner-method/hornerMethod.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/integer-partition",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/integer-partition/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/integer-partition/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/integer-partition/__test__/integerPartition.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/integer-partition/integerPartition.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/__test__/isPowerOfTwo.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/__test__/isPowerOfTwoBitwise.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/isPowerOfTwo.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/is-power-of-two/isPowerOfTwoBitwise.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/least-common-multiple",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/least-common-multiple/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/least-common-multiple/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/least-common-multiple/__test__/leastCommonMultiple.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/least-common-multiple/leastCommonMultiple.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/liu-hui",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/liu-hui/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/liu-hui/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/liu-hui/__test__/liuHui.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/liu-hui/liuHui.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/matrix",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/matrix/Matrix.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/matrix/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/matrix/__tests__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/matrix/__tests__/Matrix.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/__test__/pascalTriangle.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/__test__/pascalTriangleRecursive.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/pascalTriangle.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/pascal-triangle/pascalTriangleRecursive.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/primality-test",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/primality-test/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/primality-test/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/primality-test/__test__/trialDivision.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/primality-test/trialDivision.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors/__test__/primeFactors.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/prime-factors/primeFactors.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/radian",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/radian/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/radian/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/radian/__test__/degreeToRadian.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/radian/__test__/radianToDegree.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/radian/degreeToRadian.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/radian/radianToDegree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/sieve-of-eratosthenes",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/sieve-of-eratosthenes/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/sieve-of-eratosthenes/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/sieve-of-eratosthenes/__test__/sieveOfEratosthenes.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/sieve-of-eratosthenes/sieveOfEratosthenes.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/square-root",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/square-root/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/square-root/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/math/square-root/__test__/squareRoot.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/math/square-root/squareRoot.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/ml/k-means",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/ml/k-means/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/k-means/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/k-means/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/ml/k-means/__test__/kMeans.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/k-means/kMeans.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/knn",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/ml/knn/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/knn/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/knn/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/ml/knn/__test__/knn.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/ml/knn/kNN.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/binary-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/README.es-ES.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/__test__/binarySearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/binary-search/binarySearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/interpolation-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/interpolation-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/interpolation-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/interpolation-search/__test__/interpolationSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/interpolation-search/interpolationSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/jump-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/jump-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/jump-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/jump-search/__test__/jumpSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/jump-search/jumpSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/linear-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/linear-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/linear-search/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/linear-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/search/linear-search/__test__/linearSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/search/linear-search/linearSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/cartesian-product",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/cartesian-product/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/cartesian-product/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/cartesian-product/__test__/cartesianProduct.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/cartesian-product/cartesianProduct.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combination-sum",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/combination-sum/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combination-sum/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/combination-sum/__test__/combinationSum.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combination-sum/combinationSum.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/__test__/combineWithRepetitions.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/__test__/combineWithoutRepetitions.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/combineWithRepetitions.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/combineWithoutRepetitions.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/images/combinations-overview.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/images/combinations-with-repetitions.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/images/combinations-without-repetitions.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/combinations/images/overview.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/fisher-yates",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/fisher-yates/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/fisher-yates/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/fisher-yates/__test__/fisherYates.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/fisher-yates/fisherYates.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/Knapsack.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/KnapsackItem.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/__test__/Knapsack.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/knapsack-problem/__test__/KnapsackItem.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequence.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/__test__/longestCommonSubsequenceRecursive.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/longestCommonSubsequence.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-common-subsequence/longestCommonSubsequenceRecursive.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-increasing-subsequence",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/longest-increasing-subsequence/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-increasing-subsequence/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/longest-increasing-subsequence/__test__/dpLongestIncreasingSubsequence.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/longest-increasing-subsequence/dpLongestIncreasingSubsequence.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/__test__/bfMaximumSubarray.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/__test__/dcMaximumSubarraySum.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/__test__/dpMaximumSubarray.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/bfMaximumSubarray.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/dcMaximumSubarraySum.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/maximum-subarray/dpMaximumSubarray.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/__test__/permutateWithRepetitions.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/__test__/permutateWithoutRepetitions.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/images/overview.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/images/permutations-overview.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/images/permutations-with-repetitions.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/images/permutations-without-repetitions.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/permutateWithRepetitions.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/permutations/permutateWithoutRepetitions.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/__test__/btPowerSet.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/__test__/bwPowerSet.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/__test__/caPowerSet.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/btPowerSet.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/bwPowerSet.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/power-set/caPowerSet.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/shortest-common-supersequence",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/shortest-common-supersequence/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/shortest-common-supersequence/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sets/shortest-common-supersequence/__test__/shortestCommonSupersequence.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sets/shortest-common-supersequence/shortestCommonSupersequence.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/Sort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/SortTester.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/__test__/Sort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort/BubbleSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/bubble-sort/__test__/BubbleSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/BucketSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/__test__/BucketSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/images/bucket_sort_1.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/bucket-sort/images/bucket_sort_2.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort/CountingSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort/README.pt-br.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/counting-sort/__test__/CountingSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort/HeapSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/heap-sort/__test__/HeapSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort/InsertionSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/insertion-sort/__test__/InsertionSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/MergeSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/merge-sort/__test__/MergeSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/QuickSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/QuickSortInPlace.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/__test__/QuickSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/quick-sort/__test__/QuickSortInPlace.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/RadixSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/__test__/RadixSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/radix-sort/images/radix-sort.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort/SelectionSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/selection-sort/__test__/SelectionSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort/ShellSort.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/sorting/shell-sort/__test__/ShellSort.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/stack",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/stack/valid-parentheses",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/stack/valid-parentheses/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/stack/valid-parentheses/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/stack/valid-parentheses/__test__/validParentheses.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/stack/valid-parentheses/validParentheses.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/statistics",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/__test__/weightedRandom.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/images/cover.png",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/statistics/weighted-random/weightedRandom.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/hamming-distance",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/hamming-distance/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/hamming-distance/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/hamming-distance/__test__/hammingDistance.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/hamming-distance/hammingDistance.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/knuth-morris-pratt",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/knuth-morris-pratt/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/knuth-morris-pratt/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/knuth-morris-pratt/__test__/knuthMorrisPratt.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/knuth-morris-pratt/knuthMorrisPratt.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/levenshtein-distance",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/levenshtein-distance/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/levenshtein-distance/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/levenshtein-distance/__test__/levenshteinDistance.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/levenshtein-distance/levenshteinDistance.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/longest-common-substring",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/longest-common-substring/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/longest-common-substring/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/longest-common-substring/__test__/longestCommonSubstring.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/longest-common-substring/longestCommonSubstring.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/palindrome",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/palindrome/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/palindrome/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/palindrome/__test__/isPalindrome.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/palindrome/isPalindrome.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/rabin-karp",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/rabin-karp/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/rabin-karp/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/rabin-karp/__test__/rabinKarp.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/rabin-karp/rabinKarp.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/regular-expression-matching",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/regular-expression-matching/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/regular-expression-matching/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/regular-expression-matching/__test__/regularExpressionMatching.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/regular-expression-matching/regularExpressionMatching.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/z-algorithm",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/z-algorithm/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/z-algorithm/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/string/z-algorithm/__test__/zAlgorithm.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/string/z-algorithm/zAlgorithm.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/tree/breadth-first-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/tree/breadth-first-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree/breadth-first-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/tree/breadth-first-search/__test__/breadthFirstSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree/breadth-first-search/breadthFirstSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree/depth-first-search",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/tree/depth-first-search/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree/depth-first-search/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/tree/depth-first-search/__test__/depthFirstSearch.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/tree/depth-first-search/depthFirstSearch.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/accumulatorBestTimeToBuySellStocks.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/dpBestTimeToBuySellStocks.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/dqBestTimeToBuySellStocks.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/__tests__/peakvalleyBestTimeToBuySellStocks.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/accumulatorBestTimeToBuySellStocks.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/dpBestTimeToBuySellStocks.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/dqBestTimeToBuySellStocks.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/best-time-to-buy-sell-stocks/peakvalleyBestTimeToBuySellStocks.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/hanoi-tower",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/hanoi-tower/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/hanoi-tower/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/hanoi-tower/__test__/hanoiTower.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/hanoi-tower/hanoiTower.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/__test__/backtrackingJumpGame.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/__test__/dpBottomUpJumpGame.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/__test__/dpTopDownJumpGame.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/__test__/greedyJumpGame.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/backtrackingJumpGame.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/dpBottomUpJumpGame.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/dpTopDownJumpGame.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/jump-game/greedyJumpGame.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/knight-tour",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/knight-tour/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/knight-tour/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/knight-tour/__test__/knightTour.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/knight-tour/knightTour.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/QueenPosition.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/__test__/QueensPosition.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/__test__/nQueens.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/__test__/nQueensBitwise.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/nQueens.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/n-queens/nQueensBitwise.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/__test__/bfRainTerraces.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/__test__/dpRainTerraces.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/bfRainTerraces.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/rain-terraces/dpRainTerraces.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseBF.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseDP.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseIT.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/__test__/recursiveStaircaseMEM.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/recursiveStaircaseBF.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/recursiveStaircaseDP.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/recursiveStaircaseIT.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/recursive-staircase/recursiveStaircaseMEM.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/square-matrix-rotation",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/square-matrix-rotation/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/square-matrix-rotation/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/square-matrix-rotation/__test__/squareMatrixRotation.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/square-matrix-rotation/squareMatrixRotation.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/__test__/btUniquePaths.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/__test__/dpUniquePaths.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/__test__/uniquePaths.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/btUniquePaths.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/dpUniquePaths.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/algorithms/uncategorized/unique-paths/uniquePaths.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/bloom-filter",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/BloomFilter.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/bloom-filter/__test__/BloomFilter.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/DisjointSet.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/DisjointSetAdhoc.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/DisjointSetItem.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/__test__/DisjointSet.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/__test__/DisjointSetAdhoc.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/disjoint-set/__test__/DisjointSetItem.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/DoublyLinkedList.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/DoublyLinkedListNode.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.es-ES.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/__test__/DoublyLinkedList.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/__test__/DoublyLinkedListNode.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/doubly-linked-list/images/doubly-linked-list.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/graph/Graph.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/GraphEdge.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/GraphVertex.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/graph/__test__/Graph.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/__test__/GraphEdge.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/__test__/GraphVertex.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/graph/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/graph/images/graph.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/hash-table/HashTable.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/hash-table/__test__/HashTable.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/hash-table/images/collision-resolution.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/hash-table/images/hash-table.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/heap/Heap.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/MaxHeap.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/MaxHeapAdhoc.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/MinHeap.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/MinHeapAdhoc.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.tr-TR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/heap/__test__/Heap.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/__test__/MaxHeap.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/__test__/MaxHeapAdhoc.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/__test__/MinHeap.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/__test__/MinHeapAdhoc.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/heap/images/array-representation.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/images/max-heap.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/heap/images/min-heap.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/linked-list/LinkedList.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/LinkedListNode.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.es-ES.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.tr-TR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.vi-VN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/linked-list/__test__/LinkedList.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/__test__/LinkedListNode.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/linked-list/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/linked-list/images/linked-list.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/lru-cache/LRUCache.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/LRUCacheOnMap.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/lru-cache/__test__/LRUCache.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/__test__/LRUCacheOnMap.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/lru-cache/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/lru-cache/images/lru-cache.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/priority-queue/PriorityQueue.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/priority-queue/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/priority-queue/__test__/PriorityQueue.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/queue/Queue.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.vi-VN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/queue/__test__/Queue.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/queue/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/queue/images/queue.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/stack/README.fr-FR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.ja-JP.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.ko-KR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.vi-VN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/Stack.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/stack/__test__/Stack.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/stack/images/stack.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/stack/images/stack.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/BinaryTreeNode.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/__test__/BinaryTreeNode.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree/AvlTree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/avl-tree/__test__/AvlTRee.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/BinarySearchTree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/BinarySearchTreeNode.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/__test__/BinarySearchTree.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/__test__/BinarySearchTreeNode.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/binary-search-tree/images/binary-search-tree.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree/FenwickTree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/fenwick-tree/__test__/FenwickTree.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/images/tree.jpeg",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree/RedBlackTree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/red-black-tree/__test__/RedBlackTree.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree/SegmentTree.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/tree/segment-tree/__test__/SegmentTree.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/trie/README.ko-KO.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/README.pt-BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/README.ru-RU.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/README.uk-UA.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/README.zh-CN.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/Trie.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/TrieNode.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/trie/__test__/Trie.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/__test__/TrieNode.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/data-structures/trie/images",
+        "type": "tree"
+      },
+      {
+        "path": "src/data-structures/trie/images/trie.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "src/playground",
+        "type": "tree"
+      },
+      {
+        "path": "src/playground/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "src/playground/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/playground/__test__/playground.test.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/playground/playground.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/utils",
+        "type": "tree"
+      },
+      {
+        "path": "src/utils/comparator",
+        "type": "tree"
+      },
+      {
+        "path": "src/utils/comparator/Comparator.js",
+        "type": "blob"
+      },
+      {
+        "path": "src/utils/comparator/__test__",
+        "type": "tree"
+      },
+      {
+        "path": "src/utils/comparator/__test__/Comparator.test.js",
+        "type": "blob"
+      }
+    ],
+    "packageJson": {
+      "name": "javascript-algorithms-and-data-structures",
+      "version": "0.0.4",
+      "description": "Algorithms and data-structures implemented on JavaScript",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/trekhleb/javascript-algorithms.git"
+      },
+      "keywords": [
+        "computer-science",
+        "cs",
+        "algorithms",
+        "data-structures",
+        "javascript",
+        "algorithm",
+        "javascript-algorithms",
+        "sorting-algorithms",
+        "graph",
+        "tree",
+        "interview",
+        "interview-preparation"
+      ],
+      "author": "Oleksii Trekhleb (https://trekhleb.dev)",
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/trekhleb/javascript-algorithms/issues"
+      },
+      "homepage": "https://github.com/trekhleb/javascript-algorithms#readme",
+      "main": "index.js",
+      "scripts": {
+        "lint": "eslint ./src/**",
+        "test": "jest",
+        "coverage": "npm run test -- --coverage",
+        "ci": "npm run lint && npm run coverage",
+        "prepare": "husky"
+      },
+      "devDependencies": {
+        "@babel/cli": "^7.28.6",
+        "@babel/preset-env": "^7.29.0",
+        "@types/jest": "^30.0.0",
+        "eslint": "^8.57.1",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-plugin-import": "^2.32.0",
+        "eslint-plugin-jest": "^27.9.0",
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "husky": "^9.1.7",
+        "jest": "^30.2.0",
+        "pngjs": "^7.0.0"
+      },
+      "engines": {
+        "node": ">=22.0.0",
+        "npm": ">=10.0.0"
+      }
+    }
+  },
+  "analysis": {
+    "repo": "trekhleb/javascript-algorithms",
+    "repoType": "library",
+    "language": "javascript",
+    "repoScore": 82,
+    "scores": {
+      "documentation": 80,
+      "structure": 85,
+      "discoverability": 67,
+      "maintenance": 100,
+      "agentSafety": 85
+    },
+    "improvements": [
+      "Include API, configuration, or reference details in the README.",
+      "Explain how contributors can run, test, and contribute to the project.",
+      "Add a `docs/` directory for deeper project documentation.",
+      "Use README headings like installation, usage, examples, or API reference.",
+      "Set a homepage or docs URL in the repository metadata.",
+      "Add SECURITY.md or equivalent operational guidance."
+    ],
+    "analyzedAt": "2026-03-09T02:29:40.826Z"
+  }
+}

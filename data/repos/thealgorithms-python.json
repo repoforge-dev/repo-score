@@ -1,0 +1,6986 @@
+{
+  "cachedAt": "2026-03-09T02:29:37.655Z",
+  "snapshot": {
+    "owner": "TheAlgorithms",
+    "repo": "Python",
+    "repoMetadata": {
+      "name": "Python",
+      "description": "All Algorithms implemented in Python",
+      "stargazers_count": 218447,
+      "forks_count": 50132,
+      "open_issues_count": 930,
+      "language": "Python",
+      "topics": [
+        "algorithm",
+        "algorithm-competitions",
+        "algorithms-implemented",
+        "algos",
+        "community-driven",
+        "education",
+        "hacktoberfest",
+        "interview",
+        "learn",
+        "practice",
+        "python",
+        "searches",
+        "sorting-algorithms",
+        "sorts"
+      ],
+      "default_branch": "master",
+      "updated_at": "2026-03-09T02:28:46Z",
+      "homepage": "https://thealgorithms.github.io/Python/",
+      "archived": false
+    },
+    "readmeContent": "<div align=\"center\">\n<!-- Title: -->\n  <a href=\"https://github.com/TheAlgorithms/\">\n    <img src=\"https://raw.githubusercontent.com/TheAlgorithms/website/1cd824df116b27029f17c2d1b42d81731f28a920/public/logo.svg\" height=\"100\">\n  </a>\n  <h1><a href=\"https://github.com/TheAlgorithms/\">The Algorithms</a> - Python</h1>\n\n<!-- Labels: -->\n  <!-- First row: -->\n  <a href=\"https://gitpod.io/#https://github.com/TheAlgorithms/Python\">\n    <img src=\"https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=flat-square\" height=\"20\" alt=\"Gitpod Ready-to-Code\">\n  </a>\n  <a href=\"https://github.com/TheAlgorithms/Python/blob/master/CONTRIBUTING.md\">\n    <img src=\"https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=flat-square\" height=\"20\" alt=\"Contributions Welcome\">\n  </a>\n  <img src=\"https://img.shields.io/github/repo-size/TheAlgorithms/Python.svg?label=Repo%20size&style=flat-square\" height=\"20\">\n  <a href=\"https://the-algorithms.com/discord\">\n    <img src=\"https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square\" height=\"20\" alt=\"Discord chat\">\n  </a>\n  <a href=\"https://gitter.im/TheAlgorithms/community\">\n    <img src=\"https://img.shields.io/badge/Chat-Gitter-ff69b4.svg?label=Chat&logo=gitter&style=flat-square\" height=\"20\" alt=\"Gitter chat\">\n  </a>\n\n  <!-- Second row: -->\n  <br>\n  <a href=\"https://github.com/TheAlgorithms/Python/actions\">\n    <img src=\"https://img.shields.io/github/actions/workflow/status/TheAlgorithms/Python/build.yml?branch=master&label=CI&logo=github&style=flat-square\" height=\"20\" alt=\"GitHub Workflow Status\">\n  </a>\n  <a href=\"https://github.com/pre-commit/pre-commit\">\n    <img src=\"https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=flat-square\" height=\"20\" alt=\"pre-commit\">\n  </a>\n  <a href=\"https://docs.astral.sh/ruff/formatter/\">\n    <img src=\"https://img.shields.io/static/v1?label=code%20style&message=ruff&color=black&style=flat-square\" height=\"20\" alt=\"code style: black\">\n  </a>\n\n<!-- Short description: -->\n  <h3>All algorithms implemented in Python - for education 📚</h3>\n</div>\n\nImplementations are for learning purposes only. They may be less efficient than the implementations in the Python standard library. Use them at your discretion.\n\n## 🚀 Getting Started\n\n📋 Read through our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.\n\n## 🌐 Community Channels\n\nWe are on [Discord](https://the-algorithms.com/discord) and [Gitter](https://gitter.im/TheAlgorithms/community)! Community channels are a great way for you to ask questions and get help. Please join us!\n\n## 📜 List of Algorithms\n\nSee our [directory](DIRECTORY.md) for easier navigation and a better overview of the project.\n",
+    "fileTree": [
+      {
+        "path": ".devcontainer",
+        "type": "tree"
+      },
+      {
+        "path": ".devcontainer/Dockerfile",
+        "type": "blob"
+      },
+      {
+        "path": ".devcontainer/README.md",
+        "type": "blob"
+      },
+      {
+        "path": ".devcontainer/devcontainer.json",
+        "type": "blob"
+      },
+      {
+        "path": ".devcontainer/post_install",
+        "type": "blob"
+      },
+      {
+        "path": ".gitattributes",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/CODEOWNERS",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE",
+        "type": "tree"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/config.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/other.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/pull_request_template.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/stale.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/build.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/devcontainer_ci.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/directory_writer.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/project_euler.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/ruff.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/sphinx.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".gitpod.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".pre-commit-config.yaml",
+        "type": "blob"
+      },
+      {
+        "path": ".vscode",
+        "type": "tree"
+      },
+      {
+        "path": ".vscode/settings.json",
+        "type": "blob"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": "DIRECTORY.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE.md",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters",
+        "type": "tree"
+      },
+      {
+        "path": "audio_filters/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/butterworth_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/equal_loudness_filter.py.broken.txt",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/iir_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/loudness_curve.json",
+        "type": "blob"
+      },
+      {
+        "path": "audio_filters/show_response.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking",
+        "type": "tree"
+      },
+      {
+        "path": "backtracking/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/all_combinations.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/all_permutations.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/all_subsequences.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/coloring.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/combination_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/crossword_puzzle_solver.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/generate_parentheses.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/generate_parentheses_iterative.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/hamiltonian_cycle.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/knight_tour.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/match_word_pattern.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/minimax.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/n_queens.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/n_queens_math.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/power_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/rat_in_maze.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/sudoku.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/sum_of_subsets.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/word_break.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/word_ladder.py",
+        "type": "blob"
+      },
+      {
+        "path": "backtracking/word_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation",
+        "type": "tree"
+      },
+      {
+        "path": "bit_manipulation/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_and_operator.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_coded_decimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_count_setbits.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_count_trailing_zeros.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_or_operator.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_shifts.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_twos_complement.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/binary_xor_operator.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/bitwise_addition_recursive.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/count_1s_brian_kernighan_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/count_number_of_one_bits.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/excess_3_code.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/find_previous_power_of_two.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/find_unique_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/gray_code_sequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/highest_set_bit.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/index_of_rightmost_set_bit.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/is_even.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/is_power_of_two.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/largest_pow_of_two_le_num.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/missing_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/numbers_different_signs.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/power_of_4.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/reverse_bits.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/single_bit_manipulation_operations.py",
+        "type": "blob"
+      },
+      {
+        "path": "bit_manipulation/swap_all_odd_and_even_bits.py",
+        "type": "blob"
+      },
+      {
+        "path": "blockchain",
+        "type": "tree"
+      },
+      {
+        "path": "blockchain/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "blockchain/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "blockchain/diophantine_equation.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra",
+        "type": "tree"
+      },
+      {
+        "path": "boolean_algebra/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/and_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/imply_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/karnaugh_map_simplification.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/multiplexer.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/nand_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/nimply_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/nor_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/not_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/or_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/quine_mc_cluskey.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/xnor_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "boolean_algebra/xor_gate.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata",
+        "type": "tree"
+      },
+      {
+        "path": "cellular_automata/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/conways_game_of_life.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/game_of_life.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/langtons_ant.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/nagel_schrekenberg.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/one_dimensional.py",
+        "type": "blob"
+      },
+      {
+        "path": "cellular_automata/wa_tor.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers",
+        "type": "tree"
+      },
+      {
+        "path": "ciphers/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/a1z26.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/affine_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/atbash.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/autokey.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/baconian_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/base16.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/base32.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/base64_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/base85.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/beaufort_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/bifid.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/brute_force_caesar_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/caesar_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/cryptomath_module.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/decrypt_caesar_with_chi_squared.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/deterministic_miller_rabin.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/diffie.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/diffie_hellman.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/elgamal_key_generator.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/enigma_machine2.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/fractionated_morse_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/gronsfeld_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/hill_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/mixed_keyword_cypher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/mono_alphabetic_ciphers.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/morse_code.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/onepad_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/permutation_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/playfair_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/polybius.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/porta_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/prehistoric_men.txt",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rabin_miller.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rail_fence_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rot13.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rsa_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rsa_factorization.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/rsa_key_generator.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/running_key_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/shuffled_shift_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/simple_keyword_cypher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/simple_substitution_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/transposition_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/transposition_cipher_encrypt_decrypt_file.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/trifid_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/vernam_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/vigenere_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "ciphers/xor_cipher.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision",
+        "type": "tree"
+      },
+      {
+        "path": "computer_vision/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/cnn_classification.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/flip_augmentation.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/haralick_descriptors.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/harris_corner.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/horn_schunck.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/intensity_based_segmentation.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/mean_threshold.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/mosaic_augmentation.py",
+        "type": "blob"
+      },
+      {
+        "path": "computer_vision/pooling_functions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions",
+        "type": "tree"
+      },
+      {
+        "path": "conversions/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/astronomical_length_scale_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/binary_to_decimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/binary_to_hexadecimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/binary_to_octal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/convert_number_to_words.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/decimal_to_any.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/decimal_to_binary.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/decimal_to_hexadecimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/decimal_to_octal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/energy_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/excel_title_to_column.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/hex_to_bin.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/hexadecimal_to_decimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/ipv4_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/length_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/molecular_chemistry.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/octal_to_binary.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/octal_to_decimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/octal_to_hexadecimal.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/prefix_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/prefix_conversions_string.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/pressure_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/rectangular_to_polar.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/rgb_cmyk_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/rgb_hsv_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/roman_numerals.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/speed_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/temperature_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/time_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/volume_conversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "conversions/weight_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression",
+        "type": "tree"
+      },
+      {
+        "path": "data_compression/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/burrows_wheeler.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/coordinate_compression.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/huffman.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data",
+        "type": "tree"
+      },
+      {
+        "path": "data_compression/image_data/PSNR-example-base.png",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data/PSNR-example-comp-10.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data/compressed_image.png",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data/example_image.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data/example_wikipedia_image.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/image_data/original_image.png",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/lempel_ziv.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/lempel_ziv_decompress.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/lz77.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/peak_signal_to_noise_ratio.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_compression/run_length_encoding.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/arrays/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/equilibrium_index_in_array.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/find_triplets_with_0_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/index_2d_array_in_1d.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/kth_largest_element.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/median_two_array.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/monotonic_array.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/pairs_with_given_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/permutations.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/prefix_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/product_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/rotate_array.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/sparse_table.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/arrays/sudoku_solver.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/binary_tree/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/avl_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/basic_binary_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_search_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_search_tree_recursive.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_tree_mirror.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_tree_node_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_tree_path_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/binary_tree_traversals.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/diameter_of_binary_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/diff_views_of_binary_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/distribute_coins.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/fenwick_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/flatten_binarytree_to_linkedlist.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/floor_and_ceiling.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/inorder_tree_traversal_2022.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/is_sorted.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/is_sum_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/lazy_segment_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/lowest_common_ancestor.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/maximum_fenwick_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/maximum_sum_bst.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/merge_two_binary_trees.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/mirror_binary_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/non_recursive_segment_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/number_of_possible_binary_trees.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/red_black_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/segment_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/segment_tree_other.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/serialize_deserialize_binary_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/symmetric_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/treap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/binary_tree/wavelet_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/disjoint_set",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/disjoint_set/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/disjoint_set/alternate_disjoint_set.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/disjoint_set/disjoint_set.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/hashing/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/bloom_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/double_hash.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/hash_map.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/hash_table.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/hash_table_with_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/number_theory",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/hashing/number_theory/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/number_theory/prime_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/quadratic_probing.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/tests",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/hashing/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/hashing/tests/test_hash_map.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/heap/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/binomial_heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/heap_generic.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/max_heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/min_heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/randomized_heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/heap/skew_heap.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/kd_tree/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/build_kdtree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/example",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/kd_tree/example/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/example/example_usage.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/example/hypercube_points.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/kd_node.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/nearest_neighbour_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/tests",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/kd_tree/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/kd_tree/tests/test_kdtree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/linked_list/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/circular_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/deque_doubly.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/doubly_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/doubly_linked_list_two.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/floyds_cycle_detection.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/from_sequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/has_loop.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/is_palindrome.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/merge_two_lists.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/middle_element_of_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/print_reverse.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/reverse_k_group.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/rotate_to_the_right.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/singly_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/skip_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/linked_list/swap_nodes.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/queues/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/circular_queue.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/circular_queue_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/double_ended_queue.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/linked_queue.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/priority_queue_using_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/queue_by_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/queue_by_two_stacks.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/queues/queue_on_pseudo_stack.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/stacks/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/balanced_parentheses.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/dijkstras_two_stack_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/infix_to_postfix_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/infix_to_prefix_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/largest_rectangle_histogram.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/lexicographical_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/next_greater_element.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/postfix_evaluation.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/prefix_evaluation.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/stack.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/stack_using_two_queues.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/stack_with_doubly_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/stack_with_singly_linked_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/stacks/stock_span_problem.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/suffix_tree/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/example",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/suffix_tree/example/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/example/example_usage.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/suffix_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/suffix_tree_node.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/tests",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/suffix_tree/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/suffix_tree/tests/test_suffix_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/trie",
+        "type": "tree"
+      },
+      {
+        "path": "data_structures/trie/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/trie/radix_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "data_structures/trie/trie.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/change_brightness.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/change_contrast.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/convert_to_negative.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/dithering",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/dithering/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/dithering/burkes.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/edge_detection",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/edge_detection/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/edge_detection/canny.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/filters/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/bilateral_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/convolve.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/gabor_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/gaussian_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/laplacian_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/local_binary_pattern.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/median_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/filters/sobel_filter.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/histogram_stretch.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/image_data",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/image_data/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/image_data/input.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/output_data",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/output_data/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/histogram_equalization/output_data/output.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/image_data",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/image_data/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/image_data/lena.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/image_data/lena_small.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/index_calculation.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/morphological_operations",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/morphological_operations/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/morphological_operations/dilation_operation.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/morphological_operations/erosion_operation.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/resize",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/resize/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/resize/resize.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/rotation",
+        "type": "tree"
+      },
+      {
+        "path": "digital_image_processing/rotation/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/rotation/rotation.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/sepia.py",
+        "type": "blob"
+      },
+      {
+        "path": "digital_image_processing/test_digital_image_processing.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer",
+        "type": "tree"
+      },
+      {
+        "path": "divide_and_conquer/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/closest_pair_of_points.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/convex_hull.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/heaps_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/heaps_algorithm_iterative.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/inversions.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/kth_order_statistic.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/max_difference_pair.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/max_subarray.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/mergesort.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/peak.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/power.py",
+        "type": "blob"
+      },
+      {
+        "path": "divide_and_conquer/strassen_matrix_multiplication.py",
+        "type": "blob"
+      },
+      {
+        "path": "docs",
+        "type": "tree"
+      },
+      {
+        "path": "docs/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "docs/conf.py",
+        "type": "blob"
+      },
+      {
+        "path": "docs/source",
+        "type": "tree"
+      },
+      {
+        "path": "docs/source/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming",
+        "type": "tree"
+      },
+      {
+        "path": "dynamic_programming/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/abbreviation.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/all_construct.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/bitmask.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/catalan_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/climbing_stairs.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/combination_sum_iv.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/edit_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/factorial.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/fast_fibonacci.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/fibonacci.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/fizz_buzz.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/floyd_warshall.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/integer_partition.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/iterating_through_submasks.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/k_means_clustering_tensorflow.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/largest_divisible_subset.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_common_subsequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_common_substring.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_increasing_subsequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_increasing_subsequence_iterative.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_increasing_subsequence_o_nlogn.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/longest_palindromic_subsequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/matrix_chain_multiplication.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/matrix_chain_order.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/max_non_adjacent_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/max_product_subarray.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/max_subarray_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/min_distance_up_bottom.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_coin_change.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_cost_path.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_partition.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_size_subarray_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_squares_to_represent_a_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_steps_to_one.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/minimum_tickets_cost.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/narcissistic_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/optimal_binary_search_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/palindrome_partitioning.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/range_sum_query.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/regex_match.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/rod_cutting.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/smith_waterman.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/subset_generation.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/sum_of_subset.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/trapped_water.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/tribonacci.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/viterbi.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/wildcard_matching.py",
+        "type": "blob"
+      },
+      {
+        "path": "dynamic_programming/word_break.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics",
+        "type": "tree"
+      },
+      {
+        "path": "electronics/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/apparent_power.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/builtin_voltage.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/capacitor_equivalence.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/carrier_concentration.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/charging_capacitor.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/charging_inductor.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/circular_convolution.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/coulombs_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/electric_conductivity.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/electric_power.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/electrical_impedance.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/ic_555_timer.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/ind_reactance.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/ohms_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/real_and_reactive_power.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/resistor_color_code.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/resistor_equivalence.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/resonant_frequency.py",
+        "type": "blob"
+      },
+      {
+        "path": "electronics/wheatstone_bridge.py",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer",
+        "type": "tree"
+      },
+      {
+        "path": "file_transfer/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer/mytext.txt",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer/receive_file.py",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer/send_file.py",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer/tests",
+        "type": "tree"
+      },
+      {
+        "path": "file_transfer/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "file_transfer/tests/test_send_file.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial",
+        "type": "tree"
+      },
+      {
+        "path": "financial/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "financial/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/equated_monthly_installments.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/exponential_moving_average.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/interest.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/present_value.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/price_plus_tax.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/simple_moving_average.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/straight_line_depreciation.py",
+        "type": "blob"
+      },
+      {
+        "path": "financial/time_and_half_pay.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals",
+        "type": "tree"
+      },
+      {
+        "path": "fractals/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals/julia_sets.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals/koch_snowflake.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals/mandelbrot.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals/sierpinski_triangle.py",
+        "type": "blob"
+      },
+      {
+        "path": "fractals/vicsek.py",
+        "type": "blob"
+      },
+      {
+        "path": "fuzzy_logic",
+        "type": "tree"
+      },
+      {
+        "path": "fuzzy_logic/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "fuzzy_logic/fuzzy_operations.py",
+        "type": "blob"
+      },
+      {
+        "path": "fuzzy_logic/fuzzy_operations.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "genetic_algorithm",
+        "type": "tree"
+      },
+      {
+        "path": "genetic_algorithm/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "genetic_algorithm/basic_string.py",
+        "type": "blob"
+      },
+      {
+        "path": "geodesy",
+        "type": "tree"
+      },
+      {
+        "path": "geodesy/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "geodesy/haversine_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "geodesy/lamberts_ellipsoidal_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry",
+        "type": "tree"
+      },
+      {
+        "path": "geometry/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/geometry.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/graham_scan.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/jarvis_march.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/tests",
+        "type": "tree"
+      },
+      {
+        "path": "geometry/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/tests/test_graham_scan.py",
+        "type": "blob"
+      },
+      {
+        "path": "geometry/tests/test_jarvis_march.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphics",
+        "type": "tree"
+      },
+      {
+        "path": "graphics/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphics/bezier_curve.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphics/butterfly_pattern.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphics/digital_differential_analyzer_line.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphics/vector3_for_2d_rendering.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs",
+        "type": "tree"
+      },
+      {
+        "path": "graphs/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/a_star.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/ant_colony_optimization_algorithms.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/articulation_points.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/basic_graphs.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/bellman_ford.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/bi_directional_dijkstra.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/bidirectional_a_star.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/bidirectional_breadth_first_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/bidirectional_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/boruvka.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/breadth_first_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/breadth_first_search_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/breadth_first_search_shortest_path.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/breadth_first_search_shortest_path_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/breadth_first_search_zero_one_shortest_path.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/check_bipatrite.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/check_cycle.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/connected_components.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/deep_clone_graph.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/depth_first_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/depth_first_search_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dijkstra.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dijkstra_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dijkstra_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dijkstra_alternate.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dijkstra_binary_grid.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/dinic.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/directed_and_undirected_weighted_graph.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/edmonds_karp_multiple_source_and_sink.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/eulerian_path_and_circuit_for_undirected_graph.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/even_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/finding_bridges.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/frequent_pattern_graph_miner.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/g_topological_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/gale_shapley_bigraph.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/graph_adjacency_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/graph_adjacency_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/graph_list.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/graphs_floyd_warshall.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/greedy_best_first.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/greedy_min_vertex_cover.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/kahns_algorithm_long.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/kahns_algorithm_topo.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/karger.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/lanczos_eigenvectors.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/markov_chain.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/matching_min_vertex_cover.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_path_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_spanning_tree_boruvka.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_spanning_tree_kruskal.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_spanning_tree_kruskal2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_spanning_tree_prims.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/minimum_spanning_tree_prims2.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/multi_heuristic_astar.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/page_rank.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/prim.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/random_graph_generator.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/scc_kosaraju.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/strongly_connected_components.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/tarjans_scc.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/tests",
+        "type": "tree"
+      },
+      {
+        "path": "graphs/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/tests/test_min_spanning_tree_kruskal.py",
+        "type": "blob"
+      },
+      {
+        "path": "graphs/tests/test_min_spanning_tree_prim.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods",
+        "type": "tree"
+      },
+      {
+        "path": "greedy_methods/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/best_time_to_buy_and_sell_stock.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/fractional_cover_problem.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/fractional_knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/fractional_knapsack_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/gas_station.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/minimum_coin_change.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/minimum_waiting_time.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/optimal_merge_pattern.py",
+        "type": "blob"
+      },
+      {
+        "path": "greedy_methods/smallest_range.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes",
+        "type": "tree"
+      },
+      {
+        "path": "hashes/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/adler32.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/chaos_machine.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/djb2.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/elf.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/enigma_machine.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/fletcher16.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/hamming_code.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/luhn.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/md5.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/sdbm.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/sha1.py",
+        "type": "blob"
+      },
+      {
+        "path": "hashes/sha256.py",
+        "type": "blob"
+      },
+      {
+        "path": "index.md",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack",
+        "type": "tree"
+      },
+      {
+        "path": "knapsack/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/greedy_knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/recursive_approach_knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/tests",
+        "type": "tree"
+      },
+      {
+        "path": "knapsack/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/tests/test_greedy_knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "knapsack/tests/test_knapsack.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra",
+        "type": "tree"
+      },
+      {
+        "path": "linear_algebra/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/gaussian_elimination.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/jacobi_iteration_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/lu_decomposition.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/matrix_inversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src",
+        "type": "tree"
+      },
+      {
+        "path": "linear_algebra/src/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/conjugate_gradient.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/gaussian_elimination_pivoting.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/lib.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/polynom_for_points.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/power_iteration.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/rank_of_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/rayleigh_quotient.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/schur_complement.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/test_linear_algebra.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_algebra/src/transformations_2d.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_programming",
+        "type": "tree"
+      },
+      {
+        "path": "linear_programming/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "linear_programming/simplex.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning",
+        "type": "tree"
+      },
+      {
+        "path": "machine_learning/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/apriori_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/astar.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/automatic_differentiation.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/data_transformations.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/decision_tree.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/dimensionality_reduction.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/forecasting",
+        "type": "tree"
+      },
+      {
+        "path": "machine_learning/forecasting/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/forecasting/ex_data.csv",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/forecasting/run.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/frequent_pattern_growth.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/gaussian_naive_bayes.py.broken.txt",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/gradient_boosting_classifier.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/gradient_boosting_regressor.py.broken.txt",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/gradient_descent.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/k_means_clust.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/k_nearest_neighbours.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/linear_discriminant_analysis.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/linear_regression.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/local_weighted_learning",
+        "type": "tree"
+      },
+      {
+        "path": "machine_learning/local_weighted_learning/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/local_weighted_learning/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/local_weighted_learning/local_weighted_learning.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/logistic_regression.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/loss_functions.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/lstm",
+        "type": "tree"
+      },
+      {
+        "path": "machine_learning/lstm/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/lstm/lstm_prediction.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/lstm/sample_data.csv",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/mfcc.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/multilayer_perceptron_classifier.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/polynomial_regression.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/principle_component_analysis.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/random_forest_classifier.py.broken.txt",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/random_forest_regressor.py.broken.txt",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/scoring_functions.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/self_organizing_map.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/sequential_minimum_optimization.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/similarity_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/support_vector_machines.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/t_stochastic_neighbour_embedding.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/word_frequency_functions.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/xgboost_classifier.py",
+        "type": "blob"
+      },
+      {
+        "path": "machine_learning/xgboost_regressor.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths",
+        "type": "tree"
+      },
+      {
+        "path": "maths/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/abs.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/addition_without_arithmetic.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/aliquot_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/allocation_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/arc_length.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/area.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/area_under_curve.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/average_absolute_deviation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/average_mean.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/average_median.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/average_mode.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/bailey_borwein_plouffe.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/base_neg2_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/basic_maths.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/binary_exponentiation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/binary_multiplication.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/binomial_coefficient.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/binomial_distribution.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/ceil.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/chebyshev_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/check_polygon.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/chinese_remainder_theorem.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/chudnovsky_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/collatz_sequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/combinations.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/continued_fraction.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/decimal_isolate.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/decimal_to_fraction.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/dodecahedron.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/double_factorial.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/dual_number_automatic_differentiation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/entropy.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/euclidean_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/euler_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/euler_modified.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/eulers_totient.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/extended_euclidean_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/factorial.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/factors.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/fast_inverse_sqrt.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/fermat_little_theorem.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/fibonacci.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/find_max.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/find_min.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/floor.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/gamma.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/gaussian.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/gcd_of_n_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/geometric_mean.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/germain_primes.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/greatest_common_divisor.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/hardy_ramanujanalgo.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/images",
+        "type": "tree"
+      },
+      {
+        "path": "maths/images/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/images/gaussian.png",
+        "type": "blob"
+      },
+      {
+        "path": "maths/integer_square_root.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/interquartile_range.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/is_int_palindrome.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/is_ip_v4_address_valid.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/is_square_free.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/jaccard_similarity.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/joint_probability_distribution.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/josephus_problem.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/juggler_sequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/karatsuba.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/kth_lexicographic_permutation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/largest_of_very_large_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/least_common_multiple.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/line_length.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/liouville_lambda.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/lucas_lehmer_primality_test.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/lucas_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/maclaurin_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/manhattan_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/matrix_exponentiation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/max_sum_sliding_window.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/minkowski_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/mobius_function.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/modular_division.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/modular_exponential.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/monte_carlo.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/monte_carlo_dice.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/number_of_digits.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis",
+        "type": "tree"
+      },
+      {
+        "path": "maths/numerical_analysis/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/adams_bashforth.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/bisection.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/bisection_2.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/integration_by_simpson_approx.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/intersection.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/nevilles_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/newton_forward_interpolation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/newton_raphson.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/numerical_integration.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/proper_fractions.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/runge_kutta.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/runge_kutta_fehlberg_45.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/runge_kutta_gills.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/secant_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/simpson_rule.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/square_root.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/numerical_analysis/weierstrass_method.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/odd_sieve.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/perfect_cube.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/perfect_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/perfect_square.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/persistence.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/pi_generator.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/pi_monte_carlo_estimation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/points_are_collinear_3d.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/pollard_rho.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/polynomial_evaluation.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/polynomials",
+        "type": "tree"
+      },
+      {
+        "path": "maths/polynomials/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/polynomials/single_indeterminate_operations.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/power_using_recursion.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/prime_check.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/prime_factors.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/prime_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/prime_sieve_eratosthenes.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/primelib.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/print_multiplication_table.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/pythagoras.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/qr_decomposition.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/quadratic_equations_complex_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/radians.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/radix2_fft.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/remove_digit.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/segmented_sieve.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series",
+        "type": "tree"
+      },
+      {
+        "path": "maths/series/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/arithmetic.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/geometric.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/geometric_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/harmonic.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/harmonic_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/hexagonal_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/series/p_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sieve_of_eratosthenes.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sigmoid.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/signum.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/simultaneous_linear_equation_solver.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sin.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sock_merchant.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/softmax.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/solovay_strassen_primality_test.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/spearman_rank_correlation_coefficient.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers",
+        "type": "tree"
+      },
+      {
+        "path": "maths/special_numbers/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/armstrong_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/automorphic_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/bell_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/carmichael_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/catalan_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/hamming_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/happy_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/harshad_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/hexagonal_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/krishnamurthy_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/perfect_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/polygonal_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/pronic_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/proth_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/triangular_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/ugly_numbers.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/special_numbers/weird_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sum_of_arithmetic_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sum_of_digits.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sum_of_geometric_progression.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sum_of_harmonic_series.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sumset.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/sylvester_sequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/tanh.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/test_factorial.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/test_prime_check.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/three_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/trapezoidal_rule.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/triplet_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/twin_prime.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/two_pointer.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/two_sum.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/volume.py",
+        "type": "blob"
+      },
+      {
+        "path": "maths/zellers_congruence.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix",
+        "type": "tree"
+      },
+      {
+        "path": "matrix/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/binary_search_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/count_islands_in_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/count_negative_numbers_in_sorted_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/count_paths.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/cramers_rule_2x2.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/inverse_of_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/largest_square_area_in_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/matrix_based_game.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/matrix_class.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/matrix_equalization.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/matrix_multiplication_recursion.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/matrix_operation.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/max_area_of_island.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/median_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/nth_fibonacci_using_matrix_exponentiation.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/pascal_triangle.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/rotate_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/searching_in_sorted_matrix.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/sherman_morrison.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/spiral_print.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/tests",
+        "type": "tree"
+      },
+      {
+        "path": "matrix/tests/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/tests/pytest.ini",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/tests/test_matrix_operation.py",
+        "type": "blob"
+      },
+      {
+        "path": "matrix/validate_sudoku_board.py",
+        "type": "blob"
+      },
+      {
+        "path": "networking_flow",
+        "type": "tree"
+      },
+      {
+        "path": "networking_flow/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "networking_flow/ford_fulkerson.py",
+        "type": "blob"
+      },
+      {
+        "path": "networking_flow/minimum_cut.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network",
+        "type": "tree"
+      },
+      {
+        "path": "neural_network/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions",
+        "type": "tree"
+      },
+      {
+        "path": "neural_network/activation_functions/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/binary_step.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/exponential_linear_unit.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/gaussian_error_linear_unit.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/leaky_rectified_linear_unit.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/mish.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/rectified_linear_unit.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/scaled_exponential_linear_unit.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/soboleva_modified_hyperbolic_tangent.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/softplus.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/squareplus.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/activation_functions/swish.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/back_propagation_neural_network.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/convolution_neural_network.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/gan.py_tf",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/input_data.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/perceptron.py.DISABLED",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/simple_neural_network.py",
+        "type": "blob"
+      },
+      {
+        "path": "neural_network/two_hidden_layers_neural_network.py",
+        "type": "blob"
+      },
+      {
+        "path": "other",
+        "type": "tree"
+      },
+      {
+        "path": "other/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/activity_selection.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/alternative_list_arrange.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/bankers_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/davis_putnam_logemann_loveland.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/doomsday.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/fischer_yates_shuffle.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/gauss_easter.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/graham_scan.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/greedy.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/guess_the_number_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/h_index.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/least_recently_used.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/lfu_cache.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/linear_congruential_generator.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/lru_cache.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/magicdiamondpattern.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/majority_vote_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/maximum_subsequence.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/nested_brackets.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/number_container_system.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/password.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/quine.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/scoring_algorithm.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/sdes.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/sliding_window_maximum.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/tower_of_hanoi.py",
+        "type": "blob"
+      },
+      {
+        "path": "other/word_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics",
+        "type": "tree"
+      },
+      {
+        "path": "physics/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/altitude_pressure.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/archimedes_principle_of_buoyant_force.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/basic_orbital_capture.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/casimir_effect.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/center_of_mass.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/centripetal_force.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/coulombs_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/doppler_frequency.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/escape_velocity.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/grahams_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/horizontal_projectile_motion.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/hubble_parameter.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/ideal_gas_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/image_data",
+        "type": "tree"
+      },
+      {
+        "path": "physics/image_data/2D_problems.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "physics/image_data/2D_problems_1.jpg",
+        "type": "blob"
+      },
+      {
+        "path": "physics/image_data/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/in_static_equilibrium.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/kinetic_energy.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/lens_formulae.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/lorentz_transformation_four_vector.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/malus_law.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/mass_energy_equivalence.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/mirror_formulae.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/n_body_simulation.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/newtons_law_of_gravitation.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/newtons_second_law_of_motion.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/orbital_transfer_work.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/period_of_pendulum.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/photoelectric_effect.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/potential_energy.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/rainfall_intensity.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/reynolds_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/rms_speed_of_molecule.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/shear_stress.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/speed_of_sound.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/speeds_of_gas_molecules.py",
+        "type": "blob"
+      },
+      {
+        "path": "physics/terminal_velocity.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_001/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol4.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol5.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol6.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_001/sol7.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_002/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002/sol4.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_002/sol5.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_003",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_003/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_003/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_003/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_003/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_004",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_004/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_004/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_004/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_005",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_005/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_005/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_005/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_006",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_006/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_006/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_006/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_006/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_006/sol4.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_007",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_007/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_007/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_007/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_007/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_008",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_008/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_008/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_008/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_008/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_009",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_009/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_009/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_009/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_009/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_009/sol4.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_010",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_010/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_010/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_010/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_010/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_011",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_011/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_011/grid.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_011/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_011/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_012",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_012/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_012/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_012/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_013",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_013/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_013/num.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_013/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_014",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_014/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_014/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_014/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_015",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_015/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_015/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_016",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_016/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_016/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_016/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_017",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_017/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_017/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_018",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_018/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_018/solution.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_018/triangle.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_019",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_019/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_019/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_020",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_020/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_020/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_020/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_020/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_020/sol4.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_021",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_021/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_021/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_022",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_022/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_022/p022_names.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_022/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_022/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_023",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_023/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_023/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_024",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_024/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_024/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_025",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_025/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_025/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_025/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_025/sol3.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_026",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_026/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_026/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_027",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_027/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_027/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_028",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_028/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_028/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_029",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_029/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_029/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_030",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_030/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_030/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_031",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_031/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_031/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_031/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_032",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_032/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_032/sol32.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_033",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_033/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_033/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_034",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_034/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_034/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_035",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_035/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_035/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_036",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_036/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_036/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_037",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_037/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_037/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_038",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_038/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_038/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_039",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_039/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_039/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_040",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_040/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_040/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_041",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_041/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_041/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_042",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_042/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_042/solution42.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_042/words.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_043",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_043/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_043/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_044",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_044/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_044/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_045",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_045/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_045/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_046",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_046/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_046/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_047",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_047/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_047/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_048",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_048/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_048/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_049",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_049/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_049/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_050",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_050/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_050/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_051",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_051/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_051/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_052",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_052/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_052/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_053",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_053/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_053/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_054",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_054/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_054/poker_hands.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_054/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_054/test_poker_hand.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_055",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_055/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_055/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_056",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_056/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_056/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_057",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_057/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_057/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_058",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_058/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_058/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_059",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_059/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_059/p059_cipher.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_059/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_059/test_cipher.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_062",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_062/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_062/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_063",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_063/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_063/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_064",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_064/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_064/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_065",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_065/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_065/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_067",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_067/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_067/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_067/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_067/triangle.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_068",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_068/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_068/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_069",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_069/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_069/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_070",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_070/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_070/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_071",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_071/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_071/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_072",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_072/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_072/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_072/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_073",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_073/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_073/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_074",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_074/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_074/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_074/sol2.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_075",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_075/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_075/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_076",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_076/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_076/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_077",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_077/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_077/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_078",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_078/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_078/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_079",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_079/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_079/keylog.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_079/keylog_test.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_079/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_080",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_080/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_080/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_081",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_081/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_081/matrix.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_081/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_082",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_082/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_082/input.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_082/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_082/test_matrix.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_085",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_085/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_085/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_086",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_086/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_086/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_087",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_087/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_087/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_089",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_089/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_089/numeralcleanup_test.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_089/p089_roman.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_089/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_091",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_091/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_091/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_092",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_092/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_092/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_094",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_094/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_094/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_095",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_095/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_095/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_097",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_097/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_097/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_099",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_099/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_099/base_exp.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_099/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_100",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_100/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_100/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_101",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_101/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_101/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_102",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_102/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_102/p102_triangles.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_102/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_102/test_triangles.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_104",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_104/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_104/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_107",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_107/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_107/p107_network.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_107/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_107/test_network.txt",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_109",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_109/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_109/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_112",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_112/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_112/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_113",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_113/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_113/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_114",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_114/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_114/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_115",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_115/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_115/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_116",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_116/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_116/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_117",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_117/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_117/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_119",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_119/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_119/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_120",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_120/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_120/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_121",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_121/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_121/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_122",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_122/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_122/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_123",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_123/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_123/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_125",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_125/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_125/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_129",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_129/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_129/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_131",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_131/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_131/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_135",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_135/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_135/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_136",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_136/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_136/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_144",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_144/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_144/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_145",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_145/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_145/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_164",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_164/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_164/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_173",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_173/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_173/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_174",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_174/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_174/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_180",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_180/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_180/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_187",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_187/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_187/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_188",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_188/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_188/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_190",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_190/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_190/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_191",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_191/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_191/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_203",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_203/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_203/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_205",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_205/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_205/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_206",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_206/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_206/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_207",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_207/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_207/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_234",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_234/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_234/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_301",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_301/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_301/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_345",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_345/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_345/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_493",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_493/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_493/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_551",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_551/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_551/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_587",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_587/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_587/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_686",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_686/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_686/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_800",
+        "type": "tree"
+      },
+      {
+        "path": "project_euler/problem_800/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "project_euler/problem_800/sol1.py",
+        "type": "blob"
+      },
+      {
+        "path": "pyproject.toml",
+        "type": "blob"
+      },
+      {
+        "path": "quantum",
+        "type": "tree"
+      },
+      {
+        "path": "quantum/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/bb84.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/deutsch_jozsa.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/half_adder.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/not_gate.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/q_fourier_transform.py",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/q_full_adder.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/quantum_entanglement.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/quantum_random.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/quantum_teleportation.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/ripple_adder_classic.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/single_qubit_measure.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "quantum/superdense_coding.py.DISABLED.txt",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling",
+        "type": "tree"
+      },
+      {
+        "path": "scheduling/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/first_come_first_served.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/highest_response_ratio_next.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/job_sequence_with_deadline.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/job_sequencing_with_deadline.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/multi_level_feedback_queue.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/non_preemptive_shortest_job_first.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/round_robin.py",
+        "type": "blob"
+      },
+      {
+        "path": "scheduling/shortest_job_first.py",
+        "type": "blob"
+      },
+      {
+        "path": "scripts",
+        "type": "tree"
+      },
+      {
+        "path": "scripts/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/build_directory_md.py",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/close_pull_requests_with_awaiting_changes.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/close_pull_requests_with_failing_tests.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/close_pull_requests_with_require_descriptive_names.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/close_pull_requests_with_require_tests.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/close_pull_requests_with_require_type_hints.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/find_git_conflicts.sh",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/project_euler_answers.json",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/validate_filenames.py",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/validate_solutions.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches",
+        "type": "tree"
+      },
+      {
+        "path": "searches/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/binary_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/binary_tree_traversal.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/double_linear_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/double_linear_search_recursion.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/exponential_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/fibonacci_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/hill_climbing.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/interpolation_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/jump_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/linear_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/median_of_medians.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/quick_select.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/sentinel_linear_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/simple_binary_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/simulated_annealing.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/tabu_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "searches/tabu_test_data.txt",
+        "type": "blob"
+      },
+      {
+        "path": "searches/ternary_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts",
+        "type": "tree"
+      },
+      {
+        "path": "sorts/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/bead_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/binary_insertion_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/bitonic_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/bogo_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/bubble_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/bucket_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/circle_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/cocktail_shaker_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/comb_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/counting_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/cycle_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/cyclic_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/double_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/dutch_national_flag_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/exchange_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/external_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/gnome_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/heap_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/insertion_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/intro_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/iterative_merge_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/merge_insertion_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/merge_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/msd_radix_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/natural_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/normal_distribution_quick_sort.md",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/odd_even_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/odd_even_transposition_parallel.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/odd_even_transposition_single_threaded.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/pancake_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/patience_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/pigeon_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/pigeonhole_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/quick_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/quick_sort_3_partition.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/radix_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/recursive_insertion_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/recursive_mergesort_array.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/recursive_quick_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/selection_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/shell_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/shrink_shell_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/slowsort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/stalin_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/stooge_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/strand_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/tim_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/topological_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/tree_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/unknown_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "sorts/wiggle_sort.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings",
+        "type": "tree"
+      },
+      {
+        "path": "strings/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/aho_corasick.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/alternative_string_arrange.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/anagrams.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/anagrams.txt",
+        "type": "blob"
+      },
+      {
+        "path": "strings/autocomplete_using_trie.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/barcode_validator.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/bitap_string_match.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/boyer_moore_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/camel_case_to_snake_case.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/can_string_be_rearranged_as_palindrome.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/capitalize.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/check_anagrams.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/count_vowels.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/credit_card_validator.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/damerau_levenshtein_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/detecting_english_programmatically.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/dictionary.txt",
+        "type": "blob"
+      },
+      {
+        "path": "strings/dna.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/edit_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/frequency_finder.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/hamming_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/indian_phone_validator.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_contains_unique_chars.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_isogram.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_pangram.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_polish_national_id.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_spain_national_id.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_srilankan_phone_number.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/is_valid_email_address.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/jaro_winkler.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/join.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/knuth_morris_pratt.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/levenshtein_distance.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/lower.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/manacher.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/min_cost_string_conversion.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/naive_string_search.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/ngram.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/palindrome.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/pig_latin.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/prefix_function.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/rabin_karp.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/remove_duplicate.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/reverse_letters.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/reverse_words.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/snake_case_to_camel_pascal_case.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/split.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/string_switch_case.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/strip.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/text_justification.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/title.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/top_k_frequent_words.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/upper.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/wave_string.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/wildcard_pattern_matching.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/word_occurrence.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/word_patterns.py",
+        "type": "blob"
+      },
+      {
+        "path": "strings/words.txt",
+        "type": "blob"
+      },
+      {
+        "path": "strings/z_function.py",
+        "type": "blob"
+      },
+      {
+        "path": "uv.lock",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming",
+        "type": "tree"
+      },
+      {
+        "path": "web_programming/__init__.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/co2_emission.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/covid_stats_via_xpath.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/crawl_google_results.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/crawl_google_scholar_citation.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/currency_converter.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/current_stock_price.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/current_weather.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/daily_horoscope.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/download_images_from_google_query.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/emails_from_url.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_anime_and_play.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_bbc_news.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_github_info.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_jobs.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_quotes.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/fetch_well_rx_price.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_amazon_product_data.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_imdb_top_250_movies_csv.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_imdbtop.py.DISABLED",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_ip_geolocation.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_top_billionaires.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_top_hn_posts.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/get_user_tweets.py.DISABLED",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/giphy.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/instagram_crawler.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/instagram_pic.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/instagram_video.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/nasa_data.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/open_google_results.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/random_anime_character.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/recaptcha_verification.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/reddit.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/search_books_by_isbn.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/slack_message.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/test_fetch_github_info.py",
+        "type": "blob"
+      },
+      {
+        "path": "web_programming/world_covid19_stats.py",
+        "type": "blob"
+      }
+    ],
+    "packageJson": null
+  },
+  "analysis": {
+    "repo": "TheAlgorithms/Python",
+    "repoType": "unknown",
+    "language": "python",
+    "repoScore": 68,
+    "scores": {
+      "documentation": 50,
+      "structure": 40,
+      "discoverability": 76,
+      "maintenance": 100,
+      "agentSafety": 85
+    },
+    "improvements": [
+      "Add concrete usage examples or a quickstart section.",
+      "Include API, configuration, or reference details in the README.",
+      "Break the README into clearer sections for faster scanning.",
+      "Use a clear source layout such as `src/` or `lib/`.",
+      "Add a visible test suite or test directory.",
+      "Use README headings like installation, usage, examples, or API reference.",
+      "Add SECURITY.md or equivalent operational guidance."
+    ],
+    "analyzedAt": "2026-03-09T02:29:37.655Z"
+  }
+}

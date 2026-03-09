@@ -1,0 +1,1029 @@
+{
+  "cachedAt": "2026-03-09T02:28:32.254Z",
+  "snapshot": {
+    "owner": "EbookFoundation",
+    "repo": "free-programming-books",
+    "repoMetadata": {
+      "name": "free-programming-books",
+      "description": ":books: Freely available programming books",
+      "stargazers_count": 383782,
+      "forks_count": 66012,
+      "open_issues_count": 74,
+      "language": "Python",
+      "topics": [
+        "books",
+        "education",
+        "hacktoberfest",
+        "list",
+        "resource"
+      ],
+      "default_branch": "main",
+      "updated_at": "2026-03-09T02:27:03Z",
+      "homepage": "https://ebookfoundation.github.io/free-programming-books/",
+      "archived": false
+    },
+    "readmeContent": "# List of Free Learning Resources In Many Languages\n\n<div align=\"center\" markdown=\"1\">\n\n[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)&#160;\n[![License: CC BY 4.0](https://img.shields.io/github/license/EbookFoundation/free-programming-books)](https://creativecommons.org/licenses/by/4.0/)&#160;\n[![Hacktoberfest 2025 stats](https://img.shields.io/github/hacktoberfest/2025/EbookFoundation/free-programming-books?label=Hacktoberfest+2025)](https://github.com/EbookFoundation/free-programming-books/pulls?q=is%3Apr+is%3Amerged+created%3A2025-10-01..2025-10-31)\n\n</div>\n\nSearch the list at [https://ebookfoundation.github.io/free-programming-books-search/](https://ebookfoundation.github.io/free-programming-books-search/) [![https://ebookfoundation.github.io/free-programming-books-search/](https://img.shields.io/website?style=flat&logo=www&logoColor=whitesmoke&label=Dynamic%20search%20site&down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Febookfoundation.github.io%2Ffree-programming-books-search%2F)](https://ebookfoundation.github.io/free-programming-books-search/).\n\nThis page is available as an easy-to-read website. Access it by clicking on [![https://ebookfoundation.github.io/free-programming-books/](https://img.shields.io/website?style=flat&logo=www&logoColor=whitesmoke&label=Static%20site&down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Febookfoundation.github.io%2Ffree-programming-books%2F)](https://ebookfoundation.github.io/free-programming-books/).\n\n<div align=\"center\">\n  <form action=\"https://ebookfoundation.github.io/free-programming-books-search\">\n    <input type=\"text\" id=\"fpbSearch\" name=\"search\" required placeholder=\"Search Book or Author\"/>\n    <label for=\"submit\"> </label>\n    <input type=\"submit\" id=\"submit\" name=\"submit\" value=\"Search\" />\n  </form>\n</div>\n\n## Intro\n\nThis list was originally a clone of [StackOverflow - List of Freely Available Programming Books](https://web.archive.org/web/20140606191453/http://stackoverflow.com/questions/194812/list-of-freely-available-programming-books/392926) with contributions from Karan Bhangui and George Stocker.\n\nThe list was moved to GitHub by Victor Felder for collaborative updating and maintenance. It has grown to become one of [GitHub's most popular repositories](https://octoverse.github.com/).\n\n<div align=\"center\" markdown=\"1\">\n\n[![GitHub repo forks](https://img.shields.io/github/forks/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=whitesmoke&label=Forks)](https://github.com/EbookFoundation/free-programming-books/network)&#160;\n[![GitHub repo stars](https://img.shields.io/github/stars/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=whitesmoke&label=Stars)](https://github.com/EbookFoundation/free-programming-books/stargazers)&#160;\n[![GitHub repo contributors](https://img.shields.io/github/contributors-anon/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=whitesmoke&label=Contributors)](https://github.com/EbookFoundation/free-programming-books/graphs/contributors)    \n[![GitHub org sponsors](https://img.shields.io/github/sponsors/EbookFoundation?style=flat&logo=github&logoColor=whitesmoke&label=Sponsors)](https://github.com/sponsors/EbookFoundation)&#160;\n[![GitHub repo watchers](https://img.shields.io/github/watchers/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=whitesmoke&label=Watchers)](https://github.com/EbookFoundation/free-programming-books/watchers)&#160;\n[![GitHub repo size](https://img.shields.io/github/repo-size/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=whitesmoke&label=Repo%20Size)](https://github.com/EbookFoundation/free-programming-books/archive/refs/heads/main.zip)\n\n</div>\n\nThe [Free Ebook Foundation](https://ebookfoundation.org) now administers the repo, a not-for-profit organization devoted to promoting the creation, distribution, archiving, and sustainability of free ebooks. [Donations](https://ebookfoundation.org/contributions.html) to the Free Ebook Foundation are tax-deductible in the US.\n\n\n## How To Contribute\n\nPlease read [CONTRIBUTING](docs/CONTRIBUTING.md). If you're new to GitHub, [welcome](docs/HOWTO.md)! Remember to abide by our adapted from ![Contributor Covenant 1.3](https://img.shields.io/badge/Contributor%20Covenant-1.3-4baaaa.svg) [Code of Conduct](docs/CODE_OF_CONDUCT.md) too ([translations](#translations) also available).\n\nClick on these badges to see how you might be able to help:\n\n<div align=\"center\" markdown=\"1\">\n\n[![GitHub repo Issues](https://img.shields.io/github/issues/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=red&label=Issues)](https://github.com/EbookFoundation/free-programming-books/issues)&#160;\n[![GitHub repo Good Issues for newbies](https://img.shields.io/github/issues/EbookFoundation/free-programming-books/good%20first%20issue?style=flat&logo=github&logoColor=green&label=Good%20First%20issues)](https://github.com/EbookFoundation/free-programming-books/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)&#160;\n[![GitHub Help Wanted issues](https://img.shields.io/github/issues/EbookFoundation/free-programming-books/help%20wanted?style=flat&logo=github&logoColor=b545d1&label=%22Help%20Wanted%22%20issues)](https://github.com/EbookFoundation/free-programming-books/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)    \n[![GitHub repo PRs](https://img.shields.io/github/issues-pr/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=orange&label=PRs)](https://github.com/EbookFoundation/free-programming-books/pulls)&#160;\n[![GitHub repo Merged PRs](https://img.shields.io/github/issues-search/EbookFoundation/free-programming-books?style=flat&logo=github&logoColor=green&label=Merged%20PRs&query=is%3Amerged)](https://github.com/EbookFoundation/free-programming-books/pulls?q=is%3Apr+is%3Amerged)&#160;\n[![GitHub Help Wanted PRs](https://img.shields.io/github/issues-pr/EbookFoundation/free-programming-books/help%20wanted?style=flat&logo=github&logoColor=b545d1&label=%22Help%20Wanted%22%20PRs)](https://github.com/EbookFoundation/free-programming-books/pulls?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)\n\n</div>\n\n## How To Share\n\n<div align=\"left\" markdown=\"1\">\n<a href=\"https://www.facebook.com/share.php?u=https%3A%2F%2Fgithub.com%2FEbookFoundation%2Ffree-programming-books&p[images][0]=&p[title]=Free%20Programming%20Books&p[summary]=\">Share on Facebook</a><br>\n<a href=\"http://www.linkedin.com/shareArticle?mini=true&url=https://github.com/EbookFoundation/free-programming-books&title=Free%20Programming%20Books&summary=&source=\">Share on LinkedIn</a><br>\n<a href=\"https://toot.kytta.dev/?text=https://github.com/EbookFoundation/free-programming-books\">Share on Mastodon/Fediverse</a><br>    \n<a href=\"https://t.me/share/url?url=https://github.com/EbookFoundation/free-programming-books\">Share on Telegram</a><br>\n<a href=\"https://twitter.com/intent/tweet?text=https://github.com/EbookFoundation/free-programming-books%0AFree%20Programming%20Books\">Share on 𝕏 (Twitter)</a><br>\n</div>\n\n## Resources\n\nThis project lists books and other resources grouped by genres:\n\n### Books\n\n[English, By Programming Language](books/free-programming-books-langs.md)\n\n[English, By Subject](books/free-programming-books-subjects.md)\n\n#### Other Languages\n\n+ [Arabic / al arabiya / العربية](books/free-programming-books-ar.md)\n+ [Armenian / Հայերեն](books/free-programming-books-hy.md)\n+ [Azerbaijani / Азәрбајҹан дили / آذربايجانجا ديلي](books/free-programming-books-az.md)\n+ [Bengali / বাংলা](books/free-programming-books-bn.md)\n+ [Bulgarian / български](books/free-programming-books-bg.md)\n+ [Burmese / မြန်မာဘာသာ](books/free-programming-books-my.md)\n+ [Chinese / 中文](books/free-programming-books-zh.md)\n+ [Czech / čeština / český jazyk](books/free-programming-books-cs.md)\n+ [Catalan / catalan / català](books/free-programming-books-ca.md)\n+ [Danish / dansk](books/free-programming-books-da.md)\n+ [Dutch / Nederlands](books/free-programming-books-nl.md)\n+ [Estonian / eesti keel](books/free-programming-books-et.md)\n+ [Finnish / suomi / suomen kieli](books/free-programming-books-fi.md)\n+ [French / français](books/free-programming-books-fr.md)\n+ [German / Deutsch](books/free-programming-books-de.md)\n+ [Greek / ελληνικά](books/free-programming-books-el.md)\n+ [Hebrew / עברית](books/free-programming-books-he.md)\n+ [Hindi / हिन्दी](books/free-programming-books-hi.md)\n+ [Hungarian / magyar / magyar nyelv](books/free-programming-books-hu.md)\n+ [Indonesian / Bahasa Indonesia](books/free-programming-books-id.md)\n+ [Italian / italiano](books/free-programming-books-it.md)\n+ [Japanese / 日本語](books/free-programming-books-ja.md)\n+ [Korean / 한국어](books/free-programming-books-ko.md)\n+ [Latvian / Latviešu](books/free-programming-books-lv.md)\n+ [Malayalam / മലയാളം](books/free-programming-books-ml.md)\n+ [Norwegian / Norsk](books/free-programming-books-no.md)\n+ [Persian / Farsi (Iran) / فارسى](books/free-programming-books-fa_IR.md)\n+ [Polish / polski / język polski / polszczyzna](books/free-programming-books-pl.md)\n+ [Portuguese (Brazil)](books/free-programming-books-pt_BR.md)\n+ [Portuguese (Portugal)](books/free-programming-books-pt_PT.md)\n+ [Romanian (Romania) / limba română / român](books/free-programming-books-ro.md)\n+ [Russian / Русский язык](books/free-programming-books-ru.md)\n+ [Serbian / српски језик / srpski jezik](books/free-programming-books-sr.md)\n+ [Slovak / slovenčina](books/free-programming-books-sk.md)\n+ [Slovenian / Slovenščina](books/free-programming-books-sl.md)\n+ [Spanish / español / castellano](books/free-programming-books-es.md)\n+ [Swedish / Svenska](books/free-programming-books-sv.md)\n+ [Tamil / தமிழ்](books/free-programming-books-ta.md)\n+ [Telugu / తెలుగు](books/free-programming-books-te.md)\n+ [Thai / ไทย](books/free-programming-books-th.md)\n+ [Turkish / Türkçe](books/free-programming-books-tr.md)\n+ [Ukrainian / Українська](books/free-programming-books-uk.md)\n+ [Urdu / اردو](books/free-programming-books-ur.md)\n+ [Vietnamese / Tiếng Việt](books/free-programming-books-vi.md)\n\n### Cheat Sheets\n\n+ [All Languages](more/free-programming-cheatsheets.md)\n\n### Free Online Courses\n\n+ [Arabic / al arabiya / العربية](courses/free-courses-ar.md)\n+ [Bengali / বাংলা](courses/free-courses-bn.md)\n+ [Bulgarian / български](courses/free-courses-bg.md)\n+ [Burmese / မြန်မာဘာသာ](courses/free-courses-my.md)\n+ [Chinese / 中文](courses/free-courses-zh.md)\n+ [English](courses/free-courses-en.md)\n+ [Finnish / suomi / suomen kieli](courses/free-courses-fi.md)\n+ [French / français](courses/free-courses-fr.md)\n+ [German / Deutsch](courses/free-courses-de.md)\n+ [Greek / ελληνικά](courses/free-courses-el.md)\n+ [Hebrew / עברית](courses/free-courses-he.md)\n+ [Hindi / हिंदी](courses/free-courses-hi.md)\n+ [Indonesian / Bahasa Indonesia](courses/free-courses-id.md)\n+ [Italian / italiano](courses/free-courses-it.md)\n+ [Japanese / 日本語](courses/free-courses-ja.md)\n+ [Kannada / ಕನ್ನಡ](courses/free-courses-kn.md)\n+ [Kazakh / қазақша](courses/free-courses-kk.md)\n+ [Khmer / ភាសាខ្មែរ](courses/free-courses-km.md)\n+ [Korean / 한국어](courses/free-courses-ko.md)\n+ [Malayalam / മലയാളം](courses/free-courses-ml.md)\n+ [Marathi / मराठी](courses/free-courses-mr.md)\n+ [Nepali / नेपाली](courses/free-courses-ne.md)\n+ [Norwegian / Norsk](courses/free-courses-no.md)\n+ [Persian / Farsi (Iran) / فارسى](courses/free-courses-fa_IR.md)\n+ [Polish / polski / język polski / polszczyzna](courses/free-courses-pl.md)\n+ [Portuguese (Brazil)](courses/free-courses-pt_BR.md)\n+ [Portuguese (Portugal)](courses/free-courses-pt_PT.md)\n+ [Punjabi / ਪੰਜਾਬੀ / پنجابی](courses/free-courses-pa.md)\n+ [Romanian (Romania) / limba română / român](courses/free-courses-ro.md)\n+ [Russian / Русский язык](courses/free-courses-ru.md)\n+ [Sinhala / සිංහල](courses/free-courses-si.md)\n+ [Spanish / español / castellano](courses/free-courses-es.md)\n+ [Swedish / svenska](courses/free-courses-sv.md)\n+ [Tamil / தமிழ்](courses/free-courses-ta.md)\n+ [Telugu / తెలుగు](courses/free-courses-te.md)\n+ [Thai / ภาษาไทย](courses/free-courses-th.md)\n+ [Turkish / Türkçe](courses/free-courses-tr.md)\n+ [Ukrainian / Українська](courses/free-courses-uk.md)\n+ [Urdu / اردو](courses/free-courses-ur.md)\n+ [Vietnamese / Tiếng Việt](courses/free-courses-vi.md)\n\n\n### Interactive Programming Resources\n\n+ [Chinese / 中文](more/free-programming-interactive-tutorials-zh.md)\n+ [English](more/free-programming-interactive-tutorials-en.md)\n+ [German / Deutsch](more/free-programming-interactive-tutorials-de.md)\n+ [Japanese / 日本語](more/free-programming-interactive-tutorials-ja.md)\n+ [Russian / Русский язык](more/free-programming-interactive-tutorials-ru.md)\n\n\n### Problem Sets and Competitive Programming\n\n+ [Problem Sets](more/problem-sets-competitive-programming.md)\n\n\n### Podcast - Screencast\n\nFree Podcasts and Screencasts:\n\n+ [Arabic / al Arabiya / العربية](casts/free-podcasts-screencasts-ar.md)\n+ [Burmese / မြန်မာဘာသာ](casts/free-podcasts-screencasts-my.md)\n+ [Chinese / 中文](casts/free-podcasts-screencasts-zh.md)\n+ [Czech / čeština / český jazyk](casts/free-podcasts-screencasts-cs.md)\n+ [Dutch / Nederlands](casts/free-podcasts-screencasts-nl.md)\n+ [English](casts/free-podcasts-screencasts-en.md)\n+ [Finnish / Suomi](casts/free-podcasts-screencasts-fi.md)\n+ [French / français](casts/free-podcasts-screencasts-fr.md)\n+ [German / Deutsch](casts/free-podcasts-screencasts-de.md)\n+ [Hebrew / עברית](casts/free-podcasts-screencasts-he.md)\n+ [Indonesian / Bahasa Indonesia](casts/free-podcasts-screencasts-id.md)\n+ [Persian / Farsi (Iran) / فارسى](casts/free-podcasts-screencasts-fa_IR.md)\n+ [Polish / polski / język polski / polszczyzna](casts/free-podcasts-screencasts-pl.md)\n+ [Portuguese (Brazil)](casts/free-podcasts-screencasts-pt_BR.md)\n+ [Portuguese (Portugal)](casts/free-podcasts-screencasts-pt_PT.md)\n+ [Russian / Русский язык](casts/free-podcasts-screencasts-ru.md)\n+ [Sinhala / සිංහල](casts/free-podcasts-screencasts-si.md)\n+ [Spanish / español / castellano](casts/free-podcasts-screencasts-es.md)\n+ [Swedish / Svenska](casts/free-podcasts-screencasts-sv.md)\n+ [Turkish / Türkçe](casts/free-podcasts-screencasts-tr.md)\n+ [Ukrainian / Українська](casts/free-podcasts-screencasts-uk.md)\n\n\n### Programming Playgrounds\n\nWrite, compile, and run your code within a browser. Try it out!\n\n+ [Chinese / 中文](more/free-programming-playgrounds-zh.md)\n+ [English](more/free-programming-playgrounds.md)\n+ [German / Deutsch](more/free-programming-playgrounds-de.md)\n\n## Translations\n\nVolunteers have translated many of our Contributing, How-to, and Code of Conduct documents into languages covered by our lists.\n\n+ English\n  + [Code of Conduct](docs/CODE_OF_CONDUCT.md)\n  + [Contributing](docs/CONTRIBUTING.md)\n  + [How-to](docs/HOWTO.md)\n+ ... *[More languages](docs/README.md#translations)* ...\n\nYou might notice that there are [some missing translations here](docs/README.md#translations) - perhaps you would like to help out by [contributing a translation](docs/CONTRIBUTING.md#help-out-by-contributing-a-translation)?\n\n\n## License\n\nEach file included in this repository is licensed under the [CC BY License](LICENSE).\n",
+    "fileTree": [
+      {
+        "path": ".editorconfig",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/actions",
+        "type": "tree"
+      },
+      {
+        "path": ".github/actions/awesomebot-gh-summary-action",
+        "type": "tree"
+      },
+      {
+        "path": ".github/actions/awesomebot-gh-summary-action/action.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/check-urls.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/comment-pr.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/detect-conflicting-prs.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/fpb-lint.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/issues-pinner.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/rtl-ltr-linter.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/stale.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "_config.yml",
+        "type": "blob"
+      },
+      {
+        "path": "_includes",
+        "type": "tree"
+      },
+      {
+        "path": "_includes/head-custom.html",
+        "type": "blob"
+      },
+      {
+        "path": "books",
+        "type": "tree"
+      },
+      {
+        "path": "books/free-programming-books-ar.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-az.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-bg.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-bn.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ca.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-cs-cp.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-cs.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-da.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-el.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-en.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-et.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-fi.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-he.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-hi.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-hu.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-hy.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-it.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ko.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-langs.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-lv.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ml.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-my.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-nl.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-no.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-pl.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-pt_PT.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ro.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-sk.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-sl.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-sr.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-subjects.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ta.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-te.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-th.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-tr.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-uk.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-ur.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-vi.md",
+        "type": "blob"
+      },
+      {
+        "path": "books/free-programming-books-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts",
+        "type": "tree"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-ar.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-cs.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-en.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-fi.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-he.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-my.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-nl.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-pl.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-pt_PT.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-si.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-tr.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-uk.md",
+        "type": "blob"
+      },
+      {
+        "path": "casts/free-podcasts-screencasts-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses",
+        "type": "tree"
+      },
+      {
+        "path": "courses/free-courses-ar.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-bg.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-bn.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-el.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-en.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-fi.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-he.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-hi.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-it.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-kk.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-km.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-kn.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ko.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ml.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-mr.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-my.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ne.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-no.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-pa.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-pl.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-pt_PT.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ro.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-si.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ta.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-te.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-th.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-tr.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-uk.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-ur.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-vi.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "courses/free-courses-zh_TW.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs",
+        "type": "tree"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-bn.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-bs.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-el.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-fil.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-hi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-it.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-km.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-kn.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-ko.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-ml.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-mr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-no.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-np.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-pl.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-si.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-sl.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-ta.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-te.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-th.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-tr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-uk.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-vi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CODE_OF_CONDUCT.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ca.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-el.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-fil.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-hi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-it.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-kn.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ko.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ml.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-np.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-ta.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-te.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-vi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING-zh_TW.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ar.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-bn.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-bs.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-el.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-es.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-fa_IR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-fil.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-fr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-he.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-hi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-id.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-it.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-km.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-kn.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ko.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ml.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-nl.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-no.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-np.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-pl.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-pt_BR.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-pt_PT.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-sl.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-sv.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-ta.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-te.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-th.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-tr.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-uk.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-vi.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO-zh_TW.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/HOWTO.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "favicon.ico",
+        "type": "blob"
+      },
+      {
+        "path": "more",
+        "type": "tree"
+      },
+      {
+        "path": "more/free-programming-cheatsheets.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-interactive-tutorials-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-interactive-tutorials-en.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-interactive-tutorials-ja.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-interactive-tutorials-ru.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-interactive-tutorials-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-playgrounds-de.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-playgrounds-zh.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/free-programming-playgrounds.md",
+        "type": "blob"
+      },
+      {
+        "path": "more/problem-sets-competitive-programming.md",
+        "type": "blob"
+      },
+      {
+        "path": "scripts",
+        "type": "tree"
+      },
+      {
+        "path": "scripts/rtl_ltr_linter.py",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/rtl_ltr_linter_config.yml",
+        "type": "blob"
+      }
+    ],
+    "packageJson": null
+  },
+  "analysis": {
+    "repo": "EbookFoundation/free-programming-books",
+    "repoType": "unknown",
+    "language": "python",
+    "repoScore": 66,
+    "scores": {
+      "documentation": 55,
+      "structure": 40,
+      "discoverability": 62,
+      "maintenance": 100,
+      "agentSafety": 85
+    },
+    "improvements": [
+      "Document installation or setup steps in the README.",
+      "Add concrete usage examples or a quickstart section.",
+      "Include API, configuration, or reference details in the README.",
+      "Use a clear source layout such as `src/` or `lib/`.",
+      "Add a visible test suite or test directory.",
+      "Use README headings like installation, usage, examples, or API reference.",
+      "Add SECURITY.md or equivalent operational guidance."
+    ],
+    "analyzedAt": "2026-03-09T02:28:32.254Z"
+  }
+}

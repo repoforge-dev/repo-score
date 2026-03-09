@@ -1,0 +1,2631 @@
+{
+  "cachedAt": "2026-03-09T02:29:38.660Z",
+  "snapshot": {
+    "owner": "vuejs",
+    "repo": "vue",
+    "repoMetadata": {
+      "name": "vue",
+      "description": "This is the repo for Vue 2. For Vue 3, go to https://github.com/vuejs/core",
+      "stargazers_count": 209963,
+      "forks_count": 33870,
+      "open_issues_count": 622,
+      "language": "TypeScript",
+      "topics": [
+        "framework",
+        "frontend",
+        "javascript",
+        "vue"
+      ],
+      "default_branch": "main",
+      "updated_at": "2026-03-09T01:50:33Z",
+      "homepage": "http://v2.vuejs.org",
+      "archived": false
+    },
+    "readmeContent": "## Vue 2 has reached End of Life\n\n**You are looking at the now inactive repository for Vue 2. The actively maintained repository for the latest version of Vue is [vuejs/core](https://github.com/vuejs/core).**\n\nVue has reached End of Life on December 31st, 2023. It no longer receives new features, updates, or fixes. However, it is still available on all existing distribution channels (CDNs, package managers, Github, etc).\n\nIf you are starting a new project, please start with the latest version of Vue (3.x). We also strongly recommend current Vue 2 users to upgrade ([guide](https://v3-migration.vuejs.org/)), but we also acknowledge that not all users have the bandwidth or incentive to do so. If you have to stay on Vue 2 but also have compliance or security requirements about unmaintained software, check out [Vue 2 NES](https://www.herodevs.com/support/nes-vue?utm_source=vuejs-github&utm_medium=vue2-readme).\n\n<p align=\"center\"><a href=\"https://vuejs.org\" target=\"_blank\" rel=\"noopener noreferrer\"><img width=\"100\" src=\"https://vuejs.org/images/logo.png\" alt=\"Vue logo\"></a></p>\n\n<p align=\"center\">\n  <a href=\"https://circleci.com/gh/vuejs/vue/tree/dev\"><img src=\"https://img.shields.io/circleci/project/github/vuejs/vue/dev.svg?sanitize=true\" alt=\"Build Status\"></a>\n  <a href=\"https://codecov.io/github/vuejs/vue?branch=dev\"><img src=\"https://img.shields.io/codecov/c/github/vuejs/vue/dev.svg?sanitize=true\" alt=\"Coverage Status\"></a>\n  <a href=\"https://npmcharts.com/compare/vue?minimal=true\"><img src=\"https://img.shields.io/npm/dm/vue.svg?sanitize=true\" alt=\"Downloads\"></a>\n  <a href=\"https://www.npmjs.com/package/vue\"><img src=\"https://img.shields.io/npm/v/vue.svg?sanitize=true\" alt=\"Version\"></a>\n  <a href=\"https://www.npmjs.com/package/vue\"><img src=\"https://img.shields.io/npm/l/vue.svg?sanitize=true\" alt=\"License\"></a>\n  <a href=\"https://chat.vuejs.org/\"><img src=\"https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true\" alt=\"Chat\"></a>\n</p>\n\n## Sponsors\n\nVue.js is an MIT-licensed open source project with its ongoing development made possible entirely by the support of these awesome [backers](https://github.com/vuejs/core/blob/main/BACKERS.md). If you'd like to join them, please consider [ sponsor Vue's development](https://vuejs.org/sponsor/).\n\n<p align=\"center\">\n  <h3 align=\"center\">Special Sponsor</h3>\n</p>\n\n<p align=\"center\">\n  <a target=\"_blank\" href=\"https://github.com/appwrite/appwrite\">\n  <img alt=\"special sponsor appwrite\" src=\"https://sponsors.vuejs.org/images/appwrite.svg\" width=\"300\">\n  </a>\n</p>\n\n<p align=\"center\">\n  <a target=\"_blank\" href=\"https://vuejs.org/sponsor/\">\n    <img alt=\"sponsors\" src=\"https://sponsors.vuejs.org/sponsors.svg?v3\">\n  </a>\n</p>\n\n---\n\n## Introduction\n\nVue (pronounced `/vjuː/`, like view) is a **progressive framework** for building user interfaces. It is designed from the ground up to be incrementally adoptable, and can easily scale between a library and a framework depending on different use cases. It consists of an approachable core library that focuses on the view layer only, and an ecosystem of supporting libraries that helps you tackle complexity in large Single-Page Applications.\n\n#### Browser Compatibility\n\nVue.js supports all browsers that are [ES5-compliant](https://compat-table.github.io/compat-table/es5/) (IE8 and below are not supported).\n\n## Ecosystem\n\n| Project               | Status                                                       | Description                                             |\n| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------- |\n| [vue-router]          | [![vue-router-status]][vue-router-package]                   | Single-page application routing                         |\n| [vuex]                | [![vuex-status]][vuex-package]                               | Large-scale state management                            |\n| [vue-cli]             | [![vue-cli-status]][vue-cli-package]                         | Project scaffolding                                     |\n| [vue-loader]          | [![vue-loader-status]][vue-loader-package]                   | Single File Component (`*.vue` file) loader for webpack |\n| [vue-server-renderer] | [![vue-server-renderer-status]][vue-server-renderer-package] | Server-side rendering support                           |\n| [vue-class-component] | [![vue-class-component-status]][vue-class-component-package] | TypeScript decorator for a class-based API              |\n| [vue-rx]              | [![vue-rx-status]][vue-rx-package]                           | RxJS integration                                        |\n| [vue-devtools]        | [![vue-devtools-status]][vue-devtools-package]               | Browser DevTools extension                              |\n\n[vue-router]: https://github.com/vuejs/vue-router\n[vuex]: https://github.com/vuejs/vuex\n[vue-cli]: https://github.com/vuejs/vue-cli\n[vue-loader]: https://github.com/vuejs/vue-loader\n[vue-server-renderer]: https://github.com/vuejs/vue/tree/dev/packages/vue-server-renderer\n[vue-class-component]: https://github.com/vuejs/vue-class-component\n[vue-rx]: https://github.com/vuejs/vue-rx\n[vue-devtools]: https://github.com/vuejs/vue-devtools\n[vue-router-status]: https://img.shields.io/npm/v/vue-router.svg\n[vuex-status]: https://img.shields.io/npm/v/vuex.svg\n[vue-cli-status]: https://img.shields.io/npm/v/@vue/cli.svg\n[vue-loader-status]: https://img.shields.io/npm/v/vue-loader.svg\n[vue-server-renderer-status]: https://img.shields.io/npm/v/vue-server-renderer.svg\n[vue-class-component-status]: https://img.shields.io/npm/v/vue-class-component.svg\n[vue-rx-status]: https://img.shields.io/npm/v/vue-rx.svg\n[vue-devtools-status]: https://img.shields.io/chrome-web-store/v/nhdogjmejiglipccpnnnanhbledajbpd.svg\n[vue-router-package]: https://npmjs.com/package/vue-router\n[vuex-package]: https://npmjs.com/package/vuex\n[vue-cli-package]: https://npmjs.com/package/@vue/cli\n[vue-loader-package]: https://npmjs.com/package/vue-loader\n[vue-server-renderer-package]: https://npmjs.com/package/vue-server-renderer\n[vue-class-component-package]: https://npmjs.com/package/vue-class-component\n[vue-rx-package]: https://npmjs.com/package/vue-rx\n[vue-devtools-package]: https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd\n\n## Documentation\n\nTo check out [live examples](https://v2.vuejs.org/v2/examples/) and docs, visit [vuejs.org](https://v2.vuejs.org).\n\n## Questions\n\nFor questions and support please use [the official forum](https://forum.vuejs.org) or [community chat](https://chat.vuejs.org/). The issue list of this repo is **exclusively** for bug reports and feature requests.\n\n## Issues\n\nPlease make sure to read the [Issue Reporting Checklist](https://github.com/vuejs/vue/blob/dev/.github/CONTRIBUTING.md#issue-reporting-guidelines) before opening an issue. Issues not conforming to the guidelines may be closed immediately.\n\n## Changelog\n\nDetailed changes for each release are documented in the [release notes](https://github.com/vuejs/vue/releases).\n\n## Stay In Touch\n\n- [Twitter](https://twitter.com/vuejs)\n- [Blog](https://medium.com/the-vue-point)\n- [Job Board](https://vuejobs.com/?ref=vuejs)\n\n## Contribution\n\nPlease make sure to read the [Contributing Guide](https://github.com/vuejs/vue/blob/dev/.github/CONTRIBUTING.md) before making a pull request. If you have a Vue-related project/component/tool, add it with a pull request to [this curated list](https://github.com/vuejs/awesome-vue)!\n\nThank you to all the people who already contributed to Vue!\n\n<a href=\"https://github.com/vuejs/vue/graphs/contributors\"><img src=\"https://opencollective.com/vuejs/contributors.svg?width=890\" /></a>\n\n## License\n\n[MIT](https://opensource.org/licenses/MIT)\n\nCopyright (c) 2013-present, Yuxi (Evan) You\n",
+    "fileTree": [
+      {
+        "path": ".editorconfig",
+        "type": "blob"
+      },
+      {
+        "path": ".git-blame-ignore-revs",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/CODE_OF_CONDUCT.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/COMMIT_CONVENTION.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/FUNDING.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE",
+        "type": "tree"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/config.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/release-tag.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".prettierrc",
+        "type": "blob"
+      },
+      {
+        "path": "BACKERS.md",
+        "type": "blob"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "api-extractor.json",
+        "type": "blob"
+      },
+      {
+        "path": "api-extractor.tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/big-table",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/big-table/demo.css",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/big-table/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/big-table/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/dbmon/ENV.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon/app.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon/lib",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/dbmon/lib/memory-stats.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon/lib/monitor.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/dbmon/lib/styles.css",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/reorder-list",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/reorder-list/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/ssr",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/ssr/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/ssr/common.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/ssr/renderToStream.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/ssr/renderToString.js",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/svg",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/svg/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "benchmarks/uptime",
+        "type": "tree"
+      },
+      {
+        "path": "benchmarks/uptime/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "compiler-sfc",
+        "type": "tree"
+      },
+      {
+        "path": "compiler-sfc/index.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "compiler-sfc/index.js",
+        "type": "blob"
+      },
+      {
+        "path": "compiler-sfc/index.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "compiler-sfc/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "dist",
+        "type": "tree"
+      },
+      {
+        "path": "dist/vue.common.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/vue.runtime.common.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/vue.runtime.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "examples",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/commits",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/commits/app.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/commits/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/elastic-header",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/elastic-header/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/elastic-header/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/firebase",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/firebase/app.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/firebase/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/firebase/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/grid",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/grid/grid.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/grid/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/grid/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/markdown",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/markdown/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/markdown/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/modal",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/modal/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/modal/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/move-animations",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/move-animations/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/select2",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/select2/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/svg",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/svg/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/svg/style.css",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/svg/svg.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/todomvc",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/todomvc/app.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/todomvc/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/todomvc/readme.md",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/tree",
+        "type": "tree"
+      },
+      {
+        "path": "examples/classic/tree/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/classic/tree/tree.js",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition",
+        "type": "tree"
+      },
+      {
+        "path": "examples/composition/commits.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition/grid.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition/markdown.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition/svg.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition/todomvc.html",
+        "type": "blob"
+      },
+      {
+        "path": "examples/composition/tree.html",
+        "type": "blob"
+      },
+      {
+        "path": "package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/api-extractor.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/src/babelUtils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/compileScript.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/compileStyle.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/compileTemplate.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/cssVars.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/parse.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/parseComponent.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/prefixIdentifiers.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/rewriteDefault.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/stylePlugins",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/src/stylePlugins/scoped.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/stylePlugins/trim.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/stylePreprocessors.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/templateCompilerModules",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/src/templateCompilerModules/assetUrl.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/templateCompilerModules/srcset.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/templateCompilerModules/utils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/types.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/src/warn.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/test/__snapshots__",
+        "type": "tree"
+      },
+      {
+        "path": "packages/compiler-sfc/test/__snapshots__/compileScript.spec.ts.snap",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/__snapshots__/cssVars.spec.ts.snap",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/compileScript.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/compileStyle.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/compileTemplate.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/cssVars.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/parseComponent.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/prefixIdentifiers.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/rewriteDefault.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/stylePluginScoped.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/compiler-sfc/test/util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/client-plugin.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/index.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/server-plugin.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/bundle-renderer",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/bundle-renderer/create-bundle-renderer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/bundle-renderer/create-bundle-runner.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/bundle-renderer/source-map-support.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/create-basic-renderer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/create-renderer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/directives",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/directives/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/directives/model.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/directives/show.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/index-basic.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/modules",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/modules/attrs.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/modules/class.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/modules/dom-props.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/modules/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/modules/style.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler/codegen.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler/modules.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler/optimizer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/optimizing-compiler/runtime-helpers.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/render-context.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/render-stream.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/render.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/template-renderer",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/template-renderer/create-async-file-mapper.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/template-renderer/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/template-renderer/parse-template.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/template-renderer/template-stream.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/webpack-plugin",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/src/webpack-plugin/client.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/webpack-plugin/server.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/webpack-plugin/util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/src/write.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/test/async-loader.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/compile-with-webpack.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/app.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/async-bar.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/async-foo.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/cache-opt-out.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/cache.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/error.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/nested-cache.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/promise-rejection.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/split.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/test.css",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/test.png",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/fixtures/test.woff2",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-basic-renderer.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-bundle-render.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-reactivity.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-stream.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-string.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/ssr-template.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/test/utils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/types",
+        "type": "tree"
+      },
+      {
+        "path": "packages/server-renderer/types/index.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/types/plugin.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/types/test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/server-renderer/types/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler",
+        "type": "tree"
+      },
+      {
+        "path": "packages/template-compiler/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler/index.js",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler/types",
+        "type": "tree"
+      },
+      {
+        "path": "packages/template-compiler/types/index.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler/types/test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "packages/template-compiler/types/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "pnpm-lock.yaml",
+        "type": "blob"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "type": "blob"
+      },
+      {
+        "path": "scripts",
+        "type": "tree"
+      },
+      {
+        "path": "scripts/alias.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/build.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/config.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/feature-flags.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/gen-release-note.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/git-hooks",
+        "type": "tree"
+      },
+      {
+        "path": "scripts/git-hooks/commit-msg",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/git-hooks/pre-commit",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/release.js",
+        "type": "blob"
+      },
+      {
+        "path": "scripts/verify-commit-msg.js",
+        "type": "blob"
+      },
+      {
+        "path": "src",
+        "type": "tree"
+      },
+      {
+        "path": "src/compiler",
+        "type": "tree"
+      },
+      {
+        "path": "src/compiler/codeframe.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/codegen",
+        "type": "tree"
+      },
+      {
+        "path": "src/compiler/codegen/events.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/codegen/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/create-compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/directives",
+        "type": "tree"
+      },
+      {
+        "path": "src/compiler/directives/bind.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/directives/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/directives/model.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/directives/on.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/error-detector.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/helpers.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/optimizer.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/parser",
+        "type": "tree"
+      },
+      {
+        "path": "src/compiler/parser/entity-decoder.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/parser/filter-parser.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/parser/html-parser.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/parser/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/parser/text-parser.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/compiler/to-function.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/components",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/components/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/components/keep-alive.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/config.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/global-api",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/global-api/assets.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/global-api/extend.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/global-api/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/global-api/mixin.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/global-api/use.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/instance/events.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/init.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/inject.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/lifecycle.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/proxy.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/instance/render-helpers/bind-dynamic-keys.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/bind-object-listeners.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/bind-object-props.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/check-keycodes.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/render-list.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/render-slot.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/render-static.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/resolve-filter.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/resolve-scoped-slots.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render-helpers/resolve-slots.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/render.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/instance/state.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/observer/array.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer/dep.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer/scheduler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer/traverse.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/observer/watcher.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/util/debug.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/env.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/error.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/lang.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/next-tick.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/options.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/perf.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/util/props.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/vdom/create-component.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/create-element.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/create-functional-component.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/vdom/helpers/extract-props.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/get-first-component-child.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/is-async-placeholder.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/merge-hook.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/normalize-children.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/normalize-scoped-slots.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/resolve-async-component.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/helpers/update-listeners.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/modules",
+        "type": "tree"
+      },
+      {
+        "path": "src/core/vdom/modules/directives.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/modules/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/modules/template-ref.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/patch.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/core/vdom/vnode.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/global.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/compiler",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/compiler/directives",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/compiler/directives/html.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/directives/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/directives/model.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/directives/text.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/modules",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/compiler/modules/class.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/modules/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/modules/model.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/modules/style.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/options.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/compiler/util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/entry-compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/entry-runtime-esm.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/entry-runtime-with-compiler-esm.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/entry-runtime-with-compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/entry-runtime.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime-with-compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/runtime/class-util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/components",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/runtime/components/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/components/transition-group.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/components/transition.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/directives",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/runtime/directives/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/directives/model.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/directives/show.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/attrs.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/class.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/dom-props.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/events.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/style.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/modules/transition.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/node-ops.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/patch.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/runtime/transition-util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util",
+        "type": "tree"
+      },
+      {
+        "path": "src/platforms/web/util/attrs.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util/class.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util/compat.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util/element.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/platforms/web/util/style.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/shared",
+        "type": "tree"
+      },
+      {
+        "path": "src/shared/constants.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/shared/util.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types",
+        "type": "tree"
+      },
+      {
+        "path": "src/types/compiler.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/component.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/global-api.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/modules.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/options.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/ssr.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/utils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/types/vnode.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3",
+        "type": "tree"
+      },
+      {
+        "path": "src/v3/apiAsyncComponent.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/apiInject.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/apiLifecycle.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/apiSetup.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/apiWatch.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/currentInstance.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/debug.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/h.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/index.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity",
+        "type": "tree"
+      },
+      {
+        "path": "src/v3/reactivity/computed.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/effect.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/effectScope.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/operations.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/reactive.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/readonly.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/reactivity/ref.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/sfc-helpers",
+        "type": "tree"
+      },
+      {
+        "path": "src/v3/sfc-helpers/useCssModule.ts",
+        "type": "blob"
+      },
+      {
+        "path": "src/v3/sfc-helpers/useCssVars.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test",
+        "type": "tree"
+      },
+      {
+        "path": "test/e2e",
+        "type": "tree"
+      },
+      {
+        "path": "test/e2e/async-edge-cases.html",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/async-edge-cases.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/basic-ssr.html",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/basic-ssr.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/commits.mock.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/commits.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/e2eUtils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/grid.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/markdown.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/svg.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/todomvc.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/e2e/tree.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers",
+        "type": "tree"
+      },
+      {
+        "path": "test/helpers/classlist.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/shim-done.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/test-object-option.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/to-have-warned.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/trigger-event.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/vdom.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers/wait-for-update.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/test-env.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition",
+        "type": "tree"
+      },
+      {
+        "path": "test/transition/helpers.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/karma.conf.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/transition-group.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/transition-mode.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/transition-with-keep-alive.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/transition/transition.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/component",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/component/component-async.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/component/component-keep-alive.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/component/component-scoped-slot.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/component/component-slot.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/component/component.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/debug.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/directives/bind.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/class.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/cloak.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/for.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/html.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/if.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-checkbox.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-component.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-dynamic.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-file.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-parse.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-radio.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-select.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/model-text.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/on.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/once.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/pre.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/show.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/static-style-parser.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/style.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/directives/text.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/error-handling.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/filter",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/filter/filter.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/global-api/assets.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/compile.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/config.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/extend.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/mixin.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/observable.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/set-delete.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/global-api/use.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/instance/init.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance/methods-data.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance/methods-events.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance/methods-lifecycle.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance/properties.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/instance/render-proxy.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/options/_scopeId.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/comments.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/components.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/computed.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/data.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/delimiters.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/directives.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/el.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/errorCaptured.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/extends.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/functional.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/inheritAttrs.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/inject.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/lifecycle.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/methods.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/mixins.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/name.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/parent.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/props.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/propsData.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/render.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/renderError.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/template.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/options/watch.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/template-ref.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/v3/apiAsyncComponent.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/apiInject.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/apiLifecycle.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/apiSetup.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/apiWatch.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/computed.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/effectScope.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/reactive.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/readonly.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/ref.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/shallowReactive.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/reactivity/shallowReadonly.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/setupTemplateRef.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/features/v3/useCssVars.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/compiler",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/compiler/codeframe.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/compiler/codegen.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/compiler/compiler-options.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/compiler/optimizer.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/compiler/parser.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/observer",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/observer/dep.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/observer/observer.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/observer/scheduler.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/observer/watcher.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/server-compiler",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/server-compiler/compiler-options.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/util",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/util/error.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/util/next-tick.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/util/toString.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/vdom/create-component.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/create-element.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/attrs.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/class.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/directive.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/dom-props.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/events.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/modules/style.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch",
+        "type": "tree"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch/children.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch/edge-cases.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch/element.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch/hooks.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/unit/modules/vdom/patch/hydration.spec.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/vitest.setup.ts",
+        "type": "blob"
+      },
+      {
+        "path": "tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "types",
+        "type": "tree"
+      },
+      {
+        "path": "types/built-in-components.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/common.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/index.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/jsx.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/options.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/plugin.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test",
+        "type": "tree"
+      },
+      {
+        "path": "types/test/async-component-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/augmentation-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/es-module.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/options-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/plugin-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/setup-helpers-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/umd-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/utils.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3",
+        "type": "tree"
+      },
+      {
+        "path": "types/test/v3/define-async-component-test.tsx",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/define-component-test.tsx",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/inject-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/reactivity-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/setup-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/tsx-test.tsx",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/v3/watch-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/test/vue-test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "types/typings.json",
+        "type": "blob"
+      },
+      {
+        "path": "types/umd.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-component-options.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-component-props.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-component-public-instance.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-define-async-component.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-define-component.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-directive.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-manual-apis.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-setup-context.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/v3-setup-helpers.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/vnode.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "types/vue.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "vitest.config.ts",
+        "type": "blob"
+      }
+    ],
+    "packageJson": {
+      "name": "vue",
+      "version": "2.7.16",
+      "packageManager": "pnpm@8.9.2",
+      "description": "Reactive, component-oriented view layer for modern web interfaces.",
+      "main": "dist/vue.runtime.common.js",
+      "module": "dist/vue.runtime.esm.js",
+      "unpkg": "dist/vue.js",
+      "jsdelivr": "dist/vue.js",
+      "typings": "types/index.d.ts",
+      "files": [
+        "src",
+        "dist/*.js",
+        "dist/*.mjs",
+        "types/*.d.ts",
+        "compiler-sfc",
+        "packages/compiler-sfc"
+      ],
+      "exports": {
+        ".": {
+          "types": "./types/index.d.ts",
+          "import": {
+            "node": "./dist/vue.runtime.mjs",
+            "default": "./dist/vue.runtime.esm.js"
+          },
+          "require": "./dist/vue.runtime.common.js"
+        },
+        "./compiler-sfc": {
+          "types": "./compiler-sfc/index.d.ts",
+          "import": "./compiler-sfc/index.mjs",
+          "require": "./compiler-sfc/index.js"
+        },
+        "./dist/*": "./dist/*",
+        "./types/*": [
+          "./types/*.d.ts",
+          "./types/*"
+        ],
+        "./package.json": "./package.json"
+      },
+      "sideEffects": false,
+      "scripts": {
+        "dev": "rollup -w -c scripts/config.js --environment TARGET:full-dev",
+        "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:runtime-cjs-dev",
+        "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:runtime-esm",
+        "dev:ssr": "rollup -w -c scripts/config.js --environment TARGET:server-renderer",
+        "dev:compiler": "rollup -w -c scripts/config.js --environment TARGET:compiler ",
+        "build": "node scripts/build.js",
+        "build:ssr": "npm run build -- runtime-cjs,server-renderer",
+        "build:types": "rimraf temp && tsc --declaration --emitDeclarationOnly --outDir temp && api-extractor run && api-extractor run -c packages/compiler-sfc/api-extractor.json",
+        "test": "npm run ts-check && npm run test:types && npm run test:unit && npm run test:e2e && npm run test:ssr && npm run test:sfc",
+        "test:unit": "vitest run test/unit",
+        "test:ssr": "npm run build:ssr && vitest run server-renderer",
+        "test:sfc": "vitest run compiler-sfc",
+        "test:e2e": "npm run build -- full-prod,server-renderer-basic && vitest run test/e2e",
+        "test:transition": "karma start test/transition/karma.conf.js",
+        "test:types": "npm run build:types && tsc -p ./types/tsconfig.json",
+        "format": "prettier --write --parser typescript \"(src|test|packages|types)/**/*.ts\"",
+        "ts-check": "tsc -p tsconfig.json --noEmit",
+        "ts-check:test": "tsc -p test/tsconfig.json --noEmit",
+        "bench:ssr": "npm run build:ssr && node benchmarks/ssr/renderToString.js && node benchmarks/ssr/renderToStream.js",
+        "release": "node scripts/release.js",
+        "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
+      },
+      "gitHooks": {
+        "pre-commit": "lint-staged",
+        "commit-msg": "node scripts/verify-commit-msg.js"
+      },
+      "lint-staged": {
+        "*.js": [
+          "prettier --write"
+        ],
+        "*.ts": [
+          "prettier --parser=typescript --write"
+        ]
+      },
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vuejs/vue.git"
+      },
+      "keywords": [
+        "vue"
+      ],
+      "author": "Evan You",
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/vuejs/vue/issues"
+      },
+      "homepage": "https://github.com/vuejs/vue#readme",
+      "dependencies": {
+        "@vue/compiler-sfc": "workspace:*",
+        "csstype": "^3.1.0"
+      },
+      "devDependencies": {
+        "@babel/parser": "^7.23.5",
+        "@microsoft/api-extractor": "^7.25.0",
+        "@rollup/plugin-alias": "^3.1.9",
+        "@rollup/plugin-commonjs": "^22.0.0",
+        "@rollup/plugin-node-resolve": "^13.3.0",
+        "@rollup/plugin-replace": "^4.0.0",
+        "@types/he": "^1.1.2",
+        "@types/node": "^20.10.3",
+        "chalk": "^4.1.2",
+        "conventional-changelog-cli": "^2.2.2",
+        "cross-spawn": "^7.0.3",
+        "enquirer": "^2.3.6",
+        "esbuild": "^0.19.8",
+        "execa": "^4.1.0",
+        "he": "^1.2.0",
+        "jasmine-core": "^4.2.0",
+        "jsdom": "^19.0.0",
+        "karma": "^6.3.20",
+        "karma-chrome-launcher": "^3.1.1",
+        "karma-cli": "^2.0.0",
+        "karma-esbuild": "^2.2.5",
+        "karma-jasmine": "^5.0.1",
+        "lint-staged": "^12.5.0",
+        "lodash": "^4.17.21",
+        "marked": "^4.0.16",
+        "minimist": "^1.2.6",
+        "postcss": "^8.4.14",
+        "prettier": "^2.6.2",
+        "puppeteer": "^14.3.0",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.79.1",
+        "rollup-plugin-typescript2": "^0.32.0",
+        "semver": "^7.3.7",
+        "shelljs": "^0.8.5",
+        "terser": "^5.14.0",
+        "todomvc-app-css": "^2.4.2",
+        "ts-node": "^10.8.1",
+        "tslib": "^2.4.0",
+        "typescript": "^4.8.4",
+        "vitest": "^1.0.4",
+        "yorkie": "^2.0.0"
+      }
+    }
+  },
+  "analysis": {
+    "repo": "vuejs/vue",
+    "repoType": "library",
+    "language": "typescript",
+    "repoScore": 87,
+    "scores": {
+      "documentation": 90,
+      "structure": 85,
+      "discoverability": 74,
+      "maintenance": 100,
+      "agentSafety": 90
+    },
+    "improvements": [
+      "Document installation or setup steps in the README.",
+      "Add a `docs/` directory for deeper project documentation.",
+      "Use README headings like installation, usage, examples, or API reference."
+    ],
+    "analyzedAt": "2026-03-09T02:29:38.660Z"
+  }
+}
