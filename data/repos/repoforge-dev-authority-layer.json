@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:47:33.606Z",
+  "cachedAt": "2026-03-09T23:53:17.736Z",
+  "analysisModelVersion": 3,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "authority-layer",
@@ -247,7 +248,7 @@
     "repo": "repoforge-dev/authority-layer",
     "repoType": "ai-tooling",
     "language": "typescript",
-    "repoScore": 62,
+    "repoScore": 65,
     "scores": {
       "documentation": 100,
       "structure": 40,
@@ -257,15 +258,15 @@
       "agentSafety": 65
     },
     "improvements": [
+      "Explain how agent or LLM behaviors are evaluated before release.",
+      "Describe permissions, sandboxing, or approval boundaries for automation.",
       "Explain how contributors can run, test, and contribute to the project.",
       "Use a clear source layout such as `src/` or `lib/`.",
       "Add a visible test suite or test directory.",
-      "Set a homepage or docs URL in the repository metadata.",
       "Grow adoption and contribution signals to improve maintenance confidence.",
       "Increase project visibility and usage signals to strengthen adoption confidence.",
-      "Explain how agent or LLM behaviors are evaluated before release.",
-      "Describe permissions, sandboxing, or approval boundaries for automation."
+      "Set a homepage or docs URL in the repository metadata."
     ],
-    "analyzedAt": "2026-03-09T02:47:33.604Z"
+    "analyzedAt": "2026-03-09T23:53:17.722Z"
   }
 }

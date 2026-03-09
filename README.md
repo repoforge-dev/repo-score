@@ -12,28 +12,14 @@ https://repoforge.dev
 
 ## Example
 
-AuthorityLayer repository analysis example:
-
-GET
+Example request:
 
 /api/analyze?repo=repoforge-dev/authority-layer
 
 Example response:
 
 ```json
-{
-  "repo": "repoforge-dev/authority-layer",
-  "repoType": "ai-tooling",
-  "language": "typescript",
-  "repoScore": 86,
-  "scores": {
-    "documentation": 88,
-    "structure": 85,
-    "maintenance": 82,
-    "discoverability": 80,
-    "adoption": 75
-  }
-}
+{"repo":"repoforge-dev/authority-layer","repoType":"ai-tooling","language":"typescript","repoScore":65,"scores":{"documentation":100,"structure":40,"discoverability":85,"maintenance":75,"adoption":0,"agentSafety":65},"improvements":["Explain how agent or LLM behaviors are evaluated before release.","Describe permissions, sandboxing, or approval boundaries for automation.","Explain how contributors can run, test, and contribute to the project.","Use a clear source layout such as `src/` or `lib/`.","Add a visible test suite or test directory.","Grow adoption and contribution signals to improve maintenance confidence.","Increase project visibility and usage signals to strengthen adoption confidence.","Set a homepage or docs URL in the repository metadata."],"analyzedAt":"2026-03-09T23:53:17.722Z"}
 ```
 
 ---
