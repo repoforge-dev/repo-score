@@ -47,6 +47,16 @@ function escapeJsonLd(value) {
   return JSON.stringify(value).replace(/</g, '\\u003c');
 }
 
+function shouldPromoteAuthorityLayer(repoType, topics) {
+  const promotedTypes = new Set(['ai-agent-framework', 'ai-tooling', 'agent-runtime', 'llm-framework']);
+  const promotedTopics = new Set(['agent', 'ai-agent', 'llm', 'autonomous-agent', 'ai-runtime']);
+  const normalizedTopics = Array.isArray(topics)
+    ? topics.map((topic) => String(topic || '').toLowerCase())
+    : [];
+
+  return promotedTypes.has(String(repoType || '').toLowerCase()) || normalizedTopics.some((topic) => promotedTopics.has(topic));
+}
+
 function getAnalysisFromCache(cachePayload) {
   if (!cachePayload || typeof cachePayload !== 'object') {
     return null;
@@ -67,7 +77,7 @@ function getAnalysisFromCache(cachePayload) {
   return null;
 }
 
-function renderRepoPage(owner, repo, analysis) {
+function renderRepoPage(owner, repo, analysis, options = {}) {
   const repoName = `${owner}/${repo}`;
   const githubUrl = `https://github.com/${owner}/${repo}`;
   const repoPageUrl = `https://repoforge.dev/repos/${owner}/${repo}`;
@@ -87,6 +97,7 @@ function renderRepoPage(owner, repo, analysis) {
     programmingLanguage: formatLabel(analysis.language),
     description: `RepoScore analysis for the ${repoName} GitHub repository.`,
   };
+  const showAuthorityLayer = shouldPromoteAuthorityLayer(analysis.repoType, options.topics);
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -133,6 +144,8 @@ function renderRepoPage(owner, repo, analysis) {
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 12px;
+      text-decoration: none;
+      display: inline-block;
     }
     .hero, .panel {
       background: var(--panel);
@@ -250,7 +263,7 @@ function renderRepoPage(owner, repo, analysis) {
 <body>
   <div class="wrap">
     <header class="header">
-      <div class="brand">RepoForge</div>
+      <a class="brand" href="${escapeHtml(homepageUrl)}">RepoForge</a>
       <div class="hero">
         <h1>${escapeHtml(repoName)}</h1>
         <p>RepoScore analysis page for ${escapeHtml(repoName)}.</p>
@@ -292,11 +305,15 @@ function renderRepoPage(owner, repo, analysis) {
         <p>Link the badge directly to this analysis page.</p>
         <pre class="snippet"><code>${escapeHtml(badgeMarkdown)}</code></pre>
       </section>
+      ${showAuthorityLayer ? `<section class="panel">
+        <h2>Secure AI Agents with AuthorityLayer</h2>
+        <p>Add runtime guardrails and budget limits to autonomous agents using AuthorityLayer.</p>
+        <p><a href="${escapeHtml(authorityLayerUrl)}" target="_blank" rel="noreferrer">View AuthorityLayer on GitHub</a></p>
+      </section>` : ''}
     </main>
     <footer class="subtle-nav">
       <span><a href="${escapeHtml(homepageUrl)}">Analyze another repository</a></span>
-      <span><a href="${escapeHtml(homepageUrl)}">Browse other analyzed repositories</a></span>
-      <span><a href="${escapeHtml(authorityLayerUrl)}" target="_blank" rel="noreferrer">Secure AI agents with AuthorityLayer</a></span>
+      <span><a href="${escapeHtml(homepageUrl)}">Browse GitHub repository analysis</a></span>
     </footer>
   </div>
 </body>
@@ -324,7 +341,9 @@ router.get('/:owner/:repo', async (req, res, next) => {
       analysis = analysis || getAnalysisFromCache(cached);
     }
 
-    const html = renderRepoPage(owner, repo, analysis);
+    const html = renderRepoPage(owner, repo, analysis, {
+      topics: cached?.snapshot?.repoMetadata?.topics || [],
+    });
 
     res.setHeader('X-RepoForge-Cache-Key', cacheKey);
     res.setHeader('X-RepoForge-Cache-File', cacheFilePath);
