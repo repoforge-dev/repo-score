@@ -1,6 +1,6 @@
 # RepoScore
 
-![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score)
+![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score?v=20260310-0212)
 
 RepoScore analyzes GitHub repositories and produces a structured quality score for documentation, structure, maintenance, discoverability, and adoption.
 
@@ -110,7 +110,7 @@ RepoScore automatically analyzes repositories and identifies practical improveme
 Badge:
 
 ```md
-![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score)
+![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score?v=20260310-0212)
 ```
 
 Analysis pages:

@@ -73,7 +73,9 @@ router.get('/:owner/:repo', async (req, res, next) => {
     const svg = renderBadgeSvg('RepoScore', analysis.repoScore, getBadgeColor(analysis.repoScore));
 
     res.setHeader('Content-Type', 'image/svg+xml; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.send(svg);
   } catch (error) {
     next(error);

@@ -66,7 +66,9 @@ function getAnalysisFromCache(cachePayload) {
 function renderRepoPage(owner, repo, analysis) {
   const repoName = `${owner}/${repo}`;
   const githubUrl = `https://github.com/${owner}/${repo}`;
-  const badgeUrl = `/badge/${owner}/${repo}`;
+  const badgeUrl = `/badge/${owner}/${repo}?score=${encodeURIComponent(analysis.repoScore)}&updated=${encodeURIComponent(
+    analysis.analyzedAt || ''
+  )}`;
 
   return `<!DOCTYPE html>
 <html lang="en">
