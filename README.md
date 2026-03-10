@@ -36,8 +36,8 @@ The JSON response includes the detected repository type, the overall `repoScore`
 
 Real public analysis pages:
 
-- `https://repoforge.dev/repos/vercel/next.js`
-- `https://repoforge.dev/repos/repoforge-dev/authority-layer`
+- [vercel/next.js](https://repoforge.dev/repos/vercel/next.js)
+- [repoforge-dev/authority-layer](https://repoforge.dev/repos/repoforge-dev/authority-layer)
 
 Example hosted analysis request for a public repository page:
 
