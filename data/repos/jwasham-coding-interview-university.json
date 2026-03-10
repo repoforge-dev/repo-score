@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:43.746Z",
+  "cachedAt": "2026-03-10T01:43:26.668Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "jwasham",
     "repo": "coding-interview-university",
@@ -240,22 +241,22 @@
   },
   "analysis": {
     "repo": "jwasham/coding-interview-university",
-    "repoType": "unknown",
+    "repoType": "learning-resource",
     "language": "unknown",
-    "repoScore": 79,
+    "repoScore": 100,
     "scores": {
       "documentation": 100,
       "structure": 25,
       "discoverability": 79,
       "maintenance": 100,
-      "agentSafety": 90
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Use a clear source layout such as `src/` or `lib/`.",
       "Add a visible test suite or test directory.",
-      "Add a `docs/` directory for deeper project documentation.",
-      "Set a homepage or docs URL in the repository metadata."
+      "Add a `docs/` directory for deeper project documentation."
     ],
-    "analyzedAt": "2026-03-09T02:28:43.746Z"
+    "analyzedAt": "2026-03-10T01:43:26.668Z"
   }
 }

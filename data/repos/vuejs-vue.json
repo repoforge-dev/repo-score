@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:29:38.660Z",
+  "cachedAt": "2026-03-10T01:43:27.602Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "vuejs",
     "repo": "vue",
@@ -2613,19 +2614,20 @@
     "repo": "vuejs/vue",
     "repoType": "library",
     "language": "typescript",
-    "repoScore": 87,
+    "repoScore": 100,
     "scores": {
       "documentation": 90,
       "structure": 85,
       "discoverability": 74,
       "maintenance": 100,
-      "agentSafety": 90
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add a `docs/` directory for deeper project documentation.",
       "Use README headings like installation, usage, examples, or API reference."
     ],
-    "analyzedAt": "2026-03-09T02:29:38.660Z"
+    "analyzedAt": "2026-03-10T01:43:27.602Z"
   }
 }

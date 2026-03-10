@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:49.183Z",
+  "cachedAt": "2026-03-10T01:43:26.784Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "openclaw",
     "repo": "openclaw",
@@ -35261,15 +35262,16 @@
     "repo": "openclaw/openclaw",
     "repoType": "cli-tool",
     "language": "typescript",
-    "repoScore": 99,
+    "repoScore": 100,
     "scores": {
       "documentation": 100,
       "structure": 100,
       "discoverability": 100,
       "maintenance": 94,
-      "agentSafety": 100
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [],
-    "analyzedAt": "2026-03-09T02:28:49.183Z"
+    "analyzedAt": "2026-03-10T01:43:26.784Z"
   }
 }

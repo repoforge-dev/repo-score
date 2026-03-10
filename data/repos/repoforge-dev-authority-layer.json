@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-09T23:53:17.736Z",
-  "analysisModelVersion": 3,
+  "cachedAt": "2026-03-10T01:43:26.846Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "authority-layer",
@@ -248,7 +248,7 @@
     "repo": "repoforge-dev/authority-layer",
     "repoType": "ai-tooling",
     "language": "typescript",
-    "repoScore": 65,
+    "repoScore": 73,
     "scores": {
       "documentation": 100,
       "structure": 40,
@@ -264,9 +264,9 @@
       "Use a clear source layout such as `src/` or `lib/`.",
       "Add a visible test suite or test directory.",
       "Grow adoption and contribution signals to improve maintenance confidence.",
-      "Increase project visibility and usage signals to strengthen adoption confidence.",
-      "Set a homepage or docs URL in the repository metadata."
+      "Set a homepage or docs URL in the repository metadata.",
+      "Increase project visibility and usage signals to strengthen adoption confidence."
     ],
-    "analyzedAt": "2026-03-09T23:53:17.722Z"
+    "analyzedAt": "2026-03-10T01:43:26.846Z"
   }
 }

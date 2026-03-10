@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:51.633Z",
+  "cachedAt": "2026-03-10T01:43:26.433Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "996icu",
     "repo": "996.ICU",
@@ -1479,26 +1480,25 @@
   },
   "analysis": {
     "repo": "996icu/996.ICU",
-    "repoType": "unknown",
+    "repoType": "reference",
     "language": "unknown",
-    "repoScore": 55,
+    "repoScore": 74,
     "scores": {
       "documentation": 45,
       "structure": 15,
       "discoverability": 46,
       "maintenance": 94,
-      "agentSafety": 85
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add concrete usage examples or a quickstart section.",
       "Include API, configuration, or reference details in the README.",
       "Break the README into clearer sections for faster scanning.",
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a visible test suite or test directory.",
-      "Add a `docs/` directory for deeper project documentation.",
-      "Add CI automation for validation on pull requests and main branch changes."
+      "Add GitHub topics that reflect the project domain and audience.",
+      "Use README headings like installation, usage, examples, or API reference."
     ],
-    "analyzedAt": "2026-03-09T02:28:51.633Z"
+    "analyzedAt": "2026-03-10T01:43:26.432Z"
   }
 }

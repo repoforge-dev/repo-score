@@ -1,7 +1,9 @@
 const assert = require('node:assert/strict');
 
 const analyzeRoute = require('../api/analyze');
+const { analyzeAdoption } = require('../analyzer/adoptionAnalyzer');
 const { analyzeReadme } = require('../analyzer/readmeAnalyzer');
+const { computeRepoScore } = require('../scoring/scoreEngine');
 
 assert.deepEqual(analyzeRoute.parseRepositoryInput('repoforge-dev/repo-score'), {
   owner: 'repoforge-dev',
@@ -36,6 +38,28 @@ assert.equal(
 assert.equal(
   result.improvements.includes('Add concrete usage examples or a quickstart section.'),
   false
+);
+
+const lowAdoptionAnalysis = computeRepoScore('library', {
+  documentation: { score: 95, improvements: [] },
+  structure: { score: 92, improvements: [] },
+  discoverability: { score: 90, improvements: [] },
+  maintenance: { score: 88, improvements: [] },
+  adoption: { score: 0, improvements: [] },
+  agentSafety: null,
+});
+
+assert.equal(lowAdoptionAnalysis.repoScore, 92);
+assert.equal(lowAdoptionAnalysis.scores.adoption, 0);
+assert.equal(lowAdoptionAnalysis.scores.agentSafety, null);
+
+assert.equal(
+  analyzeAdoption({
+    repoMetadata: {
+      stargazers_count: 1500,
+    },
+  }).score,
+  15
 );
 
 console.log('RepoScore smoke tests passed.');

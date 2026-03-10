@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:50:41.091Z",
-  "analysisModelVersion": 3,
+  "cachedAt": "2026-03-10T01:43:26.551Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "facebook",
     "repo": "react",
@@ -29912,19 +29912,19 @@
     "repo": "facebook/react",
     "repoType": "library",
     "language": "javascript",
-    "repoScore": 87,
+    "repoScore": 100,
     "scores": {
       "documentation": 100,
       "structure": 55,
       "discoverability": 100,
       "maintenance": 100,
-      "adoption": 80,
+      "adoption": 20,
       "agentSafety": null
     },
     "improvements": [
       "Use a clear source layout such as `src/` or `lib/`.",
       "Add a `docs/` directory for deeper project documentation."
     ],
-    "analyzedAt": "2026-03-09T02:50:41.089Z"
+    "analyzedAt": "2026-03-10T01:43:26.551Z"
   }
 }

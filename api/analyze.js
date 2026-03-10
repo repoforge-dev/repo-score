@@ -19,7 +19,7 @@ const AGENT_SAFETY_REPO_TYPES = new Set([
   'llm-framework',
   'agent-runtime',
 ]);
-const ANALYSIS_MODEL_VERSION = 3;
+const ANALYSIS_MODEL_VERSION = 4;
 
 function hasCurrentAnalysisSchema(analysis) {
   if (!analysis || typeof analysis !== 'object' || !analysis.scores || typeof analysis.scores !== 'object') {

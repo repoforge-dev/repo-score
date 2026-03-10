@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:41.719Z",
+  "cachedAt": "2026-03-10T01:43:26.721Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "kamranahmedse",
     "repo": "developer-roadmap",
@@ -48359,22 +48360,23 @@
   },
   "analysis": {
     "repo": "kamranahmedse/developer-roadmap",
-    "repoType": "application",
+    "repoType": "ai-tooling",
     "language": "typescript",
-    "repoScore": 85,
+    "repoScore": 100,
     "scores": {
       "documentation": 100,
       "structure": 85,
       "discoverability": 76,
       "maintenance": 100,
+      "adoption": 20,
       "agentSafety": 65
     },
     "improvements": [
-      "Add a `docs/` directory for deeper project documentation.",
-      "Use README headings like installation, usage, examples, or API reference.",
       "Explain how agent or LLM behaviors are evaluated before release.",
-      "Describe permissions, sandboxing, or approval boundaries for automation."
+      "Describe permissions, sandboxing, or approval boundaries for automation.",
+      "Add a `docs/` directory for deeper project documentation.",
+      "Use README headings like installation, usage, examples, or API reference."
     ],
-    "analyzedAt": "2026-03-09T02:28:41.719Z"
+    "analyzedAt": "2026-03-10T01:43:26.721Z"
   }
 }

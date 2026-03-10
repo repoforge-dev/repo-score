@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:32.254Z",
+  "cachedAt": "2026-03-10T01:43:26.504Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "EbookFoundation",
     "repo": "free-programming-books",
@@ -1005,25 +1006,23 @@
   },
   "analysis": {
     "repo": "EbookFoundation/free-programming-books",
-    "repoType": "unknown",
+    "repoType": "reference",
     "language": "python",
-    "repoScore": 66,
+    "repoScore": 85,
     "scores": {
       "documentation": 55,
       "structure": 40,
       "discoverability": 62,
       "maintenance": 100,
-      "agentSafety": 85
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add concrete usage examples or a quickstart section.",
       "Include API, configuration, or reference details in the README.",
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a visible test suite or test directory.",
-      "Use README headings like installation, usage, examples, or API reference.",
-      "Add SECURITY.md or equivalent operational guidance."
+      "Use README headings like installation, usage, examples, or API reference."
     ],
-    "analyzedAt": "2026-03-09T02:28:32.254Z"
+    "analyzedAt": "2026-03-10T01:43:26.504Z"
   }
 }

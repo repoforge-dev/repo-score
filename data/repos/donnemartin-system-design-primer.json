@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:50:41.804Z",
-  "analysisModelVersion": 3,
+  "cachedAt": "2026-03-10T01:43:26.494Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "donnemartin",
     "repo": "system-design-primer",
@@ -684,13 +684,13 @@
     "repo": "donnemartin/system-design-primer",
     "repoType": "application",
     "language": "python",
-    "repoScore": 70,
+    "repoScore": 88,
     "scores": {
       "documentation": 100,
       "structure": 15,
       "discoverability": 85,
       "maintenance": 100,
-      "adoption": 80,
+      "adoption": 20,
       "agentSafety": null
     },
     "improvements": [
@@ -700,6 +700,6 @@
       "Add CI automation for validation on pull requests and main branch changes.",
       "Set a homepage or docs URL in the repository metadata."
     ],
-    "analyzedAt": "2026-03-09T02:50:41.800Z"
+    "analyzedAt": "2026-03-10T01:43:26.494Z"
   }
 }

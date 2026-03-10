@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:26:30.497Z",
+  "cachedAt": "2026-03-10T01:43:26.478Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "codecrafters-io",
     "repo": "build-your-own-x",
@@ -46,15 +47,16 @@
   },
   "analysis": {
     "repo": "codecrafters-io/build-your-own-x",
-    "repoType": "unknown",
+    "repoType": "learning-resource",
     "language": "markdown",
-    "repoScore": 70,
+    "repoScore": 89,
     "scores": {
       "documentation": 90,
       "structure": 0,
       "discoverability": 76,
       "maintenance": 100,
-      "agentSafety": 85
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Add concrete usage examples or a quickstart section.",
@@ -62,10 +64,8 @@
       "Add a visible test suite or test directory.",
       "Add a LICENSE file to make usage terms explicit.",
       "Add a `docs/` directory for deeper project documentation.",
-      "Add CI automation for validation on pull requests and main branch changes.",
-      "Use README headings like installation, usage, examples, or API reference.",
-      "Describe permissions, sandboxing, or approval boundaries for automation."
+      "Add CI automation for validation on pull requests and main branch changes."
     ],
-    "analyzedAt": "2026-03-09T02:26:30.495Z"
+    "analyzedAt": "2026-03-10T01:43:26.478Z"
   }
 }

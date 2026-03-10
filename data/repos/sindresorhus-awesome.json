@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:21.419Z",
+  "cachedAt": "2026-03-10T01:43:26.866Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "sindresorhus",
     "repo": "awesome",
@@ -133,24 +134,22 @@
   },
   "analysis": {
     "repo": "sindresorhus/awesome",
-    "repoType": "unknown",
+    "repoType": "reference",
     "language": "unknown",
-    "repoScore": 73,
+    "repoScore": 100,
     "scores": {
       "documentation": 85,
       "structure": 25,
       "discoverability": 59,
       "maintenance": 100,
-      "agentSafety": 100
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a visible test suite or test directory.",
-      "Add a `docs/` directory for deeper project documentation.",
       "Use README headings like installation, usage, examples, or API reference.",
       "Set a homepage or docs URL in the repository metadata."
     ],
-    "analyzedAt": "2026-03-09T02:28:21.417Z"
+    "analyzedAt": "2026-03-10T01:43:26.866Z"
   }
 }

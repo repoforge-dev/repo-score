@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:29:39.352Z",
+  "cachedAt": "2026-03-10T01:43:26.802Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "ossu",
     "repo": "computer-science",
@@ -224,25 +225,24 @@
   },
   "analysis": {
     "repo": "ossu/computer-science",
-    "repoType": "unknown",
+    "repoType": "learning-resource",
     "language": "html",
-    "repoScore": 65,
+    "repoScore": 83,
     "scores": {
       "documentation": 70,
       "structure": 25,
       "discoverability": 47,
       "maintenance": 100,
-      "agentSafety": 90
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add concrete usage examples or a quickstart section.",
       "Use a clear source layout such as `src/` or `lib/`.",
       "Add a visible test suite or test directory.",
-      "Add a `docs/` directory for deeper project documentation.",
-      "Use README headings like installation, usage, examples, or API reference.",
-      "Set a homepage or docs URL in the repository metadata."
+      "Add a `docs/` directory for deeper project documentation."
     ],
-    "analyzedAt": "2026-03-09T02:29:39.352Z"
+    "analyzedAt": "2026-03-10T01:43:26.802Z"
   }
 }

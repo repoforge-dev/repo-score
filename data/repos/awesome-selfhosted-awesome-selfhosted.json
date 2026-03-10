@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:51.172Z",
+  "cachedAt": "2026-03-10T01:43:26.462Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "awesome-selfhosted",
     "repo": "awesome-selfhosted",
@@ -68,22 +69,18 @@
   },
   "analysis": {
     "repo": "awesome-selfhosted/awesome-selfhosted",
-    "repoType": "unknown",
+    "repoType": "reference",
     "language": "unknown",
-    "repoScore": 82,
+    "repoScore": 100,
     "scores": {
       "documentation": 100,
       "structure": 15,
       "discoverability": 94,
       "maintenance": 100,
-      "agentSafety": 100
+      "adoption": 20,
+      "agentSafety": null
     },
-    "improvements": [
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a visible test suite or test directory.",
-      "Add a `docs/` directory for deeper project documentation.",
-      "Add CI automation for validation on pull requests and main branch changes."
-    ],
-    "analyzedAt": "2026-03-09T02:28:51.172Z"
+    "improvements": [],
+    "analyzedAt": "2026-03-10T01:43:26.462Z"
   }
 }

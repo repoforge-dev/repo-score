@@ -5,35 +5,30 @@ const SCORING_PROFILES = {
     documentation: 25,
     structure: 25,
     maintenance: 20,
-    adoption: 20,
     discoverability: 10,
   },
   library: {
     documentation: 30,
     structure: 20,
     maintenance: 20,
-    adoption: 20,
     discoverability: 10,
   },
   sdk: {
     documentation: 30,
     structure: 20,
     maintenance: 20,
-    adoption: 20,
     discoverability: 10,
   },
   'cli-tool': {
     documentation: 30,
     structure: 25,
     maintenance: 20,
-    adoption: 15,
     discoverability: 10,
   },
   application: {
     structure: 30,
     documentation: 25,
     maintenance: 20,
-    adoption: 15,
     discoverability: 10,
   },
   'ai-agent-framework': {
@@ -41,39 +36,34 @@ const SCORING_PROFILES = {
     documentation: 25,
     structure: 20,
     maintenance: 15,
-    adoption: 10,
+    discoverability: 10,
   },
   'ai-tooling': {
     agentSafety: 25,
     documentation: 25,
     structure: 20,
     maintenance: 15,
-    adoption: 10,
-    discoverability: 5,
+    discoverability: 10,
   },
   dataset: {
     documentation: 40,
     discoverability: 20,
-    adoption: 20,
     maintenance: 20,
   },
   'learning-resource': {
     documentation: 50,
     structure: 20,
-    adoption: 20,
     maintenance: 10,
   },
   reference: {
     documentation: 45,
     discoverability: 20,
-    adoption: 20,
     maintenance: 15,
   },
   default: {
     documentation: 30,
     structure: 20,
     maintenance: 20,
-    adoption: 20,
     discoverability: 10,
   },
 };
@@ -98,6 +88,16 @@ function getScoringProfile(repoType) {
   return SCORING_PROFILES[getProfileKey(repoType)] || SCORING_PROFILES.default;
 }
 
+function getAdoptionBonus(results) {
+  const adoptionScore = Number(results.adoption?.score);
+
+  if (!Number.isFinite(adoptionScore) || adoptionScore <= 0) {
+    return 0;
+  }
+
+  return Math.max(0, Math.min(20, Math.round(adoptionScore)));
+}
+
 function computeRepoScore(repoType, results) {
   const profile = getScoringProfile(repoType);
   const scores = {
@@ -112,13 +112,14 @@ function computeRepoScore(repoType, results) {
   };
 
   const totalWeight = Object.values(profile).reduce((sum, weight) => sum + weight, 0);
-  const repoScore = Math.round(Object.entries(profile).reduce((total, [category, weight]) => {
+  const baselineScore = Math.round(Object.entries(profile).reduce((total, [category, weight]) => {
     const score = category === 'agentSafety' && scores.agentSafety === null ? 0 : scores[category];
     return total + score * (weight / totalWeight);
   }, 0));
+  const repoScore = Math.min(100, baselineScore + getAdoptionBonus(results));
 
   const improvements = uniqueImprovements(
-    Object.keys(profile).flatMap((category) => {
+    [...Object.keys(profile), 'adoption'].flatMap((category) => {
       if (category === 'agentSafety') {
         return results.agentSafety ? results.agentSafety.improvements : [];
       }
@@ -137,5 +138,6 @@ function computeRepoScore(repoType, results) {
 module.exports = {
   SCORING_PROFILES,
   computeRepoScore,
+  getAdoptionBonus,
   getScoringProfile,
 };

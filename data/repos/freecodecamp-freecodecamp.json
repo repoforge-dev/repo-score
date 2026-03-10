@@ -1,5 +1,6 @@
 {
-  "cachedAt": "2026-03-09T02:28:28.498Z",
+  "cachedAt": "2026-03-10T01:43:26.634Z",
+  "analysisModelVersion": 4,
   "snapshot": {
     "owner": "freeCodeCamp",
     "repo": "freeCodeCamp",
@@ -77932,23 +77933,23 @@
   },
   "analysis": {
     "repo": "freeCodeCamp/freeCodeCamp",
-    "repoType": "application",
+    "repoType": "learning-resource",
     "language": "typescript",
-    "repoScore": 77,
+    "repoScore": 90,
     "scores": {
       "documentation": 70,
       "structure": 55,
       "discoverability": 76,
       "maintenance": 100,
-      "agentSafety": 90
+      "adoption": 20,
+      "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add concrete usage examples or a quickstart section.",
       "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a `docs/` directory for deeper project documentation.",
-      "Use README headings like installation, usage, examples, or API reference."
+      "Add a `docs/` directory for deeper project documentation."
     ],
-    "analyzedAt": "2026-03-09T02:28:28.498Z"
+    "analyzedAt": "2026-03-10T01:43:26.634Z"
   }
 }
