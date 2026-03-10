@@ -4,6 +4,10 @@ Analyze any GitHub repository and generate a structured quality score.
 
 RepoScore evaluates documentation, structure, maintenance activity, discoverability signals, and adoption metrics to help developers quickly understand repository quality.
 
+Analyze any repository instantly:
+
+https://repoforge.dev
+
 RepoScore powers the analysis engine behind RepoForge.
 
 https://repoforge.dev
@@ -12,14 +16,44 @@ https://repoforge.dev
 
 ## Example
 
-Example request:
+Example Repository Analysis
 
-/api/analyze?repo=repoforge-dev/authority-layer
+Repository:
+
+repoforge-dev/authority-layer
+
+View the analysis page:
+
+https://repoforge.dev/repos/repoforge-dev/authority-layer
 
 Example response:
 
 ```json
-{"repo":"repoforge-dev/authority-layer","repoType":"ai-tooling","language":"typescript","repoScore":65,"scores":{"documentation":100,"structure":40,"discoverability":85,"maintenance":75,"adoption":0,"agentSafety":65},"improvements":["Explain how agent or LLM behaviors are evaluated before release.","Describe permissions, sandboxing, or approval boundaries for automation.","Explain how contributors can run, test, and contribute to the project.","Use a clear source layout such as `src/` or `lib/`.","Add a visible test suite or test directory.","Grow adoption and contribution signals to improve maintenance confidence.","Increase project visibility and usage signals to strengthen adoption confidence.","Set a homepage or docs URL in the repository metadata."],"analyzedAt":"2026-03-09T23:53:17.722Z"}
+{
+  "repo": "repoforge-dev/authority-layer",
+  "repoType": "ai-tooling",
+  "language": "typescript",
+  "repoScore": 65,
+  "scores": {
+    "documentation": 100,
+    "structure": 40,
+    "discoverability": 85,
+    "maintenance": 75,
+    "adoption": 0,
+    "agentSafety": 65
+  },
+  "improvements": [
+    "Explain how agent or LLM behaviors are evaluated before release.",
+    "Describe permissions, sandboxing, or approval boundaries for automation.",
+    "Explain how contributors can run, test, and contribute to the project.",
+    "Use a clear source layout such as `src/` or `lib/`.",
+    "Add a visible test suite or test directory.",
+    "Grow adoption and contribution signals to improve maintenance confidence.",
+    "Increase project visibility and usage signals to strengthen adoption confidence.",
+    "Set a homepage or docs URL in the repository metadata."
+  ],
+  "analyzedAt": "2026-03-09T23:53:17.722Z"
+}
 ```
 
 ---
@@ -102,10 +136,6 @@ Run locally:
 ```bash
 node server.js
 ```
-
-Server runs on:
-
-http://localhost:3000
 
 ---
 
