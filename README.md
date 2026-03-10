@@ -10,8 +10,6 @@ https://repoforge.dev
 
 RepoScore powers the analysis engine behind RepoForge.
 
-https://repoforge.dev
-
 ---
 
 ## Example
@@ -99,6 +97,12 @@ Badge integration
 
 ---
 
+## Example Analysis Page
+
+https://repoforge.dev/repos/vercel/next.js
+
+---
+
 ## Add the RepoScore Badge
 
 Add RepoScore to your repository README.
@@ -117,7 +121,9 @@ Example:
 
 ---
 
-## Development
+This section is for contributors running RepoScore locally.
+
+## Local Development
 
 Clone the repository:
 
