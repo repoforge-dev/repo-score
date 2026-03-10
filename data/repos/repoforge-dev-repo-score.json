@@ -1,5 +1,5 @@
 {
-  "cachedAt": "2026-03-10T01:43:26.852Z",
+  "cachedAt": "2026-03-10T01:50:02.038Z",
   "analysisModelVersion": 4,
   "snapshot": {
     "owner": "repoforge-dev",
@@ -25,7 +25,7 @@
         "repository-analysis"
       ],
       "default_branch": "main",
-      "updated_at": "2026-03-10T01:39:46Z",
+      "updated_at": "2026-03-10T01:45:06Z",
       "homepage": "https://repoforge.dev",
       "archived": false
     },
@@ -193,6 +193,10 @@
       },
       {
         "path": "data/repos/repoforge-dev-authority-layer.json",
+        "type": "blob"
+      },
+      {
+        "path": "data/repos/repoforge-dev-repo-score.json",
         "type": "blob"
       },
       {
@@ -405,6 +409,6 @@
       "Grow adoption and contribution signals to improve maintenance confidence.",
       "Increase project visibility and usage signals to strengthen adoption confidence."
     ],
-    "analyzedAt": "2026-03-10T01:43:26.852Z"
+    "analyzedAt": "2026-03-10T01:50:02.037Z"
   }
 }
