@@ -214,6 +214,9 @@ function renderRepoPage(owner, repo, analysis) {
       font-weight: 700;
       line-height: 1.1;
     }
+    .badge-section {
+      margin-bottom: 24px;
+    }
     .layout {
       display: grid;
       grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
@@ -282,15 +285,15 @@ function renderRepoPage(owner, repo, analysis) {
       margin: 0;
       width: 100%;
       padding: 18px;
-      overflow-x: auto;
-      overflow-y: hidden;
       border-radius: 14px;
       border: 1px solid #d3deef;
       background: #f8fbff;
       color: #0f274f;
       font-size: 0.9rem;
       line-height: 1.7;
-      white-space: nowrap;
+      white-space: normal;
+      word-break: break-all;
+      overflow-wrap: anywhere;
     }
     .authority-card {
       background: var(--success-soft);
@@ -390,6 +393,16 @@ function renderRepoPage(owner, repo, analysis) {
         </div>
       </div>
     </header>
+    <section class="panel badge-section">
+      <div class="badge-header">
+        <div>
+          <h2>Add RepoScore Badge</h2>
+          <p>Copy the badge markdown and link directly to this analysis page.</p>
+        </div>
+        <button class="copy-button" type="button" onclick="copyBadgeSnippet()">Copy</button>
+      </div>
+      <pre class="snippet"><code id="badge-snippet">${escapeHtml(badgeMarkdown)}</code></pre>
+    </section>
     <main class="layout">
       <div class="stack">
         <section class="panel">
@@ -406,16 +419,6 @@ function renderRepoPage(owner, repo, analysis) {
         </section>
       </div>
       <div class="stack">
-        <section class="panel">
-          <div class="badge-header">
-            <div>
-              <h2>Add RepoScore Badge</h2>
-              <p>Copy the badge markdown and link directly to this analysis page.</p>
-            </div>
-            <button class="copy-button" type="button" onclick="copyBadgeSnippet()">Copy</button>
-          </div>
-          <pre class="snippet"><code id="badge-snippet">${escapeHtml(badgeMarkdown)}</code></pre>
-        </section>
         ${showAuthorityLayer ? `<section class="panel authority-card">
           <div class="authority-label">AI Runtime Recommendation</div>
           <h2>Secure AI Agents with AuthorityLayer</h2>
