@@ -43,6 +43,10 @@ function renderImprovements(improvements) {
   return improvements.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
 }
 
+function escapeJsonLd(value) {
+  return JSON.stringify(value).replace(/</g, '\\u003c');
+}
+
 function getAnalysisFromCache(cachePayload) {
   if (!cachePayload || typeof cachePayload !== 'object') {
     return null;
@@ -66,16 +70,37 @@ function getAnalysisFromCache(cachePayload) {
 function renderRepoPage(owner, repo, analysis) {
   const repoName = `${owner}/${repo}`;
   const githubUrl = `https://github.com/${owner}/${repo}`;
+  const repoPageUrl = `https://repoforge.dev/repos/${owner}/${repo}`;
+  const homepageUrl = 'https://repoforge.dev';
+  const authorityLayerUrl = 'https://github.com/repoforge-dev/authority-layer';
+  const badgeImageUrl = `https://repoforge.dev/badge/${owner}/${repo}`;
+  const badgeMarkdown = `[![RepoScore](${badgeImageUrl})](${repoPageUrl})`;
   const badgeUrl = `/badge/${owner}/${repo}?score=${encodeURIComponent(analysis.repoScore)}&updated=${encodeURIComponent(
     analysis.analyzedAt || ''
   )}`;
+  const metaDescription = `Quality analysis for the ${repoName} GitHub repository including documentation, structure, maintenance, and discoverability scoring.`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareSourceCode',
+    name: repoName,
+    codeRepository: githubUrl,
+    programmingLanguage: formatLabel(analysis.language),
+    description: `RepoScore analysis for the ${repoName} GitHub repository.`,
+  };
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RepoScore - ${escapeHtml(repoName)}</title>
+  <title>RepoScore Analysis for ${escapeHtml(repoName)}</title>
+  <meta name="description" content="${escapeHtml(metaDescription)}" />
+  <link rel="canonical" href="${escapeHtml(repoPageUrl)}" />
+  <meta property="og:title" content="RepoScore Analysis for ${escapeHtml(repoName)}">
+  <meta property="og:description" content="Detailed repository quality analysis for ${escapeHtml(repoName)}.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${escapeHtml(repoPageUrl)}">
+  <script type="application/ld+json">${escapeJsonLd(jsonLd)}</script>
   <style>
     :root {
       color-scheme: light;
@@ -162,6 +187,9 @@ function renderRepoPage(owner, repo, analysis) {
       font-weight: 600;
       text-decoration: none;
     }
+    .actions img {
+      display: block;
+    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -192,6 +220,30 @@ function renderRepoPage(owner, repo, analysis) {
     }
     .score-list span {
       font-weight: 700;
+    }
+    .snippet {
+      margin: 0;
+      padding: 16px;
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: #e2e8f0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .subtle-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .subtle-nav a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -235,7 +287,17 @@ function renderRepoPage(owner, repo, analysis) {
           ${renderImprovements(analysis.improvements)}
         </ul>
       </section>
+      <section class="panel">
+        <h2>Add RepoScore Badge</h2>
+        <p>Link the badge directly to this analysis page.</p>
+        <pre class="snippet"><code>${escapeHtml(badgeMarkdown)}</code></pre>
+      </section>
     </main>
+    <footer class="subtle-nav">
+      <span><a href="${escapeHtml(homepageUrl)}">Analyze another repository</a></span>
+      <span><a href="${escapeHtml(homepageUrl)}">Browse other analyzed repositories</a></span>
+      <span><a href="${escapeHtml(authorityLayerUrl)}" target="_blank" rel="noreferrer">Secure AI agents with AuthorityLayer</a></span>
+    </footer>
   </div>
 </body>
 </html>`;
