@@ -1,164 +1,131 @@
 # RepoScore
 
-Analyze any GitHub repository and generate a structured quality score.
+![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score)
 
-RepoScore evaluates documentation, structure, maintenance activity, discoverability signals, and adoption metrics to help developers quickly understand repository quality.
+RepoScore analyzes GitHub repositories and produces a structured quality score for documentation, structure, maintenance, discoverability, and adoption.
 
-Analyze any repository instantly:
+## What This Project Does
 
-https://repoforge.dev
+RepoScore gives developers a fast way to inspect a repository before they depend on it, contribute to it, or recommend it to a team. It reads repository metadata, README content, package metadata, and file layout, then generates a weighted score with category breakdowns and improvement suggestions.
 
-RepoScore powers the analysis engine behind RepoForge.
+The project is built for maintainers, platform engineers, engineering managers, developer relations teams, and AI-assisted coding workflows that need a quick view of repository quality. Instead of reducing a project to stars alone, RepoScore highlights the signals that affect actual onboarding: installation clarity, examples, folder structure, active maintenance, and discoverability.
 
----
+## Why It Exists
+
+Open source evaluation is usually manual and inconsistent. A repository can look active from a distance and still be difficult to install, poorly documented, or missing the signals that help contributors understand how it is organized. That slows down adoption and creates friction for new maintainers and downstream users.
+
+RepoScore exists to make that first-pass evaluation repeatable. It turns common developer questions into concrete checks: Is the README usable? Is the structure obvious? Does the repository look maintained? Are there enough metadata signals to find it and trust it? The result is not a ranking system for vanity metrics. It is a practical review layer that helps maintainers find missing pieces and helps developers decide whether a repository is ready for use.
+
+## Quickstart
+
+The fastest way to use RepoScore is through the hosted RepoForge interface:
+
+1. Open `https://repoforge.dev`.
+2. Enter a GitHub repository in `owner/repo` format.
+3. Open the generated analysis page to review the score, category breakdown, and improvement suggestions.
+
+If you want to fetch structured output directly, use the public analysis endpoint:
+
+```bash
+curl "https://repoforge.dev/api/analyze?repo=vercel/next.js"
+```
+
+The JSON response includes the detected repository type, the overall `repoScore`, per-category scores, and improvement suggestions that can be applied directly in the target repository.
 
 ## Example
 
-Example Repository Analysis
+Real public analysis pages:
 
-Repository:
+- `https://repoforge.dev/repos/vercel/next.js`
+- `https://repoforge.dev/repos/repoforge-dev/authority-layer`
 
-repoforge-dev/authority-layer
+Example hosted analysis request for a public repository page:
 
-View the analysis page:
-
-https://repoforge.dev/repos/repoforge-dev/authority-layer
-
-Example response:
-
-```json
-{
-  "repo": "repoforge-dev/authority-layer",
-  "repoType": "ai-tooling",
-  "language": "typescript",
-  "repoScore": 65,
-  "scores": {
-    "documentation": 100,
-    "structure": 40,
-    "discoverability": 85,
-    "maintenance": 75,
-    "adoption": 0,
-    "agentSafety": 65
-  },
-  "improvements": [
-    "Explain how agent or LLM behaviors are evaluated before release.",
-    "Describe permissions, sandboxing, or approval boundaries for automation.",
-    "Explain how contributors can run, test, and contribute to the project.",
-    "Use a clear source layout such as `src/` or `lib/`.",
-    "Add a visible test suite or test directory.",
-    "Grow adoption and contribution signals to improve maintenance confidence.",
-    "Increase project visibility and usage signals to strengthen adoption confidence.",
-    "Set a homepage or docs URL in the repository metadata."
-  ],
-  "analyzedAt": "2026-03-09T23:53:17.722Z"
-}
+```bash
+curl "https://repoforge.dev/repos/vercel/next.js"
 ```
 
----
+That request returns the public analysis page for `vercel/next.js`. For machine-readable output, call the JSON endpoint instead:
 
-## What RepoScore Measures
-
-RepoScore evaluates repositories across multiple dimensions.
-
-Documentation
-Quality of README content, examples, and usage instructions.
-
-Structure
-Repository organization and project layout.
-
-Maintenance
-Commit activity, issue backlog, and repository updates.
-
-Discoverability
-GitHub topics, metadata, and repository signals.
-
-Adoption
-Stars, forks, and ecosystem usage indicators.
-
-Some repository types may also include additional signals depending on classification.
-
----
-
-## Repo Analysis Pages
-
-RepoForge automatically generates repository analysis pages.
-
-Example:
-
-https://repoforge.dev/repos/repoforge-dev/authority-layer
-
-These pages show:
-
-RepoScore
-Repository type
-Score breakdown
-Improvement suggestions
-Badge integration
-
----
-
-## Example Analysis Page
-
-https://repoforge.dev/repos/vercel/next.js
-
----
-
-## Add the RepoScore Badge
-
-Add RepoScore to your repository README.
-
-Markdown:
-
-```md
-![RepoScore](https://repoforge.dev/badge/owner/repo)
+```bash
+curl "https://repoforge.dev/api/analyze?repo=vercel/next.js"
 ```
 
-Example:
+The response contains:
 
-```md
-![RepoScore](https://repoforge.dev/badge/vercel/next.js)
-```
+- `repo`: normalized `owner/repo` identifier
+- `repoType`: the detected repository classification
+- `repoScore`: weighted overall score
+- `scores`: category-level scores such as documentation and maintenance
+- `improvements`: short, actionable follow-up items
 
----
+RepoScore uses the same analysis pipeline for the API, badges, and hosted analysis pages so the output stays consistent across interfaces.
 
-This section is for contributors running RepoScore locally.
+## How It Works
 
-## Local Development
+RepoScore is a small Node service with a direct request path and a cache-backed scoring pipeline.
 
-Clone the repository:
+- `api/` contains the HTTP routes for JSON analysis, badges, and hosted repository pages.
+- `analyzer/` contains the scoring inputs for README quality, structure, discoverability, maintenance, adoption, repository type, and AI-safety-specific checks.
+- `scanners/` holds data collection utilities for refreshing repository snapshots.
+- `scoring/` combines analyzer results with a profile-specific weighting model.
+- `cache/` stores normalized cached snapshots so repeated analysis stays fast.
+- `data/` contains repository analysis artifacts that can be reused for page rendering and debugging.
+- `utils/` contains support code used by the API and GitHub fetch flow.
+- `src/` is reserved for service-side source layout as the project grows beyond the current route-first shape.
+
+RepoScore does not clone and execute arbitrary repository code as part of the scoring path. It evaluates repository metadata, README content, package metadata, and file-tree structure, which keeps the analysis deterministic and avoids requiring repository secrets or runtime approval. That boundary matters for security, for repeatable evaluation, and for predictable CI validation.
+
+## Use Cases
+
+- Evaluate a dependency before adopting it in production.
+- Review an internal repository before handing it to another team.
+- Generate a public repository page with a score breakdown and improvement list.
+- Add a badge to a README so maintainers can expose a live quality signal.
+- Identify missing onboarding steps before announcing or open-sourcing a project.
+- Surface repository quality signals that help AI agents and code assistants navigate a project more reliably.
+
+## Installation
+
+RepoScore runs on Node.js 18 or newer.
 
 ```bash
 git clone https://github.com/repoforge-dev/repo-score.git
-```
-
-Install dependencies:
-
-```bash
+cd repo-score
 npm install
-```
-
-Run locally:
-
-```bash
+npm test
 node server.js
 ```
 
----
+The local server exposes the analysis API, badge endpoint, and hosted repository page renderer. For contributor workflows, the test suite covers route parsing and score-analysis smoke checks, and CI runs the same commands on pushes and pull requests.
 
-## Roadmap
+## Why RepoScore Matters
 
-* Expand repository dataset scanning
-* Improve repository classification
-* Improve scoring model accuracy
-* Expand improvement suggestions
-* AuthorityLayer integration
+Many GitHub repositories have thousands of stars but still lack strong documentation, onboarding clarity, or discoverability.
 
----
+RepoScore automatically analyzes repositories and identifies practical improvements that make projects easier for developers and AI agents to use.
 
-## RepoForge
+## RepoScore
 
-RepoScore is part of RepoForge.
+Badge:
 
-RepoForge builds developer infrastructure for analyzing, securing, and monetizing open source repositories.
+```md
+![RepoScore](https://repoforge.dev/badge/repoforge-dev/repo-score)
+```
 
-https://repoforge.dev
+Analysis pages:
+
+- `https://repoforge.dev/repos/repoforge-dev/repo-score`
+- `https://repoforge.dev/repos/repoforge-dev/authority-layer`
+
+The public badge and page endpoints use the same scoring output as the analysis API, so maintainers can publish a compact signal in a README and link to a full breakdown when more context is needed.
+
+## Contributing
+
+Contributions should keep the analysis model explainable and easy to inspect. Prefer small changes with test coverage, document any scoring-rule updates in the relevant analyzer or architecture notes, and verify the impact on output before opening a pull request.
+
+Start with [CONTRIBUTING.md](./CONTRIBUTING.md). The repository includes a lightweight test suite, CI validation, cache-backed fixtures, and supporting documentation in `docs/` so contributors can extend analyzers without guessing how the pipeline fits together.
+
+## License
+
+MIT. See [LICENSE](./LICENSE).

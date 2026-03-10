@@ -5,16 +5,26 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "scan:github": "node scanners/githubScanner.js"
+    "scan:github": "node scanners/githubScanner.js",
+    "test": "node tests/analysis-smoke.test.js"
   },
   "keywords": [
-    "github",
-    "repository",
-    "analysis",
-    "badge",
+    "github-analysis",
+    "developer-tools",
+    "repo-quality",
+    "open-source-tools",
+    "github-insights",
     "repoforge",
     "reposcore"
   ],
+  "homepage": "https://repoforge.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/repoforge-dev/repo-score.git"
+  },
+  "bugs": {
+    "url": "https://github.com/repoforge-dev/repo-score/issues"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
