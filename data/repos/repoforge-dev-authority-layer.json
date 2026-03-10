@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-10T01:50:02.561Z",
-  "analysisModelVersion": 4,
+  "cachedAt": "2026-03-10T23:44:03.423Z",
+  "analysisModelVersion": 5,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "authority-layer",
@@ -309,6 +309,6 @@
       "Set a homepage or docs URL in the repository metadata.",
       "Increase project visibility and usage signals to strengthen adoption confidence."
     ],
-    "analyzedAt": "2026-03-10T01:50:02.561Z"
+    "analyzedAt": "2026-03-10T23:44:03.423Z"
   }
 }

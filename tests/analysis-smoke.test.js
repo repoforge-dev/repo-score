@@ -3,6 +3,7 @@ const assert = require('node:assert/strict');
 const analyzeRoute = require('../api/analyze');
 const { analyzeAdoption } = require('../analyzer/adoptionAnalyzer');
 const { analyzeReadme } = require('../analyzer/readmeAnalyzer');
+const { detectRepoType } = require('../analyzer/repoTypeDetector');
 const { computeRepoScore } = require('../scoring/scoreEngine');
 
 assert.deepEqual(analyzeRoute.parseRepositoryInput('repoforge-dev/repo-score'), {
@@ -60,6 +61,43 @@ assert.equal(
     },
   }).score,
   15
+);
+
+assert.equal(
+  detectRepoType({
+    repoMetadata: {
+      description: 'Analyze GitHub repositories and generate structured quality scores.',
+      topics: ['developer-tools', 'repository-analysis'],
+      language: 'JavaScript',
+    },
+    packageJson: {
+      keywords: ['github-analysis', 'developer-tools', 'repo-quality'],
+      scripts: {
+        start: 'node server.js',
+      },
+      private: false,
+    },
+    readmeContent: 'Analyze repository quality and score documentation, maintenance, and discoverability.',
+    fileTree: [{ path: 'analyzer/readmeAnalyzer.js' }, { path: 'scoring/scoreEngine.js' }],
+  }),
+  'analysis-tool'
+);
+
+assert.equal(
+  detectRepoType({
+    repoMetadata: {
+      description: 'AI repository analysis and insights.',
+      topics: ['ai', 'agent'],
+      language: 'JavaScript',
+    },
+    packageJson: {
+      keywords: ['ai', 'developer-tools'],
+      private: false,
+    },
+    readmeContent: 'Analyze AI repositories and report quality signals for developers.',
+    fileTree: [{ path: 'analyzer/readmeAnalyzer.js' }],
+  }),
+  'analysis-tool'
 );
 
 console.log('RepoScore smoke tests passed.');

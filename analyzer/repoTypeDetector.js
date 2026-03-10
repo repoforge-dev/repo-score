@@ -1,10 +1,12 @@
 'use strict';
 
 const TYPE_PRIORITY = [
-  'ai-agent-framework',
   'agent-runtime',
+  'ai-agent-framework',
   'llm-framework',
   'ai-tooling',
+  'analysis-tool',
+  'developer-tool',
   'framework',
   'sdk',
   'cli-tool',
@@ -27,10 +29,11 @@ const SOURCE_WEIGHTS = {
 };
 
 const TOPIC_SIGNAL_RULES = [
-  { type: 'ai-agent-framework', patterns: ['agent', 'agents', 'multi-agent', 'autonomous-agent'], weight: 12 },
   { type: 'agent-runtime', patterns: ['agent-runtime', 'workflow-engine', 'orchestration'], weight: 11 },
   { type: 'llm-framework', patterns: ['llm-framework', 'foundation-model', 'prompt-framework'], weight: 10 },
   { type: 'ai-tooling', patterns: ['llm', 'rag', 'openai', 'langchain', 'anthropic', 'ai'], weight: 9 },
+  { type: 'analysis-tool', patterns: ['analysis-tool', 'github-analysis', 'repo-analysis', 'repository-analysis', 'repo-score'], weight: 10 },
+  { type: 'developer-tool', patterns: ['developer-tool', 'developer-tools', 'developer-experience', 'devtool'], weight: 9 },
   { type: 'framework', patterns: ['framework'], weight: 9 },
   { type: 'sdk', patterns: ['sdk'], weight: 8 },
   { type: 'cli-tool', patterns: ['cli', 'command-line'], weight: 9 },
@@ -43,10 +46,11 @@ const TOPIC_SIGNAL_RULES = [
 ];
 
 const README_SIGNAL_RULES = [
-  { type: 'ai-agent-framework', pattern: /\bagent\b|\bmulti-agent\b|\bautonomous\b/, weight: 9 },
   { type: 'agent-runtime', pattern: /\bruntime\b|\borchestrat(?:e|ion)\b|\bworkflow engine\b|\bexecution engine\b/, weight: 8 },
   { type: 'llm-framework', pattern: /\bllm framework\b|\bmodel framework\b|\bprompt framework\b/, weight: 8 },
   { type: 'ai-tooling', pattern: /\bllm\b|\brag\b|\bembeddings?\b|\bprompt\b|\bvector store\b/, weight: 7 },
+  { type: 'analysis-tool', pattern: /\banaly(?:sis|ze|zes|zing)\b|\bscore\b|\binspect\b|\bevaluate\b/, weight: 8 },
+  { type: 'developer-tool', pattern: /\bdeveloper tool\b|\bdeveloper workflow\b|\bdeveloper experience\b|\bmaintainers?\b/, weight: 7 },
   { type: 'framework', pattern: /\bframework\b|\bplugin system\b|\bextensible\b/, weight: 7 },
   { type: 'sdk', pattern: /\bsdk\b|\bclient library\b/, weight: 7 },
   { type: 'cli-tool', pattern: /\bcli\b|\bcommand line\b|\busage:\s+\w+/i, weight: 7 },
@@ -59,7 +63,6 @@ const README_SIGNAL_RULES = [
 ];
 
 const DEPENDENCY_SIGNAL_RULES = [
-  { type: 'ai-agent-framework', packages: ['autogen', 'crewai', 'langgraph', '@mastra/core'], weight: 10 },
   { type: 'agent-runtime', packages: ['temporal', 'bullmq', '@trigger.dev/sdk', 'inngest'], weight: 8 },
   { type: 'llm-framework', packages: ['guidance', 'dspy', 'lmql'], weight: 8 },
   { type: 'ai-tooling', packages: ['openai', '@anthropic-ai/sdk', 'langchain', '@langchain/core', 'llamaindex'], weight: 8 },
@@ -128,6 +131,14 @@ function collectPackageJsonScores(scores, packageJson) {
     addScore(scores, 'agent-runtime', 'packageJson', 8);
   }
 
+  if (keywords.some((keyword) => keyword.includes('analysis') || keyword.includes('repo-quality') || keyword.includes('github-analysis') || keyword.includes('repository-analysis'))) {
+    addScore(scores, 'analysis-tool', 'packageJson', 10);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('developer-tool') || keyword.includes('developer-tools') || keyword.includes('developer-experience'))) {
+    addScore(scores, 'developer-tool', 'packageJson', 8);
+  }
+
   if (keywords.some((keyword) => keyword.includes('llm-framework'))) {
     addScore(scores, 'llm-framework', 'packageJson', 8);
   }
@@ -189,6 +200,34 @@ function collectReadmeScores(scores, readme) {
   }
 }
 
+function collectAgentFrameworkScores(scores, input, topics, readme, packageJson) {
+  const files = getFilePaths(input.fileTree);
+  const dependencyMap = {
+    ...(packageJson?.dependencies || {}),
+    ...(packageJson?.devDependencies || {}),
+    ...(packageJson?.peerDependencies || {}),
+  };
+
+  const signals = [
+    /\bagent runtime loop\b|\bexecution loop\b|\bloop guard\b|\bmaxtoolcallsperrun\b|\bwrap\(\)/.test(readme),
+    /\btool execution\b|\bexecute tools?\b|\btool registry\b|\bauthority\.tool\b|\btool calls?\b/.test(readme) ||
+      files.some((filePath) => filePath.includes('tool') && filePath.includes('registry')),
+    /\bplanner\b|\bplanning\b/.test(readme) || files.some((filePath) => filePath.includes('planner')),
+    /\bmemory store\b|\bagent memory\b|\bmemory layer\b/.test(readme) || files.some((filePath) => filePath.includes('memory')),
+    files.some((filePath) => filePath.includes('registry')) || /\btool registry\b/.test(readme),
+    /\bautonomous execution\b|\bautonomous workflow\b|\bautonomous agents?\b/.test(readme),
+    /\bllm orchestration engine\b|\borchestration engine\b/.test(readme) ||
+      ['langgraph', '@mastra/core', 'autogen', 'crewai'].some((dependency) =>
+        Object.prototype.hasOwnProperty.call(dependencyMap, dependency)
+      ) ||
+      topics.some((topic) => ['agent-runtime', 'workflow-engine'].includes(topic)),
+  ].filter(Boolean).length;
+
+  if (signals >= 2) {
+    addScore(scores, 'ai-agent-framework', 'readme', 16);
+  }
+}
+
 function collectStructureScores(scores, fileTree, packageJson) {
   const files = getFilePaths(fileTree);
   const markdownCount = files.filter((filePath) => filePath.endsWith('.md')).length;
@@ -245,6 +284,14 @@ function collectMetadataScores(scores, repoMetadata) {
   if (description.includes('dataset') || description.includes('benchmark')) {
     addScore(scores, 'dataset', 'metadata', 7);
   }
+
+  if (description.includes('analyze') || description.includes('analysis') || description.includes('score')) {
+    addScore(scores, 'analysis-tool', 'metadata', 8);
+  }
+
+  if (description.includes('developer tool') || description.includes('developer workflow')) {
+    addScore(scores, 'developer-tool', 'metadata', 7);
+  }
 }
 
 function chooseBestType(scores, input) {
@@ -280,6 +327,10 @@ function chooseBestType(scores, input) {
     return 'learning-resource';
   }
 
+  if (/\banaly(?:sis|ze|zes|zing)\b|\bscore\b|\binspect\b/.test(readme) || String(repoMetadata.description || '').toLowerCase().includes('analy')) {
+    return 'analysis-tool';
+  }
+
   if (files.some((filePath) => filePath.endsWith('.csv') || filePath.endsWith('.jsonl') || filePath.endsWith('.parquet'))) {
     return 'dataset';
   }
@@ -308,6 +359,7 @@ function detectRepoType(input) {
   collectPackageJsonScores(scores, packageJson);
   collectDependencyScores(scores, packageJson);
   collectReadmeScores(scores, readme);
+  collectAgentFrameworkScores(scores, input, topics, readme, packageJson);
   collectStructureScores(scores, input.fileTree, packageJson);
   collectMetadataScores(scores, repoMetadata);
 

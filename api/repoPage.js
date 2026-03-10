@@ -282,16 +282,15 @@ function renderRepoPage(owner, repo, analysis) {
       margin: 0;
       width: 100%;
       padding: 18px;
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       border-radius: 14px;
       border: 1px solid #d3deef;
       background: #f8fbff;
       color: #0f274f;
       font-size: 0.9rem;
       line-height: 1.7;
-      white-space: pre-wrap;
-      word-break: break-word;
-      overflow-wrap: anywhere;
+      white-space: nowrap;
     }
     .authority-card {
       background: var(--success-soft);
@@ -329,7 +328,7 @@ function renderRepoPage(owner, repo, analysis) {
       gap: 14px 28px;
       margin-top: 40px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
     .subtle-nav a {
       color: var(--accent);

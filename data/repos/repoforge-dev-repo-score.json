@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-10T01:50:02.038Z",
-  "analysisModelVersion": 4,
+  "cachedAt": "2026-03-10T23:44:03.401Z",
+  "analysisModelVersion": 5,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "repo-score",
@@ -394,21 +394,21 @@
   },
   "analysis": {
     "repo": "repoforge-dev/repo-score",
-    "repoType": "ai-agent-framework",
+    "repoType": "analysis-tool",
     "language": "javascript",
-    "repoScore": 96,
+    "repoScore": 93,
     "scores": {
       "documentation": 100,
       "structure": 100,
       "discoverability": 94,
       "maintenance": 75,
       "adoption": 0,
-      "agentSafety": 100
+      "agentSafety": null
     },
     "improvements": [
       "Grow adoption and contribution signals to improve maintenance confidence.",
       "Increase project visibility and usage signals to strengthen adoption confidence."
     ],
-    "analyzedAt": "2026-03-10T01:50:02.037Z"
+    "analyzedAt": "2026-03-10T23:44:03.398Z"
   }
 }

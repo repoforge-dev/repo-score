@@ -45,6 +45,18 @@ const SCORING_PROFILES = {
     maintenance: 15,
     discoverability: 10,
   },
+  'analysis-tool': {
+    documentation: 30,
+    structure: 25,
+    maintenance: 20,
+    discoverability: 15,
+  },
+  'developer-tool': {
+    documentation: 30,
+    structure: 25,
+    maintenance: 20,
+    discoverability: 15,
+  },
   dataset: {
     documentation: 40,
     discoverability: 20,
