@@ -20,7 +20,7 @@ RepoScore exists to make that first-pass evaluation repeatable. It turns common 
 
 The fastest way to use RepoScore is through the hosted RepoForge interface:
 
-1. Open `https://repoforge.dev`.
+1. Open [repoforge.dev](https://repoforge.dev).
 2. Enter a GitHub repository in `owner/repo` format.
 3. Open the generated analysis page to review the score, category breakdown, and improvement suggestions.
 
@@ -115,8 +115,8 @@ Badge:
 
 Analysis pages:
 
-- `https://repoforge.dev/repos/repoforge-dev/repo-score`
-- `https://repoforge.dev/repos/repoforge-dev/authority-layer`
+- [repoforge-dev/repo-score](https://repoforge.dev/repos/repoforge-dev/repo-score)
+- [repoforge-dev/authority-layer](https://repoforge.dev/repos/repoforge-dev/authority-layer)
 
 The public badge and page endpoints use the same scoring output as the analysis API, so maintainers can publish a compact signal in a README and link to a full breakdown when more context is needed.
 
