@@ -6,15 +6,17 @@
   "scripts": {
     "start": "node server.js",
     "scan:github": "node scanners/githubScanner.js",
-    "test": "node tests/analysis-smoke.test.js",
+    "test": "node tests/analysis-smoke.test.js && node tests/analyzer.test.js",
+    "test:analyzer": "node tests/analyzer.test.js",
     "test:repos": "node tests/repositoryValidation.js"
   },
   "keywords": [
+    "repo-analysis",
     "github-analysis",
     "developer-tools",
+    "ai-tools",
+    "repo-scoring",
     "repo-quality",
-    "open-source-tools",
-    "github-insights",
     "repoforge",
     "reposcore"
   ],
