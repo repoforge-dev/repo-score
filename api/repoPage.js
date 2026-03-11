@@ -372,7 +372,7 @@ function renderRepoPage(owner, repo, analysis) {
       <a class="brand" href="${escapeHtml(homepageUrl)}">RepoForge</a>
       <div class="hero">
         <h1>${escapeHtml(repoName)}</h1>
-        <p class="repo-subtitle">RepoScore analysis page for ${escapeHtml(repoName)}.</p>
+        <p class="repo-subtitle">Repository Quality Analysis</p>
         <div class="actions">
           <a href="${escapeHtml(githubUrl)}" target="_blank" rel="noreferrer">View on GitHub</a>
           <img src="${escapeHtml(badgeUrl)}" alt="RepoScore badge for ${escapeHtml(repoName)}">
