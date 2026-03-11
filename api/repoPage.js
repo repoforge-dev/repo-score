@@ -151,7 +151,7 @@ function renderRepoPage(owner, repo, analysis) {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 28px;
+      padding: 24px;
       box-shadow: var(--shadow);
     }
     .hero {
@@ -196,7 +196,7 @@ function renderRepoPage(owner, repo, analysis) {
     .meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 20px;
       margin-top: 28px;
     }
     .meta-card {
@@ -225,13 +225,13 @@ function renderRepoPage(owner, repo, analysis) {
     }
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.86fr) minmax(320px, 1fr);
-      gap: 28px;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
       align-items: start;
     }
     .stack {
       display: grid;
-      gap: 28px;
+      gap: 20px;
     }
     .score-list {
       list-style: none;
@@ -239,12 +239,12 @@ function renderRepoPage(owner, repo, analysis) {
       margin: 0;
     }
     .score-list li {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
+      display: flex;
+      justify-content: space-between;
       align-items: baseline;
       gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 10px 0;
+      border-bottom: 1px solid #eef1f6;
     }
     .score-list li:last-child {
       border-bottom: 0;
@@ -254,7 +254,7 @@ function renderRepoPage(owner, repo, analysis) {
       font-weight: 600;
     }
     .score-list span {
-      font-weight: 700;
+      font-weight: 600;
       font-size: 1.15rem;
       text-align: right;
     }
@@ -263,8 +263,11 @@ function renderRepoPage(owner, repo, analysis) {
       padding-left: 22px;
       line-height: 1.8;
     }
-    .suggestions li + li {
-      margin-top: 10px;
+    .suggestions li {
+      margin-bottom: 10px;
+    }
+    .suggestions li:last-child {
+      margin-bottom: 0;
     }
     .badge-header {
       display: flex;
@@ -291,7 +294,7 @@ function renderRepoPage(owner, repo, analysis) {
     .snippet {
       margin: 0;
       width: 100%;
-      padding: 14px;
+      padding: 16px;
       border-radius: 8px;
       border: 1px solid #dfe3ea;
       background: #f7f9fc;
@@ -299,52 +302,55 @@ function renderRepoPage(owner, repo, analysis) {
       font-family: Consolas, "SFMono-Regular", Menlo, Monaco, monospace;
       font-size: 14px;
       line-height: 1.65;
-      white-space: normal;
+      white-space: pre-wrap;
       word-break: break-all;
       overflow-wrap: anywhere;
     }
     .authority-card {
-      background: var(--success-soft);
-      border-color: var(--success-border);
+      background: #f6fbf7;
+      border: 1px solid #d9eadf;
+      border-radius: 12px;
+      padding: 18px;
     }
     .authority-label {
       display: inline-block;
       margin-bottom: 10px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: #e2f3da;
-      color: #245b1a;
-      font-size: 0.78rem;
-      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 20px;
+      background: #e8f6ec;
+      color: #2f6b3e;
+      font-size: 11px;
+      font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .button-link {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 8px 14px;
+      border-radius: 8px;
       background: var(--accent);
       color: #fff;
       text-decoration: none;
+      font-size: 14px;
       font-weight: 700;
     }
     .button-link:hover {
       background: #0c4cb4;
     }
-    .subtle-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px 28px;
-      margin-top: 44px;
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e8ef;
+      text-align: center;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 15px;
     }
-    .subtle-nav a {
+    .footer a {
       color: var(--accent);
       font-weight: 700;
       text-decoration: none;
+      margin: 0 14px;
     }
     @media (max-width: 900px) {
       .layout {
@@ -435,9 +441,9 @@ function renderRepoPage(owner, repo, analysis) {
         </section>` : ''}
       </div>
     </main>
-    <footer class="subtle-nav">
-      <span><a href="${escapeHtml(homepageUrl)}">Analyze another repository</a></span>
-      <span><a href="${escapeHtml(homepageUrl)}">Browse GitHub repository analysis</a></span>
+    <footer class="footer">
+      <a href="${escapeHtml(homepageUrl)}">Analyze another repository</a>
+      <a href="${escapeHtml(homepageUrl)}">Browse GitHub repository analysis</a>
     </footer>
   </div>
   <script>
