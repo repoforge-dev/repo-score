@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "scan:github": "node scanners/githubScanner.js",
-    "test": "node tests/analysis-smoke.test.js"
+    "test": "node tests/analysis-smoke.test.js",
+    "test:repos": "node tests/repositoryValidation.js"
   },
   "keywords": [
     "github-analysis",
