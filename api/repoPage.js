@@ -68,7 +68,7 @@ function getAnalysisFromCache(cachePayload) {
 }
 
 function shouldPromoteAuthorityLayer(repoType) {
-  return new Set(['ai-agent-framework', 'ai-tooling', 'agent-runtime', 'llm-framework']).has(
+  return new Set(['ai-agent-framework', 'ai-tooling']).has(
     String(repoType || '').toLowerCase()
   );
 }
@@ -111,31 +111,31 @@ function renderRepoPage(owner, repo, analysis) {
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f8fb;
+      --bg: #f5f7fb;
       --panel: #ffffff;
-      --text: #152033;
-      --muted: #5b6577;
-      --border: #d8dfeb;
+      --text: #142033;
+      --muted: #617085;
+      --border: #e6e8ee;
       --accent: #0f5bd8;
-      --accent-soft: #eef5ff;
-      --success-soft: #f4fbf2;
-      --success-border: #cfe7c7;
-      --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      --success-soft: #f2fbf3;
+      --success-border: #d4ebd8;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+      background: var(--bg);
       color: var(--text);
+      font-size: 15px;
     }
     .wrap {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 32px 24px 64px;
+      padding: 32px;
     }
     .header {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .brand {
       display: inline-block;
@@ -150,7 +150,7 @@ function renderRepoPage(owner, repo, analysis) {
     .hero, .panel {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 12px;
       padding: 28px;
       box-shadow: var(--shadow);
     }
@@ -165,20 +165,25 @@ function renderRepoPage(owner, repo, analysis) {
       line-height: 1.15;
       letter-spacing: -0.02em;
     }
+    h2 {
+      font-size: 20px;
+      line-height: 1.25;
+    }
     p {
       margin: 0 0 12px;
       color: var(--muted);
+      line-height: 1.6;
     }
     .repo-subtitle {
-      font-size: 1rem;
-      margin-bottom: 18px;
+      font-size: 0.98rem;
+      margin-bottom: 16px;
     }
     .actions {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 14px;
-      margin-top: 18px;
+      margin-top: 14px;
     }
     .actions a {
       color: var(--accent);
@@ -191,14 +196,15 @@ function renderRepoPage(owner, repo, analysis) {
     .meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 24px;
+      gap: 18px;
+      margin-top: 28px;
     }
     .meta-card {
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 18px 20px;
-      background: #fbfcfe;
+      border-radius: 12px;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: var(--shadow);
     }
     .meta-card strong {
       display: block;
@@ -215,17 +221,17 @@ function renderRepoPage(owner, repo, analysis) {
       line-height: 1.1;
     }
     .badge-section {
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.86fr) minmax(320px, 1fr);
+      gap: 28px;
       align-items: start;
     }
     .stack {
       display: grid;
-      gap: 24px;
+      gap: 28px;
     }
     .score-list {
       list-style: none;
@@ -233,8 +239,8 @@ function renderRepoPage(owner, repo, analysis) {
       margin: 0;
     }
     .score-list li {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
       align-items: baseline;
       gap: 16px;
       padding: 14px 0;
@@ -249,12 +255,13 @@ function renderRepoPage(owner, repo, analysis) {
     }
     .score-list span {
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      text-align: right;
     }
     .suggestions {
       margin: 0;
       padding-left: 22px;
-      line-height: 1.65;
+      line-height: 1.8;
     }
     .suggestions li + li {
       margin-top: 10px;
@@ -271,8 +278,8 @@ function renderRepoPage(owner, repo, analysis) {
       border: 1px solid var(--border);
       background: var(--panel);
       color: var(--text);
-      border-radius: 999px;
-      padding: 9px 14px;
+      border-radius: 10px;
+      padding: 10px 15px;
       font-size: 0.92rem;
       font-weight: 700;
       cursor: pointer;
@@ -284,13 +291,14 @@ function renderRepoPage(owner, repo, analysis) {
     .snippet {
       margin: 0;
       width: 100%;
-      padding: 18px;
-      border-radius: 14px;
-      border: 1px solid #d3deef;
-      background: #f8fbff;
-      color: #0f274f;
-      font-size: 0.9rem;
-      line-height: 1.7;
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid #dfe3ea;
+      background: #f7f9fc;
+      color: #10294f;
+      font-family: Consolas, "SFMono-Regular", Menlo, Monaco, monospace;
+      font-size: 14px;
+      line-height: 1.65;
       white-space: normal;
       word-break: break-all;
       overflow-wrap: anywhere;
@@ -329,13 +337,13 @@ function renderRepoPage(owner, repo, analysis) {
       flex-wrap: wrap;
       justify-content: center;
       gap: 14px 28px;
-      margin-top: 40px;
+      margin-top: 44px;
       color: var(--muted);
       font-size: 1rem;
     }
     .subtle-nav a {
       color: var(--accent);
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
     }
     @media (max-width: 900px) {
@@ -397,7 +405,7 @@ function renderRepoPage(owner, repo, analysis) {
       <div class="badge-header">
         <div>
           <h2>Add RepoScore Badge</h2>
-          <p>Copy the badge markdown and link directly to this analysis page.</p>
+          <p>Copy the markdown to display the RepoScore badge in your repository README.</p>
         </div>
         <button class="copy-button" type="button" onclick="copyBadgeSnippet()">Copy</button>
       </div>
