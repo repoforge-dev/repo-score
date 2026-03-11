@@ -1,15 +1,16 @@
 {
-  "cachedAt": "2026-03-10T01:43:26.880Z",
-  "analysisModelVersion": 4,
+  "cachedAt": "2026-03-11T01:54:25.505Z",
+  "analysisModelVersion": 14,
   "snapshot": {
     "owner": "TheAlgorithms",
     "repo": "Python",
     "repoMetadata": {
       "name": "Python",
       "description": "All Algorithms implemented in Python",
-      "stargazers_count": 218447,
-      "forks_count": 50132,
-      "open_issues_count": 930,
+      "stargazers_count": 218568,
+      "forks_count": 50147,
+      "watchers_count": 218568,
+      "open_issues_count": 896,
       "language": "Python",
       "topics": [
         "algorithm",
@@ -28,9 +29,14 @@
         "sorts"
       ],
       "default_branch": "master",
-      "updated_at": "2026-03-09T02:28:46Z",
+      "updated_at": "2026-03-10T22:42:18Z",
       "homepage": "https://thealgorithms.github.io/Python/",
-      "archived": false
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 0,
+      "last_release_at": null,
+      "recent_issue_activity_count": 1,
+      "last_issue_updated_at": "2026-03-10T16:53:50Z"
     },
     "readmeContent": "<div align=\"center\">\n<!-- Title: -->\n  <a href=\"https://github.com/TheAlgorithms/\">\n    <img src=\"https://raw.githubusercontent.com/TheAlgorithms/website/1cd824df116b27029f17c2d1b42d81731f28a920/public/logo.svg\" height=\"100\">\n  </a>\n  <h1><a href=\"https://github.com/TheAlgorithms/\">The Algorithms</a> - Python</h1>\n\n<!-- Labels: -->\n  <!-- First row: -->\n  <a href=\"https://gitpod.io/#https://github.com/TheAlgorithms/Python\">\n    <img src=\"https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod&style=flat-square\" height=\"20\" alt=\"Gitpod Ready-to-Code\">\n  </a>\n  <a href=\"https://github.com/TheAlgorithms/Python/blob/master/CONTRIBUTING.md\">\n    <img src=\"https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=flat-square\" height=\"20\" alt=\"Contributions Welcome\">\n  </a>\n  <img src=\"https://img.shields.io/github/repo-size/TheAlgorithms/Python.svg?label=Repo%20size&style=flat-square\" height=\"20\">\n  <a href=\"https://the-algorithms.com/discord\">\n    <img src=\"https://img.shields.io/discord/808045925556682782.svg?logo=discord&colorB=7289DA&style=flat-square\" height=\"20\" alt=\"Discord chat\">\n  </a>\n  <a href=\"https://gitter.im/TheAlgorithms/community\">\n    <img src=\"https://img.shields.io/badge/Chat-Gitter-ff69b4.svg?label=Chat&logo=gitter&style=flat-square\" height=\"20\" alt=\"Gitter chat\">\n  </a>\n\n  <!-- Second row: -->\n  <br>\n  <a href=\"https://github.com/TheAlgorithms/Python/actions\">\n    <img src=\"https://img.shields.io/github/actions/workflow/status/TheAlgorithms/Python/build.yml?branch=master&label=CI&logo=github&style=flat-square\" height=\"20\" alt=\"GitHub Workflow Status\">\n  </a>\n  <a href=\"https://github.com/pre-commit/pre-commit\">\n    <img src=\"https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white&style=flat-square\" height=\"20\" alt=\"pre-commit\">\n  </a>\n  <a href=\"https://docs.astral.sh/ruff/formatter/\">\n    <img src=\"https://img.shields.io/static/v1?label=code%20style&message=ruff&color=black&style=flat-square\" height=\"20\" alt=\"code style: black\">\n  </a>\n\n<!-- Short description: -->\n  <h3>All algorithms implemented in Python - for education 📚</h3>\n</div>\n\nImplementations are for learning purposes only. They may be less efficient than the implementations in the Python standard library. Use them at your discretion.\n\n## 🚀 Getting Started\n\n📋 Read through our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.\n\n## 🌐 Community Channels\n\nWe are on [Discord](https://the-algorithms.com/discord) and [Gitter](https://gitter.im/TheAlgorithms/community)! Community channels are a great way for you to ask questions and get help. Please join us!\n\n## 📜 List of Algorithms\n\nSee our [directory](DIRECTORY.md) for easier navigation and a better overview of the project.\n",
     "fileTree": [
@@ -6963,23 +6969,27 @@
   },
   "analysis": {
     "repo": "TheAlgorithms/Python",
-    "repoType": "dataset",
+    "repoType": "learning-resource",
     "language": "python",
-    "repoScore": 89,
+    "repoScore": 53,
     "scores": {
-      "documentation": 50,
-      "structure": 40,
-      "discoverability": 76,
-      "maintenance": 100,
-      "adoption": 20,
+      "documentation": 35,
+      "structure": 30,
+      "discoverability": 70,
+      "maintenance": 53,
+      "adoption": 100,
       "agentSafety": null
     },
     "improvements": [
+      "Expand the README so it clearly covers project purpose and developer workflows.",
+      "Break the README into clearer sections with headings for faster scanning.",
       "Add concrete usage examples or a quickstart section.",
-      "Include API, configuration, or reference details in the README.",
-      "Break the README into clearer sections for faster scanning.",
-      "Use README headings like installation, usage, examples, or API reference."
+      "Include API or reference details in the README.",
+      "Document configuration, environment variables, or runtime options.",
+      "Use a clear source layout such as `src/` or `lib/`.",
+      "Add a visible test suite or test directory.",
+      "Add linting or formatting configuration to make code standards explicit."
     ],
-    "analyzedAt": "2026-03-10T01:43:26.880Z"
+    "analyzedAt": "2026-03-11T01:54:25.505Z"
   }
 }

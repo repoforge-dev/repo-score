@@ -30,16 +30,16 @@ function analyzeReadme(input) {
   const improvements = [];
 
   if (hasReadme) {
-    score += 20;
+    score += 10;
   }
 
-  if (wordCount >= 150) {
+  if (wordCount >= 250) {
     score += 10;
   } else {
     improvements.push('Expand the README so it clearly covers project purpose and developer workflows.');
   }
 
-  if (headingMatches.length >= 4) {
+  if (headingMatches.length >= 5) {
     score += 10;
   } else {
     improvements.push('Break the README into clearer sections with headings for faster scanning.');
@@ -52,7 +52,7 @@ function analyzeReadme(input) {
   }
 
   if (hasUsageExamples) {
-    score += 20;
+    score += 15;
   } else {
     improvements.push('Add concrete usage examples or a quickstart section.');
   }

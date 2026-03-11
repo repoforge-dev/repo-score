@@ -35,7 +35,7 @@ const result = analyzeReadme({
   ].join('\n'),
 });
 
-assert.equal(result.score >= 90, true);
+assert.equal(result.score >= 85, true);
 assert.equal(
   result.improvements.includes('Document installation or setup steps in the README.'),
   false
@@ -71,7 +71,7 @@ assert.equal(
     ],
     packageJson: { scripts: { lint: 'eslint .' } },
   }).score,
-  100
+  85
 );
 
 assert.equal(
@@ -84,7 +84,7 @@ assert.equal(
     readmeContent: '![CI](https://example.com/ci.svg)\n## Installation\n## Usage\n## API\nSee https://repoforge.dev/docs for full docs.',
     fileTree: [{ path: 'docs/architecture.md' }],
   }).score,
-  100
+  72
 );
 
 assert.equal(
@@ -99,7 +99,7 @@ assert.equal(
       archived: false,
     },
   }).score,
-  100
+  66
 );
 
 assert.equal(

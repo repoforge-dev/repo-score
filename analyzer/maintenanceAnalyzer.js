@@ -12,11 +12,11 @@ function getRecentCommitScore(updatedAt) {
   const ageInDays = getAgeInDays(updatedAt);
 
   if (ageInDays <= 30) {
-    return 30;
+    return 25;
   }
 
   if (ageInDays <= 90) {
-    return 20;
+    return 18;
   }
 
   if (ageInDays <= 180) {
@@ -27,54 +27,62 @@ function getRecentCommitScore(updatedAt) {
 }
 
 function getContributorScore(contributorCount) {
-  if (contributorCount > 5) {
+  if (contributorCount > 20) {
     return 20;
   }
 
+  if (contributorCount > 5) {
+    return 15;
+  }
+
   if (contributorCount >= 3) {
-    return 12;
+    return 10;
   }
 
   if (contributorCount >= 1) {
-    return 6;
+    return 5;
   }
 
   return 0;
 }
 
 function getReleaseScore(recentReleaseCount, lastReleaseAt) {
-  if (recentReleaseCount >= 2) {
-    return 25;
+  if (recentReleaseCount >= 4) {
+    return 20;
   }
 
-  if (recentReleaseCount === 1) {
-    return 18;
+  if (recentReleaseCount >= 1) {
+    return 12;
   }
 
   const ageInDays = getAgeInDays(lastReleaseAt);
   if (ageInDays <= 730) {
-    return 10;
+    return 6;
   }
 
   return 0;
 }
 
 function getIssueActivityScore(recentIssueActivityCount, lastIssueUpdatedAt) {
-  if (recentIssueActivityCount >= 5) {
-    return 25;
+  if (recentIssueActivityCount >= 10) {
+    return 20;
   }
 
-  if (recentIssueActivityCount >= 2) {
-    return 18;
+  if (recentIssueActivityCount >= 3) {
+    return 14;
+  }
+
+  if (recentIssueActivityCount >= 1) {
+    return 8;
   }
 
   const ageInDays = getAgeInDays(lastIssueUpdatedAt);
   if (ageInDays <= 30) {
-    return 12;
+    return 6;
   }
 
   if (ageInDays <= 90) {
-    return 8;
+    return 3;
   }
 
   return 0;
@@ -96,7 +104,7 @@ function analyzeMaintenance(input) {
   let score = recentCommitScore + contributorScore + releaseScore + issueActivityScore;
   const improvements = [];
 
-  if (recentCommitScore < 30) {
+  if (recentCommitScore < 25) {
     improvements.push('Ship updates more regularly so recent maintenance activity is visible.');
   }
 
@@ -104,11 +112,11 @@ function analyzeMaintenance(input) {
     improvements.push('Grow active contributor participation to improve maintenance resilience.');
   }
 
-  if (releaseScore < 25) {
+  if (releaseScore < 20) {
     improvements.push('Publish releases more consistently so maintenance cadence is easier to trust.');
   }
 
-  if (issueActivityScore < 25) {
+  if (issueActivityScore < 20) {
     improvements.push('Improve visible issue response activity so maintainers appear responsive.');
   }
 

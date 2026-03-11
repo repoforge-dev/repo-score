@@ -19,7 +19,7 @@ function analyzeDiscoverability(input) {
   const improvements = [];
 
   if (topics.length > 0) {
-    score += 25;
+    score += topics.length >= 3 ? 20 : 12;
     if (topics.length < 3) {
       improvements.push('Add more GitHub topics so the project is easier to discover.');
     }
@@ -28,28 +28,28 @@ function analyzeDiscoverability(input) {
   }
 
   if (repository.homepage) {
-    score += 20;
+    score += 15;
   } else {
     improvements.push('Set a homepage URL in the repository metadata.');
   }
 
   if (hasReadmeBadges) {
-    score += 15;
+    score += 10;
   } else {
     improvements.push('Add a small set of README badges for version, CI, or quality signals.');
   }
 
   if (hasClearDescription) {
-    score += 20;
+    score += 15;
   } else {
     improvements.push('Add a concise GitHub repository description.');
   }
 
-  if (hasDocsWebsiteLink || hasReadmeKeywords) {
+  if (hasDocsWebsiteLink) {
     score += 20;
-    if (!hasDocsWebsiteLink) {
-      improvements.push('Add a docs website or deeper documentation links for easier discovery.');
-    }
+  } else if (hasReadmeKeywords) {
+    score += 10;
+    improvements.push('Add a docs website or deeper documentation links for easier discovery.');
   } else {
     improvements.push('Link to docs or make deeper usage and API guidance easier to find from the README.');
   }

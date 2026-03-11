@@ -1,15 +1,16 @@
 {
-  "cachedAt": "2026-03-10T01:43:26.634Z",
-  "analysisModelVersion": 4,
+  "cachedAt": "2026-03-11T01:54:25.428Z",
+  "analysisModelVersion": 14,
   "snapshot": {
     "owner": "freeCodeCamp",
     "repo": "freeCodeCamp",
     "repoMetadata": {
       "name": "freeCodeCamp",
       "description": "freeCodeCamp.org's open-source codebase and curriculum. Learn math, programming, and computer science for free.",
-      "stargazers_count": 437912,
-      "forks_count": 43545,
-      "open_issues_count": 285,
+      "stargazers_count": 438032,
+      "forks_count": 43555,
+      "watchers_count": 438032,
+      "open_issues_count": 274,
       "language": "TypeScript",
       "topics": [
         "careers",
@@ -29,9 +30,14 @@
         "teachers"
       ],
       "default_branch": "main",
-      "updated_at": "2026-03-09T01:46:00Z",
+      "updated_at": "2026-03-11T01:10:07Z",
       "homepage": "https://contribute.freecodecamp.org",
-      "archived": false
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 0,
+      "last_release_at": null,
+      "recent_issue_activity_count": 8,
+      "last_issue_updated_at": "2026-03-10T22:53:09Z"
     },
     "readmeContent": "[![freeCodeCamp Social Banner](https://cdn.freecodecamp.org/platform/universal/fcc_banner_new.png)](https://www.freecodecamp.org/)\n\n[![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://www.firsttimersonly.com/)\n[![Discord](https://img.shields.io/discord/692816967895220344?logo=discord&label=Discord&color=5865F2)](https://discord.gg/PRyKn3Vbay)\n[![LFX Active Contributors](https://insights.linuxfoundation.org/api/badge/active-contributors?project=freecodecamp&repos=https://github.com/freeCodeCamp/freeCodeCamp)](https://insights.linuxfoundation.org/project/freecodecamp/repository/freecodecamp-freecodecamp)\n\n## freeCodeCamp.org's open-source codebase and curriculum\n\n[freeCodeCamp.org](https://www.freecodecamp.org) is a friendly community where you can learn to code for free. It is run by a [donor-supported 501(c)(3) charity](https://www.freecodecamp.org/donate) to help millions of busy adults transition into tech. Our community has already helped more than 100,000 people get their first developer job.\n\nOur full-stack web development and machine learning curriculum is completely free and self-paced. We have thousands of interactive coding challenges to help you expand your skills.\n\n## Table of Contents\n\n- [Certifications](#certifications)\n- [The Learning Platform](#the-learning-platform)\n- [Reporting Bugs and Issues](#reporting-bugs-and-issues)\n- [Reporting Security Issues and Responsible Disclosure](#reporting-security-issues-and-responsible-disclosure)\n- [Contributing](#contributing)\n- [Platform, Build and Deployment Status](#platform-build-and-deployment-status)\n- [License](#license)\n\n### Certifications\n\nfreeCodeCamp.org offers several free developer certifications that make up the [Full-Stack Developer Curriculum](https://www.freecodecamp.org/learn/full-stack-developer-v9/):\n\n- [Responsive Web Design](https://www.freecodecamp.org/learn/responsive-web-design-v9/)\n- [JavaScript](https://www.freecodecamp.org/learn/javascript-v9/)\n- [Front-End Development Libraries](https://www.freecodecamp.org/learn/front-end-development-libraries-v9/)\n- [Python](https://www.freecodecamp.org/learn/python-v9/)\n- [Relational Databases](https://www.freecodecamp.org/learn/relational-databases-v9/)\n- [Back-End developer and APIs](https://www.freecodecamp.org/learn/back-end-development-and-apis-v9/)\n\nEach of these certifications involves completing interactive lessons, workshops, labs, reviews, and quizzes. Throughout the certification, you'll need to complete 5 required projects to qualify for the exam. Once you pass the exam, then you can claim the certification.\n\nfreeCodeCamp.org also offers free language certifications designed around internationally recognized proficiency levels:\n\n- [A2 English for Developers (Beta)](https://www.freecodecamp.org/learn/a2-english-for-developers/)\n- [B1 English for Developers(Beta)](https://www.freecodecamp.org/learn/b1-english-for-developers/)\n- [A1 Professional Spanish(Beta)](https://www.freecodecamp.org/learn/a1-professional-spanish/)\n- [A1 Professional Chinese (Beta)](https://www.freecodecamp.org/learn/a1-professional-chinese/)\n\nEach of these certifications is organized into modules, with sections for warm-ups, lessons, practice exercises, review pages, and quizzes to ensure you fully grasp the material before progressing to the next module. You'll need to complete all of the quizzes in order to qualify for the exam at the end of the certification.\n\nOnce you've earned a certification, you will always have it. You will always be able to link to it from your LinkedIn or resume. And when your prospective employers or freelance clients click that link, they'll see a verified certification specific to you.\n\nThe one exception to this is if we discover violations of our [Academic Honesty Policy](https://www.freecodecamp.org/news/academic-honesty-policy/). When we catch people unambiguously plagiarizing (submitting other people's code or projects as their own without citation), we do what all rigorous institutions of learning should do - we revoke their certifications and ban those people.\n\nIn addition, to help prepare for job interviews, freeCodeCamp.org includes The Odin Project (freeCodeCamp Remix), Coding Interview Prep, Project Euler, and Rosetta Code.\n\nA free, professional free Foundational C# with Microsoft Certification is also available.\n\n### The Learning Platform\n\nThis code is running live at [freeCodeCamp.org](https://www.freecodecamp.org).\n\nOur community also has:\n\n- A [forum](https://forum.freecodecamp.org) where you can usually get programming help or project feedback within hours.\n- A [YouTube channel](https://youtube.com/freecodecamp) with free courses on Python, SQL, Android, and a wide variety of other technologies.\n- A [technical publication](https://www.freecodecamp.org/news) with thousands of programming tutorials and articles about mathematics and computer science.\n- A [Discord server](https://discord.gg/Z7Fm39aNtZ) where you can hang out and talk with developers and people who are learning to code.\n\n> #### [Join the community here](https://www.freecodecamp.org/signin).\n\n### Reporting Bugs and Issues\n\nIf you think you've found a bug, first read the [how to report a bug](https://forum.freecodecamp.org/t/how-to-report-a-bug/19543) article and follow its instructions.\n\nIf you're confident it's a new bug and have confirmed that someone else is facing the same issue, go ahead and create a new GitHub issue. Be sure to include as much information as possible so we can reproduce the bug.\n\n### Reporting Security Issues and Responsible Disclosure\n\nWe appreciate responsible disclosure of vulnerabilities that might impact the integrity of our platforms and users.\n\n> #### [Read our security policy and follow these steps to report a vulnerability](https://contribute.freecodecamp.org/#/security).\n\n### Contributing\n\nThe freeCodeCamp.org community is possible thanks to thousands of kind volunteers like you. We welcome all contributions to the community and are excited to welcome you aboard.\n\n> #### [Please follow these steps to contribute](https://contribute.freecodecamp.org).\n\nRecent Contributions:\n\n![Alt](https://repobeats.axiom.co/api/embed/89be0a1a1c8f641c54f9234a7423e7755352c746.svg 'Repobeats analytics image')\n\n### License\n\nCopyright © 2014 freeCodeCamp.org\n\nThe content of this repository is bound by the following licenses:\n\n- The computer software is licensed under the [BSD-3-Clause](LICENSE.md) license.\n- The learning resources in the [`/curriculum`](/curriculum) directory including their subdirectories therein are copyright © 2014 freeCodeCamp.org\n",
     "fileTree": [
@@ -3512,6 +3518,38 @@
         "type": "blob"
       },
       {
+        "path": "client/src/pages/learn/introduction-to-bash",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-bash/index.md",
+        "type": "blob"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-git-and-github",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-git-and-github/index.md",
+        "type": "blob"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-nano",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-nano/index.md",
+        "type": "blob"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-sql-and-postgresql",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/introduction-to-sql-and-postgresql/index.md",
+        "type": "blob"
+      },
+      {
         "path": "client/src/pages/learn/javascript-algorithms-and-data-structures-v8",
         "type": "tree"
       },
@@ -3576,6 +3614,14 @@
         "type": "blob"
       },
       {
+        "path": "client/src/pages/learn/learn-bash-scripting",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/learn-bash-scripting/index.md",
+        "type": "blob"
+      },
+      {
         "path": "client/src/pages/learn/learn-prompting-fundamentals",
         "type": "tree"
       },
@@ -3589,6 +3635,14 @@
       },
       {
         "path": "client/src/pages/learn/learn-python-for-beginners/index.md",
+        "type": "blob"
+      },
+      {
+        "path": "client/src/pages/learn/learn-sql-and-bash",
+        "type": "tree"
+      },
+      {
+        "path": "client/src/pages/learn/learn-sql-and-bash/index.md",
         "type": "blob"
       },
       {
@@ -13668,6 +13722,14 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/challenges/english/blocks/lab-implement-a-queue",
+        "type": "tree"
+      },
+      {
+        "path": "curriculum/challenges/english/blocks/lab-implement-a-queue/69aaafeaa4037197c75587cd.md",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/challenges/english/blocks/lab-insertion-sort",
         "type": "tree"
       },
@@ -13729,6 +13791,14 @@
       },
       {
         "path": "curriculum/challenges/english/blocks/lab-lightbox-viewer/66db57ad34c7089b9b41bfd6.md",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/challenges/english/blocks/lab-linked-list-operations",
+        "type": "tree"
+      },
+      {
+        "path": "curriculum/challenges/english/blocks/lab-linked-list-operations/69708d59833ceded7d00541f.md",
         "type": "blob"
       },
       {
@@ -56676,6 +56746,14 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/challenges/english/blocks/review-data-structures-js",
+        "type": "tree"
+      },
+      {
+        "path": "curriculum/challenges/english/blocks/review-data-structures-js/699c2dd0e2e1f947791f33fc.md",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/challenges/english/blocks/review-data-structures",
         "type": "tree"
       },
@@ -72628,6 +72706,10 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/structure/blocks/lab-implement-a-queue.json",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/structure/blocks/lab-insertion-sort.json",
         "type": "blob"
       },
@@ -72657,6 +72739,10 @@
       },
       {
         "path": "curriculum/structure/blocks/lab-lightbox-viewer.json",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/structure/blocks/lab-linked-list-operations.json",
         "type": "blob"
       },
       {
@@ -74540,6 +74626,10 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/structure/blocks/review-data-structures-js.json",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/structure/blocks/review-data-structures.json",
         "type": "blob"
       },
@@ -75560,6 +75650,22 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/structure/superblocks/introduction-to-bash.json",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/structure/superblocks/introduction-to-git-and-github.json",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/structure/superblocks/introduction-to-nano.json",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/structure/superblocks/introduction-to-sql-and-postgresql.json",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/structure/superblocks/javascript-algorithms-and-data-structures-22.json",
         "type": "blob"
       },
@@ -75592,11 +75698,19 @@
         "type": "blob"
       },
       {
+        "path": "curriculum/structure/superblocks/learn-bash-scripting.json",
+        "type": "blob"
+      },
+      {
         "path": "curriculum/structure/superblocks/learn-prompting-fundamentals.json",
         "type": "blob"
       },
       {
         "path": "curriculum/structure/superblocks/learn-python-for-beginners.json",
+        "type": "blob"
+      },
+      {
+        "path": "curriculum/structure/superblocks/learn-sql-and-bash.json",
         "type": "blob"
       },
       {
@@ -77933,23 +78047,25 @@
   },
   "analysis": {
     "repo": "freeCodeCamp/freeCodeCamp",
-    "repoType": "learning-resource",
+    "repoType": "learning-platform",
     "language": "typescript",
-    "repoScore": 90,
+    "repoScore": 73,
     "scores": {
-      "documentation": 70,
-      "structure": 55,
-      "discoverability": 76,
-      "maintenance": 100,
-      "adoption": 20,
+      "documentation": 55,
+      "structure": 85,
+      "discoverability": 80,
+      "maintenance": 59,
+      "adoption": 100,
       "agentSafety": null
     },
     "improvements": [
       "Document installation or setup steps in the README.",
       "Add concrete usage examples or a quickstart section.",
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a `docs/` directory for deeper project documentation."
+      "Document configuration, environment variables, or runtime options.",
+      "Use README headings like installation, usage, examples, or API reference.",
+      "Publish releases more consistently so maintenance cadence is easier to trust.",
+      "Improve visible issue response activity so maintainers appear responsive."
     ],
-    "analyzedAt": "2026-03-10T01:43:26.634Z"
+    "analyzedAt": "2026-03-11T01:54:25.428Z"
   }
 }

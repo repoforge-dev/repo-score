@@ -11,7 +11,7 @@ function analyzeStructure(input) {
   const packageJson = input.packageJson || null;
 
   const hasSourceStructure = files.some((filePath) =>
-    ['src/', 'lib/', 'packages/', 'api/', 'app/'].some((prefix) => filePath.startsWith(prefix))
+    ['src/', 'lib/', 'packages/', 'api/', 'app/', 'client/', 'server/', 'cmd/', 'include/'].some((prefix) => filePath.startsWith(prefix))
   );
   const hasTestFolder =
     files.some((filePath) => filePath.startsWith('test/') || filePath.startsWith('tests/') || filePath.includes('/__tests__/')) ||
@@ -58,7 +58,7 @@ function analyzeStructure(input) {
   const improvements = [];
 
   if (hasSourceStructure) {
-    score += 30;
+    score += 25;
   } else {
     improvements.push('Use a clear source layout such as `src/` or `lib/`.');
   }
@@ -76,13 +76,13 @@ function analyzeStructure(input) {
   }
 
   if (hasLintingConfig) {
-    score += 15;
+    score += 10;
   } else {
     improvements.push('Add linting or formatting configuration to make code standards explicit.');
   }
 
   if (hasCiConfig) {
-    score += 15;
+    score += 10;
   } else {
     improvements.push('Add CI automation for validation on pull requests and main branch changes.');
   }

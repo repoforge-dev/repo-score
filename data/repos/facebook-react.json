@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-11T01:04:46.762Z",
-  "analysisModelVersion": 9,
+  "cachedAt": "2026-03-11T01:54:22.587Z",
+  "analysisModelVersion": 14,
   "snapshot": {
     "owner": "facebook",
     "repo": "react",
@@ -29922,18 +29922,19 @@
     "repo": "facebook/react",
     "repoType": "library",
     "language": "javascript",
-    "repoScore": 97,
+    "repoScore": 86,
     "scores": {
-      "documentation": 100,
-      "structure": 100,
-      "discoverability": 100,
-      "maintenance": 100,
+      "documentation": 85,
+      "structure": 85,
+      "discoverability": 80,
+      "maintenance": 79,
       "adoption": 100,
       "agentSafety": null
     },
     "improvements": [
-      "Document configuration, environment variables, or runtime options."
+      "Document configuration, environment variables, or runtime options.",
+      "Improve visible issue response activity so maintainers appear responsive."
     ],
-    "analyzedAt": "2026-03-11T01:04:46.762Z"
+    "analyzedAt": "2026-03-11T01:54:22.587Z"
   }
 }

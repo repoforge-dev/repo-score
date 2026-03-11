@@ -1,0 +1,863 @@
+{
+  "cachedAt": "2026-03-11T01:54:22.701Z",
+  "analysisModelVersion": 14,
+  "snapshot": {
+    "owner": "lodash",
+    "repo": "lodash",
+    "repoMetadata": {
+      "name": "lodash",
+      "description": "A modern JavaScript utility library delivering modularity, performance, & extras.",
+      "stargazers_count": 61577,
+      "forks_count": 7129,
+      "watchers_count": 61577,
+      "open_issues_count": 131,
+      "language": "JavaScript",
+      "topics": [
+        "javascript",
+        "lodash",
+        "modules",
+        "utilities"
+      ],
+      "default_branch": "main",
+      "updated_at": "2026-03-10T23:00:26Z",
+      "homepage": "https://lodash.com/",
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 0,
+      "last_release_at": "2016-01-12T22:35:11Z",
+      "recent_issue_activity_count": 4,
+      "last_issue_updated_at": "2026-03-10T23:06:22Z"
+    },
+    "readmeContent": "# lodash v4.17.23\n\n[Site](https://lodash.com/) |\n[Docs](https://lodash.com/docs) |\n[FP Guide](https://github.com/lodash/lodash/wiki/FP-Guide) |\n[Contributing](https://github.com/lodash/lodash/blob/master/.github/CONTRIBUTING.md) |\n[Wiki](https://github.com/lodash/lodash/wiki \"Changelog, Roadmap, etc.\") |\n[Code of Conduct](https://github.com/openjs-foundation/cross-project-council/blob/main/CODE_OF_CONDUCT.md) |\n[Governance](https://github.com/lodash/lodash/blob/HEAD/GOVERNANCE.md) |\n[Twitter](https://twitter.com/bestiejs) |\n[Chat](https://gitter.im/lodash/lodash)\n\n> [!IMPORTANT]\n> As announced on the [OpenJS Foundation blog](https://openjsf.org/blog/sta-supports-lodash), Lodash has received support from the Sovereign Tech Agency and will transition to the Feature-Complete maturity stage so that it remains stable, secure, and sustainable long-term. As part of this effort, Lodash is rebooting its governance. A draft charter will be published shortly. The upcoming Technical Steering Committee (TSC) is already at work. For transparency, its members are listed in [GOVERNANCE.md](https://github.com/lodash/lodash/blob/HEAD/GOVERNANCE.md).\n\nThe [Lodash](https://lodash.com/) library exported as a [UMD](https://github.com/umdjs/umd) module.\n\nGenerated using [lodash-cli](https://www.npmjs.com/package/lodash-cli):\n```shell\n$ npm run build\n$ lodash -o ./dist/lodash.js\n$ lodash core -o ./dist/lodash.core.js\n```\n\n## Download\n\n * [Core build](https://raw.githubusercontent.com/lodash/lodash/4.17.23/dist/lodash.core.js) ([~4 kB gzipped](https://raw.githubusercontent.com/lodash/lodash/4.17.23/dist/lodash.core.min.js))\n * [Full build](https://raw.githubusercontent.com/lodash/lodash/4.17.23/dist/lodash.js) ([~24 kB gzipped](https://raw.githubusercontent.com/lodash/lodash/4.17.23/dist/lodash.min.js))\n * [CDN copies](https://www.jsdelivr.com/projects/lodash)\n\nLodash is released under the [MIT license](https://raw.githubusercontent.com/lodash/lodash/4.17.23/LICENSE) & supports modern environments.<br>\nReview the [build differences](https://github.com/lodash/lodash/wiki/build-differences) & pick one that’s right for you.\n\n## Installation\n\nIn a browser:\n```html\n<script src=\"lodash.js\"></script>\n```\n\nUsing npm:\n```shell\n$ npm i -g npm\n$ npm i --save lodash\n```\n\nIn Node.js:\n```js\n// Load the full build.\nvar _ = require('lodash');\n// Load the core build.\nvar _ = require('lodash/core');\n// Load the FP build for immutable auto-curried iteratee-first data-last methods.\nvar fp = require('lodash/fp');\n\n// Load method categories.\nvar array = require('lodash/array');\nvar object = require('lodash/fp/object');\n\n// Cherry-pick methods for smaller browserify/rollup/webpack bundles.\nvar at = require('lodash/at');\nvar curryN = require('lodash/fp/curryN');\n```\n\n**Note:**<br>\nInstall [n_](https://www.npmjs.com/package/n_) for Lodash use in the Node.js < 6 REPL.\n\n## Why Lodash?\n\nLodash makes JavaScript easier by taking the hassle out of working with arrays,<br>\nnumbers, objects, strings, etc. Lodash’s modular methods are great for:\n\n * Iterating arrays, objects, & strings\n * Manipulating & testing values\n * Creating composite functions\n\n## Module Formats\n\nLodash is available in a [variety of builds](https://lodash.com/custom-builds) & module formats.\n\n * [lodash](https://www.npmjs.com/package/lodash) & [per method packages](https://www.npmjs.com/browse/keyword/lodash-modularized)\n * [lodash-es](https://www.npmjs.com/package/lodash-es), [babel-plugin-lodash](https://www.npmjs.com/package/babel-plugin-lodash), & [lodash-webpack-plugin](https://www.npmjs.com/package/lodash-webpack-plugin)\n * [lodash/fp](https://github.com/lodash/lodash/tree/npm/fp)\n * [lodash-amd](https://www.npmjs.com/package/lodash-amd)\n\n\n",
+    "fileTree": [
+      {
+        "path": ".editorconfig",
+        "type": "blob"
+      },
+      {
+        "path": ".gitattributes",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/browser-testing.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/ci-bun.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/ci-docs.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/ci-node.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/codeql.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/renovate.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scorecards.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".jscsrc",
+        "type": "blob"
+      },
+      {
+        "path": ".markdown-doctest-setup.js",
+        "type": "blob"
+      },
+      {
+        "path": "CHANGELOG",
+        "type": "blob"
+      },
+      {
+        "path": "GOVERNANCE.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "SECURITY.md",
+        "type": "blob"
+      },
+      {
+        "path": "dist",
+        "type": "tree"
+      },
+      {
+        "path": "dist/lodash.core.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/lodash.core.min.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/lodash.fp.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/lodash.fp.min.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/lodash.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/lodash.min.js",
+        "type": "blob"
+      },
+      {
+        "path": "dist/mapping.fp.js",
+        "type": "blob"
+      },
+      {
+        "path": "doc",
+        "type": "tree"
+      },
+      {
+        "path": "doc/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "fp",
+        "type": "tree"
+      },
+      {
+        "path": "fp/_baseConvert.js",
+        "type": "blob"
+      },
+      {
+        "path": "fp/_convertBrowser.js",
+        "type": "blob"
+      },
+      {
+        "path": "fp/_mapping.js",
+        "type": "blob"
+      },
+      {
+        "path": "fp/placeholder.js",
+        "type": "blob"
+      },
+      {
+        "path": "incident_response_plan.md",
+        "type": "blob"
+      },
+      {
+        "path": "lib",
+        "type": "tree"
+      },
+      {
+        "path": "lib/common",
+        "type": "tree"
+      },
+      {
+        "path": "lib/common/file.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/common/mapping.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/common/minify.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/common/uglify.options.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/common/util.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp",
+        "type": "tree"
+      },
+      {
+        "path": "lib/fp/build-dist.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/build-doc.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/build-modules.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template",
+        "type": "tree"
+      },
+      {
+        "path": "lib/fp/template/doc",
+        "type": "tree"
+      },
+      {
+        "path": "lib/fp/template/doc/wiki.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules",
+        "type": "tree"
+      },
+      {
+        "path": "lib/fp/template/modules/_falseOptions.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/_util.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/alias.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/category.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/convert.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/fp.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/module.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/fp/template/modules/thru.jst",
+        "type": "blob"
+      },
+      {
+        "path": "lib/main",
+        "type": "tree"
+      },
+      {
+        "path": "lib/main/build-dist.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/main/build-doc.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/main/build-modules.js",
+        "type": "blob"
+      },
+      {
+        "path": "lib/main/build-site.js",
+        "type": "blob"
+      },
+      {
+        "path": "lodash.js",
+        "type": "blob"
+      },
+      {
+        "path": "package-lock.json",
+        "type": "blob"
+      },
+      {
+        "path": "package.json",
+        "type": "blob"
+      },
+      {
+        "path": "perf",
+        "type": "tree"
+      },
+      {
+        "path": "perf/asset",
+        "type": "tree"
+      },
+      {
+        "path": "perf/asset/perf-ui.js",
+        "type": "blob"
+      },
+      {
+        "path": "perf/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "perf/perf.js",
+        "type": "blob"
+      },
+      {
+        "path": "playwright.config.js",
+        "type": "blob"
+      },
+      {
+        "path": "renovate.json",
+        "type": "blob"
+      },
+      {
+        "path": "test",
+        "type": "tree"
+      },
+      {
+        "path": "test/asset",
+        "type": "tree"
+      },
+      {
+        "path": "test/asset/test-ui.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/asset/worker.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/backbone.html",
+        "type": "blob"
+      },
+      {
+        "path": "test/fp.html",
+        "type": "blob"
+      },
+      {
+        "path": "test/index.html",
+        "type": "blob"
+      },
+      {
+        "path": "test/playwright-runner.spec.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/remove.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/test-fp.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/test.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/underscore.html",
+        "type": "blob"
+      },
+      {
+        "path": "threat-model.md",
+        "type": "blob"
+      },
+      {
+        "path": "vendor",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/backbone",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/backbone/LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/backbone.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/backbone/test/collection.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/events.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/model.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/noconflict.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/router.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/setup",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/backbone/test/setup/dom-setup.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/setup/environment.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/sync.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/backbone/test/view.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/firebug-lite/license.txt",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/blank.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/buttonBg.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/buttonBgHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/debugger.css",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/detach.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/detachHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/disable.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/disable.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/disableHover.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/disableHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/down.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/downActive.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/downHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/errorIcon-sm.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/errorIcon.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/errorIcon.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/firebug-1.3a2.css",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/firebug.IE6.css",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/firebug.css",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/firebug.html",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/firebug.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/group.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/html.css",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/infoIcon.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/infoIcon.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/loading_16.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/min.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/minHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/off.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/offHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/pixel_transparent.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/roundCorner.svg",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/search.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/search.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/shadow.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/shadow2.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/shadowAlpha.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/sprite.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabHoverLeft.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabHoverMid.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabHoverRight.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabLeft.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMenuCheckbox.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMenuPin.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMenuRadio.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMenuTarget.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMenuTargetHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabMid.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tabRight.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/textEditorBorders.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/textEditorBorders.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/textEditorCorners.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/textEditorCorners.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/titlebarMid.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/toolbarMid.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tree_close.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/tree_open.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/twistyClosed.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/twistyOpen.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/up.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/upActive.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/upHover.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/warningIcon.gif",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/skin/xp/warningIcon.png",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/firebug-lite/src",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/firebug-lite/src/firebug-lite-debug.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/json-js",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/json-js/json2.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/underscore/LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test",
+        "type": "tree"
+      },
+      {
+        "path": "vendor/underscore/test/arrays.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/chaining.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/collections.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/cross-document.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/functions.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/objects.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/test/utility.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/underscore-min.js",
+        "type": "blob"
+      },
+      {
+        "path": "vendor/underscore/underscore.js",
+        "type": "blob"
+      }
+    ],
+    "packageJson": {
+      "name": "lodash",
+      "version": "4.17.23",
+      "license": "MIT",
+      "private": true,
+      "main": "lodash.js",
+      "engines": {
+        "node": ">=4.0.0"
+      },
+      "scripts": {
+        "build": "npm run build:main && npm run build:fp",
+        "build:fp": "node lib/fp/build-dist.js",
+        "build:fp-modules": "node lib/fp/build-modules.js",
+        "build:main": "node lib/main/build-dist.js",
+        "build:main-modules": "node lib/main/build-modules.js",
+        "doc": "node lib/main/build-doc github && npm run test:doc",
+        "doc:fp": "node lib/fp/build-doc",
+        "doc:site": "node lib/main/build-doc site",
+        "doc:sitehtml": "optional-dev-dependency marky-markdown@^9.0.1 && npm run doc:site && node lib/main/build-site",
+        "pretest": "npm run build",
+        "style": "npm run style:main && npm run style:fp && npm run style:perf && npm run style:test",
+        "style:fp": "jscs fp/*.js lib/**/*.js",
+        "style:main": "jscs lodash.js",
+        "style:perf": "jscs perf/*.js perf/**/*.js",
+        "style:test": "jscs test/*.js test/**/*.js",
+        "test": "npm run test:main && npm run test:fp",
+        "test:doc": "markdown-doctest doc/*.md",
+        "test:fp": "node test/test-fp",
+        "test:main": "node test/test",
+        "validate": "npm run style && npm run test"
+      },
+      "devDependencies": {
+        "async": "^2.6.3",
+        "benchmark": "^2.1.3",
+        "chalk": "^1.1.3",
+        "cheerio": "^0.22.0",
+        "codecov.io": "~0.1.6",
+        "coveralls": "^2.11.15",
+        "curl-amd": "~0.8.12",
+        "docdown": "~0.7.2",
+        "dojo": "^1.15.0",
+        "ecstatic": "^2.2.2",
+        "fs-extra": "~1.0.0",
+        "glob": "^7.1.4",
+        "istanbul": "0.4.5",
+        "jquery": "^3.4.1",
+        "jscs": "^3.0.7",
+        "lodash": "4.17.20",
+        "lodash-doc-globals": "^0.1.1",
+        "markdown-doctest": "^0.9.1",
+        "optional-dev-dependency": "^2.0.0",
+        "platform": "^1.3.3",
+        "qunit-extras": "^3.0.0",
+        "qunitjs": "^2.1.0",
+        "request": "^2.88.0",
+        "requirejs": "^2.3.6",
+        "sauce-tunnel": "^2.5.0",
+        "uglify-js": "2.7.5",
+        "webpack": "^1.14.0"
+      }
+    }
+  },
+  "analysis": {
+    "repo": "lodash/lodash",
+    "repoType": "library",
+    "language": "javascript",
+    "repoScore": 76,
+    "scores": {
+      "documentation": 70,
+      "structure": 85,
+      "discoverability": 70,
+      "maintenance": 59,
+      "adoption": 99,
+      "agentSafety": null
+    },
+    "improvements": [
+      "Include API or reference details in the README.",
+      "Document configuration, environment variables, or runtime options.",
+      "Add a small set of README badges for version, CI, or quality signals.",
+      "Use README headings like installation, usage, examples, or API reference.",
+      "Publish releases more consistently so maintenance cadence is easier to trust.",
+      "Improve visible issue response activity so maintainers appear responsive."
+    ],
+    "analyzedAt": "2026-03-11T01:54:22.701Z"
+  }
+}

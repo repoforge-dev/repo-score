@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-11T01:04:46.802Z",
-  "analysisModelVersion": 9,
+  "cachedAt": "2026-03-11T01:54:23.562Z",
+  "analysisModelVersion": 14,
   "snapshot": {
     "owner": "openai",
     "repo": "openai-python",
@@ -5561,14 +5561,14 @@
   },
   "analysis": {
     "repo": "openai/openai-python",
-    "repoType": "library",
+    "repoType": "sdk",
     "language": "python",
-    "repoScore": 96,
+    "repoScore": 85,
     "scores": {
-      "documentation": 100,
-      "structure": 85,
-      "discoverability": 100,
-      "maintenance": 100,
+      "documentation": 95,
+      "structure": 75,
+      "discoverability": 72,
+      "maintenance": 85,
       "adoption": 97,
       "agentSafety": null
     },
@@ -5576,6 +5576,6 @@
       "Add linting or formatting configuration to make code standards explicit.",
       "Add more GitHub topics so the project is easier to discover."
     ],
-    "analyzedAt": "2026-03-11T01:04:46.802Z"
+    "analyzedAt": "2026-03-11T01:54:23.562Z"
   }
 }

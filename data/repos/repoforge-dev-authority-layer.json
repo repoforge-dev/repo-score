@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-11T01:04:46.820Z",
-  "analysisModelVersion": 9,
+  "cachedAt": "2026-03-11T01:54:23.539Z",
+  "analysisModelVersion": 14,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "authority-layer",
@@ -298,16 +298,16 @@
   },
   "analysis": {
     "repo": "repoforge-dev/authority-layer",
-    "repoType": "ai-tooling",
+    "repoType": "analysis-tool",
     "language": "typescript",
-    "repoScore": 78,
+    "repoScore": 66,
     "scores": {
-      "documentation": 100,
-      "structure": 85,
-      "discoverability": 80,
-      "maintenance": 61,
+      "documentation": 95,
+      "structure": 75,
+      "discoverability": 65,
+      "maintenance": 50,
       "adoption": 3,
-      "agentSafety": 100
+      "agentSafety": null
     },
     "improvements": [
       "Add linting or formatting configuration to make code standards explicit.",
@@ -318,6 +318,6 @@
       "Grow downstream usage and integration signals to strengthen adoption confidence.",
       "Broaden community contribution so adoption is not concentrated in a single maintainer."
     ],
-    "analyzedAt": "2026-03-11T01:04:46.820Z"
+    "analyzedAt": "2026-03-11T01:54:23.539Z"
   }
 }

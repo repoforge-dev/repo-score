@@ -1,51 +1,68 @@
 'use strict';
 
 const TYPE_PRIORITY = [
+  'system-project',
+  'learning-platform',
+  'language-tooling',
   'ai-agent-framework',
-  'agent-runtime',
   'ai-tooling',
-  'analysis-tool',
   'framework',
   'sdk',
   'cli-tool',
+  'analysis-tool',
   'application',
   'library',
+  'learning-resource',
   'dataset',
   'template',
-  'reference',
-  'learning-resource',
   'developer-tool',
 ];
 
 const SOURCE_WEIGHTS = {
-  packageJson: 1.5,
-  structure: 1.45,
-  dependencies: 1.3,
-  entrypoints: 1.2,
-  topics: 0.6,
-  readme: 0.5,
-  metadata: 0.5,
+  structure: 5,
+  packageJson: 2.5,
+  dependencies: 1.5,
+  entrypoints: 1,
+  topics: 1.5,
+  readme: 1,
+  metadata: 1,
 };
 
-const CLI_DEPENDENCIES = ['commander', 'yargs', 'oclif', 'cac', 'clipanion', 'ink'];
-const AI_TOOLING_DEPENDENCIES = [
+const CLI_DEPENDENCIES = ['commander', 'yargs', 'oclif', 'cac', 'clipanion', 'ink', 'cobra'];
+const FRAMEWORK_DEPENDENCIES = [
+  'next',
+  'nuxt',
+  'vite',
+  'vitepress',
+  'sveltekit',
+  '@nestjs/core',
+  'express',
+  'koa',
+  'fastify',
+  'hono',
+];
+const SDK_DEPENDENCIES = ['axios', 'got', 'undici', 'httpx', 'requests', 'aiohttp', 'fetch', 'grpc'];
+const AI_DEPENDENCIES = [
   'openai',
   '@anthropic-ai/sdk',
   'langchain',
   '@langchain/core',
+  '@langchain/openai',
   'llamaindex',
-  '@pinecone-database/pinecone',
-  'weaviate-client',
-  'chromadb',
-  '@qdrant/js-client-rest',
+  'transformers',
+  'sentence-transformers',
+  'tokenizers',
+  'torch',
+  'tensorflow',
+  'onnxruntime',
 ];
-const FRAMEWORK_DEPENDENCIES = ['koa', '@nestjs/core', 'fastify-plugin', 'hono', 'middy'];
-const AGENT_ORCHESTRATION_DEPENDENCIES = ['langgraph', '@mastra/core', 'autogen', 'crewai'];
+const AGENT_FRAMEWORK_DEPENDENCIES = ['langchain', 'langgraph', 'autogen', 'crewai', 'llamaindex'];
+const LANGUAGE_TOOLING_DEPENDENCIES = ['typescript', '@babel/core', 'esbuild', 'swc', 'tree-sitter'];
 
-function createEmptyScores() {
-  return TYPE_PRIORITY.reduce((scores, type) => {
-    scores[type] = 0;
-    return scores;
+function createScores() {
+  return TYPE_PRIORITY.reduce((accumulator, type) => {
+    accumulator[type] = 0;
+    return accumulator;
   }, {});
 }
 
@@ -64,21 +81,8 @@ function getDependencyMap(packageJson) {
     ...(packageJson?.dependencies || {}),
     ...(packageJson?.devDependencies || {}),
     ...(packageJson?.peerDependencies || {}),
+    ...(packageJson?.optionalDependencies || {}),
   };
-}
-
-function hasAnyDependency(dependencyMap, packages) {
-  return packages.some((packageName) => Object.prototype.hasOwnProperty.call(dependencyMap, packageName));
-}
-
-function hasAnyPath(files, patterns) {
-  return patterns.some((pattern) =>
-    files.some((filePath) => (pattern instanceof RegExp ? pattern.test(filePath) : filePath.includes(pattern)))
-  );
-}
-
-function countMarkdownFiles(files) {
-  return files.filter((filePath) => filePath.endsWith('.md')).length;
 }
 
 function getTopics(repoMetadata) {
@@ -87,16 +91,62 @@ function getTopics(repoMetadata) {
     : [];
 }
 
-function isStrongCliCandidate(packageJson, files, topics, readme) {
-  const name = String(packageJson?.name || '').toLowerCase();
+function hasDependency(dependencyMap, dependencies) {
+  return dependencies.some((dependency) => Object.prototype.hasOwnProperty.call(dependencyMap, dependency));
+}
 
-  return Boolean(
-    packageJson?.bin ||
-      name.endsWith('-cli') ||
-      topics.some((topic) => topic.includes('cli')) ||
-      /\bcli\b|\bcommand line\b/.test(readme) ||
-      hasAnyPath(files, [/^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])
+function countDependencies(dependencyMap, dependencies) {
+  return dependencies.filter((dependency) => Object.prototype.hasOwnProperty.call(dependencyMap, dependency)).length;
+}
+
+function hasPath(files, patterns) {
+  return patterns.some((pattern) =>
+    files.some((filePath) => (pattern instanceof RegExp ? pattern.test(filePath) : filePath.includes(pattern)))
   );
+}
+
+function countMatches(files, patterns) {
+  return files.filter((filePath) =>
+    patterns.some((pattern) => (pattern instanceof RegExp ? pattern.test(filePath) : filePath.includes(pattern)))
+  ).length;
+}
+
+function getTopLevelDirectories(files) {
+  return new Set(
+    files
+      .map((filePath) => filePath.split('/')[0])
+      .filter((segment) => segment && !segment.includes('.'))
+  );
+}
+
+function hasReadmeKeyword(readme, patterns) {
+  return patterns.some((pattern) => pattern.test(readme));
+}
+
+function getAgentRuntimeSignals(files, dependencyMap, readme) {
+  return [
+    hasPath(files, [/agent.*runtime/, /runtime.*agent/, /execution-loop/, /run-loop/, /agent-runner/, /orchestrator/]) ||
+      /\bagent runtime\b|\bexecution loop\b|\bautonomous execution\b/.test(readme),
+    hasPath(files, [/tool-execution/, /tool-runner/, /tools\/registry/, /tool-registry/, /tool-manager/]) ||
+      /\btool execution\b|\btool registry\b|\btool calling\b/.test(readme),
+    hasPath(files, [/memory\//, /memory-store/, /agent-memory/, /memory-manager/]) ||
+      /\bagent memory\b|\bmemory store\b/.test(readme),
+    hasPath(files, [/planner\//, /planning\//, /task-planner/, /plan-executor/]) ||
+      /\bplanner\b|\bplanning module\b/.test(readme),
+    hasPath(files, [/decision-loop/, /goal-manager/, /autonomous/, /policy-engine/]) ||
+      /\bautonomous agent\b|\bautonomous loop\b|\bdecision loop\b/.test(readme),
+    countDependencies(dependencyMap, AGENT_FRAMEWORK_DEPENDENCIES) >= 2,
+  ].filter(Boolean).length;
+}
+
+function getAgentContextSignals(readme, topics, description) {
+  return [
+    topics.some((topic) => topic.includes('ai-agents') || topic.includes('agents') || topic.includes('multiagent')),
+    /\bagents?\b/.test(readme),
+    /\btools?\b|\btoolkits?\b/.test(readme),
+    /\bmemory\b/.test(readme),
+    /\bagent\b|\bautonomous\b/.test(description),
+  ].filter(Boolean).length;
 }
 
 function collectPackageSignals(scores, packageJson) {
@@ -108,48 +158,50 @@ function collectPackageSignals(scores, packageJson) {
     ? packageJson.keywords.map((keyword) => String(keyword).toLowerCase())
     : [];
   const scripts = Object.keys(packageJson.scripts || {}).map((script) => script.toLowerCase());
-  const name = String(packageJson.name || '').toLowerCase();
+  const packageName = String(packageJson.name || '').toLowerCase();
+  const exportsField = packageJson.exports;
 
   if (packageJson.bin) {
-    addScore(scores, 'cli-tool', 'packageJson', 11);
+    addScore(scores, 'cli-tool', 'packageJson', 8);
   }
 
-  if (packageJson.exports) {
-    addScore(scores, 'library', 'packageJson', 10);
-  }
-
-  if ((packageJson.main || packageJson.module) && !packageJson.private) {
-    addScore(scores, 'library', 'packageJson', 6);
+  if (exportsField || packageJson.main || packageJson.module) {
+    addScore(scores, 'library', 'packageJson', 8);
   }
 
   if (packageJson.types || packageJson.typings) {
-    addScore(scores, 'library', 'packageJson', 4);
-    addScore(scores, 'sdk', 'packageJson', 2);
-  }
-
-  if (Array.isArray(packageJson.files) && packageJson.files.some((entry) => String(entry).startsWith('dist'))) {
     addScore(scores, 'library', 'packageJson', 3);
+    addScore(scores, 'sdk', 'packageJson', 2);
+    addScore(scores, 'language-tooling', 'packageJson', 2);
   }
 
-  if (packageJson.private && scripts.some((script) => ['dev', 'start', 'preview', 'serve'].includes(script))) {
-    addScore(scores, 'application', 'packageJson', 8);
+  if (packageJson.private && scripts.some((script) => ['dev', 'start', 'serve', 'preview'].includes(script))) {
+    addScore(scores, 'application', 'packageJson', 7);
   }
 
   if (packageJson.workspaces) {
-    addScore(scores, 'framework', 'packageJson', 2);
-    addScore(scores, 'developer-tool', 'packageJson', 1);
+    addScore(scores, 'framework', 'packageJson', 3);
+    addScore(scores, 'learning-platform', 'packageJson', 2);
   }
 
-  if (name.includes('sdk') || keywords.some((keyword) => keyword.includes('sdk'))) {
-    addScore(scores, 'sdk', 'packageJson', 8);
+  if (packageName.includes('sdk') || keywords.some((keyword) => keyword.includes('sdk'))) {
+    addScore(scores, 'sdk', 'packageJson', 7);
   }
 
-  if (keywords.some((keyword) => keyword.includes('analysis') || keyword.includes('repository-analysis') || keyword.includes('repo-quality'))) {
-    addScore(scores, 'analysis-tool', 'packageJson', 5);
+  if (keywords.some((keyword) => keyword.includes('framework'))) {
+    addScore(scores, 'framework', 'packageJson', 6);
   }
 
-  if (keywords.some((keyword) => keyword.includes('developer-tool') || keyword.includes('developer-tools') || keyword.includes('developer-experience'))) {
-    addScore(scores, 'developer-tool', 'packageJson', 4);
+  if (keywords.some((keyword) => keyword.includes('cli') || keyword.includes('command-line'))) {
+    addScore(scores, 'cli-tool', 'packageJson', 5);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('analysis') || keyword.includes('scoring') || keyword.includes('repo-quality'))) {
+    addScore(scores, 'analysis-tool', 'packageJson', 6);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('developer-tool') || keyword.includes('developer-tools'))) {
+    addScore(scores, 'developer-tool', 'packageJson', 5);
   }
 
   if (keywords.some((keyword) => keyword.includes('template') || keyword.includes('starter') || keyword.includes('boilerplate'))) {
@@ -159,218 +211,236 @@ function collectPackageSignals(scores, packageJson) {
   if (keywords.some((keyword) => keyword.includes('dataset') || keyword.includes('benchmark'))) {
     addScore(scores, 'dataset', 'packageJson', 6);
   }
+
+  if (keywords.some((keyword) => keyword.includes('compiler') || keyword.includes('transpiler') || keyword.includes('language-server'))) {
+    addScore(scores, 'language-tooling', 'packageJson', 8);
+  }
 }
 
 function collectDependencySignals(scores, packageJson) {
   const dependencyMap = getDependencyMap(packageJson);
-  const dependencyNames = Object.keys(dependencyMap);
-
-  if (dependencyNames.length === 0) {
-    return;
+  if (Object.keys(dependencyMap).length === 0) {
+    return dependencyMap;
   }
 
-  if (hasAnyDependency(dependencyMap, CLI_DEPENDENCIES)) {
-    addScore(scores, 'cli-tool', 'dependencies', 9);
+  if (hasDependency(dependencyMap, CLI_DEPENDENCIES)) {
+    addScore(scores, 'cli-tool', 'dependencies', 7);
   }
 
-  if (hasAnyDependency(dependencyMap, AI_TOOLING_DEPENDENCIES)) {
-    addScore(scores, 'ai-tooling', 'dependencies', 10);
-  }
-
-  if (hasAnyDependency(dependencyMap, FRAMEWORK_DEPENDENCIES)) {
+  if (hasDependency(dependencyMap, FRAMEWORK_DEPENDENCIES)) {
     addScore(scores, 'framework', 'dependencies', 7);
   }
 
+  if (hasDependency(dependencyMap, SDK_DEPENDENCIES)) {
+    addScore(scores, 'sdk', 'dependencies', 5);
+  }
+
+  if (hasDependency(dependencyMap, AI_DEPENDENCIES)) {
+    addScore(scores, 'ai-tooling', 'dependencies', 7);
+  }
+
+  if (countDependencies(dependencyMap, AGENT_FRAMEWORK_DEPENDENCIES) >= 2) {
+    addScore(scores, 'ai-agent-framework', 'dependencies', 9);
+  }
+
+  if (hasDependency(dependencyMap, LANGUAGE_TOOLING_DEPENDENCIES)) {
+    addScore(scores, 'language-tooling', 'dependencies', 8);
+  }
+
   if (Object.keys(packageJson?.peerDependencies || {}).length > 0) {
-    addScore(scores, 'library', 'dependencies', 4);
+    addScore(scores, 'library', 'dependencies', 3);
     addScore(scores, 'framework', 'dependencies', 2);
   }
 
-  if (packageJson?.private && hasAnyDependency(dependencyMap, ['next', 'react', 'vite', 'express', 'fastify'])) {
-    addScore(scores, 'application', 'dependencies', 6);
-  }
-
-  if (hasAnyDependency(dependencyMap, ['octokit', '@octokit/rest', 'simple-git'])) {
-    addScore(scores, 'analysis-tool', 'dependencies', 4);
-    addScore(scores, 'developer-tool', 'dependencies', 3);
-  }
+  return dependencyMap;
 }
 
-function getAgentFrameworkSignals(files, dependencyMap, readme) {
-  const agentSignalChecks = [
-    hasAnyPath(files, [/agent.*runtime/, /runtime.*agent/, /execution-loop/, /run-loop/, /agent-runner/, /orchestrator/]) ||
-      /\bagent runtime loop\b|\bexecution loop\b|\brun loop\b/.test(readme),
-    hasAnyPath(files, [/tool-execution/, /tool-runner/, /execute-tool/, /tool-manager/, /tools\//]) ||
-      /\btool execution\b|\bexecute tools?\b/.test(readme),
-    hasAnyPath(files, [/memory\//, /memory-store/, /agent-memory/, /memory-layer/]) ||
-      /\bagent memory\b|\bmemory store\b/.test(readme),
-    hasAnyPath(files, [/planner\//, /planning\//, /task-planner/, /plan-executor/]) ||
-      /\bplanner module\b|\bplanning module\b/.test(readme),
-    hasAnyPath(files, [/tool-registry/, /registry\/tools/, /tools\/registry/, /registry\/index/]) ||
-      /\btool registry\b/.test(readme),
-    hasAnyPath(files, [/decision-loop/, /autonomous/, /policy-engine/, /goal-manager/]) ||
-      /\bautonomous decision loop\b|\bautonomous execution\b/.test(readme),
-  ];
-
-  const runtimeSignalCount = agentSignalChecks.filter(Boolean).length;
-  const orchestrationDependencyCount = AGENT_ORCHESTRATION_DEPENDENCIES.filter((dependency) =>
-    Object.prototype.hasOwnProperty.call(dependencyMap, dependency)
-  ).length;
-
-  return {
-    runtimeSignalCount,
-    orchestrationDependencyCount,
-  };
-}
-
-function collectStructureSignals(scores, input) {
+function collectStructureSignals(scores, input, dependencyMap) {
   const files = getFilePaths(input.fileTree);
-  const markdownCount = countMarkdownFiles(files);
-  const packageJson = input.packageJson || null;
-  const dependencyMap = getDependencyMap(packageJson);
   const readme = String(input.readmeContent || '').toLowerCase();
+  const topics = getTopics(input.repoMetadata || {});
+  const description = String(input.repoMetadata?.description || '').toLowerCase();
+  const topLevelDirectories = getTopLevelDirectories(files);
+  const pythonPackageCount = countMatches(files, [/\/__init__\.py$/, /^__init__\.py$/]);
+  const readmeCount = countMatches(files, [/\/readme\.md$/, /^readme\.md$/]);
+  const agentRuntimeSignals = getAgentRuntimeSignals(files, dependencyMap, readme);
+  const agentContextSignals = getAgentContextSignals(readme, topics, description);
 
-  if (hasAnyPath(files, [/^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])) {
-    addScore(scores, 'cli-tool', 'structure', 8);
+  if (
+    ['arch', 'drivers', 'fs', 'include', 'init', 'kernel', 'mm', 'net'].filter((directory) => topLevelDirectories.has(directory)).length >= 5 ||
+    hasPath(files, [/^arch\//, /^drivers\//, /^fs\//, /^kernel\//, /^mm\//, /^net\//, /^init\//, /(^|\/)kconfig$/])
+  ) {
+    addScore(scores, 'system-project', 'structure', 12);
   }
 
-  if (hasAnyPath(files, [/^src\/index\./, /^lib\//, /^dist\//])) {
-    addScore(scores, 'library', 'structure', 6);
+  if (
+    hasPath(files, [/^curriculum\//, /^courses?\//, /^lessons?\//, /^certifications?\//, /\/learn\//]) &&
+    hasPath(files, [/^app\//, /^api\//, /^client\//, /^server\//, /^web\//])
+  ) {
+    addScore(scores, 'learning-platform', 'structure', 12);
+    addScore(scores, 'application', 'structure', 4);
   }
 
-  if (hasAnyPath(files, [/^packages\/[^/]+\/(src\/)?index\./])) {
-    addScore(scores, 'library', 'structure', 6);
+  if (
+    ((readmeCount >= 5 &&
+      hasPath(files, [/algorithm/, /tutorial/, /lesson/, /practice/, /examples?\//])) &&
+      (topics.some((topic) => topic.includes('education') || topic.includes('learn') || topic.includes('practice')) ||
+        description.includes('education') ||
+        description.includes('algorithm') ||
+        /\bfor education\b|\blearn\b|\bpractice\b/.test(readme))) ||
+    (topLevelDirectories.size >= 12 &&
+      !hasPath(files, [/^app\//, /^api\//, /^server\//, /^client\//]) &&
+      hasPath(files, [/algorithm/, /tutorial/, /lesson/, /practice/, /examples?\//]) &&
+      (topics.some((topic) => topic.includes('education') || topic.includes('learn') || topic.includes('practice')) ||
+        description.includes('education') ||
+        description.includes('algorithm')))
+  ) {
+    addScore(scores, 'learning-resource', 'structure', 7);
   }
 
-  if (hasAnyPath(files, [/^src\/[^/]+\/__init__\.py$/, /^[^/]+\/__init__\.py$/])) {
-    addScore(scores, 'library', 'structure', 8);
-    addScore(scores, 'sdk', 'structure', 6);
+  if (hasPath(files, [/^src\//, /^lib\//, /^packages\//, /^include\//]) || pythonPackageCount >= 2) {
+    addScore(scores, 'library', 'structure', 7);
   }
 
-  if (hasAnyPath(files, [/^app\//, /^pages\//, /^public\//, /^routes\//, /^prisma\//, /^server\./])) {
-    addScore(scores, 'application', 'structure', 7);
+  if (pythonPackageCount >= 10) {
+    addScore(scores, 'library', 'structure', 5);
   }
 
-  if (hasAnyPath(files, [/^plugins\//, /^middleware\//, /^adapters\//, /^integrations\//])) {
-    addScore(scores, 'framework', 'structure', 8);
+  if (hasPath(files, [/^app\//, /^pages\//, /^public\//, /^server\//, /^api\//, /^client\//, /^web\//])) {
+    addScore(scores, 'application', 'structure', 6);
   }
 
-  if (hasAnyPath(files, [/^packages\//])) {
-    addScore(scores, 'framework', 'structure', 3);
+  if (
+    hasPath(files, [/next\.config\./, /vite\.config\./, /nuxt\.config\./, /svelte\.config\./, /^routes\//, /^router\//, /^middleware\//, /^plugins\//]) ||
+    (hasPath(files, [/^packages\//]) && hasPath(files, [/^packages\/[^/]+\/src\//, /^packages\/[^/]+\/server\//]))
+  ) {
+    addScore(scores, 'framework', 'structure', 9);
   }
 
-  if (hasAnyPath(files, [/^templates\//, /^starter\//, /boilerplate/, /^examples\/starter/])) {
-    addScore(scores, 'template', 'structure', 8);
+  if (hasPath(files, [/^src\/platforms\//, /(^|\/)runtime-core\//, /(^|\/)compiler-core\//, /(^|\/)compiler-sfc\//, /(^|\/)packages\/vue\//])) {
+    addScore(scores, 'framework', 'structure', 6);
   }
 
-  if (hasAnyPath(files, [/^data\//, /\.csv$/, /\.jsonl$/, /\.parquet$/, /\.tsv$/])) {
-    addScore(scores, 'dataset', 'structure', 8);
+  if (hasPath(files, [/^cmd\//, /^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])) {
+    addScore(scores, 'cli-tool', 'structure', 9);
   }
 
-  if (hasAnyPath(files, [/^api\//, /^analyzer\//, /^scoring\//, /^scanners\//])) {
-    addScore(scores, 'analysis-tool', 'structure', 9);
+  if (hasPath(files, [/^api\//, /^analyzers?\//, /^scanners?\//, /^scoring\//, /^reports\//, /^metrics\//]) || hasPath(files, [/^data\/repos\//, /^cache\//])) {
+    addScore(scores, 'analysis-tool', 'structure', 10);
   }
 
-  if (hasAnyPath(files, [/^cache\//, /^data\/repos\//])) {
-    addScore(scores, 'analysis-tool', 'structure', 5);
+  if (hasPath(files, [/^docs\/architecture\.md$/, /^docs\/enforcement\.md$/, /doctor\.(ts|js|py)$/])) {
+    addScore(scores, 'analysis-tool', 'structure', 4);
   }
 
-  if (hasAnyPath(files, [/^utils\//, /^docs\//, /^\.github\//])) {
-    addScore(scores, 'developer-tool', 'structure', 3);
+  if (hasPath(files, [/(^|\/)(embeddings?|prompts?|tokenizers?|models?|pipelines?|vector(store|db)?|guardrails?|policies|safety)(\/|$)/])) {
+    addScore(scores, 'ai-tooling', 'structure', 8);
   }
 
-  if (hasAnyPath(files, [/(^|\/)(prompts?|embeddings?|vector(store|db)?|rag|providers|models)(\/|$)/])) {
+  if (hasPath(files, [/^src\/transformers\//, /(^|\/)(modeling|tokenization|generation|pipelines?)_/])) {
     addScore(scores, 'ai-tooling', 'structure', 7);
   }
 
-  if (hasAnyPath(files, [/(^|\/)(guardrails?|enforcement|budget(guard)?|tool(throttle|guard)|integrity)(\/|$)/])) {
-    addScore(scores, 'ai-tooling', 'structure', 6);
+  if (agentRuntimeSignals >= 3 || (agentRuntimeSignals >= 1 && agentContextSignals >= 3)) {
+    addScore(scores, 'ai-agent-framework', 'structure', 12);
   }
 
-  const agentSignals = getAgentFrameworkSignals(files, dependencyMap, readme);
-  if (agentSignals.runtimeSignalCount >= 2) {
-    addScore(scores, 'ai-agent-framework', 'structure', 16);
-    addScore(scores, 'agent-runtime', 'structure', 6);
-  } else if (agentSignals.runtimeSignalCount === 1 && agentSignals.orchestrationDependencyCount > 0) {
-    addScore(scores, 'agent-runtime', 'structure', 7);
+  if (
+    hasPath(files, [
+      /^src\/compiler\//,
+      /^src\/services\//,
+      /^src\/server\//,
+      /(^|\/)(tsserver|language-?service|transpiler)(\/|\.|$)/,
+      /(^|\/)typescript\/src\/compiler\//,
+    ])
+  ) {
+    addScore(scores, 'language-tooling', 'structure', 12);
   }
 
-  if (hasAnyPath(files, [/runtime\//, /workflow\//, /orchestrator\//, /executor\//])) {
-    addScore(scores, 'agent-runtime', 'structure', 5);
+  if (hasPath(files, [/^templates?\//, /^starters?\//, /boilerplate/, /scaffold/])) {
+    addScore(scores, 'template', 'structure', 8);
   }
 
-  if (hasAnyPath(files, [/^docs\//, /^guides\//]) && markdownCount >= 4 && !packageJson) {
-    addScore(scores, 'reference', 'structure', 7);
+  if (hasPath(files, [/^data\//, /\.csv$/, /\.jsonl$/, /\.parquet$/, /\.tsv$/])) {
+    addScore(scores, 'dataset', 'structure', 8);
   }
 
-  if (markdownCount >= 6 && hasAnyPath(files, [/curriculum/, /roadmap/, /lessons?/, /tutorials?/])) {
-    addScore(scores, 'learning-resource', 'structure', 7);
+  if (hasPath(files, [/^src\/.*client/, /^clients?\//, /^services\//, /^resources\//, /_client\./, /client\.(ts|js|py|go|rb)$/])) {
+    addScore(scores, 'sdk', 'structure', 7);
   }
 }
 
 function collectEntrypointSignals(scores, input) {
-  const packageJson = input.packageJson || null;
   const files = getFilePaths(input.fileTree);
+  const packageJson = input.packageJson || null;
   const scripts = Object.keys(packageJson?.scripts || {}).map((script) => script.toLowerCase());
 
-  if (packageJson?.bin) {
-    addScore(scores, 'cli-tool', 'entrypoints', 6);
+  if (packageJson?.bin || hasPath(files, [/^cmd\/[^/]+\/main\.go$/, /^bin\/[^/]+$/, /^bin\/[^/]+\.(js|ts|mjs|cjs|py)$/])) {
+    addScore(scores, 'cli-tool', 'entrypoints', 7);
   }
 
-  if (packageJson?.main || packageJson?.module || packageJson?.exports) {
+  if (packageJson?.exports || packageJson?.main || packageJson?.module) {
     addScore(scores, 'library', 'entrypoints', 4);
   }
 
-  if (scripts.some((script) => ['start', 'dev', 'serve', 'preview'].includes(script)) && hasAnyPath(files, [/server\./, /^api\//, /^app\//])) {
-    addScore(scores, 'application', 'entrypoints', 6);
+  if (scripts.some((script) => ['dev', 'start', 'serve', 'preview'].includes(script)) && hasPath(files, [/^app\//, /^api\//, /^server\//])) {
+    addScore(scores, 'application', 'entrypoints', 5);
   }
 
-  if (scripts.some((script) => script.startsWith('scan') || script.includes('analyze'))) {
+  if (scripts.some((script) => script.includes('build') || script.includes('compiler') || script.includes('tsc'))) {
+    addScore(scores, 'language-tooling', 'entrypoints', 3);
+  }
+
+  if (scripts.some((script) => script.includes('analy') || script.includes('scan') || script.includes('score'))) {
     addScore(scores, 'analysis-tool', 'entrypoints', 4);
   }
 }
 
 function collectTopicSignals(scores, topics) {
   for (const topic of topics) {
-    if (topic.includes('analysis') || topic.includes('repo-quality') || topic.includes('github-analysis')) {
-      addScore(scores, 'analysis-tool', 'topics', 4);
+    if (topic.includes('framework')) {
+      addScore(scores, 'framework', 'topics', 4);
     }
 
-    if (topic.includes('developer-tool') || topic.includes('developer-tools')) {
-      addScore(scores, 'developer-tool', 'topics', 3);
+    if (topic.includes('cli') || topic.includes('command-line')) {
+      addScore(scores, 'cli-tool', 'topics', 4);
     }
 
     if (topic.includes('sdk')) {
       addScore(scores, 'sdk', 'topics', 4);
     }
 
-    if (topic.includes('cli')) {
-      addScore(scores, 'cli-tool', 'topics', 4);
+    if (topic.includes('analysis') || topic.includes('repo-quality') || topic.includes('developer-insights')) {
+      addScore(scores, 'analysis-tool', 'topics', 4);
     }
 
-    if (topic.includes('framework')) {
-      addScore(scores, 'framework', 'topics', 3);
+    if (topic.includes('developer-tool')) {
+      addScore(scores, 'developer-tool', 'topics', 3);
     }
 
-    if (
-      topic.includes('ai-guardrails') ||
-      topic.includes('llm-security') ||
-      topic.includes('runtime-safety') ||
-      topic.includes('execution-limits')
-    ) {
-      addScore(scores, 'ai-tooling', 'topics', 4);
+    if (topic.includes('education') || topic.includes('curriculum') || topic.includes('certification')) {
+      addScore(scores, 'learning-platform', 'topics', 4);
+      addScore(scores, 'learning-resource', 'topics', 3);
     }
 
-    if (topic.includes('dataset') || topic.includes('benchmark')) {
-      addScore(scores, 'dataset', 'topics', 4);
+    if (topic.includes('algorithm') || topic.includes('practice') || topic.includes('learn')) {
+      addScore(scores, 'learning-resource', 'topics', 3);
     }
 
-    if (topic.includes('template') || topic.includes('starter')) {
-      addScore(scores, 'template', 'topics', 4);
+    if (topic.includes('language') || topic.includes('compiler') || topic.includes('transpiler')) {
+      addScore(scores, 'language-tooling', 'topics', 4);
     }
 
-    if (topic.includes('rag') || topic.includes('embeddings') || topic.includes('vector-db')) {
-      addScore(scores, 'ai-tooling', 'topics', 4);
+    if (topic.includes('kernel') || topic.includes('operating-system')) {
+      addScore(scores, 'system-project', 'topics', 4);
+    }
+
+    if (topic.includes('llm') || topic.includes('embeddings') || topic.includes('vector') || topic.includes('ml') || topic.includes('nlp')) {
+      addScore(scores, 'ai-tooling', 'topics', 3);
+    }
+
+    if (topic.includes('agent') || topic.includes('autonomous-agent')) {
+      addScore(scores, 'ai-agent-framework', 'topics', 2);
     }
   }
 }
@@ -380,99 +450,275 @@ function collectReadmeSignals(scores, readme) {
     return;
   }
 
-  if (/\banaly(?:sis|ze|zes|zing)\b|\bscore breakdown\b|\brepository quality\b/.test(readme)) {
-    addScore(scores, 'analysis-tool', 'readme', 3);
+  if (hasReadmeKeyword(readme, [/\brepository quality\b/, /\brepo score\b/, /\bscore breakdown\b/, /\banalyze github repositories\b/])) {
+    addScore(scores, 'analysis-tool', 'readme', 4);
   }
 
-  if (/\bdeveloper workflow\b|\bmaintainers?\b|\bonboarding\b/.test(readme)) {
-    addScore(scores, 'developer-tool', 'readme', 2);
+  if (hasReadmeKeyword(readme, [/\bframework\b/, /\bplugin system\b/, /\bmiddleware\b/, /\brouting\b/, /\bserver rendering\b/])) {
+    addScore(scores, 'framework', 'readme', 3);
   }
 
-  if (/\bcli\b|\bcommand line\b/.test(readme)) {
-    addScore(scores, 'cli-tool', 'readme', 2);
+  if (hasReadmeKeyword(readme, [/\bcommand line\b/, /\bcli\b/, /\bterminal\b/])) {
+    addScore(scores, 'cli-tool', 'readme', 3);
   }
 
-  if (/\bembeddings?\b|\bprompt\b|\bvector store\b|\brag\b/.test(readme)) {
+  if (hasReadmeKeyword(readme, [/\bcommand line tools?\b/, /#!\/usr\/bin\/env node/, /\bgenerate completion scripts\b/])) {
+    addScore(scores, 'cli-tool', 'readme', 4);
+  }
+
+  if (hasReadmeKeyword(readme, [/\bofficial\b.*\blibrary\b/, /\bapi client\b/, /\brest api\b/, /\bservice client\b/])) {
+    addScore(scores, 'sdk', 'readme', 4);
+  }
+
+  if (hasReadmeKeyword(readme, [/\blibrary for\b/, /\bjavascript library\b/, /\bpython module\b/])) {
+    addScore(scores, 'library', 'readme', 3);
+  }
+
+  if (hasReadmeKeyword(readme, [/\bprompt\b/, /\bembedding\b/, /\bvector store\b/, /\btokenizer\b/, /\bmodel weights?\b/])) {
     addScore(scores, 'ai-tooling', 'readme', 3);
   }
 
-  if (/\bguardrails?\b|\btoken budgets?\b|\btool calls?\b|\bruntime limits?\b/.test(readme)) {
-    addScore(scores, 'ai-tooling', 'readme', 3);
+  if (hasReadmeKeyword(readme, [/\bplanner\b/, /\bmemory\b/, /\btool registry\b/, /\bautonomous\b/, /\bagent workflows?\b/])) {
+    addScore(scores, 'ai-agent-framework', 'readme', 3);
   }
 
-  if (/\bplugin system\b|\bmiddleware\b|\bextensible\b/.test(readme)) {
-    addScore(scores, 'framework', 'readme', 2);
+  if (hasReadmeKeyword(readme, [/\bcurriculum\b/, /\bcertification\b/, /\blearn to code\b/, /\blearning platform\b/])) {
+    addScore(scores, 'learning-platform', 'readme', 4);
+  }
+
+  if (hasReadmeKeyword(readme, [/\balgorithms?\b/, /\bfor education\b/, /\bpractice\b/, /\btutorial\b/])) {
+    addScore(scores, 'learning-resource', 'readme', 4);
+  }
+
+  if (hasReadmeKeyword(readme, [/\blanguage service\b/, /\bcompiler\b/, /\btranspiler\b/, /\btype checker\b/])) {
+    addScore(scores, 'language-tooling', 'readme', 4);
+  }
+
+  if (hasReadmeKeyword(readme, [/\bkernel\b/, /\bsource tree\b/, /\bdrivers\b/, /\boperating system\b/])) {
+    addScore(scores, 'system-project', 'readme', 5);
   }
 }
 
 function collectMetadataSignals(scores, repoMetadata) {
   const description = String(repoMetadata?.description || '').toLowerCase();
+  const language = String(repoMetadata?.language || '').toLowerCase();
+
+  if (description.includes('framework')) {
+    addScore(scores, 'framework', 'metadata', 7);
+  }
+
+  if (description.includes('command line') || description.includes('cli')) {
+    addScore(scores, 'cli-tool', 'metadata', 7);
+  }
+
+  if (description.includes('official') && description.includes('library')) {
+    addScore(scores, 'sdk', 'metadata', 8);
+    addScore(scores, 'library', 'metadata', 3);
+  }
+
+  if (description.includes('api') && (description.includes('library') || description.includes('client'))) {
+    addScore(scores, 'sdk', 'metadata', 7);
+  }
+
+  if (description.includes('official') && description.includes('api')) {
+    addScore(scores, 'sdk', 'metadata', 4);
+  }
 
   if (description.includes('library')) {
     addScore(scores, 'library', 'metadata', 8);
   }
 
-  if (description.includes('sdk')) {
-    addScore(scores, 'sdk', 'metadata', 5);
+  if (description.includes('analysis') || description.includes('scoring') || description.includes('quality')) {
+    addScore(scores, 'analysis-tool', 'metadata', 5);
   }
 
-  if (description.includes('official') && description.includes('library')) {
-    addScore(scores, 'sdk', 'metadata', 8);
-    addScore(scores, 'library', 'metadata', 4);
+  if (description.includes('developer tool')) {
+    addScore(scores, 'developer-tool', 'metadata', 4);
   }
 
-  if (description.includes('client library') || description.includes('api library')) {
-    addScore(scores, 'sdk', 'metadata', 6);
+  if (description.includes('curriculum') || description.includes('learn') || description.includes('certification')) {
+    addScore(scores, 'learning-platform', 'metadata', 8);
+    addScore(scores, 'learning-resource', 'metadata', 4);
   }
 
-  if (description.includes('framework')) {
-    addScore(scores, 'framework', 'metadata', 4);
+  if (description.includes('algorithm') || description.includes('education')) {
+    addScore(scores, 'learning-resource', 'metadata', 7);
   }
 
-  if (description.includes('analysis') || description.includes('repository quality')) {
-    addScore(scores, 'analysis-tool', 'metadata', 3);
+  if (description.includes('compiler') || description.includes('language service') || description.includes('transpiler')) {
+    addScore(scores, 'language-tooling', 'metadata', 7);
   }
 
-  if (description.includes('developer tool') || description.includes('developer workflow')) {
-    addScore(scores, 'developer-tool', 'metadata', 2);
+  if (description.includes('kernel') || description.includes('source tree')) {
+    addScore(scores, 'system-project', 'metadata', 9);
   }
 
-  if (description.includes('guardrails') || description.includes('runtime limits') || description.includes('llm security')) {
-    addScore(scores, 'ai-tooling', 'metadata', 4);
+  if (description.includes('machine learning') || description.includes('llm') || description.includes('transformer')) {
+    addScore(scores, 'ai-tooling', 'metadata', 8);
   }
 
-  if (description.includes('dataset') || description.includes('benchmark')) {
-    addScore(scores, 'dataset', 'metadata', 4);
+  if (description.includes('agent') || description.includes('autonomous')) {
+    addScore(scores, 'ai-agent-framework', 'metadata', 2);
   }
 
-  if (description.includes('template') || description.includes('starter')) {
-    addScore(scores, 'template', 'metadata', 4);
+  if (description.includes('guardrails') || description.includes('runtime limits') || description.includes('loop limits')) {
+    addScore(scores, 'analysis-tool', 'metadata', 6);
+  }
+
+  if (language === 'python') {
+    addScore(scores, 'library', 'metadata', 1);
+  }
+}
+
+function applySafetyGuards(scores, input, dependencyMap) {
+  const files = getFilePaths(input.fileTree);
+  const readme = String(input.readmeContent || '').toLowerCase();
+  const topics = getTopics(input.repoMetadata || {});
+  const packageJson = input.packageJson || null;
+  const description = String(input.repoMetadata?.description || '').toLowerCase();
+
+  const agentRuntimeSignals = getAgentRuntimeSignals(files, dependencyMap, readme);
+  const agentContextSignals = getAgentContextSignals(readme, topics, description);
+  if (agentRuntimeSignals < 3 && !(agentRuntimeSignals >= 1 && agentContextSignals >= 3)) {
+    scores['ai-agent-framework'] = 0;
+  }
+
+  const cliSignals =
+    Number(Boolean(packageJson?.bin)) +
+    Number(hasDependency(dependencyMap, CLI_DEPENDENCIES)) +
+    Number(hasPath(files, [/^cmd\//, /^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])) +
+    Number(/\bcommand line\b|\bcli\b/.test(readme)) +
+    Number(topics.some((topic) => topic.includes('cli')));
+
+  if (cliSignals < 2) {
+    scores['cli-tool'] = 0;
+  }
+
+  const frameworkSignals =
+    Number(hasPath(files, [/next\.config\./, /vite\.config\./, /nuxt\.config\./, /svelte\.config\./])) +
+    Number(hasPath(files, [/^routes\//, /^router\//, /^middleware\//, /^plugins\//])) +
+    Number(hasDependency(dependencyMap, FRAMEWORK_DEPENDENCIES)) +
+    Number(topics.some((topic) => topic.includes('framework'))) +
+    Number(/\bframework\b/.test(readme)) +
+    Number(String(input.repoMetadata?.description || '').toLowerCase().includes('framework'));
+
+  if (frameworkSignals < 2) {
+    scores['framework'] = Math.min(scores['framework'], 10);
+  } else {
+    scores['language-tooling'] = Math.min(scores['language-tooling'], 8);
+    scores['framework'] += 6;
+  }
+
+  const languageToolingSignals =
+    Number(
+      hasPath(files, [
+        /^src\/compiler\//,
+        /^src\/services\//,
+        /^src\/server\//,
+        /(^|\/)(tsserver|language-?service|transpiler)(\/|\.|$)/,
+        /(^|\/)typescript\/src\/compiler\//,
+      ])
+    ) +
+    Number(hasDependency(dependencyMap, LANGUAGE_TOOLING_DEPENDENCIES)) +
+    Number(/\bcompiler\b|\blanguage service\b|\btype checker\b/.test(readme)) +
+    Number(description.includes('compiler') || description.includes('language service'));
+
+  if (languageToolingSignals < 2) {
+    scores['language-tooling'] = 0;
+  }
+
+  const sdkSignals =
+    Number(description.includes('sdk')) +
+    Number(description.includes('api') && (description.includes('client') || description.includes('library'))) +
+    Number(readme.includes('rest api') || readme.includes('api client') || readme.includes('official')) +
+    Number(hasPath(files, [/^src\/.*client/, /^clients?\//, /^services\//, /^resources\//, /_client\./])) +
+    Number(hasDependency(dependencyMap, SDK_DEPENDENCIES));
+
+  if (sdkSignals < 2) {
+    scores['sdk'] = Math.min(scores['sdk'], 6);
+  } else {
+    scores['sdk'] += 5;
+    if (description.includes('official') && description.includes('api')) {
+      scores['library'] = Math.min(scores['library'], 10);
+      scores['sdk'] += 8;
+    }
+  }
+
+  if (description.includes('library') && cliSignals < 4) {
+    scores['cli-tool'] = Math.min(scores['cli-tool'], 6);
+  }
+
+  if (/\bcommand line tools?\b/.test(readme) || /\bcommand line\b/.test(description)) {
+    scores['cli-tool'] += 6;
+    if (cliSignals >= 3) {
+      scores['library'] = Math.min(scores['library'], 8);
+      scores['cli-tool'] += 4;
+    }
+  }
+
+  if (description.includes('library') && !/\bcommand line tools?\b/.test(readme)) {
+    scores['cli-tool'] = Math.min(scores['cli-tool'], 4);
+  }
+
+  if (
+    (description.includes('guardrails') || description.includes('runtime limits') || description.includes('loop limits')) &&
+    hasPath(files, [/^docs\/architecture\.md$/, /^docs\/enforcement\.md$/, /doctor\.(ts|js|py)$/])
+  ) {
+    scores['analysis-tool'] += 10;
+    scores['ai-agent-framework'] = Math.min(scores['ai-agent-framework'], 8);
+    scores['cli-tool'] = Math.min(scores['cli-tool'], 6);
+  }
+
+  if (
+    topics.some(
+      (topic) =>
+        topic.includes('machine-learning') ||
+        topic.includes('deep-learning') ||
+        topic.includes('nlp') ||
+        topic.includes('transformers')
+    )
+  ) {
+    scores['ai-tooling'] += 8;
+  }
+
+  const aiToolingSignals =
+    Number(hasDependency(dependencyMap, AI_DEPENDENCIES)) +
+    Number(
+      topics.some(
+        (topic) =>
+          topic.includes('ai') ||
+          topic.includes('llm') ||
+          topic.includes('ml') ||
+          topic.includes('machine-learning') ||
+          topic.includes('transformers') ||
+          topic.includes('nlp')
+      )
+    ) +
+    Number(/\bllm\b|\bembeddings?\b|\bprompt\b|\bvector store\b|\btokenizer\b|\btransformers?\b/.test(readme)) +
+    Number(/\bmachine learning\b|\btransformers?\b|\bllm\b/.test(description));
+
+  if (aiToolingSignals < 2) {
+    scores['ai-tooling'] = Math.min(scores['ai-tooling'], 6);
   }
 }
 
 function chooseBestType(scores) {
-  const ranked = TYPE_PRIORITY.map((type) => ({ type, score: scores[type] || 0 }))
-    .sort((left, right) => {
-      if (right.score !== left.score) {
-        return right.score - left.score;
-      }
+  const ranked = TYPE_PRIORITY.map((type) => ({ type, score: scores[type] || 0 })).sort((left, right) => {
+    if (right.score !== left.score) {
+      return right.score - left.score;
+    }
 
-      return TYPE_PRIORITY.indexOf(left.type) - TYPE_PRIORITY.indexOf(right.type);
-    });
+    return TYPE_PRIORITY.indexOf(left.type) - TYPE_PRIORITY.indexOf(right.type);
+  });
 
   const best = ranked[0] || { type: 'developer-tool', score: 0 };
   const runnerUp = ranked[1] || { score: 0 };
-  const confidenceGap = best.score - runnerUp.score;
 
-  if (best.score < 9) {
+  if (best.score < 8) {
     return 'developer-tool';
   }
 
-  if (best.type === 'ai-agent-framework' && best.score < 18) {
-    return 'developer-tool';
-  }
-
-  if (confidenceGap < 2.5 && best.score < 16) {
+  if (best.score - runnerUp.score < 3 && best.score < 18) {
     return 'developer-tool';
   }
 
@@ -480,24 +726,16 @@ function chooseBestType(scores) {
 }
 
 function detectRepoType(input) {
-  const repoMetadata = input.repoMetadata || {};
-  const packageJson = input.packageJson || null;
-  const readme = String(input.readmeContent || '').toLowerCase();
-  const topics = getTopics(repoMetadata);
-  const files = getFilePaths(input.fileTree);
-  const scores = createEmptyScores();
+  const scores = createScores();
+  const dependencyMap = collectDependencySignals(scores, input.packageJson || null);
 
-  collectPackageSignals(scores, packageJson);
-  collectDependencySignals(scores, packageJson);
-  collectStructureSignals(scores, input);
+  collectPackageSignals(scores, input.packageJson || null);
+  collectStructureSignals(scores, input, dependencyMap);
   collectEntrypointSignals(scores, input);
-  collectTopicSignals(scores, topics);
-  collectReadmeSignals(scores, readme);
-  collectMetadataSignals(scores, repoMetadata);
-
-  if (!isStrongCliCandidate(packageJson, files, topics, readme)) {
-    scores['cli-tool'] = 0;
-  }
+  collectTopicSignals(scores, getTopics(input.repoMetadata || {}));
+  collectReadmeSignals(scores, String(input.readmeContent || '').toLowerCase());
+  collectMetadataSignals(scores, input.repoMetadata || {});
+  applySafetyGuards(scores, input, dependencyMap);
 
   return chooseBestType(scores);
 }

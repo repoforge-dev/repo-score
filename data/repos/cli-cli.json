@@ -1,0 +1,6110 @@
+{
+  "cachedAt": "2026-03-11T01:54:22.725Z",
+  "analysisModelVersion": 14,
+  "snapshot": {
+    "owner": "cli",
+    "repo": "cli",
+    "repoMetadata": {
+      "name": "cli",
+      "description": "GitHub’s official command line tool",
+      "stargazers_count": 43080,
+      "forks_count": 8050,
+      "watchers_count": 43080,
+      "open_issues_count": 917,
+      "language": "Go",
+      "topics": [
+        "cli",
+        "git",
+        "github-api-v4",
+        "golang"
+      ],
+      "default_branch": "trunk",
+      "updated_at": "2026-03-11T00:58:13Z",
+      "homepage": "https://cli.github.com",
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 10,
+      "last_release_at": "2026-03-10T19:40:45Z",
+      "recent_issue_activity_count": 18,
+      "last_issue_updated_at": "2026-03-10T23:42:47Z"
+    },
+    "readmeContent": "# GitHub CLI\n\n`gh` is GitHub on the command line. It brings pull requests, issues, and other GitHub concepts to the terminal next to where you are already working with `git` and your code.\n\n![screenshot of gh pr status](https://user-images.githubusercontent.com/98482/84171218-327e7a80-aa40-11ea-8cd1-5177fc2d0e72.png)\n\nGitHub CLI is supported for users on GitHub.com, GitHub Enterprise Cloud, and GitHub Enterprise Server 2.20+ with support for macOS, Windows, and Linux.\n\n## Documentation\n\nFor [installation options see below](#installation), for usage instructions [see the manual]( https://cli.github.com/manual/).\n\n## Contributing\n\nIf anything feels off or if you feel that some functionality is missing, please check out the [contributing page](.github/CONTRIBUTING.md). There you will find instructions for sharing your feedback, building the tool locally, and submitting pull requests to the project.\n\nIf you are a hubber and are interested in shipping new commands for the CLI, check out our [doc on internal contributions](docs/working-with-us.md)\n\n<!-- this anchor is linked to from elsewhere, so avoid renaming it -->\n## Installation\n\n### [macOS](docs/install_macos.md)\n\n- [Homebrew](docs/install_macos.md#homebrew)\n- [Precompiled binaries](docs/install_macos.md#precompiled-binaries) on [releases page][]\n\nFor additional macOS packages and installers, see [community-supported docs](docs/install_macos.md#community-unofficial)\n\n### [Linux & Unix](docs/install_linux.md)\n\n- [Debian, Raspberry Pi, Ubuntu](docs/install_linux.md#debian)\n- [Amazon Linux, CentOS, Fedora, openSUSE, RHEL, SUSE](docs/install_linux.md#rpm)\n- [Precompiled binaries](docs/install_linux.md#precompiled-binaries) on [releases page][]\n\nFor additional Linux & Unix packages and installers, see [community-supported docs](docs/install_linux.md#community-unofficial)\n\n### [Windows](docs/install_windows.md)\n\n- [WinGet](docs/install_windows.md#winget)\n- [Precompiled binaries](docs/install_windows.md#precompiled-binaries) on [releases page][]\n\nFor additional Windows packages and installers, see [community-supported docs](docs/install_windows.md#community-unofficial)\n\n### Build from source\n\nSee here on how to [build GitHub CLI from source](docs/install_source.md).\n\n### GitHub Codespaces\n\nTo add GitHub CLI to your codespace, add the following to your [devcontainer file](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-features-to-a-devcontainer-file):\n\n```json\n\"features\": {\n  \"ghcr.io/devcontainers/features/github-cli:1\": {}\n}\n```\n\n### GitHub Actions\n\n[GitHub-hosted runners](https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners) have the GitHub CLI pre-installed, which is updated weekly.\n\nIf a specific version is needed, your GitHub Actions workflow will need to install it based on the [macOS](#macos), [Linux & Unix](#linux--unix), or [Windows](#windows) instructions above.\n\nFor information on all pre-installed tools, see [`actions/runner-images`](https://github.com/actions/runner-images)\n\n### Verification of binaries\n\nSince version 2.50.0, `gh` has been producing [Build Provenance Attestation](https://github.blog/changelog/2024-06-25-artifact-attestations-is-generally-available/), enabling a cryptographically verifiable paper-trail back to the origin GitHub repository, git revision, and build instructions used. The build provenance attestations are signed and rely on Public Good [Sigstore](https://www.sigstore.dev/) for PKI.\n\nThere are two common ways to verify a downloaded release, depending on whether `gh` is already installed or not. If `gh` is installed, it's trivial to verify a new release:\n\n- **Option 1: Using `gh` if already installed:**\n\n  ```shell\n  $ gh at verify -R cli/cli gh_2.62.0_macOS_arm64.zip\n  Loaded digest sha256:fdb77f31b8a6dd23c3fd858758d692a45f7fc76383e37d475bdcae038df92afc for file://gh_2.62.0_macOS_arm64.zip\n  Loaded 1 attestation from GitHub API\n  ✓ Verification succeeded!\n\n  sha256:fdb77f31b8a6dd23c3fd858758d692a45f7fc76383e37d475bdcae038df92afc was attested by:\n  REPO     PREDICATE_TYPE                  WORKFLOW\n  cli/cli  https://slsa.dev/provenance/v1  .github/workflows/deployment.yml@refs/heads/trunk\n  ```\n\n- **Option 2: Using Sigstore [`cosign`](https://github.com/sigstore/cosign):**\n\n  To perform this, download the [attestation](https://github.com/cli/cli/attestations) for the downloaded release and use cosign to verify the authenticity of the downloaded release:\n\n  ```shell\n  $ cosign verify-blob-attestation --bundle cli-cli-attestation-3120304.sigstore.json \\\n        --new-bundle-format \\\n        --certificate-oidc-issuer=\"https://token.actions.githubusercontent.com\" \\\n        --certificate-identity=\"https://github.com/cli/cli/.github/workflows/deployment.yml@refs/heads/trunk\" \\\n        gh_2.62.0_macOS_arm64.zip\n  Verified OK\n  ```\n\n## Comparison with hub\n\nFor many years, [hub](https://github.com/github/hub) was the unofficial GitHub CLI tool. `gh` is a new project that helps us explore\nwhat an official GitHub CLI tool can look like with a fundamentally different design. While both\ntools bring GitHub to the terminal, `hub` behaves as a proxy to `git`, and `gh` is a standalone\ntool. Check out our [more detailed explanation](docs/gh-vs-hub.md) to learn more.\n\n[releases page]: https://github.com/cli/cli/releases/latest\n",
+    "fileTree": [
+      {
+        "path": ".devcontainer",
+        "type": "tree"
+      },
+      {
+        "path": ".devcontainer/devcontainer.json",
+        "type": "blob"
+      },
+      {
+        "path": ".gitattributes",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/CODE-OF-CONDUCT.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/CODEOWNERS",
+        "type": "blob"
+      },
+      {
+        "path": ".github/CONTRIBUTING.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE",
+        "type": "tree"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/config.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/submit-a-design-proposal.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/ISSUE_TEMPLATE/submit-a-request.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/PULL_REQUEST_TEMPLATE.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/SECURITY.md",
+        "type": "blob"
+      },
+      {
+        "path": ".github/dependabot.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/licenses.tmpl",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/bump-go.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/codeql.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/deployment.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/detect-spam.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/go.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/govulncheck.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/homebrew-bump.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/lint.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/scripts/bump-go.sh",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/check-issue-prompts.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/check-issue.sh",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/eval-prompts.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/eval.sh",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/generate-sys-prompt.sh",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/scripts/spam-detection/process-issue.sh",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/triage-discussion-label.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/triage-issues.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/triage-pull-requests.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/triage-scheduled-tasks.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".golangci.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".goreleaser.yml",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "Makefile",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/acceptance_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/api",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/api/basic-graphql.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/api/basic-rest.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/auth",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/auth/auth-login-logout.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/auth/auth-setup-git.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/auth/auth-status.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/auth/auth-token.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/extension",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/extension/extension.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/gpg-key",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/gpg-key/gpg-key.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-comment-edit-last-with-comments.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-comment-edit-last-without-comments-creates.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-comment-edit-last-without-comments-errors.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-comment-new.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-create-basic.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-create-edit-with-project.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-create-with-metadata.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-list.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/issue/issue-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/label",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/label/label.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/org",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/org/org-list.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-checkout-by-number.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-checkout-with-url-from-fork.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-checkout.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-comment-edit-last-with-comments.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-comment-edit-last-without-comments-creates.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-comment-edit-last-without-comments-errors.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-comment-new.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-basic.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-edit-with-project.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-from-issue-develop-base.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-from-manual-merge-base.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-guesses-remote-from-sha-with-branch-name-slash.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-guesses-remote-from-sha.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-no-local-repo.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-push-default-upstream-no-merge-ref-fork.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-push-default-upstream-no-merge-ref.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-remote-ref-with-branch-name-slash.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-respects-branch-pushremote.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-respects-push-destination.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-respects-remote-pushdefault.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-respects-simple-pushdefault.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-respects-user-colon-branch-syntax.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-with-metadata.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-create-without-upstream-config.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-list.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-merge-merge-strategy.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-merge-rebase-strategy.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-status-respects-cross-org.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-outside-repo.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-same-org-fork.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-status-respects-branch-pushremote.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-status-respects-push-destination.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-status-respects-remote-pushdefault.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view-status-respects-simple-pushdefault.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/pr/pr-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/project",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/project/project-create-delete.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/release",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/release/release-create.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/release/release-list.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/release/release-upload-download.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/release/release-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-archive-unarchive.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-clone.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-create-bare.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-create-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-delete.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-deploy-key.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-edit.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-fork-sync.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-list-rename.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-rename-transfer-ownership.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/repo/repo-set-default.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/ruleset",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/ruleset/ruleset.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/search",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/search/search-issues.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/secret",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/secret/secret-org-with-selected-visibility.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/secret/secret-org.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/secret/secret-repo-env.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/secret/secret-repo.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/secret/secret-require-remote-disambiguation.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/ssh-key",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/ssh-key/ssh-key.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/variable",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/variable/variable-org.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/variable/variable-repo-env.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/variable/variable-repo.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow",
+        "type": "tree"
+      },
+      {
+        "path": "acceptance/testdata/workflow/cache-list-delete.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/cache-list-empty.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-cancel.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-delete.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-download-traversal.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-download.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-rerun.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/run-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/workflow-enable-disable.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/workflow-list.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/workflow-run.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "acceptance/testdata/workflow/workflow-view.txtar",
+        "type": "blob"
+      },
+      {
+        "path": "api",
+        "type": "tree"
+      },
+      {
+        "path": "api/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/client_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/export_pr.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/export_pr_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/export_repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/http_client.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/http_client_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/pull_request_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_branch_issue_reference.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_comments.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_issue.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_org.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_pr.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_pr_review.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_pr_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_projects_v2.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_projects_v2_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_repo_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/queries_user.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/query_builder.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/query_builder_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/reaction_groups.go",
+        "type": "blob"
+      },
+      {
+        "path": "api/reaction_groups_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "build",
+        "type": "tree"
+      },
+      {
+        "path": "build/macOS",
+        "type": "tree"
+      },
+      {
+        "path": "build/macOS/distribution.xml",
+        "type": "blob"
+      },
+      {
+        "path": "build/windows",
+        "type": "tree"
+      },
+      {
+        "path": "build/windows/gh.wixproj",
+        "type": "blob"
+      },
+      {
+        "path": "build/windows/gh.wxs",
+        "type": "blob"
+      },
+      {
+        "path": "build/windows/ui.wxs",
+        "type": "blob"
+      },
+      {
+        "path": "cmd",
+        "type": "tree"
+      },
+      {
+        "path": "cmd/gen-docs",
+        "type": "tree"
+      },
+      {
+        "path": "cmd/gen-docs/main.go",
+        "type": "blob"
+      },
+      {
+        "path": "cmd/gen-docs/main_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "cmd/gh",
+        "type": "tree"
+      },
+      {
+        "path": "cmd/gh/main.go",
+        "type": "blob"
+      },
+      {
+        "path": "context",
+        "type": "tree"
+      },
+      {
+        "path": "context/context.go",
+        "type": "blob"
+      },
+      {
+        "path": "context/remote.go",
+        "type": "blob"
+      },
+      {
+        "path": "context/remote_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "docs",
+        "type": "tree"
+      },
+      {
+        "path": "docs/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/codespaces.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/command-line-syntax.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/gh-vs-hub.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/install_linux.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/install_macos.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/install_source.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/install_windows.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/license-compliance.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/multiple-accounts.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/components/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/components/images/Detail-gh-issue-view.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Empty-states-1.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Empty-states-2.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Headers-Examples.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Headers-gh-pr-list.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Help.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Lists-gh-pr-list.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Progress-Spinner.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Prompt-LongText.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Prompt-MultiSelect.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Prompt-RadioSelect.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Prompt-ShortText.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Prompt-YesNo.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Spinner.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/States.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Syntax-Branch.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Syntax-Label.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/components/images/Syntax-Repo.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/foundations/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/foundations/images/Colors.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Iconography-1.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Iconography-2.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Iconography-3.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Iconography-4.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-01.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-02.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-03.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-04.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-05.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Language-06.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Scriptability-gh-pr-list-machine.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Scriptability-gh-pr-list.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Spacing-gh-pr-status-compressed.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Spacing-gh-pr-status.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/foundations/images/Typography.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/getting-started/README.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images",
+        "type": "tree"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle2-01.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle2-02.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle2-03.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle2-04.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle2-05.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle4-01.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle4-02.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Principle4-03.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Prototyping-Figma.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/primer/getting-started/images/Prototyping-GoogleDocs.png",
+        "type": "blob"
+      },
+      {
+        "path": "docs/project-layout.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/release-process-deep-dive.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/releasing.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/source.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/triage.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/working-with-us.md",
+        "type": "blob"
+      },
+      {
+        "path": "git",
+        "type": "tree"
+      },
+      {
+        "path": "git/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/client_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/command.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/command_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/errors.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/.gitignore",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/HEAD",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/config",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/index",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/logs",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/logs/HEAD",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/logs/refs",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/logs/refs/heads",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/logs/refs/heads/main",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/4b",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/4b/825dc642cb6eb9a060e54bf8d69288fbee4904",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/6f",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/6f/1a2405cace1633d89a79c74c65f22fe78f9659",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/d1",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/objects/d1/e0abfb7d158ed544a202a6958c62d4fc22e12f",
+        "type": "blob"
+      },
+      {
+        "path": "git/fixtures/simple.git/refs",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/refs/heads",
+        "type": "tree"
+      },
+      {
+        "path": "git/fixtures/simple.git/refs/heads/main",
+        "type": "blob"
+      },
+      {
+        "path": "git/objects.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/url.go",
+        "type": "blob"
+      },
+      {
+        "path": "git/url_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "go.mod",
+        "type": "blob"
+      },
+      {
+        "path": "go.sum",
+        "type": "blob"
+      },
+      {
+        "path": "internal",
+        "type": "tree"
+      },
+      {
+        "path": "internal/authflow",
+        "type": "tree"
+      },
+      {
+        "path": "internal/authflow/flow.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/authflow/flow_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/authflow/success.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/browser",
+        "type": "tree"
+      },
+      {
+        "path": "internal/browser/browser.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/browser/stub.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/build",
+        "type": "tree"
+      },
+      {
+        "path": "internal/build/build.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/api",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/api/api.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/api/api_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/codespaces.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/codespaces_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/connection",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/connection/connection.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/connection/connection_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/connection/tunnels_api_server_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/portforwarder",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/portforwarder/port_forwarder.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/portforwarder/port_forwarder_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/rpc/codespace",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/rpc/codespace/codespace_host_service.v1.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/codespace/codespace_host_service.v1.proto",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/codespace/codespace_host_service.v1.proto.mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/codespace/codespace_host_service.v1_grpc.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/generate.md",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/generate.sh",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/invoker.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/invoker_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/jupyter",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/rpc/jupyter/jupyter_server_host_service.v1.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/jupyter/jupyter_server_host_service.v1.proto",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/jupyter/jupyter_server_host_service.v1.proto.mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/jupyter/jupyter_server_host_service.v1_grpc.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/ssh",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/rpc/ssh/ssh_server_host_service.v1.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/ssh/ssh_server_host_service.v1.proto",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/ssh/ssh_server_host_service.v1.proto.mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/ssh/ssh_server_host_service.v1_grpc.pb.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/rpc/test",
+        "type": "tree"
+      },
+      {
+        "path": "internal/codespaces/rpc/test/port_forwarder.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/ssh.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/ssh_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/codespaces/states.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config",
+        "type": "tree"
+      },
+      {
+        "path": "internal/config/auth_config_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/config.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/config_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/migrate_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/migration",
+        "type": "tree"
+      },
+      {
+        "path": "internal/config/migration/multi_account.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/migration/multi_account_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/config/stub.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/docs",
+        "type": "tree"
+      },
+      {
+        "path": "internal/docs/docs_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/docs/man.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/docs/man_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/docs/markdown.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/docs/markdown_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/featuredetection",
+        "type": "tree"
+      },
+      {
+        "path": "internal/featuredetection/detector_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/featuredetection/feature_detection.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/featuredetection/feature_detection_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/gh",
+        "type": "tree"
+      },
+      {
+        "path": "internal/gh/gh.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/gh/mock",
+        "type": "tree"
+      },
+      {
+        "path": "internal/gh/mock/config.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/gh/mock/migration.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/gh/projects.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghcmd",
+        "type": "tree"
+      },
+      {
+        "path": "internal/ghcmd/cmd.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghcmd/cmd_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghcmd/update_disabled.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghcmd/update_enabled.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghinstance",
+        "type": "tree"
+      },
+      {
+        "path": "internal/ghinstance/host.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghinstance/host_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghrepo",
+        "type": "tree"
+      },
+      {
+        "path": "internal/ghrepo/repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/ghrepo/repo_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/keyring",
+        "type": "tree"
+      },
+      {
+        "path": "internal/keyring/keyring.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/darwin-amd64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/darwin-amd64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/darwin-arm64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/darwin-arm64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/linux-386",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/linux-386/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/linux-amd64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/linux-amd64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/linux-arm",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/linux-arm/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/linux-arm64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/linux-arm64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/windows-386",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/windows-386/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/windows-amd64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/windows-amd64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed/windows-arm64",
+        "type": "tree"
+      },
+      {
+        "path": "internal/licenses/embed/windows-arm64/PLACEHOLDER",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_darwin_amd64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_darwin_arm64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_default.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_linux_386.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_linux_amd64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_linux_arm.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_linux_arm64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_windows_386.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_windows_amd64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/embed_windows_arm64.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/licenses.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/licenses/licenses_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/prompter",
+        "type": "tree"
+      },
+      {
+        "path": "internal/prompter/accessible_prompter_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/prompter/prompter.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/prompter/prompter_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/prompter/test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/run",
+        "type": "tree"
+      },
+      {
+        "path": "internal/run/run.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/run/stub.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/safepaths",
+        "type": "tree"
+      },
+      {
+        "path": "internal/safepaths/absolute.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/safepaths/absolute_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/tableprinter",
+        "type": "tree"
+      },
+      {
+        "path": "internal/tableprinter/table_printer.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/tableprinter/table_printer_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/text",
+        "type": "tree"
+      },
+      {
+        "path": "internal/text/text.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/text/text_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/update",
+        "type": "tree"
+      },
+      {
+        "path": "internal/update/update.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/update/update_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/zip",
+        "type": "tree"
+      },
+      {
+        "path": "internal/zip/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "internal/zip/fixtures/myproject.zip",
+        "type": "blob"
+      },
+      {
+        "path": "internal/zip/zip.go",
+        "type": "blob"
+      },
+      {
+        "path": "internal/zip/zip_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/accessibility",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/accessibility/accessibility.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/actions",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/actions/actions.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/agent_task.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/agent_task_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/client_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/job.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/job_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/sessions.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/capi/sessions_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/capi.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/capi_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/display.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/log.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/log_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/log_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-1-input.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-1-want.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-2-input.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-2-want.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-3-synthetic-failures-input.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-3-synthetic-failures-want-stderr.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/shared/testdata/log-3-synthetic-failures-want.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/agent-task/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/agent-task/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/alias.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/imports",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/imports/import.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/imports/import_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/set",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/set/set.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/set/set_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/alias/shared/validations.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/alias/shared/validations_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/api/api.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/api_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/fields.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/fields_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/pagination.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/api/pagination_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/api",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/attestation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/client_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/mock_client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/mock_githubApiClient_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/mock_httpClient_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/api/trust_domain.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/artifact.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/artifact_posix_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/artifact_windows_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/digest",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/digest/digest.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/digest/digest_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/file.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/file_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/image.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/image_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/oci",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/oci/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/oci/client_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/artifact/oci/mock_client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/attestation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/auth",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/auth/host.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/auth/host_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/download.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/download_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/metadata.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/metadata_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/options.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/download/options_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/bundle.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/bundle_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/inspect.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/inspect_integration_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/inspect_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/inspect/options.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/io",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/io/handler.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/custom-issuer-artifact",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/custom-issuer.sigstore.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/data.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/gh_2.60.1_windows_arm64.zip",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_provenance_demo-0.0.12-py3-none-any-bundle-missing-cert.jsonl",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_provenance_demo-0.0.12-py3-none-any-bundle-missing-verification-material.jsonl",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_provenance_demo-0.0.12-py3-none-any-bundle.jsonl",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_provenance_demo-0.0.12-py3-none-any.whl",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_release_artifact.zip",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_release_artifact_invalid.zip",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/github_release_bundle.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/reusable-workflow-artifact",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/reusable-workflow-attestation.sigstore.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/sigstore-js-2.1.0-bundle-v0.1.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/sigstore-js-2.1.0-bundle.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/sigstore-js-2.1.0.tgz",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/sigstore-js-2.1.0_with_2_bundles.jsonl",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/sigstoreBundle-invalid-signature.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/data/trusted_root.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/test/path.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/trustedroot",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/trustedroot/trustedroot.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/trustedroot/trustedroot_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/attestation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/attestation_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/embed",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/embed/tuf-repo.github.com",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/embed/tuf-repo.github.com/root.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/extensions.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/extensions_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/mock_verifier.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/policy.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/sigstore.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/sigstore_integration_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/sigstore_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/tuf.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verification/tuf_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/attestation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/attestation_integration_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/attestation_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/options.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/options_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/policy.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/policy_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/verify.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/verify_integration_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/attestation/verify/verify_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/auth.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/gitcredential",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/gitcredential/helper.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/gitcredential/helper_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/login",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/login/login.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/login/login_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/logout",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/logout/logout.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/logout/logout_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/refresh",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/refresh/refresh.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/refresh/refresh_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/setupgit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/setupgit/setupgit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/setupgit/setupgit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/contract",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/contract/helper_config.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/git_credential.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/git_credential_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/fake_helper_config.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/fake_helper_config_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/helper_config.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/helper_config_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/updater.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/gitcredentials/updater_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/login_flow.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/login_flow_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/oauth_scopes.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/oauth_scopes_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/prompt.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/shared/writeable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/status",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/status/status.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/status/status_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/switch",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/switch/switch.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/switch/switch_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/token",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/auth/token/token.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/auth/token/token_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/browse",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/browse/browse.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/browse/browse_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/cache/cache.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/cache/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/cache/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/cache/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/cache/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/codespace/code.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/code_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/codespace_selector.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/codespace_selector_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/common.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/common_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/jupyter.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/logs.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/logs_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/mock_api.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/mock_prompter.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/ports.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/ports_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/rebuild.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/rebuild_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/root.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/select.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/select_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/ssh.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/ssh_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/stop.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/stop_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/codespace/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/completion",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/completion/completion.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/completion/completion_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/config/clear-cache",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/config/clear-cache/clear_cache.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/clear-cache/clear_cache_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/config.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/get",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/config/get/get.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/get/get_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/config/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/set",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/config/set/set.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/config/set/set_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/copilot",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/copilot/copilot.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/copilot/copilot_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/extension/browse",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/extension/browse/browse.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/browse/browse_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/browse/rg.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/command.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/command_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls/buildScript.sh",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls/goBinMain.go.txt",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls/goBinWorkflow.yml",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls/otherBinWorkflow.yml",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/ext_tmpls/script.sh",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/extension.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/extension_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/git.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/manager.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/manager_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/mocks.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/symlink_other.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/extension/symlink_windows.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/factory",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/factory/default.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/factory/default_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/factory/remote_resolver.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/factory/remote_resolver_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/clone",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/clone/clone.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/clone/clone_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/gist.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/rename",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/rename/rename.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/rename/rename_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gist/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gist/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/add",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/add/add.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/add/add_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/add/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/delete/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/gpg_key.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/gpg-key/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/argparsetest",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/argparsetest/argparsetest.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/close",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/close/close.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/close/close_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/comment",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/comment/comment.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/comment/comment_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures/repoWithNonLegacyIssueTemplates",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures/repoWithNonLegacyIssueTemplates/.github",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures/repoWithNonLegacyIssueTemplates/.github/ISSUE_TEMPLATE",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures/repoWithNonLegacyIssueTemplates/.github/ISSUE_TEMPLATE/bug_report.md",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/create/fixtures/repoWithNonLegacyIssueTemplates/.github/ISSUE_TEMPLATE/enhancement.md",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/develop",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/develop/develop.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/develop/develop_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/issue.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/list/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/list/fixtures/issueList.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list/fixtures/issueSearch.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/lock",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/lock/lock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/lock/lock_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/pin",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/pin/pin.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/pin/pin_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/reopen",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/reopen/reopen.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/reopen/reopen_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/shared/display.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/shared/lookup.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/shared/lookup_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/status",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/status/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/status/fixtures/issueStatus.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/status/status.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/status/status_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/transfer",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/transfer/transfer.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/transfer/transfer_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/unpin",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/unpin/unpin.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/unpin/unpin_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_preview.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_previewClosedState.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_previewFullComments.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_previewSingleComment.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_previewWithEmptyBody.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/fixtures/issueView_previewWithMetadata.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/issue/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/label/clone.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/clone_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/label.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/label/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/licenses",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/licenses/licenses.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/org",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/org/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/org/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/org/list/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/org/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/org/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/org/org.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/checkout",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/checkout/checkout.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checkout/checkout_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/aggregate.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/checks.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/checks_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/allPassing.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/onlyRequired.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/someCancelled.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/someFailing.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/somePending.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/someSkipping.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/withDescriptions.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/withEvents.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/withStatuses.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/fixtures/withoutEvents.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/checks/output.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/close",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/close/close.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/close/close_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/comment",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/comment/comment.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/comment/comment_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/create/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/create/fixtures/repoWithNonLegacyPRTemplates",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/create/fixtures/repoWithNonLegacyPRTemplates/.github",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/create/fixtures/repoWithNonLegacyPRTemplates/.github/PULL_REQUEST_TEMPLATE",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/create/fixtures/repoWithNonLegacyPRTemplates/.github/PULL_REQUEST_TEMPLATE/bug_fix.md",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/create/regexp_writer.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/create/regexp_writer_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/diff",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/diff/diff.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/diff/diff_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/list/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/list/fixtures/prList.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list/fixtures/prListWithDuplicates.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/merge",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/merge/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/merge/merge.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/merge/merge_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/pr.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/ready",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/ready/ready.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/ready/ready_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/reopen",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/reopen/reopen.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/reopen/reopen_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/revert",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/revert/revert.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/revert/revert_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/review",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/review/review.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/review/review_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/commentable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/comments.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/completion.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/completion_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/display.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/display_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/editable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/editable_http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/find_refs_resolution.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/find_refs_resolution_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/finder.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/finder_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/git_cached_config_client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/lister.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/params.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/params_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/preserve.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/preserve_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/reaction_groups.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/state.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/survey.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/survey_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/templates.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/shared/templates_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatus.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusChecks.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusChecksWithStatesByCount.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusCurrentBranch.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusCurrentBranchClosed.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusCurrentBranchClosedOnDefaultBranch.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusCurrentBranchMerged.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/fixtures/prStatusCurrentBranchMergedOnDefaultBranch.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/status.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/status/status_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/update-branch",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/update-branch/update_branch.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/update-branch/update_branch_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreview.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewClosedState.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewDraftState.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewFullComments.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewManyReviews.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewMergedState.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewReviews.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewSingleComment.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithAllChecksFailing.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithAllChecksPassing.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithAutoMergeEnabled.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithMetadataByNumber.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithNilProject.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithNoChecks.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithReviewersByNumber.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithSomeChecksFailing.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/fixtures/prViewPreviewWithSomeChecksPending.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/pr/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/preview",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/preview/preview.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/preview/prompter",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/preview/prompter/prompter.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/close",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/close/close.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/close/close_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/copy",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/copy/copy.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/copy/copy_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/field-create/field_create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-create/field_create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/field-delete/field_delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-delete/field_delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/field-list/field_list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/field-list/field_list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-add",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-add/item_add.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-add/item_add_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-archive",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-archive/item_archive.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-archive/item_archive_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-create/item_create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-create/item_create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-delete/item_delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-delete/item_delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-edit/item_edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-edit/item_edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/item-list/item_list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/item-list/item_list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/link",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/link/link.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/link/link_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/mark-template",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/mark-template/mark_template.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/mark-template/mark_template_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/project.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/shared/client",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/shared/client/client.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared/format",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/shared/format/display.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared/format/display_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared/queries",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/shared/queries/export_data_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared/queries/queries.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/shared/queries/queries_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/unlink",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/unlink/unlink.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/unlink/unlink_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/project/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/project/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/create/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/delete-asset",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/delete-asset/delete_asset.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/delete-asset/delete_asset_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/download",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/download/download.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/download/download_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/edit/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/release.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/shared/attestation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/shared/fetch.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/shared/fetch_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/shared/upload.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/shared/upload_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/upload",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/upload/upload.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/upload/upload_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/verify-asset",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/verify-asset/verify_asset.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/verify-asset/verify_asset_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/verify",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/verify/verify.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/verify/verify_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/release/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/release/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/archive",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/archive/archive.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/archive/archive_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/archive/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/autolink.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/create/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/create/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/delete/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/delete/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/list/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/shared/autolink.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/view/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/view/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/autolink/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/clone",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/clone/clone.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/clone/clone_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/create",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/create/create.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/create/create_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/create/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/create/fixtures/repoTempList.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/create/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/create/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/credits",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/credits/credits.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/delete/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/add",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/add/add.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/add/add_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/add/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/delete/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/deploy-key.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/deploy-key/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/edit",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/edit/edit.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/edit/edit_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/fork",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/fork/fork.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/fork/forkResult.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/fork/fork_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/garden",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/garden/garden.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/garden/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/gitignore.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/gitignore/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/license",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/license/license.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/license/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/license/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/license/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/license/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/license/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/license/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/list/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/list/fixtures/repoList.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list/fixtures/repoSearch.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/rename",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/rename/rename.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/rename/rename_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/setdefault",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/setdefault/setdefault.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/setdefault/setdefault_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/shared/repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/shared/repo_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/sync",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/sync/git.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/sync/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/sync/mocks.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/sync/sync.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/sync/sync_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/unarchive",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/unarchive/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/unarchive/unarchive.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/unarchive/unarchive_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/repo/view/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/repo/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/root/alias.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/alias_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/extension.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/extension_registration_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/extension_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/help.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/help_reference.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/help_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/help_topic.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/help_topic_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/root/root.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/check",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/check/check.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/check/check_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/check/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/check/fixtures/rulesetCheck.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/list/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/list/fixtures/rulesetList.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/ruleset.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/shared/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/fixtures/rulesetViewMultiple.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/fixtures/rulesetViewOrg.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/fixtures/rulesetViewRepo.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ruleset/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/cancel",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/cancel/cancel.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/cancel/cancel_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/download",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/download/download.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/download/download_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/download/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/download/fixtures/myproject.zip",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/download/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/download/http_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/rerun",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/rerun/rerun.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/rerun/rerun_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/run.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/shared/artifacts.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/artifacts_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/presentation.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/presentation_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/shared/test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/view/logs.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/view/logs_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/watch",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/run/watch/watch.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/run/watch/watch_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/code",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/code/code.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/code/code_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/commits",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/commits/commits.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/commits/commits_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/issues",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/issues/issues.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/issues/issues_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/prs",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/prs/prs.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/prs/prs_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/repos",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/repos/repos.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/repos/repos_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/search.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/search/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/search/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/secret/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/secret/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/secret/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/secret.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/set",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/secret/set/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/set/set.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/set/set_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/secret/shared/base_repo.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/shared/base_repo_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/secret/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/add",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/add/add.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/add/add_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/add/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/delete/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/shared/user_keys.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/ssh-key/ssh_key.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/status/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/status/fixtures/events.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status/fixtures/notifications.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status/fixtures/search.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status/fixtures/search_forbidden.json",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status/status.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/status/status_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/delete",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/delete/delete.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/delete/delete_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/get",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/get/get.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/get/get_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/set",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/set/http.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/set/set.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/set/set_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/variable/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/variable/variable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/version",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/version/version.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/version/version_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/disable",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/disable/disable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/disable/disable_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/enable",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/enable/enable.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/enable/enable_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/list",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/list/list.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/list/list_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/run",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/run/run.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/run/run_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/shared",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/shared/shared.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/shared/shared_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/shared/test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/view",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmd/workflow/view/view.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/view/view_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmd/workflow/workflow.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/cmdutil/args.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/args_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/auth_check.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/auth_check_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/cmdgroup.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/errors.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/factory.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/factory_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/file_input.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/flags.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/json_flags.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/json_flags_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/legacy.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/cmdutil/repo_override.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/extensions",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/extensions/extension.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/extensions/extension_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/extensions/manager_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/findsh",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/findsh/find.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/findsh/find_windows.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/githubtemplate",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/githubtemplate/github_template.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/githubtemplate/github_template_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/httpmock",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/httpmock/legacy.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/httpmock/registry.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/httpmock/stub.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/iostreams/color.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/color_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/console.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/console_windows.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/epipe_other.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/epipe_windows.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/iostreams.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/iostreams_progress_indicator_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/iostreams/iostreams_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/jsoncolor",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/jsoncolor/jsoncolor.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/jsoncolor/jsoncolor_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/jsonfieldstest",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/jsonfieldstest/jsonfieldstest.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/markdown",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/markdown/markdown.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/option",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/option/option.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/option/option_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/search/query.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/query_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/result.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/result_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/searcher.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/searcher_mock.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/search/searcher_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/set",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/set/string_set.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/set/string_set_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/ssh",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/ssh/ssh_keys.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/surveyext",
+        "type": "tree"
+      },
+      {
+        "path": "pkg/surveyext/editor.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/surveyext/editor_manual.go",
+        "type": "blob"
+      },
+      {
+        "path": "pkg/surveyext/editor_test.go",
+        "type": "blob"
+      },
+      {
+        "path": "script",
+        "type": "tree"
+      },
+      {
+        "path": "script/build.bat",
+        "type": "blob"
+      },
+      {
+        "path": "script/build.go",
+        "type": "blob"
+      },
+      {
+        "path": "script/createrepo.sh",
+        "type": "blob"
+      },
+      {
+        "path": "script/debian-devel",
+        "type": "blob"
+      },
+      {
+        "path": "script/distributions",
+        "type": "blob"
+      },
+      {
+        "path": "script/gen-winres.ps1",
+        "type": "blob"
+      },
+      {
+        "path": "script/label-assets",
+        "type": "blob"
+      },
+      {
+        "path": "script/licenses",
+        "type": "blob"
+      },
+      {
+        "path": "script/nolint-insert",
+        "type": "blob"
+      },
+      {
+        "path": "script/override.ubuntu",
+        "type": "blob"
+      },
+      {
+        "path": "script/pkgmacos",
+        "type": "blob"
+      },
+      {
+        "path": "script/release",
+        "type": "blob"
+      },
+      {
+        "path": "script/rpmmacros",
+        "type": "blob"
+      },
+      {
+        "path": "script/sign",
+        "type": "blob"
+      },
+      {
+        "path": "script/sign.ps1",
+        "type": "blob"
+      },
+      {
+        "path": "script/versioninfo.template.json",
+        "type": "blob"
+      },
+      {
+        "path": "test",
+        "type": "tree"
+      },
+      {
+        "path": "test/helpers.go",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration",
+        "type": "tree"
+      },
+      {
+        "path": "test/integration/attestation-cmd",
+        "type": "tree"
+      },
+      {
+        "path": "test/integration/attestation-cmd/download",
+        "type": "tree"
+      },
+      {
+        "path": "test/integration/attestation-cmd/download/download.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/run-all-tests.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify",
+        "type": "tree"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify/download-and-verify-package-attestation.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify/verify-oci-bundle.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify/verify-sigstore-bundle-versions.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify/verify-with-custom-trusted-root.sh",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration/attestation-cmd/verify/verify-with-internal-github-sigstore.sh",
+        "type": "blob"
+      },
+      {
+        "path": "utils",
+        "type": "tree"
+      },
+      {
+        "path": "utils/utils.go",
+        "type": "blob"
+      }
+    ],
+    "packageJson": null
+  },
+  "analysis": {
+    "repo": "cli/cli",
+    "repoType": "cli-tool",
+    "language": "go",
+    "repoScore": 87,
+    "scores": {
+      "documentation": 95,
+      "structure": 75,
+      "discoverability": 80,
+      "maintenance": 85,
+      "adoption": 99,
+      "agentSafety": null
+    },
+    "improvements": [
+      "Add linting or formatting configuration to make code standards explicit."
+    ],
+    "analyzedAt": "2026-03-11T01:54:22.725Z"
+  }
+}

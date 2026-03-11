@@ -19,7 +19,7 @@ const AGENT_SAFETY_REPO_TYPES = new Set([
   'llm-framework',
   'agent-runtime',
 ]);
-const ANALYSIS_MODEL_VERSION = 9;
+const ANALYSIS_MODEL_VERSION = 14;
 
 function hasCurrentSnapshotSignals(snapshot) {
   const metadata = snapshot?.repoMetadata || {};

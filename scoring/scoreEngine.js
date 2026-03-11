@@ -1,6 +1,6 @@
 'use strict';
 
-const SCORE_CAP = 97;
+const SCORE_CAP = 95;
 
 const SCORING_PROFILES = {
   framework: {
@@ -27,6 +27,13 @@ const SCORING_PROFILES = {
   sdk: {
     documentation: 0.3,
     structure: 0.25,
+    discoverability: 0.15,
+    maintenance: 0.15,
+    adoption: 0.15,
+  },
+  'language-tooling': {
+    documentation: 0.25,
+    structure: 0.3,
     discoverability: 0.15,
     maintenance: 0.15,
     adoption: 0.15,
@@ -68,6 +75,27 @@ const SCORING_PROFILES = {
     maintenance: 0.2,
     adoption: 0.1,
   },
+  'learning-platform': {
+    documentation: 0.3,
+    structure: 0.2,
+    discoverability: 0.2,
+    maintenance: 0.15,
+    adoption: 0.15,
+  },
+  'learning-resource': {
+    documentation: 0.35,
+    structure: 0.2,
+    discoverability: 0.2,
+    maintenance: 0.1,
+    adoption: 0.15,
+  },
+  'system-project': {
+    documentation: 0.2,
+    structure: 0.25,
+    discoverability: 0.1,
+    maintenance: 0.25,
+    adoption: 0.2,
+  },
   default: {
     documentation: 0.25,
     structure: 0.25,
@@ -86,7 +114,7 @@ function getProfileKey(repoType) {
     return 'ai-tooling';
   }
 
-  if (repoType === 'template' || repoType === 'reference' || repoType === 'learning-resource' || repoType === 'dataset') {
+  if (repoType === 'template' || repoType === 'reference' || repoType === 'dataset') {
     return 'developer-tool';
   }
 

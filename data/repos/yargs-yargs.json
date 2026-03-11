@@ -1,0 +1,961 @@
+{
+  "cachedAt": "2026-03-11T01:54:22.741Z",
+  "analysisModelVersion": 14,
+  "snapshot": {
+    "owner": "yargs",
+    "repo": "yargs",
+    "repoMetadata": {
+      "name": "yargs",
+      "description": " yargs the modern, pirate-themed successor to optimist.",
+      "stargazers_count": 11455,
+      "forks_count": 1010,
+      "watchers_count": 11455,
+      "open_issues_count": 311,
+      "language": "JavaScript",
+      "topics": [],
+      "default_branch": "main",
+      "updated_at": "2026-03-11T01:04:16Z",
+      "homepage": "https://yargs.js.org/",
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 1,
+      "last_release_at": "2025-05-27T14:26:35Z",
+      "recent_issue_activity_count": 5,
+      "last_issue_updated_at": "2026-03-10T09:07:55Z"
+    },
+    "readmeContent": "<p align=\"center\">\n  <img width=\"250\" src=\"https://raw.githubusercontent.com/yargs/yargs/main/yargs-logo.png\">\n</p>\n<h1 align=\"center\"> Yargs </h1>\n<p align=\"center\">\n  <b >Yargs be a node.js library fer hearties tryin' ter parse optstrings</b>\n</p>\n\n<br>\n\n![ci](https://github.com/yargs/yargs/workflows/ci/badge.svg)\n[![NPM version][npm-image]][npm-url]\n[![js-standard-style][standard-image]][standard-url]\n[![Coverage][coverage-image]][coverage-url]\n[![Conventional Commits][conventional-commits-image]][conventional-commits-url]\n\n## Description\nYargs helps you build interactive command line tools, by parsing arguments and generating an elegant user interface.\n\nIt gives you:\n\n* commands and (grouped) options (`my-program.js serve --port=5000`).\n* a dynamically generated help menu based on your arguments:\n\n```\nmocha [spec..]\n\nRun tests with Mocha\n\nCommands\n  mocha inspect [spec..]  Run tests with Mocha                         [default]\n  mocha init <path>       create a client-side Mocha setup at <path>\n\nRules & Behavior\n  --allow-uncaught           Allow uncaught errors to propagate        [boolean]\n  --async-only, -A           Require all tests to use a callback (async) or\n                             return a Promise                          [boolean]\n```\n\n* generate completion scripts for Bash and Zsh for your command\n* and [tons more](/docs/api.md).\n\n## Installation\n\nStable version:\n```bash\nnpm i yargs\n```\n\nBleeding edge version with the most recent features:\n```bash\nnpm i yargs@next\n```\n\n## Usage\n\n### Simple Example\n\n```javascript\n#!/usr/bin/env node\nimport yargs from 'yargs';\nimport { hideBin } from 'yargs/helpers';\nconst argv = yargs(hideBin(process.argv)).parse()\n\nif (argv.ships > 3 && argv.distance < 53.5) {\n  console.log('Plunder more riffiwobbles!')\n} else {\n  console.log('Retreat from the xupptumblers!')\n}\n```\n\n```bash\n$ ./plunder.js --ships=4 --distance=22\nPlunder more riffiwobbles!\n\n$ ./plunder.js --ships 12 --distance 98.7\nRetreat from the xupptumblers!\n```\n\n> Note: `hideBin` is a shorthand for `process.argv.slice(2)`. It has the benefit that it takes into account variations in some environments, e.g., [Electron](https://github.com/electron/electron/issues/4690).\n\n### Complex Example\n\n```javascript\n#!/usr/bin/env node\nimport yargs from 'yargs';\nimport { hideBin } from 'yargs/helpers';\n\nyargs(hideBin(process.argv))\n  .command('serve [port]', 'start the server', (yargs) => {\n    return yargs\n      .positional('port', {\n        describe: 'port to bind on',\n        default: 5000\n      })\n  }, (argv) => {\n    if (argv.verbose) console.info(`start server on :${argv.port}`)\n    serve(argv.port)\n  })\n  .option('verbose', {\n    alias: 'v',\n    type: 'boolean',\n    description: 'Run with verbose logging'\n  })\n  .parse()\n```\n\nRun the example above with `--help` to see the help for the application.\n\n## Supported Platforms\n\n### TypeScript\n\nyargs has type definitions at [@types/yargs][type-definitions].\n\n```\nnpm i @types/yargs --save-dev\n```\n\nSee usage examples in [docs](/docs/typescript.md).\n\n### Deno\n\nAs of `v16`, `yargs` supports [Deno](https://github.com/denoland/deno):\n\n```typescript\nimport yargs from 'https://deno.land/x/yargs@v17.7.2-deno/deno.ts'\nimport { Arguments } from 'https://deno.land/x/yargs@v17.7.2-deno/deno-types.ts'\n\nyargs(Deno.args)\n  .command('download <files...>', 'download a list of files', (yargs: any) => {\n    return yargs.positional('files', {\n      describe: 'a list of files to do something with'\n    })\n  }, (argv: Arguments) => {\n    console.info(argv)\n  })\n  .strictCommands()\n  .demandCommand(1)\n  .parse()\n```\n\n> Note: If you use version tags in url then you also have to add `-deno` flag on the end, like `@17.7.2-deno`\n\n### Usage in Browser\n\nSee examples of using yargs in the browser in [docs](/docs/browser.md).\n\n## Documentation\n\n### Table of Contents\n\n* [Yargs' API](/docs/api.md)\n* [Examples](/docs/examples.md)\n* [Parsing Tricks](/docs/tricks.md)\n  * [Stop the Parser](/docs/tricks.md#stop)\n  * [Negating Boolean Arguments](/docs/tricks.md#negate)\n  * [Numbers](/docs/tricks.md#numbers)\n  * [Arrays](/docs/tricks.md#arrays)\n  * [Objects](/docs/tricks.md#objects)\n  * [Quotes](/docs/tricks.md#quotes)\n* [Advanced Topics](/docs/advanced.md)\n  * [Composing Your App Using Commands](/docs/advanced.md#commands)\n  * [Building Configurable CLI Apps](/docs/advanced.md#configuration)\n  * [Customizing Yargs' Parser](/docs/advanced.md#customizing)\n* [Contributing](/contributing.md)\n\n## Supported Node.js Versions\n\nLibraries in this ecosystem make a best effort to track\n[Node.js' release schedule](https://nodejs.org/en/about/releases/). Here's [a\npost on why we think this is important](https://medium.com/the-node-js-collection/maintainers-should-consider-following-node-js-release-schedule-ab08ed4de71a).\n\n[npm-url]: https://www.npmjs.com/package/yargs\n[npm-image]: https://img.shields.io/npm/v/yargs.svg\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg\n[standard-url]: http://standardjs.com/\n[conventional-commits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg\n[conventional-commits-url]: https://conventionalcommits.org/\n[type-definitions]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs\n[coverage-image]: https://img.shields.io/nycrc/yargs/yargs\n[coverage-url]: https://github.com/yargs/yargs/blob/main/.nycrc\n",
+    "fileTree": [
+      {
+        "path": ".eslintignore",
+        "type": "blob"
+      },
+      {
+        "path": ".eslintrc.json",
+        "type": "blob"
+      },
+      {
+        "path": ".gitattributes",
+        "type": "blob"
+      },
+      {
+        "path": ".github",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows",
+        "type": "tree"
+      },
+      {
+        "path": ".github/workflows/ci.yaml",
+        "type": "blob"
+      },
+      {
+        "path": ".github/workflows/release-please.yml",
+        "type": "blob"
+      },
+      {
+        "path": ".gitignore",
+        "type": "blob"
+      },
+      {
+        "path": ".nycrc",
+        "type": "blob"
+      },
+      {
+        "path": ".prettierrc.cjs",
+        "type": "blob"
+      },
+      {
+        "path": "CHANGELOG.md",
+        "type": "blob"
+      },
+      {
+        "path": "CODE_OF_CONDUCT.md",
+        "type": "blob"
+      },
+      {
+        "path": "LICENSE",
+        "type": "blob"
+      },
+      {
+        "path": "README.md",
+        "type": "blob"
+      },
+      {
+        "path": "browser.d.ts",
+        "type": "blob"
+      },
+      {
+        "path": "browser.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "contributing.md",
+        "type": "blob"
+      },
+      {
+        "path": "deno-types.ts",
+        "type": "blob"
+      },
+      {
+        "path": "deno.ts",
+        "type": "blob"
+      },
+      {
+        "path": "docs",
+        "type": "tree"
+      },
+      {
+        "path": "docs/advanced.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/api.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/browser.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/examples.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/tricks.md",
+        "type": "blob"
+      },
+      {
+        "path": "docs/typescript.md",
+        "type": "blob"
+      },
+      {
+        "path": "example",
+        "type": "tree"
+      },
+      {
+        "path": "example/bool.cjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/boolean_double.cjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/boolean_single.cjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/cmds",
+        "type": "tree"
+      },
+      {
+        "path": "example/cmds/init.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/cmds/remote.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/cmds/remote_cmds",
+        "type": "tree"
+      },
+      {
+        "path": "example/cmds/remote_cmds/add.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/cmds/remote_cmds/prune.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/command_hierarchy.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/complex.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/count.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/default_hash.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/default_singles.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/demand_count.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/divide.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/help.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/implies.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/implies_hash.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/line_count.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/line_count_options.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/line_count_wrap.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/nested.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/nonopt.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/requires_arg.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/short.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/string.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/usage-options.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/xup.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "example/yargs.html",
+        "type": "blob"
+      },
+      {
+        "path": "helpers",
+        "type": "tree"
+      },
+      {
+        "path": "helpers/helpers.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "helpers/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "index.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "lib",
+        "type": "tree"
+      },
+      {
+        "path": "lib/argsert.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/command.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/completion-templates.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/completion.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/middleware.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/parse-command.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/platform-shims",
+        "type": "tree"
+      },
+      {
+        "path": "lib/platform-shims/browser.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "lib/platform-shims/deno.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/platform-shims/esm.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "lib/typings",
+        "type": "tree"
+      },
+      {
+        "path": "lib/typings/common-types.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/typings/yargs-parser-types.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/usage.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils",
+        "type": "tree"
+      },
+      {
+        "path": "lib/utils/apply-extends.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/is-promise.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/levenshtein.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/maybe-async-result.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/obj-filter.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/process-argv.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/set-blocking.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/utils/which-module.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/validation.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/yargs-factory.ts",
+        "type": "blob"
+      },
+      {
+        "path": "lib/yerror.ts",
+        "type": "blob"
+      },
+      {
+        "path": "locales",
+        "type": "tree"
+      },
+      {
+        "path": "locales/be.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/cs.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/de.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/en.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/es.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/fi.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/fr.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/he.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/hi.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/hu.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/id.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/it.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/ja.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/ka.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/ko.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/nb.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/nl.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/nn.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/pirate.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/pl.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/pt.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/pt_BR.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/ru.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/th.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/tr.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/uk_UA.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/uz.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/zh_CN.json",
+        "type": "blob"
+      },
+      {
+        "path": "locales/zh_TW.json",
+        "type": "blob"
+      },
+      {
+        "path": "package.json",
+        "type": "blob"
+      },
+      {
+        "path": "renovate.json",
+        "type": "blob"
+      },
+      {
+        "path": "test",
+        "type": "tree"
+      },
+      {
+        "path": "test/argsert.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/before.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/command.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/completion.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/deno",
+        "type": "tree"
+      },
+      {
+        "path": "test/deno/platform-shim.test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/deno/yargs.test.ts",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm",
+        "type": "tree"
+      },
+      {
+        "path": "test/esm/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "test/esm/fixtures/commands",
+        "type": "tree"
+      },
+      {
+        "path": "test/esm/fixtures/commands/a.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/fixtures/commands/b.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/fixtures/commands/index.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/fixtures/commands/subcommands",
+        "type": "tree"
+      },
+      {
+        "path": "test/esm/fixtures/commands/subcommands/c.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/fixtures/commands/subcommands/d.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/fixtures/commands/subcommands/index.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/helpers.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/platform-shim-test.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/esm/yargs-test.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/bin.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/broken-json",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/broken-json/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/deeper",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/deeper/deeper_still",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/deeper/deeper_still/limbo.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/deeper/inception.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/of-memory.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir/deep/within-a-dream.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir/dream.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir_cyclic",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir_cyclic/cyclic.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/cmddir_noname",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/cmddir_noname/nameless.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/command-module.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/command.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/config.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/esm-command",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/esm-command/init.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/esm-command/remote.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/esm-command/remote_cmds",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/esm-command/remote_cmds/add.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/esm-command/remote_cmds/prune.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/extends/.myotherrc",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/.myrc",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/circular_1.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/circular_2.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/config_1.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/config_2.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/config_deep.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/config_deep_2.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/packageA",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/extends/packageA/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/extends/packageB",
+        "type": "tree"
+      },
+      {
+        "path": "test/fixtures/extends/packageB/index.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/issue-497.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/no-extension",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/no-require-main.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/normal-bin.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/opt-assignment-and-positional-command-arg.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/package.json",
+        "type": "blob"
+      },
+      {
+        "path": "test/fixtures/symlink-bin.js",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/helpers",
+        "type": "tree"
+      },
+      {
+        "path": "test/helpers/utils.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/integration.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/is-promise.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/middleware.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/obj-filter.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/parse-command.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/parser.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/usage.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/validation.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "test/yargs.mjs",
+        "type": "blob"
+      },
+      {
+        "path": "tsconfig.json",
+        "type": "blob"
+      },
+      {
+        "path": "tsconfig.test.json",
+        "type": "blob"
+      },
+      {
+        "path": "yargs-logo.png",
+        "type": "blob"
+      }
+    ],
+    "packageJson": {
+      "name": "yargs",
+      "version": "18.0.0",
+      "description": "yargs the modern, pirate-themed, successor to optimist.",
+      "main": "./index.mjs",
+      "exports": {
+        "./package.json": "./package.json",
+        "./helpers": "./helpers/helpers.mjs",
+        "./browser": {
+          "types": "./browser.d.ts",
+          "import": "./browser.mjs"
+        },
+        ".": "./index.mjs",
+        "./yargs": "./index.mjs"
+      },
+      "type": "module",
+      "module": "./index.mjs",
+      "contributors": [
+        {
+          "name": "Yargs Contributors",
+          "url": "https://github.com/yargs/yargs/graphs/contributors"
+        }
+      ],
+      "files": [
+        "browser.mjs",
+        "browser.d.ts",
+        "helpers/*.js",
+        "helpers/*",
+        "index.mjs",
+        "build",
+        "locales",
+        "LICENSE",
+        "lib/platform-shims/*.mjs",
+        "!*.d.ts",
+        "!**/*.d.ts"
+      ],
+      "dependencies": {
+        "cliui": "^9.0.1",
+        "escalade": "^3.1.1",
+        "get-caller-file": "^2.0.5",
+        "string-width": "^7.2.0",
+        "y18n": "^5.0.5",
+        "yargs-parser": "^22.0.0"
+      },
+      "devDependencies": {
+        "@babel/eslint-parser": "^7.26.10",
+        "@babel/preset-typescript": "^7.26.0",
+        "@types/chai": "^4.2.11",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "^20.0.0",
+        "@typescript-eslint/eslint-plugin": "^8.26.1",
+        "browserslist-generator": "^2.0.1",
+        "c8": "^9.1.0",
+        "chai": "^4.2.0",
+        "chalk": "^4.0.0",
+        "cpr": "^3.0.1",
+        "cross-env": "^7.0.2",
+        "cross-spawn": "^7.0.6",
+        "eslint": "^8.57.1",
+        "eslint-plugin-prettier": "^5.1.2",
+        "gts": "^5.2.0",
+        "hashish": "0.0.4",
+        "mocha": "^10.8.2",
+        "rimraf": "^3.0.2",
+        "typescript": "^5.8.3",
+        "which": "^2.0.0",
+        "yargs-test-extends": "^1.0.1"
+      },
+      "scripts": {
+        "fix": "gts fix && npm run fix:js",
+        "fix:js": "eslint . --ext mjs --ext js --fix",
+        "posttest": "npm run check",
+        "test": "c8 mocha --enable-source-maps ./test/*.mjs --require ./test/before.mjs --timeout=24000 --check-leaks",
+        "test:esm": "c8 mocha --enable-source-maps ./test/esm/*.mjs --check-leaks",
+        "coverage": "c8 report --check-coverage",
+        "prepare": "npm run compile",
+        "pretest": "npm run compile -- -p tsconfig.test.json",
+        "compile": "rimraf build && tsc",
+        "check": "gts lint && npm run check:js",
+        "check:js": "eslint . --ext mjs --ext js",
+        "clean": "gts clean",
+        "watch": "rimraf build && npm:watch:tsc",
+        "watch:tsc": "tsc --watch"
+      },
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/yargs/yargs.git"
+      },
+      "homepage": "https://yargs.js.org/",
+      "keywords": [
+        "argument",
+        "args",
+        "option",
+        "parser",
+        "parsing",
+        "cli",
+        "command"
+      ],
+      "license": "MIT",
+      "engines": {
+        "node": "^20.19.0 || ^22.12.0 || >=23"
+      }
+    }
+  },
+  "analysis": {
+    "repo": "yargs/yargs",
+    "repoType": "library",
+    "language": "javascript",
+    "repoScore": 83,
+    "scores": {
+      "documentation": 95,
+      "structure": 85,
+      "discoverability": 60,
+      "maintenance": 71,
+      "adoption": 92,
+      "agentSafety": null
+    },
+    "improvements": [
+      "Add GitHub topics that reflect the project domain and audience.",
+      "Publish releases more consistently so maintenance cadence is easier to trust.",
+      "Improve visible issue response activity so maintainers appear responsive."
+    ],
+    "analyzedAt": "2026-03-11T01:54:22.741Z"
+  }
+}
