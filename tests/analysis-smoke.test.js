@@ -100,4 +100,48 @@ assert.equal(
   'analysis-tool'
 );
 
+assert.equal(
+  detectRepoType({
+    repoMetadata: {
+      description: 'Shared scripts and automation helpers for maintainers.',
+      topics: ['ai', 'agent'],
+      language: 'TypeScript',
+    },
+    packageJson: {
+      keywords: ['ai', 'agent'],
+      scripts: {
+        test: 'node test.js',
+      },
+      private: false,
+    },
+    readmeContent: 'Developer utilities for repository maintenance.',
+    fileTree: [{ path: 'scripts/release.js' }, { path: 'utils/logger.js' }],
+  }),
+  'developer-tool'
+);
+
+assert.equal(
+  detectRepoType({
+    repoMetadata: {
+      description: 'Runtime framework for autonomous agents.',
+      topics: ['ai', 'agent-runtime'],
+      language: 'TypeScript',
+    },
+    packageJson: {
+      keywords: ['agent-runtime'],
+      dependencies: {
+        langgraph: '^1.0.0',
+      },
+      private: false,
+    },
+    readmeContent: 'Includes tool execution and autonomous execution for long-running agents.',
+    fileTree: [
+      { path: 'src/runtime/agent-runner.ts' },
+      { path: 'src/tools/registry.ts' },
+      { path: 'src/memory/store.ts' },
+    ],
+  }),
+  'ai-agent-framework'
+);
+
 console.log('RepoScore smoke tests passed.');

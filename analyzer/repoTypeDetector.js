@@ -1,81 +1,50 @@
 'use strict';
 
 const TYPE_PRIORITY = [
-  'agent-runtime',
   'ai-agent-framework',
-  'llm-framework',
+  'agent-runtime',
   'ai-tooling',
   'analysis-tool',
-  'developer-tool',
   'framework',
   'sdk',
   'cli-tool',
-  'library',
   'application',
-  'reference',
-  'learning-resource',
+  'library',
   'dataset',
   'template',
-  'unknown',
+  'reference',
+  'learning-resource',
+  'developer-tool',
 ];
 
 const SOURCE_WEIGHTS = {
-  topics: 1.5,
-  packageJson: 1.2,
-  dependencies: 1,
-  readme: 1,
-  structure: 0.9,
-  metadata: 0.8,
+  packageJson: 1.5,
+  structure: 1.45,
+  dependencies: 1.3,
+  entrypoints: 1.2,
+  topics: 0.6,
+  readme: 0.5,
+  metadata: 0.5,
 };
 
-const TOPIC_SIGNAL_RULES = [
-  { type: 'agent-runtime', patterns: ['agent-runtime', 'workflow-engine', 'orchestration'], weight: 11 },
-  { type: 'llm-framework', patterns: ['llm-framework', 'foundation-model', 'prompt-framework'], weight: 10 },
-  { type: 'ai-tooling', patterns: ['llm', 'rag', 'openai', 'langchain', 'anthropic', 'ai'], weight: 9 },
-  { type: 'analysis-tool', patterns: ['analysis-tool', 'github-analysis', 'repo-analysis', 'repository-analysis', 'repo-score'], weight: 10 },
-  { type: 'developer-tool', patterns: ['developer-tool', 'developer-tools', 'developer-experience', 'devtool'], weight: 9 },
-  { type: 'framework', patterns: ['framework'], weight: 9 },
-  { type: 'sdk', patterns: ['sdk'], weight: 8 },
-  { type: 'cli-tool', patterns: ['cli', 'command-line'], weight: 9 },
-  { type: 'library', patterns: ['library', 'utility'], weight: 8 },
-  { type: 'application', patterns: ['app', 'application', 'service'], weight: 7 },
-  { type: 'reference', patterns: ['awesome', 'reference'], weight: 9 },
-  { type: 'learning-resource', patterns: ['tutorial', 'course', 'guide', 'learning', 'primer'], weight: 10 },
-  { type: 'dataset', patterns: ['dataset', 'benchmark', 'corpus'], weight: 11 },
-  { type: 'template', patterns: ['template', 'starter', 'boilerplate'], weight: 10 },
+const CLI_DEPENDENCIES = ['commander', 'yargs', 'oclif', 'cac', 'clipanion', 'ink'];
+const AI_TOOLING_DEPENDENCIES = [
+  'openai',
+  '@anthropic-ai/sdk',
+  'langchain',
+  '@langchain/core',
+  'llamaindex',
+  '@pinecone-database/pinecone',
+  'weaviate-client',
+  'chromadb',
+  '@qdrant/js-client-rest',
 ];
-
-const README_SIGNAL_RULES = [
-  { type: 'agent-runtime', pattern: /\bruntime\b|\borchestrat(?:e|ion)\b|\bworkflow engine\b|\bexecution engine\b/, weight: 8 },
-  { type: 'llm-framework', pattern: /\bllm framework\b|\bmodel framework\b|\bprompt framework\b/, weight: 8 },
-  { type: 'ai-tooling', pattern: /\bllm\b|\brag\b|\bembeddings?\b|\bprompt\b|\bvector store\b/, weight: 7 },
-  { type: 'analysis-tool', pattern: /\banaly(?:sis|ze|zes|zing)\b|\bscore\b|\binspect\b|\bevaluate\b/, weight: 8 },
-  { type: 'developer-tool', pattern: /\bdeveloper tool\b|\bdeveloper workflow\b|\bdeveloper experience\b|\bmaintainers?\b/, weight: 7 },
-  { type: 'framework', pattern: /\bframework\b|\bplugin system\b|\bextensible\b/, weight: 7 },
-  { type: 'sdk', pattern: /\bsdk\b|\bclient library\b/, weight: 7 },
-  { type: 'cli-tool', pattern: /\bcli\b|\bcommand line\b|\busage:\s+\w+/i, weight: 7 },
-  { type: 'library', pattern: /\blibrary\b|\bpackage\b/, weight: 6 },
-  { type: 'application', pattern: /\bweb app\b|\bdashboard\b|\bself-hosted\b|\bdeploy\b/, weight: 6 },
-  { type: 'reference', pattern: /\bawesome\b|\breference\b|\bcheatsheet\b|\bcatalog\b/, weight: 8 },
-  { type: 'learning-resource', pattern: /\bguide\b|\btutorial\b|\blearn\b|\bprimer\b|\bcourse\b|\bstudy\b/, weight: 8 },
-  { type: 'dataset', pattern: /\bdataset\b|\bbenchmark\b|\btraining data\b/, weight: 8 },
-  { type: 'template', pattern: /\btemplate\b|\bstarter\b|\bscaffold\b/, weight: 8 },
-];
-
-const DEPENDENCY_SIGNAL_RULES = [
-  { type: 'agent-runtime', packages: ['temporal', 'bullmq', '@trigger.dev/sdk', 'inngest'], weight: 8 },
-  { type: 'llm-framework', packages: ['guidance', 'dspy', 'lmql'], weight: 8 },
-  { type: 'ai-tooling', packages: ['openai', '@anthropic-ai/sdk', 'langchain', '@langchain/core', 'llamaindex'], weight: 8 },
-  { type: 'framework', packages: ['next', 'nuxt', '@angular/core', '@nestjs/core', 'remix'], weight: 7 },
-  { type: 'cli-tool', packages: ['commander', 'yargs', 'oclif', 'cac', 'clipanion'], weight: 9 },
-];
+const FRAMEWORK_DEPENDENCIES = ['koa', '@nestjs/core', 'fastify-plugin', 'hono', 'middy'];
+const AGENT_ORCHESTRATION_DEPENDENCIES = ['langgraph', '@mastra/core', 'autogen', 'crewai'];
 
 function createEmptyScores() {
   return TYPE_PRIORITY.reduce((scores, type) => {
-    if (type !== 'unknown') {
-      scores[type] = 0;
-    }
-
+    scores[type] = 0;
     return scores;
   }, {});
 }
@@ -90,280 +59,400 @@ function getFilePaths(fileTree) {
     : [];
 }
 
-function collectTopicScores(scores, topics) {
-  for (const topic of topics) {
-    for (const rule of TOPIC_SIGNAL_RULES) {
-      if (rule.patterns.some((pattern) => topic.includes(pattern))) {
-        addScore(scores, rule.type, 'topics', rule.weight);
-      }
-    }
-  }
+function getDependencyMap(packageJson) {
+  return {
+    ...(packageJson?.dependencies || {}),
+    ...(packageJson?.devDependencies || {}),
+    ...(packageJson?.peerDependencies || {}),
+  };
 }
 
-function collectPackageJsonScores(scores, packageJson) {
+function hasAnyDependency(dependencyMap, packages) {
+  return packages.some((packageName) => Object.prototype.hasOwnProperty.call(dependencyMap, packageName));
+}
+
+function hasAnyPath(files, patterns) {
+  return patterns.some((pattern) =>
+    files.some((filePath) => (pattern instanceof RegExp ? pattern.test(filePath) : filePath.includes(pattern)))
+  );
+}
+
+function countMarkdownFiles(files) {
+  return files.filter((filePath) => filePath.endsWith('.md')).length;
+}
+
+function getTopics(repoMetadata) {
+  return Array.isArray(repoMetadata?.topics)
+    ? repoMetadata.topics.map((topic) => String(topic).toLowerCase())
+    : [];
+}
+
+function collectPackageSignals(scores, packageJson) {
   if (!packageJson) {
     return;
   }
 
-  const name = String(packageJson.name || '').toLowerCase();
   const keywords = Array.isArray(packageJson.keywords)
     ? packageJson.keywords.map((keyword) => String(keyword).toLowerCase())
     : [];
   const scripts = Object.keys(packageJson.scripts || {}).map((script) => script.toLowerCase());
+  const name = String(packageJson.name || '').toLowerCase();
 
   if (packageJson.bin) {
-    addScore(scores, 'cli-tool', 'packageJson', 12);
+    addScore(scores, 'cli-tool', 'packageJson', 11);
   }
 
   if (packageJson.exports) {
-    addScore(scores, 'library', 'packageJson', 12);
+    addScore(scores, 'library', 'packageJson', 10);
   }
 
   if ((packageJson.main || packageJson.module) && !packageJson.private) {
-    addScore(scores, 'library', 'packageJson', 8);
+    addScore(scores, 'library', 'packageJson', 6);
   }
 
-  if (name.includes('sdk') || keywords.some((keyword) => keyword.includes('sdk'))) {
-    addScore(scores, 'sdk', 'packageJson', 8);
+  if (packageJson.types || packageJson.typings) {
+    addScore(scores, 'library', 'packageJson', 4);
+    addScore(scores, 'sdk', 'packageJson', 2);
   }
 
-  if (keywords.some((keyword) => keyword.includes('runtime'))) {
-    addScore(scores, 'agent-runtime', 'packageJson', 8);
-  }
-
-  if (keywords.some((keyword) => keyword.includes('analysis') || keyword.includes('repo-quality') || keyword.includes('github-analysis') || keyword.includes('repository-analysis'))) {
-    addScore(scores, 'analysis-tool', 'packageJson', 10);
-  }
-
-  if (keywords.some((keyword) => keyword.includes('developer-tool') || keyword.includes('developer-tools') || keyword.includes('developer-experience'))) {
-    addScore(scores, 'developer-tool', 'packageJson', 8);
-  }
-
-  if (keywords.some((keyword) => keyword.includes('llm-framework'))) {
-    addScore(scores, 'llm-framework', 'packageJson', 8);
+  if (Array.isArray(packageJson.files) && packageJson.files.some((entry) => String(entry).startsWith('dist'))) {
+    addScore(scores, 'library', 'packageJson', 3);
   }
 
   if (packageJson.private && scripts.some((script) => ['dev', 'start', 'build', 'preview'].includes(script))) {
     addScore(scores, 'application', 'packageJson', 8);
   }
 
-  if (keywords.some((keyword) => keyword.includes('framework'))) {
-    addScore(scores, 'framework', 'packageJson', 7);
+  if (packageJson.workspaces) {
+    addScore(scores, 'framework', 'packageJson', 2);
+    addScore(scores, 'developer-tool', 'packageJson', 1);
   }
 
-  if (keywords.some((keyword) => keyword.includes('template') || keyword.includes('starter'))) {
-    addScore(scores, 'template', 'packageJson', 8);
+  if (name.includes('sdk') || keywords.some((keyword) => keyword.includes('sdk'))) {
+    addScore(scores, 'sdk', 'packageJson', 8);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('analysis') || keyword.includes('repository-analysis') || keyword.includes('repo-quality'))) {
+    addScore(scores, 'analysis-tool', 'packageJson', 5);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('developer-tool') || keyword.includes('developer-tools') || keyword.includes('developer-experience'))) {
+    addScore(scores, 'developer-tool', 'packageJson', 4);
+  }
+
+  if (keywords.some((keyword) => keyword.includes('template') || keyword.includes('starter') || keyword.includes('boilerplate'))) {
+    addScore(scores, 'template', 'packageJson', 6);
   }
 
   if (keywords.some((keyword) => keyword.includes('dataset') || keyword.includes('benchmark'))) {
-    addScore(scores, 'dataset', 'packageJson', 8);
-  }
-
-  if (keywords.some((keyword) => keyword.includes('reference') || keyword.includes('awesome'))) {
-    addScore(scores, 'reference', 'packageJson', 7);
+    addScore(scores, 'dataset', 'packageJson', 6);
   }
 }
 
-function collectDependencyScores(scores, packageJson) {
-  if (!packageJson) {
+function collectDependencySignals(scores, packageJson) {
+  const dependencyMap = getDependencyMap(packageJson);
+  const dependencyNames = Object.keys(dependencyMap);
+
+  if (dependencyNames.length === 0) {
     return;
   }
 
-  const dependencyMap = {
-    ...(packageJson.dependencies || {}),
-    ...(packageJson.devDependencies || {}),
-    ...(packageJson.peerDependencies || {}),
+  if (hasAnyDependency(dependencyMap, CLI_DEPENDENCIES)) {
+    addScore(scores, 'cli-tool', 'dependencies', 9);
+  }
+
+  if (hasAnyDependency(dependencyMap, AI_TOOLING_DEPENDENCIES)) {
+    addScore(scores, 'ai-tooling', 'dependencies', 10);
+  }
+
+  if (hasAnyDependency(dependencyMap, FRAMEWORK_DEPENDENCIES)) {
+    addScore(scores, 'framework', 'dependencies', 7);
+  }
+
+  if (Object.keys(packageJson?.peerDependencies || {}).length > 0) {
+    addScore(scores, 'library', 'dependencies', 4);
+    addScore(scores, 'framework', 'dependencies', 2);
+  }
+
+  if (packageJson?.private && hasAnyDependency(dependencyMap, ['next', 'react', 'vite', 'express', 'fastify'])) {
+    addScore(scores, 'application', 'dependencies', 6);
+  }
+
+  if (hasAnyDependency(dependencyMap, ['octokit', '@octokit/rest', 'simple-git'])) {
+    addScore(scores, 'analysis-tool', 'dependencies', 4);
+    addScore(scores, 'developer-tool', 'dependencies', 3);
+  }
+}
+
+function getAgentFrameworkSignals(files, dependencyMap, readme) {
+  const agentSignalChecks = [
+    hasAnyPath(files, [/agent.*runtime/, /runtime.*agent/, /execution-loop/, /run-loop/, /agent-runner/, /orchestrator/]) ||
+      /\bagent runtime loop\b|\bexecution loop\b|\brun loop\b/.test(readme),
+    hasAnyPath(files, [/tool-execution/, /tool-runner/, /execute-tool/, /tool-manager/, /tools\//]) ||
+      /\btool execution\b|\bexecute tools?\b/.test(readme),
+    hasAnyPath(files, [/memory\//, /memory-store/, /agent-memory/, /memory-layer/]) ||
+      /\bagent memory\b|\bmemory store\b/.test(readme),
+    hasAnyPath(files, [/planner\//, /planning\//, /task-planner/, /plan-executor/]) ||
+      /\bplanner module\b|\bplanning module\b/.test(readme),
+    hasAnyPath(files, [/tool-registry/, /registry\/tools/, /tools\/registry/, /registry\/index/]) ||
+      /\btool registry\b/.test(readme),
+    hasAnyPath(files, [/decision-loop/, /autonomous/, /policy-engine/, /goal-manager/]) ||
+      /\bautonomous decision loop\b|\bautonomous execution\b/.test(readme),
+  ];
+
+  const runtimeSignalCount = agentSignalChecks.filter(Boolean).length;
+  const orchestrationDependencyCount = AGENT_ORCHESTRATION_DEPENDENCIES.filter((dependency) =>
+    Object.prototype.hasOwnProperty.call(dependencyMap, dependency)
+  ).length;
+
+  return {
+    runtimeSignalCount,
+    orchestrationDependencyCount,
   };
-
-  for (const rule of DEPENDENCY_SIGNAL_RULES) {
-    if (rule.packages.some((packageName) => Object.prototype.hasOwnProperty.call(dependencyMap, packageName))) {
-      addScore(scores, rule.type, 'dependencies', rule.weight);
-    }
-  }
-
-  if (packageJson.private) {
-    if (Object.prototype.hasOwnProperty.call(dependencyMap, 'next') || Object.prototype.hasOwnProperty.call(dependencyMap, 'react')) {
-      addScore(scores, 'application', 'dependencies', 5);
-    }
-
-    if (Object.prototype.hasOwnProperty.call(dependencyMap, 'express') || Object.prototype.hasOwnProperty.call(dependencyMap, 'fastify')) {
-      addScore(scores, 'application', 'dependencies', 4);
-    }
-  }
 }
 
-function collectReadmeScores(scores, readme) {
-  for (const rule of README_SIGNAL_RULES) {
-    if (rule.pattern.test(readme)) {
-      addScore(scores, rule.type, 'readme', rule.weight);
-    }
-  }
-}
-
-function collectAgentFrameworkScores(scores, input, topics, readme, packageJson) {
+function collectStructureSignals(scores, input) {
   const files = getFilePaths(input.fileTree);
-  const dependencyMap = {
-    ...(packageJson?.dependencies || {}),
-    ...(packageJson?.devDependencies || {}),
-    ...(packageJson?.peerDependencies || {}),
-  };
+  const markdownCount = countMarkdownFiles(files);
+  const packageJson = input.packageJson || null;
+  const dependencyMap = getDependencyMap(packageJson);
+  const readme = String(input.readmeContent || '').toLowerCase();
 
-  const signals = [
-    /\bagent runtime loop\b|\bexecution loop\b|\bloop guard\b|\bmaxtoolcallsperrun\b|\bwrap\(\)/.test(readme),
-    /\btool execution\b|\bexecute tools?\b|\btool registry\b|\bauthority\.tool\b|\btool calls?\b/.test(readme) ||
-      files.some((filePath) => filePath.includes('tool') && filePath.includes('registry')),
-    /\bplanner\b|\bplanning\b/.test(readme) || files.some((filePath) => filePath.includes('planner')),
-    /\bmemory store\b|\bagent memory\b|\bmemory layer\b/.test(readme) || files.some((filePath) => filePath.includes('memory')),
-    files.some((filePath) => filePath.includes('registry')) || /\btool registry\b/.test(readme),
-    /\bautonomous execution\b|\bautonomous workflow\b|\bautonomous agents?\b/.test(readme),
-    /\bllm orchestration engine\b|\borchestration engine\b/.test(readme) ||
-      ['langgraph', '@mastra/core', 'autogen', 'crewai'].some((dependency) =>
-        Object.prototype.hasOwnProperty.call(dependencyMap, dependency)
-      ) ||
-      topics.some((topic) => ['agent-runtime', 'workflow-engine'].includes(topic)),
-  ].filter(Boolean).length;
-
-  if (signals >= 2) {
-    addScore(scores, 'ai-agent-framework', 'readme', 16);
-  }
-}
-
-function collectStructureScores(scores, fileTree, packageJson) {
-  const files = getFilePaths(fileTree);
-  const markdownCount = files.filter((filePath) => filePath.endsWith('.md')).length;
-
-  if (files.some((filePath) => filePath.startsWith('bin/') || filePath.startsWith('commands/'))) {
+  if (hasAnyPath(files, [/^bin\//, /^commands\//, /src\/cli/, /cli\.(js|ts|mjs|cjs)$/])) {
     addScore(scores, 'cli-tool', 'structure', 8);
   }
 
-  if (files.some((filePath) => filePath.startsWith('data/') || filePath.endsWith('.csv') || filePath.endsWith('.jsonl') || filePath.endsWith('.parquet'))) {
-    addScore(scores, 'dataset', 'structure', 8);
-  }
-
-  if (files.some((filePath) => filePath.startsWith('templates/') || filePath.startsWith('starter/') || filePath.includes('boilerplate'))) {
-    addScore(scores, 'template', 'structure', 8);
-  }
-
-  if (files.some((filePath) => filePath.startsWith('src/')) && packageJson && !packageJson.private && (packageJson.exports || packageJson.main || packageJson.module)) {
+  if (hasAnyPath(files, [/^src\/index\./, /^lib\//, /^dist\//])) {
     addScore(scores, 'library', 'structure', 6);
   }
 
-  if (files.some((filePath) => ['app/', 'pages/', 'public/', 'prisma/'].some((prefix) => filePath.startsWith(prefix)))) {
-    addScore(scores, 'application', 'structure', 6);
+  if (hasAnyPath(files, [/^app\//, /^pages\//, /^public\//, /^routes\//, /^prisma\//, /^server\./])) {
+    addScore(scores, 'application', 'structure', 7);
   }
 
-  if (files.some((filePath) => filePath.startsWith('packages/') || filePath.startsWith('plugins/'))) {
-    addScore(scores, 'framework', 'structure', 5);
+  if (hasAnyPath(files, [/^plugins\//, /^middleware\//, /^adapters\//, /^integrations\//])) {
+    addScore(scores, 'framework', 'structure', 8);
   }
 
-  if (files.some((filePath) => filePath.startsWith('docs/') || filePath.startsWith('guides/')) && markdownCount >= 3) {
+  if (hasAnyPath(files, [/^packages\//])) {
+    addScore(scores, 'framework', 'structure', 3);
+  }
+
+  if (hasAnyPath(files, [/^templates\//, /^starter\//, /boilerplate/, /^examples\/starter/])) {
+    addScore(scores, 'template', 'structure', 8);
+  }
+
+  if (hasAnyPath(files, [/^data\//, /\.csv$/, /\.jsonl$/, /\.parquet$/, /\.tsv$/])) {
+    addScore(scores, 'dataset', 'structure', 8);
+  }
+
+  if (hasAnyPath(files, [/^api\//, /^analyzer\//, /^scoring\//, /^scanners\//])) {
+    addScore(scores, 'analysis-tool', 'structure', 9);
+  }
+
+  if (hasAnyPath(files, [/^cache\//, /^data\/repos\//])) {
+    addScore(scores, 'analysis-tool', 'structure', 5);
+  }
+
+  if (hasAnyPath(files, [/^utils\//, /^docs\//, /^\.github\//])) {
+    addScore(scores, 'developer-tool', 'structure', 3);
+  }
+
+  if (hasAnyPath(files, [/prompt/, /embedding/, /vector/, /rag/, /providers\//, /models\//])) {
+    addScore(scores, 'ai-tooling', 'structure', 7);
+  }
+
+  if (hasAnyPath(files, [/guard/, /enforcement/, /budget/, /throttle/, /integrity/])) {
+    addScore(scores, 'ai-tooling', 'structure', 6);
+  }
+
+  const agentSignals = getAgentFrameworkSignals(files, dependencyMap, readme);
+  if (agentSignals.runtimeSignalCount >= 2) {
+    addScore(scores, 'ai-agent-framework', 'structure', 16);
+    addScore(scores, 'agent-runtime', 'structure', 6);
+  } else if (agentSignals.runtimeSignalCount === 1 && agentSignals.orchestrationDependencyCount > 0) {
+    addScore(scores, 'agent-runtime', 'structure', 7);
+  }
+
+  if (hasAnyPath(files, [/runtime\//, /workflow\//, /orchestrator\//, /executor\//])) {
+    addScore(scores, 'agent-runtime', 'structure', 5);
+  }
+
+  if (hasAnyPath(files, [/^docs\//, /^guides\//]) && markdownCount >= 4 && !packageJson) {
     addScore(scores, 'reference', 'structure', 7);
   }
 
-  if (markdownCount >= 5 && !packageJson) {
+  if (markdownCount >= 6 && hasAnyPath(files, [/curriculum/, /roadmap/, /lessons?/, /tutorials?/])) {
     addScore(scores, 'learning-resource', 'structure', 7);
   }
 }
 
-function collectMetadataScores(scores, repoMetadata) {
-  const description = String(repoMetadata.description || '').toLowerCase();
-  const language = String(repoMetadata.language || '').toLowerCase();
+function collectEntrypointSignals(scores, input) {
+  const packageJson = input.packageJson || null;
+  const files = getFilePaths(input.fileTree);
+  const scripts = Object.keys(packageJson?.scripts || {}).map((script) => script.toLowerCase());
 
-  if (!repoMetadata.language || language === 'unknown') {
-    addScore(scores, 'reference', 'metadata', 3);
+  if (packageJson?.bin) {
+    addScore(scores, 'cli-tool', 'entrypoints', 6);
   }
 
-  if (description.includes('guide') || description.includes('tutorial') || description.includes('learn') || description.includes('primer')) {
-    addScore(scores, 'learning-resource', 'metadata', 8);
+  if (packageJson?.main || packageJson?.module || packageJson?.exports) {
+    addScore(scores, 'library', 'entrypoints', 4);
   }
 
-  if (description.includes('reference') || description.includes('awesome list') || description.includes('list of')) {
-    addScore(scores, 'reference', 'metadata', 8);
+  if (scripts.some((script) => ['start', 'dev', 'serve', 'preview'].includes(script)) && hasAnyPath(files, [/server\./, /^api\//, /^app\//])) {
+    addScore(scores, 'application', 'entrypoints', 6);
   }
 
-  if (description.includes('dataset') || description.includes('benchmark')) {
-    addScore(scores, 'dataset', 'metadata', 7);
-  }
-
-  if (description.includes('analyze') || description.includes('analysis') || description.includes('score')) {
-    addScore(scores, 'analysis-tool', 'metadata', 8);
-  }
-
-  if (description.includes('developer tool') || description.includes('developer workflow')) {
-    addScore(scores, 'developer-tool', 'metadata', 7);
+  if (scripts.some((script) => script.startsWith('scan') || script.includes('analyze'))) {
+    addScore(scores, 'analysis-tool', 'entrypoints', 4);
   }
 }
 
-function chooseBestType(scores, input) {
-  let bestType = 'unknown';
-  let bestScore = 0;
-
-  for (const type of TYPE_PRIORITY) {
-    if (type === 'unknown') {
-      continue;
+function collectTopicSignals(scores, topics) {
+  for (const topic of topics) {
+    if (topic.includes('analysis') || topic.includes('repo-quality') || topic.includes('github-analysis')) {
+      addScore(scores, 'analysis-tool', 'topics', 4);
     }
 
-    const score = scores[type] || 0;
-    if (score > bestScore) {
-      bestType = type;
-      bestScore = score;
+    if (topic.includes('developer-tool') || topic.includes('developer-tools')) {
+      addScore(scores, 'developer-tool', 'topics', 3);
+    }
+
+    if (topic.includes('sdk')) {
+      addScore(scores, 'sdk', 'topics', 4);
+    }
+
+    if (topic.includes('cli')) {
+      addScore(scores, 'cli-tool', 'topics', 4);
+    }
+
+    if (topic.includes('framework')) {
+      addScore(scores, 'framework', 'topics', 3);
+    }
+
+    if (
+      topic.includes('ai-guardrails') ||
+      topic.includes('llm-security') ||
+      topic.includes('runtime-safety') ||
+      topic.includes('execution-limits')
+    ) {
+      addScore(scores, 'ai-tooling', 'topics', 4);
+    }
+
+    if (topic.includes('dataset') || topic.includes('benchmark')) {
+      addScore(scores, 'dataset', 'topics', 4);
+    }
+
+    if (topic.includes('template') || topic.includes('starter')) {
+      addScore(scores, 'template', 'topics', 4);
+    }
+
+    if (topic.includes('rag') || topic.includes('embeddings') || topic.includes('vector-db')) {
+      addScore(scores, 'ai-tooling', 'topics', 4);
     }
   }
+}
 
-  if (bestScore >= 8) {
-    return bestType;
+function collectReadmeSignals(scores, readme) {
+  if (!readme) {
+    return;
   }
 
-  const readme = String(input.readmeContent || '').toLowerCase();
-  const repoMetadata = input.repoMetadata || {};
-  const packageJson = input.packageJson || null;
-  const files = getFilePaths(input.fileTree);
-
-  if (/\bawesome\b|\breference\b|\bcatalog\b/.test(readme) || String(repoMetadata.description || '').toLowerCase().includes('list of')) {
-    return 'reference';
+  if (/\banaly(?:sis|ze|zes|zing)\b|\bscore breakdown\b|\brepository quality\b/.test(readme)) {
+    addScore(scores, 'analysis-tool', 'readme', 3);
   }
 
-  if (/\bguide\b|\btutorial\b|\blearn\b|\bprimer\b|\bcourse\b/.test(readme)) {
-    return 'learning-resource';
+  if (/\bdeveloper workflow\b|\bmaintainers?\b|\bonboarding\b/.test(readme)) {
+    addScore(scores, 'developer-tool', 'readme', 2);
   }
 
-  if (/\banaly(?:sis|ze|zes|zing)\b|\bscore\b|\binspect\b/.test(readme) || String(repoMetadata.description || '').toLowerCase().includes('analy')) {
-    return 'analysis-tool';
+  if (/\bcli\b|\bcommand line\b/.test(readme)) {
+    addScore(scores, 'cli-tool', 'readme', 2);
   }
 
-  if (files.some((filePath) => filePath.endsWith('.csv') || filePath.endsWith('.jsonl') || filePath.endsWith('.parquet'))) {
-    return 'dataset';
+  if (/\bembeddings?\b|\bprompt\b|\bvector store\b|\brag\b/.test(readme)) {
+    addScore(scores, 'ai-tooling', 'readme', 3);
   }
 
-  if (packageJson && (packageJson.exports || packageJson.main || packageJson.module) && !packageJson.private) {
-    return 'library';
+  if (/\bguardrails?\b|\btoken budgets?\b|\btool calls?\b|\bruntime limits?\b/.test(readme)) {
+    addScore(scores, 'ai-tooling', 'readme', 3);
   }
 
-  if (packageJson?.private || files.some((filePath) => ['app/', 'pages/', 'public/'].some((prefix) => filePath.startsWith(prefix)))) {
-    return 'application';
+  if (/\bplugin system\b|\bmiddleware\b|\bextensible\b/.test(readme)) {
+    addScore(scores, 'framework', 'readme', 2);
+  }
+}
+
+function collectMetadataSignals(scores, repoMetadata) {
+  const description = String(repoMetadata?.description || '').toLowerCase();
+
+  if (description.includes('analysis') || description.includes('repository quality')) {
+    addScore(scores, 'analysis-tool', 'metadata', 3);
   }
 
-  return 'library';
+  if (description.includes('developer tool') || description.includes('developer workflow')) {
+    addScore(scores, 'developer-tool', 'metadata', 2);
+  }
+
+  if (description.includes('guardrails') || description.includes('runtime limits') || description.includes('llm security')) {
+    addScore(scores, 'ai-tooling', 'metadata', 4);
+  }
+
+  if (description.includes('dataset') || description.includes('benchmark')) {
+    addScore(scores, 'dataset', 'metadata', 4);
+  }
+
+  if (description.includes('template') || description.includes('starter')) {
+    addScore(scores, 'template', 'metadata', 4);
+  }
+}
+
+function chooseBestType(scores) {
+  const ranked = TYPE_PRIORITY.map((type) => ({ type, score: scores[type] || 0 }))
+    .sort((left, right) => {
+      if (right.score !== left.score) {
+        return right.score - left.score;
+      }
+
+      return TYPE_PRIORITY.indexOf(left.type) - TYPE_PRIORITY.indexOf(right.type);
+    });
+
+  const best = ranked[0] || { type: 'developer-tool', score: 0 };
+  const runnerUp = ranked[1] || { score: 0 };
+  const confidenceGap = best.score - runnerUp.score;
+
+  if (best.score < 9) {
+    return 'developer-tool';
+  }
+
+  if (best.type === 'ai-agent-framework' && best.score < 18) {
+    return 'developer-tool';
+  }
+
+  if (confidenceGap < 2.5 && best.score < 16) {
+    return 'developer-tool';
+  }
+
+  return best.type;
 }
 
 function detectRepoType(input) {
   const repoMetadata = input.repoMetadata || {};
   const packageJson = input.packageJson || null;
-  const readme = (input.readmeContent || '').toLowerCase();
-  const topics = Array.isArray(repoMetadata.topics)
-    ? repoMetadata.topics.map((topic) => String(topic).toLowerCase())
-    : [];
+  const readme = String(input.readmeContent || '').toLowerCase();
+  const topics = getTopics(repoMetadata);
   const scores = createEmptyScores();
 
-  collectTopicScores(scores, topics);
-  collectPackageJsonScores(scores, packageJson);
-  collectDependencyScores(scores, packageJson);
-  collectReadmeScores(scores, readme);
-  collectAgentFrameworkScores(scores, input, topics, readme, packageJson);
-  collectStructureScores(scores, input.fileTree, packageJson);
-  collectMetadataScores(scores, repoMetadata);
+  collectPackageSignals(scores, packageJson);
+  collectDependencySignals(scores, packageJson);
+  collectStructureSignals(scores, input);
+  collectEntrypointSignals(scores, input);
+  collectTopicSignals(scores, topics);
+  collectReadmeSignals(scores, readme);
+  collectMetadataSignals(scores, repoMetadata);
 
-  return chooseBestType(scores, input);
+  return chooseBestType(scores);
 }
 
 module.exports = {

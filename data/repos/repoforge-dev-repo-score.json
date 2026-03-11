@@ -1,6 +1,6 @@
 {
-  "cachedAt": "2026-03-10T23:44:03.401Z",
-  "analysisModelVersion": 5,
+  "cachedAt": "2026-03-11T00:06:34.110Z",
+  "analysisModelVersion": 6,
   "snapshot": {
     "owner": "repoforge-dev",
     "repo": "repo-score",
@@ -409,6 +409,6 @@
       "Grow adoption and contribution signals to improve maintenance confidence.",
       "Increase project visibility and usage signals to strengthen adoption confidence."
     ],
-    "analyzedAt": "2026-03-10T23:44:03.398Z"
+    "analyzedAt": "2026-03-11T00:06:34.108Z"
   }
 }
