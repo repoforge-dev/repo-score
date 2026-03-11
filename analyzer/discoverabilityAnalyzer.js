@@ -2,53 +2,65 @@
 
 function analyzeDiscoverability(input) {
   const repository = input.repoMetadata || {};
-  const readme = (input.readmeContent || '').toLowerCase();
+  const readme = input.readmeContent || '';
+  const normalizedReadme = readme.toLowerCase();
   const topics = Array.isArray(repository.topics) ? repository.topics : [];
+  const files = Array.isArray(input.fileTree) ? input.fileTree.map((entry) => String(entry.path || '').toLowerCase()) : [];
 
-  const keywordMatches = [
-    'installation',
-    'usage',
-    'example',
-    'quickstart',
-    'api',
-    'reference',
-    'getting started',
-  ].filter((keyword) => readme.includes(keyword));
+  const hasReadmeBadges = /!\[[^\]]*\]\([^)]+\)/.test(readme);
+  const hasClearDescription = Boolean(repository.description && repository.description.trim().length >= 20);
+  const hasDocsWebsiteLink =
+    /https?:\/\/[^\s)]+(docs|documentation|guide|learn|reference)/i.test(readme) ||
+    files.some((filePath) => filePath.startsWith('docs/'));
+  const hasReadmeKeywords = ['installation', 'usage', 'example', 'quickstart', 'api', 'reference', 'getting started']
+    .filter((keyword) => normalizedReadme.includes(keyword)).length >= 3;
 
   let score = 0;
   const improvements = [];
 
-  if (repository.description && repository.description.trim()) {
+  if (topics.length > 0) {
     score += 25;
-  } else {
-    improvements.push('Add a concise GitHub repository description.');
-  }
-
-  if (topics.length >= 6) {
-    score += 30;
-  } else if (topics.length >= 3) {
-    score += 22;
-  } else if (topics.length >= 1) {
-    score += 12;
-    improvements.push('Add more GitHub topics so the project is easier to discover.');
+    if (topics.length < 3) {
+      improvements.push('Add more GitHub topics so the project is easier to discover.');
+    }
   } else {
     improvements.push('Add GitHub topics that reflect the project domain and audience.');
   }
 
-  score += Math.min(keywordMatches.length * 6, 30);
-  if (keywordMatches.length < 3) {
-    improvements.push('Use README headings like installation, usage, examples, or API reference.');
+  if (repository.homepage) {
+    score += 20;
+  } else {
+    improvements.push('Set a homepage URL in the repository metadata.');
   }
 
-  if (repository.homepage) {
+  if (hasReadmeBadges) {
     score += 15;
   } else {
-    improvements.push('Set a homepage or docs URL in the repository metadata.');
+    improvements.push('Add a small set of README badges for version, CI, or quality signals.');
+  }
+
+  if (hasClearDescription) {
+    score += 20;
+  } else {
+    improvements.push('Add a concise GitHub repository description.');
+  }
+
+  if (hasDocsWebsiteLink || hasReadmeKeywords) {
+    score += 20;
+    if (!hasDocsWebsiteLink) {
+      improvements.push('Add a docs website or deeper documentation links for easier discovery.');
+    }
+  } else {
+    improvements.push('Link to docs or make deeper usage and API guidance easier to find from the README.');
+  }
+
+  if (!hasReadmeKeywords) {
+    improvements.push('Use README headings like installation, usage, examples, or API reference.');
   }
 
   return {
     score: Math.min(score, 100),
-    improvements,
+    improvements: [...new Set(improvements)],
   };
 }
 

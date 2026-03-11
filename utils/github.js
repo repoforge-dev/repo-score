@@ -107,6 +107,80 @@ async function getRepoMetadata(owner, repo) {
   };
 }
 
+async function getContributorCount(owner, repo) {
+  const contributors = await requestGitHub(`${buildRepoPath(owner, repo)}/contributors?per_page=100&anon=1`, {
+    allowNotFound: true,
+  });
+
+  return Array.isArray(contributors) ? contributors.length : 0;
+}
+
+async function getReleaseSignals(owner, repo) {
+  const releases = await requestGitHub(`${buildRepoPath(owner, repo)}/releases?per_page=10`, {
+    allowNotFound: true,
+  });
+
+  if (!Array.isArray(releases) || releases.length === 0) {
+    return {
+      recent_release_count: 0,
+      last_release_at: null,
+    };
+  }
+
+  const now = Date.now();
+  const recentReleaseCount = releases.filter((release) => {
+    const publishedAt = release?.published_at || release?.created_at;
+    if (!publishedAt) {
+      return false;
+    }
+
+    const ageInDays = Math.floor((now - new Date(publishedAt).getTime()) / 86400000);
+    return ageInDays <= 365;
+  }).length;
+
+  return {
+    recent_release_count: recentReleaseCount,
+    last_release_at: releases[0].published_at || releases[0].created_at || null,
+  };
+}
+
+async function getIssueActivitySignals(owner, repo) {
+  const issues = await requestGitHub(
+    `${buildRepoPath(owner, repo)}/issues?state=all&sort=updated&direction=desc&per_page=20`,
+    { allowNotFound: true }
+  );
+
+  if (!Array.isArray(issues) || issues.length === 0) {
+    return {
+      recent_issue_activity_count: 0,
+      last_issue_updated_at: null,
+    };
+  }
+
+  const issueOnlyItems = issues.filter((issue) => !issue.pull_request);
+  if (issueOnlyItems.length === 0) {
+    return {
+      recent_issue_activity_count: 0,
+      last_issue_updated_at: null,
+    };
+  }
+
+  const now = Date.now();
+  const recentIssueActivityCount = issueOnlyItems.filter((issue) => {
+    if (!issue.updated_at) {
+      return false;
+    }
+
+    const ageInDays = Math.floor((now - new Date(issue.updated_at).getTime()) / 86400000);
+    return ageInDays <= 90;
+  }).length;
+
+  return {
+    recent_issue_activity_count: recentIssueActivityCount,
+    last_issue_updated_at: issueOnlyItems[0].updated_at || null,
+  };
+}
+
 async function getReadmeContent(owner, repo) {
   const readme = await requestGitHub(`${buildRepoPath(owner, repo)}/readme`, {
     allowNotFound: true,
@@ -162,8 +236,11 @@ async function searchRepositories(query, options = {}) {
 }
 
 module.exports = {
+  getContributorCount,
   getPackageManifest,
+  getIssueActivitySignals,
   getReadmeContent,
+  getReleaseSignals,
   getRepoMetadata,
   getRepositoryTree,
   searchRepositories,

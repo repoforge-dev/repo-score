@@ -19,7 +19,19 @@ const AGENT_SAFETY_REPO_TYPES = new Set([
   'llm-framework',
   'agent-runtime',
 ]);
-const ANALYSIS_MODEL_VERSION = 6;
+const ANALYSIS_MODEL_VERSION = 9;
+
+function hasCurrentSnapshotSignals(snapshot) {
+  const metadata = snapshot?.repoMetadata || {};
+
+  return (
+    Object.prototype.hasOwnProperty.call(metadata, 'contributor_count') &&
+    Object.prototype.hasOwnProperty.call(metadata, 'recent_release_count') &&
+    Object.prototype.hasOwnProperty.call(metadata, 'last_release_at') &&
+    Object.prototype.hasOwnProperty.call(metadata, 'recent_issue_activity_count') &&
+    Object.prototype.hasOwnProperty.call(metadata, 'last_issue_updated_at')
+  );
+}
 
 function hasCurrentAnalysisSchema(analysis) {
   if (!analysis || typeof analysis !== 'object' || !analysis.scores || typeof analysis.scores !== 'object') {
@@ -71,12 +83,20 @@ async function buildRepoAnalysis(owner, repo) {
 
   let snapshot;
   try {
-    snapshot = cached?.snapshot || (await fetchRepositorySnapshot(owner, repo));
+    if (cached?.snapshot && hasCurrentSnapshotSignals(cached.snapshot)) {
+      snapshot = cached.snapshot;
+    } else {
+      snapshot = await fetchRepositorySnapshot(owner, repo);
+    }
   } catch (error) {
+    if (cached?.snapshot) {
+      snapshot = cached.snapshot;
+    } else {
     const analysisError = new Error('Repository could not be analyzed');
     analysisError.status = 502;
     analysisError.expose = true;
     throw analysisError;
+    }
   }
 
   const repoType = detectRepoType(snapshot);

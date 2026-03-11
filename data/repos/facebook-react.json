@@ -1,15 +1,16 @@
 {
-  "cachedAt": "2026-03-10T01:43:26.551Z",
-  "analysisModelVersion": 4,
+  "cachedAt": "2026-03-11T01:04:46.762Z",
+  "analysisModelVersion": 9,
   "snapshot": {
     "owner": "facebook",
     "repo": "react",
     "repoMetadata": {
       "name": "react",
       "description": "The library for web and native user interfaces.",
-      "stargazers_count": 243733,
-      "forks_count": 50676,
-      "open_issues_count": 1152,
+      "stargazers_count": 243875,
+      "forks_count": 50716,
+      "watchers_count": 243875,
+      "open_issues_count": 1165,
       "language": "JavaScript",
       "topics": [
         "declarative",
@@ -20,9 +21,14 @@
         "ui"
       ],
       "default_branch": "main",
-      "updated_at": "2026-03-09T02:11:08Z",
+      "updated_at": "2026-03-10T22:35:55Z",
       "homepage": "https://react.dev",
-      "archived": false
+      "archived": false,
+      "contributor_count": 100,
+      "recent_release_count": 10,
+      "last_release_at": "2026-01-26T18:29:43Z",
+      "recent_issue_activity_count": 6,
+      "last_issue_updated_at": "2026-03-11T00:30:52Z"
     },
     "readmeContent": "# [React](https://react.dev/) &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) [![(Runtime) Build and Test](https://github.com/facebook/react/actions/workflows/runtime_build_and_test.yml/badge.svg)](https://github.com/facebook/react/actions/workflows/runtime_build_and_test.yml) [![(Compiler) TypeScript](https://github.com/facebook/react/actions/workflows/compiler_typescript.yml/badge.svg?branch=main)](https://github.com/facebook/react/actions/workflows/compiler_typescript.yml) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://legacy.reactjs.org/docs/how-to-contribute.html#your-first-pull-request)\n\nReact is a JavaScript library for building user interfaces.\n\n* **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.\n* **Component-Based:** Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep the state out of the DOM.\n* **Learn Once, Write Anywhere:** We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using [Node](https://nodejs.org/en) and power mobile apps using [React Native](https://reactnative.dev/).\n\n[Learn how to use React in your project](https://react.dev/learn).\n\n## Installation\n\nReact has been designed for gradual adoption from the start, and **you can use as little or as much React as you need**:\n\n* Use [Quick Start](https://react.dev/learn) to get a taste of React.\n* [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) to use as little or as much React as you need.\n* [Create a New React App](https://react.dev/learn/start-a-new-react-project) if you're looking for a powerful JavaScript toolchain.\n\n## Documentation\n\nYou can find the React documentation [on the website](https://react.dev/).\n\nCheck out the [Getting Started](https://react.dev/learn) page for a quick overview.\n\nThe documentation is divided into several sections:\n\n* [Quick Start](https://react.dev/learn)\n* [Tutorial](https://react.dev/learn/tutorial-tic-tac-toe)\n* [Thinking in React](https://react.dev/learn/thinking-in-react)\n* [Installation](https://react.dev/learn/installation)\n* [Describing the UI](https://react.dev/learn/describing-the-ui)\n* [Adding Interactivity](https://react.dev/learn/adding-interactivity)\n* [Managing State](https://react.dev/learn/managing-state)\n* [Advanced Guides](https://react.dev/learn/escape-hatches)\n* [API Reference](https://react.dev/reference/react)\n* [Where to Get Support](https://react.dev/community)\n* [Contributing Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)\n\nYou can improve it by sending pull requests to [this repository](https://github.com/reactjs/react.dev).\n\n## Examples\n\nWe have several examples [on the website](https://react.dev/). Here is the first one to get you started:\n\n```jsx\nimport { createRoot } from 'react-dom/client';\n\nfunction HelloMessage({ name }) {\n  return <div>Hello {name}</div>;\n}\n\nconst root = createRoot(document.getElementById('container'));\nroot.render(<HelloMessage name=\"Taylor\" />);\n```\n\nThis example will render \"Hello Taylor\" into a container on the page.\n\nYou'll notice that we used an HTML-like syntax; [we call it JSX](https://react.dev/learn#writing-markup-with-jsx). JSX is not required to use React, but it makes code more readable, and writing it feels like writing HTML.\n\n## Contributing\n\nThe main purpose of this repository is to continue evolving React core, making it faster and easier to use. Development of React happens in the open on GitHub, and we are grateful to the community for contributing bugfixes and improvements. Read below to learn how you can take part in improving React.\n\n### [Code of Conduct](https://code.fb.com/codeofconduct)\n\nFacebook has adopted a Code of Conduct that we expect project participants to adhere to. Please read [the full text](https://code.fb.com/codeofconduct) so that you can understand what actions will and will not be tolerated.\n\n### [Contributing Guide](https://legacy.reactjs.org/docs/how-to-contribute.html)\n\nRead our [contributing guide](https://legacy.reactjs.org/docs/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React.\n\n### [Good First Issues](https://github.com/facebook/react/labels/good%20first%20issue)\n\nTo help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/facebook/react/labels/good%20first%20issue) that contain bugs that have a relatively limited scope. This is a great place to get started.\n\n### License\n\nReact is [MIT licensed](./LICENSE).\n",
     "fileTree": [
@@ -20307,6 +20313,10 @@
         "type": "blob"
       },
       {
+        "path": "packages/react-devtools-shared/src/__tests__/storeForceError-test.js",
+        "type": "blob"
+      },
+      {
         "path": "packages/react-devtools-shared/src/__tests__/storeOwners-test.js",
         "type": "blob"
       },
@@ -29912,19 +29922,18 @@
     "repo": "facebook/react",
     "repoType": "library",
     "language": "javascript",
-    "repoScore": 100,
+    "repoScore": 97,
     "scores": {
       "documentation": 100,
-      "structure": 55,
+      "structure": 100,
       "discoverability": 100,
       "maintenance": 100,
-      "adoption": 20,
+      "adoption": 100,
       "agentSafety": null
     },
     "improvements": [
-      "Use a clear source layout such as `src/` or `lib/`.",
-      "Add a `docs/` directory for deeper project documentation."
+      "Document configuration, environment variables, or runtime options."
     ],
-    "analyzedAt": "2026-03-10T01:43:26.551Z"
+    "analyzedAt": "2026-03-11T01:04:46.762Z"
   }
 }

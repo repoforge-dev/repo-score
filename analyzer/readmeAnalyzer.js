@@ -2,6 +2,7 @@
 
 function analyzeReadme(input) {
   const readme = input.readmeContent || '';
+  const files = Array.isArray(input.fileTree) ? input.fileTree.map((entry) => String(entry.path || '').toLowerCase()) : [];
 
   if (!readme.trim()) {
     return {
@@ -13,20 +14,39 @@ function analyzeReadme(input) {
   const normalized = readme.toLowerCase();
   const headingMatches = [...readme.matchAll(/^#{1,6}\s+.+$/gm)];
   const wordCount = readme.trim().split(/\s+/).filter(Boolean).length;
+  const hasReadme = Boolean(readme.trim());
 
   const hasInstallSection = /\b(install|installation|get started|getting started|setup)\b/.test(normalized);
   const hasUsageExamples =
     /\b(usage|quickstart|example|examples)\b/.test(normalized) ||
     /```[\s\S]{20,}?```/.test(readme);
-  const hasReferenceSection = /\b(api|reference|configuration|options)\b/.test(normalized);
-  const hasContributingSection = /\b(contributing|development)\b/.test(normalized);
-  const hasLicenseSection = /\blicense\b/.test(normalized);
+  const hasApiDocs = /\b(api|reference)\b/.test(normalized);
+  const hasConfigDocs = /\b(config|configuration|options|environment)\b/.test(normalized);
+  const hasContributingGuidance =
+    /\b(contributing|development)\b/.test(normalized) ||
+    files.some((filePath) => /(^|\/)contributing\.md$/i.test(filePath));
 
-  let score = 20;
+  let score = 0;
   const improvements = [];
 
-  if (hasInstallSection) {
+  if (hasReadme) {
     score += 20;
+  }
+
+  if (wordCount >= 150) {
+    score += 10;
+  } else {
+    improvements.push('Expand the README so it clearly covers project purpose and developer workflows.');
+  }
+
+  if (headingMatches.length >= 4) {
+    score += 10;
+  } else {
+    improvements.push('Break the README into clearer sections with headings for faster scanning.');
+  }
+
+  if (hasInstallSection) {
+    score += 15;
   } else {
     improvements.push('Document installation or setup steps in the README.');
   }
@@ -37,32 +57,22 @@ function analyzeReadme(input) {
     improvements.push('Add concrete usage examples or a quickstart section.');
   }
 
-  if (hasReferenceSection) {
+  if (hasApiDocs) {
     score += 15;
   } else {
-    improvements.push('Include API, configuration, or reference details in the README.');
+    improvements.push('Include API or reference details in the README.');
   }
 
-  if (hasContributingSection) {
+  if (hasConfigDocs) {
     score += 10;
   } else {
-    improvements.push('Explain how contributors can run, test, and contribute to the project.');
+    improvements.push('Document configuration, environment variables, or runtime options.');
   }
 
-  if (hasLicenseSection) {
-    score += 5;
-  }
-
-  if (wordCount >= 250) {
-    score += 10;
-  } else if (wordCount < 120) {
-    improvements.push('Expand the README so it covers project purpose and developer workflows.');
-  }
-
-  if (headingMatches.length >= 5) {
+  if (hasContributingGuidance) {
     score += 10;
   } else {
-    improvements.push('Break the README into clearer sections for faster scanning.');
+    improvements.push('Add contributing guidance in the README or a CONTRIBUTING.md file.');
   }
 
   return {

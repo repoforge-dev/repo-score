@@ -14,71 +14,56 @@ function getFilePaths(fileTree) {
 }
 
 function analyzeAgentSafety(input, repoType) {
-  const repository = input.repoMetadata || {};
+  if (!AGENT_SAFETY_REPO_TYPES.has(String(repoType || '').toLowerCase())) {
+    return null;
+  }
+
   const readme = (input.readmeContent || '').toLowerCase();
-  const topics = Array.isArray(repository.topics)
-    ? repository.topics.map((topic) => String(topic).toLowerCase())
-    : [];
   const files = getFilePaths(input.fileTree);
-  const packageJson = input.packageJson || {};
-  const dependencies = {
-    ...(packageJson.dependencies || {}),
-    ...(packageJson.devDependencies || {}),
-    ...(packageJson.peerDependencies || {}),
-  };
-
-  const isAgentFramework =
-    repoType === 'ai-agent-framework' ||
-    repoType === 'agent-runtime' ||
-    topics.some((topic) => topic.includes('agent')) ||
-    /\bagent\b|\bmulti-agent\b|\bautonomous\b/.test(readme);
-
-  const isLlmTooling =
-    repoType === 'ai-tooling' ||
-    repoType === 'llm-framework' ||
-    ['openai', '@anthropic-ai/sdk', 'langchain', '@langchain/core', 'llamaindex'].some((dependency) =>
-      Object.prototype.hasOwnProperty.call(dependencies, dependency)
-    ) ||
-    /\bllm\b|\brag\b|\bprompt\b|\bembeddings?\b/.test(readme);
 
   const hasSafetyDocs =
-    /\bsafety\b|\bguardrails?\b|\bsecurity\b|\bpolicy\b/.test(readme) ||
+    /\bguardrails?\b|\bsafety\b|\bsecurity\b|\bpolicy\b/.test(readme) ||
     files.some((filePath) => ['security.md', 'safety.md', '.github/security.md'].includes(filePath));
-  const hasEvaluationGuidance = /\bevals?\b|\bevaluation\b|\bred team\b|\btesting\b/.test(readme);
-  const hasOperationalBoundaries =
-    /\bsandbox\b|\bpermission\b|\bapproval\b|\brate limit\b|\bhuman in the loop\b/.test(readme);
+  const hasToolPermissions =
+    /\btool permissions?\b|\btool allowlist\b|\btool denylist\b|\btool throttle\b|\btool execution guardrails?\b/.test(readme) ||
+    files.some((filePath) => /tool(throttle|guard|policy|registry)/.test(filePath));
+  const hasRuntimeLimits =
+    /\bruntime limits?\b|\btoken budgets?\b|\brate limits?\b|\bloop limits?\b|\bexecution limits?\b/.test(readme) ||
+    files.some((filePath) => /(budget|limit|loopguard|throttle|enforcement)/.test(filePath));
+  const hasPolicyEnforcement =
+    /\bpolicy enforcement\b|\bapproval boundaries\b|\bpermission boundaries\b|\bfail closed\b/.test(readme) ||
+    files.some((filePath) => /(policy|integrity|approval|permission)/.test(filePath));
 
-  let score = 90;
+  let score = 0;
   const improvements = [];
 
-  if (isAgentFramework || isLlmTooling) {
-    score = 35;
+  if (hasSafetyDocs) {
+    score += 25;
+  } else {
+    improvements.push('Document AI safety or guardrail expectations explicitly.');
+  }
 
-    if (hasSafetyDocs) {
-      score += 30;
-    } else {
-      improvements.push('Document safety, security, or guardrail expectations for AI-assisted workflows.');
-    }
+  if (hasToolPermissions) {
+    score += 30;
+  } else {
+    improvements.push('Describe tool execution guardrails or permission controls.');
+  }
 
-    if (hasEvaluationGuidance) {
-      score += 20;
-    } else {
-      improvements.push('Explain how agent or LLM behaviors are evaluated before release.');
-    }
+  if (hasRuntimeLimits) {
+    score += 25;
+  } else {
+    improvements.push('Explain runtime limits such as token, loop, or rate caps.');
+  }
 
-    if (hasOperationalBoundaries) {
-      score += 15;
-    } else {
-      improvements.push('Describe permissions, sandboxing, or approval boundaries for automation.');
-    }
-  } else if (!hasSafetyDocs) {
-    score -= 5;
-    improvements.push('Add SECURITY.md or equivalent operational guidance.');
+  if (hasPolicyEnforcement) {
+    score += 20;
+  } else {
+    improvements.push('Document policy enforcement or approval boundaries for autonomous execution.');
   }
 
   return {
-    score: Math.max(0, Math.min(score, 100)),
-    improvements,
+    score: Math.min(score, 100),
+    improvements: [...new Set(improvements)],
   };
 }
 

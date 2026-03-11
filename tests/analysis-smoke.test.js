@@ -2,7 +2,11 @@ const assert = require('node:assert/strict');
 
 const analyzeRoute = require('../api/analyze');
 const { analyzeAdoption } = require('../analyzer/adoptionAnalyzer');
+const { analyzeAgentSafety } = require('../analyzer/agentSafetyAnalyzer');
+const { analyzeDiscoverability } = require('../analyzer/discoverabilityAnalyzer');
+const { analyzeMaintenance } = require('../analyzer/maintenanceAnalyzer');
 const { analyzeReadme } = require('../analyzer/readmeAnalyzer');
+const { analyzeStructure } = require('../analyzer/structureAnalyzer');
 const { detectRepoType } = require('../analyzer/repoTypeDetector');
 const { computeRepoScore } = require('../scoring/scoreEngine');
 
@@ -50,17 +54,63 @@ const lowAdoptionAnalysis = computeRepoScore('library', {
   agentSafety: null,
 });
 
-assert.equal(lowAdoptionAnalysis.repoScore, 92);
+assert.equal(lowAdoptionAnalysis.repoScore, 78);
 assert.equal(lowAdoptionAnalysis.scores.adoption, 0);
 assert.equal(lowAdoptionAnalysis.scores.agentSafety, null);
 
+assert.equal(analyzeAdoption({ repoMetadata: { stargazers_count: 1500, forks_count: 200, contributor_count: 12 } }).score, 54);
+
 assert.equal(
-  analyzeAdoption({
+  analyzeStructure({
+    fileTree: [
+      { path: 'src/index.js' },
+      { path: 'tests/app.test.js' },
+      { path: 'package.json' },
+      { path: '.eslintrc.json' },
+      { path: '.github/workflows/ci.yml' },
+    ],
+    packageJson: { scripts: { lint: 'eslint .' } },
+  }).score,
+  100
+);
+
+assert.equal(
+  analyzeDiscoverability({
     repoMetadata: {
-      stargazers_count: 1500,
+      description: 'Well-documented repository quality analyzer for GitHub projects.',
+      topics: ['github-analysis', 'developer-tools'],
+      homepage: 'https://repoforge.dev',
+    },
+    readmeContent: '![CI](https://example.com/ci.svg)\n## Installation\n## Usage\n## API\nSee https://repoforge.dev/docs for full docs.',
+    fileTree: [{ path: 'docs/architecture.md' }],
+  }).score,
+  100
+);
+
+assert.equal(
+  analyzeMaintenance({
+    repoMetadata: {
+      updated_at: new Date().toISOString(),
+      contributor_count: 10,
+      recent_release_count: 2,
+      last_release_at: new Date().toISOString(),
+      recent_issue_activity_count: 6,
+      last_issue_updated_at: new Date().toISOString(),
+      archived: false,
     },
   }).score,
-  15
+  100
+);
+
+assert.equal(
+  analyzeAgentSafety(
+    {
+      readmeContent: 'Guardrails, tool permissions, runtime limits, and policy enforcement are documented.',
+      fileTree: [{ path: 'src/enforcement/toolGuard.ts' }, { path: 'SECURITY.md' }],
+    },
+    'ai-tooling'
+  ).score,
+  100
 );
 
 assert.equal(
@@ -118,6 +168,29 @@ assert.equal(
     fileTree: [{ path: 'scripts/release.js' }, { path: 'utils/logger.js' }],
   }),
   'developer-tool'
+);
+
+assert.equal(
+  detectRepoType({
+    repoMetadata: {
+      description: 'A JavaScript library for building user interfaces.',
+      topics: ['javascript', 'library', 'ui'],
+      language: 'JavaScript',
+    },
+    packageJson: {
+      private: true,
+      workspaces: ['packages/*'],
+      devDependencies: {
+        yargs: '^17.0.0',
+      },
+      scripts: {
+        build: 'node build.js',
+      },
+    },
+    readmeContent: 'React is a JavaScript library for building user interfaces.',
+    fileTree: [{ path: 'packages/react/index.js' }, { path: 'scripts/release/prompt-for-otp.js' }],
+  }),
+  'library'
 );
 
 assert.equal(

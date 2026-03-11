@@ -87,6 +87,18 @@ function getTopics(repoMetadata) {
     : [];
 }
 
+function isStrongCliCandidate(packageJson, files, topics, readme) {
+  const name = String(packageJson?.name || '').toLowerCase();
+
+  return Boolean(
+    packageJson?.bin ||
+      name.endsWith('-cli') ||
+      topics.some((topic) => topic.includes('cli')) ||
+      /\bcli\b|\bcommand line\b/.test(readme) ||
+      hasAnyPath(files, [/^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])
+  );
+}
+
 function collectPackageSignals(scores, packageJson) {
   if (!packageJson) {
     return;
@@ -119,7 +131,7 @@ function collectPackageSignals(scores, packageJson) {
     addScore(scores, 'library', 'packageJson', 3);
   }
 
-  if (packageJson.private && scripts.some((script) => ['dev', 'start', 'build', 'preview'].includes(script))) {
+  if (packageJson.private && scripts.some((script) => ['dev', 'start', 'preview', 'serve'].includes(script))) {
     addScore(scores, 'application', 'packageJson', 8);
   }
 
@@ -218,12 +230,21 @@ function collectStructureSignals(scores, input) {
   const dependencyMap = getDependencyMap(packageJson);
   const readme = String(input.readmeContent || '').toLowerCase();
 
-  if (hasAnyPath(files, [/^bin\//, /^commands\//, /src\/cli/, /cli\.(js|ts|mjs|cjs)$/])) {
+  if (hasAnyPath(files, [/^bin\//, /^commands\//, /(^|\/)cli(\/|\.|$)/])) {
     addScore(scores, 'cli-tool', 'structure', 8);
   }
 
   if (hasAnyPath(files, [/^src\/index\./, /^lib\//, /^dist\//])) {
     addScore(scores, 'library', 'structure', 6);
+  }
+
+  if (hasAnyPath(files, [/^packages\/[^/]+\/(src\/)?index\./])) {
+    addScore(scores, 'library', 'structure', 6);
+  }
+
+  if (hasAnyPath(files, [/^src\/[^/]+\/__init__\.py$/, /^[^/]+\/__init__\.py$/])) {
+    addScore(scores, 'library', 'structure', 8);
+    addScore(scores, 'sdk', 'structure', 6);
   }
 
   if (hasAnyPath(files, [/^app\//, /^pages\//, /^public\//, /^routes\//, /^prisma\//, /^server\./])) {
@@ -258,11 +279,11 @@ function collectStructureSignals(scores, input) {
     addScore(scores, 'developer-tool', 'structure', 3);
   }
 
-  if (hasAnyPath(files, [/prompt/, /embedding/, /vector/, /rag/, /providers\//, /models\//])) {
+  if (hasAnyPath(files, [/(^|\/)(prompts?|embeddings?|vector(store|db)?|rag|providers|models)(\/|$)/])) {
     addScore(scores, 'ai-tooling', 'structure', 7);
   }
 
-  if (hasAnyPath(files, [/guard/, /enforcement/, /budget/, /throttle/, /integrity/])) {
+  if (hasAnyPath(files, [/(^|\/)(guardrails?|enforcement|budget(guard)?|tool(throttle|guard)|integrity)(\/|$)/])) {
     addScore(scores, 'ai-tooling', 'structure', 6);
   }
 
@@ -387,6 +408,27 @@ function collectReadmeSignals(scores, readme) {
 function collectMetadataSignals(scores, repoMetadata) {
   const description = String(repoMetadata?.description || '').toLowerCase();
 
+  if (description.includes('library')) {
+    addScore(scores, 'library', 'metadata', 8);
+  }
+
+  if (description.includes('sdk')) {
+    addScore(scores, 'sdk', 'metadata', 5);
+  }
+
+  if (description.includes('official') && description.includes('library')) {
+    addScore(scores, 'sdk', 'metadata', 8);
+    addScore(scores, 'library', 'metadata', 4);
+  }
+
+  if (description.includes('client library') || description.includes('api library')) {
+    addScore(scores, 'sdk', 'metadata', 6);
+  }
+
+  if (description.includes('framework')) {
+    addScore(scores, 'framework', 'metadata', 4);
+  }
+
   if (description.includes('analysis') || description.includes('repository quality')) {
     addScore(scores, 'analysis-tool', 'metadata', 3);
   }
@@ -442,6 +484,7 @@ function detectRepoType(input) {
   const packageJson = input.packageJson || null;
   const readme = String(input.readmeContent || '').toLowerCase();
   const topics = getTopics(repoMetadata);
+  const files = getFilePaths(input.fileTree);
   const scores = createEmptyScores();
 
   collectPackageSignals(scores, packageJson);
@@ -451,6 +494,10 @@ function detectRepoType(input) {
   collectTopicSignals(scores, topics);
   collectReadmeSignals(scores, readme);
   collectMetadataSignals(scores, repoMetadata);
+
+  if (!isStrongCliCandidate(packageJson, files, topics, readme)) {
+    scores['cli-tool'] = 0;
+  }
 
   return chooseBestType(scores);
 }

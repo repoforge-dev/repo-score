@@ -1,43 +1,49 @@
 'use strict';
 
-function getAdoptionBonus(stars) {
-  if (stars >= 10000) {
-    return 20;
+function clampScore(value) {
+  return Math.max(0, Math.min(100, value));
+}
+
+function getLogScore(count) {
+  if (!Number.isFinite(count) || count <= 0) {
+    return 0;
   }
 
-  if (stars >= 1000) {
-    return 15;
-  }
-
-  if (stars >= 100) {
-    return 10;
-  }
-
-  if (stars >= 10) {
-    return 5;
-  }
-
-  return 0;
+  return clampScore(Math.log10(count) * 25);
 }
 
 function analyzeAdoption(input) {
   const repository = input.repoMetadata || {};
   const stars = Number.isFinite(repository.stargazers_count) ? repository.stargazers_count : 0;
-  const score = getAdoptionBonus(stars);
+  const forks = Number.isFinite(repository.forks_count) ? repository.forks_count : 0;
+  const contributors = Number.isFinite(repository.contributor_count) ? repository.contributor_count : 0;
+
+  const starsScore = getLogScore(stars);
+  const forkScore = getLogScore(forks);
+  const contributorScore = clampScore(contributors * 2);
+  const score = Math.round((starsScore + forkScore + contributorScore) / 3);
+
   const improvements = [];
 
-  if (score === 0) {
-    improvements.push('Increase project visibility and usage signals to strengthen adoption confidence.');
-  } else if (score < 15) {
-    improvements.push('Broaden community reach through documentation, examples, and distribution channels.');
+  if (starsScore < 35) {
+    improvements.push('Increase project visibility so repository adoption signals become easier to trust.');
+  }
+
+  if (forkScore < 30) {
+    improvements.push('Grow downstream usage and integration signals to strengthen adoption confidence.');
+  }
+
+  if (contributorScore < 20) {
+    improvements.push('Broaden community contribution so adoption is not concentrated in a single maintainer.');
   }
 
   return {
     score,
-    improvements,
+    improvements: [...new Set(improvements)],
   };
 }
 
 module.exports = {
   analyzeAdoption,
+  getLogScore,
 };
