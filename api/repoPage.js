@@ -76,88 +76,105 @@ function parsePageNumber(value) {
 function getBaseStyles() {
   return `
     :root {
-      color-scheme: light;
-      --bg: #f5f7fb;
-      --panel: #ffffff;
-      --text: #142033;
-      --muted: #617085;
-      --border: #e6e8ee;
-      --accent: #0f5bd8;
-      --success-soft: #f2fbf3;
-      --success-border: #d4ebd8;
-      --shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      color-scheme: dark;
+      --bg: #0B0F14;
+      --panel: #11161D;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --border: #1F2937;
+      --accent: #3B82F6;
+      --success: #10B981;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Inter, system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 15px;
+      line-height: 1.6;
+    }
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .search-bar { display: flex; align-items: center; }
+    .search-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      width: 250px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
     }
     .wrap {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 32px;
+      padding: 32px 20px;
     }
-    .header {
-      margin-bottom: 28px;
-    }
-    .brand {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .hero, .panel {
+    h1, h2, h3 { color: var(--text); font-weight: 700; margin: 0 0 16px; }
+    p { margin: 0 0 16px; color: var(--muted); }
+    .panel {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 24px;
-      box-shadow: var(--shadow);
-    }
-    .hero {
-      margin-bottom: 28px;
-    }
-    h1, h2 {
-      margin: 0 0 12px;
-    }
-    h1 {
-      font-size: 32px;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-    h2 {
-      font-size: 20px;
-      line-height: 1.25;
-    }
-    p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      line-height: 1.6;
+      margin-bottom: 24px;
     }
     .footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #e5e8ef;
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 48px;
       text-align: center;
       color: var(--muted);
-      font-size: 15px;
     }
-    .footer a {
-      color: var(--accent);
-      font-weight: 700;
+    .footer p { margin: 0 0 16px; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .footer-links a {
+      color: var(--muted);
       text-decoration: none;
-      margin: 0 14px;
     }
+    .footer-links a:hover { color: var(--text); }
     @media (max-width: 900px) {
-      .wrap {
-        padding: 24px 16px 48px;
-      }
+      .top-nav { flex-direction: column; gap: 16px; align-items: stretch; padding: 16px; }
+      .nav-left { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: space-between; flex-wrap: wrap; }
+      .search-input { width: 100%; }
     }
   `;
 }
@@ -165,199 +182,94 @@ function getBaseStyles() {
 function getRepoPageStyles() {
   return `
     ${getBaseStyles()}
-    .repo-subtitle {
-      font-size: 0.98rem;
-      margin-bottom: 16px;
-    }
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 14px;
-      margin-top: 14px;
-    }
-    .actions a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .actions img {
-      display: block;
-    }
-    .meta {
+    .repo-header { margin-bottom: 32px; }
+    .repo-subtitle { font-size: 1.1rem; color: var(--muted); margin-bottom: 16px; text-decoration: none; display: inline-block; }
+    .repo-subtitle:hover { color: var(--text); text-decoration: underline; }
+    .repo-title { font-size: 2.5rem; letter-spacing: -0.02em; margin: 0; display: inline-block; vertical-align: middle; }
+    .repo-header-top { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; flex-wrap: wrap; }
+    .actions { display: flex; align-items: center; gap: 16px; margin-top: 16px; }
+    .actions a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .summary-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-      margin-top: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
     }
-    .meta-card {
+    .stat-card {
+      background: var(--panel);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
-      background: #ffffff;
-      box-shadow: var(--shadow);
     }
-    .meta-card strong {
+    .stat-label {
       display: block;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
       color: var(--muted);
       margin-bottom: 8px;
     }
-    .meta-card span,
-    .meta-card a {
+    .stat-val {
       display: block;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      line-height: 1.1;
       color: var(--text);
       text-decoration: none;
     }
-    .meta-card a:hover {
-      color: var(--accent);
-    }
-    .badge-section {
-      margin-bottom: 28px;
-    }
-    .layout {
+    .stat-val.score { color: var(--success); font-size: 2rem; }
+    .layout-core {
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 20px;
+      gap: 24px;
       align-items: start;
     }
-    .stack {
-      display: grid;
-      gap: 20px;
-    }
-    .score-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .score-list li {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      padding: 10px 0;
-      border-bottom: 1px solid #eef1f6;
-    }
-    .score-list li:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-    .score-list strong {
-      font-weight: 600;
-    }
-    .score-list span {
-      font-weight: 600;
-      font-size: 1.15rem;
-      text-align: right;
-    }
-    .suggestions {
-      margin: 0;
-      padding-left: 22px;
-      line-height: 1.8;
-    }
-    .suggestions li {
-      margin-bottom: 10px;
-    }
-    .suggestions li:last-child {
-      margin-bottom: 0;
-    }
-    .badge-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 14px;
-    }
-    .copy-button {
-      appearance: none;
+    .score-list { list-style: none; padding: 0; margin: 0; }
+    .score-list li { margin-bottom: 16px; }
+    .score-bar-bg {
+      background: var(--bg);
+      border-radius: 4px;
+      height: 8px;
+      overflow: hidden;
+      margin-top: 8px;
       border: 1px solid var(--border);
-      background: var(--panel);
-      color: var(--text);
-      border-radius: 10px;
-      padding: 10px 15px;
-      font-size: 0.92rem;
-      font-weight: 700;
-      cursor: pointer;
     }
-    .copy-button:hover {
-      border-color: #b8c5da;
-      background: #f8fbff;
+    .score-bar-fill {
+      background: var(--success);
+      height: 100%;
     }
-    .snippet {
-      margin: 0;
-      width: 100%;
+    .score-row-top { display: flex; justify-content: space-between; align-items: center; }
+    .score-label { font-weight: 600; color: var(--text); }
+    .score-num { font-weight: 700; color: var(--text); }
+    .suggestions { margin: 0; padding-left: 20px; line-height: 1.6; }
+    .suggestions li { margin-bottom: 12px; color: var(--text); }
+    .badge-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
       padding: 16px;
       border-radius: 8px;
-      border: 1px solid #dfe3ea;
-      background: #f7f9fc;
-      color: #10294f;
-      font-family: Consolas, "SFMono-Regular", Menlo, Monaco, monospace;
+      font-family: monospace;
+      color: var(--muted);
       font-size: 14px;
-      line-height: 1.65;
       white-space: pre-wrap;
       word-break: break-all;
-      overflow-wrap: anywhere;
+      margin: 0;
     }
-    .authority-card {
-      background: #f6fbf7;
-      border: 1px solid #d9eadf;
-      border-radius: 12px;
-      padding: 18px;
-    }
-    .authority-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 4px 8px;
-      border-radius: 20px;
-      background: #e8f6ec;
-      color: #2f6b3e;
-      font-size: 11px;
+    .btn-copy {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
     }
-    .button-link {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 14px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .button-link:hover {
-      background: #0c4cb4;
-    }
+    .btn-copy:hover { border-color: var(--muted); }
+    .flex-between { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .similar-list { list-style: none; padding: 0; margin: 0; }
+    .similar-list li { margin-bottom: 10px; }
+    .similar-list a { color: var(--accent); text-decoration: none; font-weight: 600; }
     @media (max-width: 900px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-      .meta {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .hero, .panel {
-        padding: 22px;
-      }
-      h1 {
-        font-size: 28px;
-      }
-      .badge-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .meta-card span,
-      .meta-card a {
-        font-size: 1.7rem;
-      }
+      .layout-core { grid-template-columns: 1fr; }
     }
   `;
 }
@@ -365,94 +277,31 @@ function getRepoPageStyles() {
 function getCategoryPageStyles() {
   return `
     ${getBaseStyles()}
-    .category-copy {
-      font-size: 0.98rem;
-      margin-bottom: 0;
-    }
-    .list-panel {
-      margin-bottom: 28px;
-    }
-    .repo-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+    .category-title { font-size: 2.5rem; letter-spacing: -0.02em; }
+    .category-subtitle { font-size: 1.2rem; color: var(--muted); margin-bottom: 32px; }
+    .repo-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
     .repo-item {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) auto auto auto;
-      gap: 18px;
-      align-items: center;
-      padding: 16px 0;
-      border-bottom: 1px solid #eef1f6;
-    }
-    .repo-item:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-    .repo-name a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-    .repo-name a:hover {
-      color: var(--accent);
-    }
-    .repo-meta {
-      color: var(--muted);
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-    .repo-score {
-      font-weight: 700;
-      color: var(--text);
-      font-size: 1rem;
-      white-space: nowrap;
-    }
-    .empty-state {
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-    .pagination {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin-top: 24px;
-      color: var(--muted);
-      font-size: 0.95rem;
     }
-    .pagination a {
-      color: var(--accent);
-      font-weight: 700;
-      text-decoration: none;
-    }
-    .context-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 18px;
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .context-links a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    @media (max-width: 900px) {
-      .repo-item {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-      .repo-meta,
-      .repo-score {
-        white-space: normal;
-      }
-      .pagination {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .repo-main h3 { margin: 0 0 8px; font-size: 1.25rem; }
+    .repo-main a { color: var(--text); text-decoration: none; }
+    .repo-main a:hover { color: var(--accent); }
+    .repo-meta { display: flex; gap: 16px; color: var(--muted); font-size: 0.9rem; }
+    .repo-score-box { text-align: right; }
+    .repo-score-num { font-size: 1.5rem; font-weight: 700; color: var(--success); }
+    .repo-score-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+    .pagination a { color: var(--accent); text-decoration: none; font-weight: 600; background: var(--panel); padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border); }
+    .pagination a:hover { border-color: var(--accent); }
+    @media (max-width: 600px) {
+      .repo-item { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .repo-score-box { text-align: left; }
     }
   `;
 }
@@ -460,8 +309,17 @@ function getCategoryPageStyles() {
 function renderScoreItems(scores) {
   return Object.entries(scores)
     .map(([key, value]) => {
+      const numValue = Number(value) || 0;
       const displayValue = value === null ? 'N/A' : value;
-      return `<li><strong>${escapeHtml(formatLabel(key))}</strong><span>${escapeHtml(displayValue)}</span></li>`;
+      return `<li>
+          <div class="score-row-top">
+            <span class="score-label">${escapeHtml(formatLabel(key))}</span>
+            <span class="score-num">${escapeHtml(displayValue)}</span>
+          </div>
+          <div class="score-bar-bg">
+            <div class="score-bar-fill" style="width: ${numValue}%"></div>
+          </div>
+        </li>`;
     })
     .join('');
 }
@@ -507,6 +365,9 @@ function renderRepoPage(owner, repo, analysis) {
   const showAuthorityLayer = shouldPromoteAuthorityLayer(analysis.repoType);
   const links = renderRepoLinks(analysis);
 
+  const starsDisplay = analysis.snapshot?.repoMetadata?.stargazers_count ? Number(analysis.snapshot.repoMetadata.stargazers_count).toLocaleString() : 'N/A';
+  const updatedDisplay = analysis.snapshot?.repoMetadata?.updated_at ? new Date(analysis.snapshot.repoMetadata.updated_at).toLocaleDateString() : 'N/A';
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -523,43 +384,56 @@ function renderRepoPage(owner, repo, analysis) {
   <style>${getRepoPageStyles()}</style>
 </head>
 <body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a class="brand" href="/">RepoForge</a>
+      <nav class="nav-links">
+        <a href="/repos/type/all">Repositories</a>
+        <a href="/repos/language/all">Languages</a>
+        <a href="/repos/topic/all">Topics</a>
+        <a href="/repos/top">Top Repositories</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <form class="search-bar" id="global-search-form">
+      <input class="search-input" id="global-search-input" placeholder="Search GitHub repo..." required>
+      <button style="display:none" type="submit"></button>
+    </form>
+  </header>
+
   <div class="wrap">
-    <header class="header">
-      <a class="brand" href="${escapeHtml(homepageUrl)}">RepoForge</a>
-      <div class="hero">
-        <h1>${escapeHtml(repoName)}</h1>
-        <p class="repo-subtitle">Repository Quality Analysis</p>
-        <div class="actions">
-          <a href="${escapeHtml(githubUrl)}" target="_blank" rel="noreferrer">View on GitHub</a>
-          <img src="${escapeHtml(badgeUrl)}" alt="RepoScore badge for ${escapeHtml(repoName)}">
-        </div>
-        <div class="meta">
-          <div class="meta-card">
-            <strong>RepoScore</strong>
-            <span>${escapeHtml(analysis.repoScore)}</span>
-          </div>
-          <div class="meta-card">
-            <strong>Repo Type</strong>
-            <a href="${escapeHtml(links.repoTypeUrl)}">${escapeHtml(formatLabel(analysis.repoType))}</a>
-          </div>
-          <div class="meta-card">
-            <strong>Language</strong>
-            <a href="${escapeHtml(links.languageUrl)}">${escapeHtml(formatLabel(analysis.language))}</a>
-          </div>
-        </div>
+    <div class="repo-header">
+      <div class="repo-header-top">
+        <h1 class="repo-title">${escapeHtml(repoName)}</h1>
+        <img src="${escapeHtml(badgeUrl)}" alt="RepoScore badge">
       </div>
-    </header>
-    <section class="panel badge-section">
-      <div class="badge-header">
-        <div>
-          <h2>Add RepoScore Badge</h2>
-          <p>Copy the markdown to display the RepoScore badge in your repository README.</p>
-        </div>
-        <button class="copy-button" type="button" onclick="copyBadgeSnippet()">Copy</button>
+      <a class="repo-subtitle" href="${escapeHtml(githubUrl)}" target="_blank" rel="noreferrer">View on GitHub</a>
+    </div>
+
+    <div class="summary-grid">
+      <div class="stat-card">
+        <span class="stat-label">RepoScore</span>
+        <span class="stat-val score">${escapeHtml(analysis.repoScore)}</span>
       </div>
-      <pre class="snippet"><code id="badge-snippet">${escapeHtml(badgeMarkdown)}</code></pre>
-    </section>
-    <main class="layout">
+      <div class="stat-card">
+        <span class="stat-label">Repo Type</span>
+        <a href="${escapeHtml(links.repoTypeUrl)}" class="stat-val">${escapeHtml(formatLabel(analysis.repoType))}</a>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Primary Language</span>
+        <a href="${escapeHtml(links.languageUrl)}" class="stat-val">${escapeHtml(formatLabel(analysis.language))}</a>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Stars</span>
+        <span class="stat-val">${escapeHtml(starsDisplay)}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Last Updated</span>
+        <span class="stat-val">${escapeHtml(updatedDisplay)}</span>
+      </div>
+    </div>
+
+    <main class="layout-core">
       <div class="stack">
         <section class="panel">
           <h2>Score Breakdown</h2>
@@ -567,6 +441,7 @@ function renderRepoPage(owner, repo, analysis) {
             ${renderScoreItems(analysis.scores)}
           </ul>
         </section>
+        
         <section class="panel">
           <h2>Improvement Suggestions</h2>
           <ul class="suggestions">
@@ -574,36 +449,71 @@ function renderRepoPage(owner, repo, analysis) {
           </ul>
         </section>
       </div>
+
       <div class="stack">
-        ${showAuthorityLayer ? `<section class="panel authority-card">
-          <div class="authority-label">AI Runtime Recommendation</div>
-          <h2>Secure AI Agents with AuthorityLayer</h2>
+        <section class="panel badge-section">
+          <div class="flex-between">
+            <h3 style="margin:0;">Add RepoScore Badge</h3>
+            <button class="btn-copy" type="button" onclick="copyBadgeSnippet()">Copy</button>
+          </div>
+          <pre class="badge-box" id="badge-snippet">${escapeHtml(badgeMarkdown)}</pre>
+        </section>
+
+        ${showAuthorityLayer ? `<section class="panel">
+          <h3>Secure AI Agents with AuthorityLayer</h3>
           <p>Add runtime guardrails and budget limits to autonomous agents using AuthorityLayer.</p>
-          <a class="button-link" href="${escapeHtml(authorityLayerUrl)}" target="_blank" rel="noreferrer">View AuthorityLayer on GitHub</a>
+          <a href="${escapeHtml(authorityLayerUrl)}" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:600;text-decoration:none;">View AuthorityLayer on GitHub</a>
         </section>` : ''}
+        
+        <section class="panel">
+          <h3>Similar Repositories</h3>
+          <ul class="similar-list">
+            <li><a href="${escapeHtml(links.languageUrl)}">Explore ${escapeHtml(formatLabel(analysis.language))} projects</a></li>
+            <li><a href="${escapeHtml(links.repoTypeUrl)}">Explore ${escapeHtml(formatLabel(analysis.repoType))} projects</a></li>
+          </ul>
+        </section>
       </div>
     </main>
+
     <footer class="footer">
-      <a href="${escapeHtml(homepageUrl)}">Analyze another repository</a>
-      <a href="/repos/top">Browse GitHub repository analysis</a>
+      <p><strong>About RepoForge</strong><br>RepoForge analyzes GitHub repositories to help developers discover high-quality open-source projects.</p>
+      <div class="footer-links">
+        <a href="/docs">Documentation</a>
+        <a href="https://github.com/repoforge-dev/repo-score">GitHub</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
     </footer>
   </div>
+
   <script>
     function copyBadgeSnippet() {
-      const button = document.querySelector('.copy-button');
+      const button = document.querySelector('.btn-copy');
       const snippet = document.getElementById('badge-snippet');
-      if (!button || !snippet || !navigator.clipboard) {
-        return;
-      }
-
+      if (!button || !snippet || !navigator.clipboard) return;
       navigator.clipboard.writeText(snippet.textContent).then(() => {
         const original = button.textContent;
-        button.textContent = 'Copied';
-        setTimeout(() => {
-          button.textContent = original;
-        }, 1500);
+        button.textContent = 'Copied!';
+        setTimeout(() => button.textContent = original, 1500);
       }).catch(() => {});
     }
+
+    function setupSearch(formId, inputId) {
+      const form = document.getElementById(formId);
+      const input = document.getElementById(inputId);
+      if (!form || !input) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const value = String(input.value || '').trim()
+          .replace(/^https?:\\/\\/github\\.com\\//i, '')
+          .replace(/\\.git$/i, '')
+          .replace(/^\\/+|\\/+$/g, '');
+        const match = value.match(/^([A-Za-z0-9_.-]+)\\/([A-Za-z0-9_.-]+)$/);
+        if (!match) { input.focus(); return; }
+        window.location.href = '/repos/' + match[1] + '/' + match[2];
+      });
+    }
+    setupSearch('global-search-form', 'global-search-input');
   </script>
 </body>
 </html>`;
@@ -744,15 +654,22 @@ function paginateEntries(entries, page) {
 
 function renderRepositoryList(entries) {
   if (!entries.length) {
-    return '<p class="empty-state">No cached repositories match this category yet.</p>';
+    return '<p class="empty-state">No repositories found.</p>';
   }
-
   return `<ul class="repo-list">${entries
-    .map((entry) => `<li class="repo-item">
-        <div class="repo-name"><a href="/repos/${encodeURIComponent(entry.owner)}/${encodeURIComponent(entry.repo)}">${escapeHtml(entry.fullName)}</a></div>
-        <div class="repo-score">RepoScore ${escapeHtml(entry.repoScore)}</div>
-        <div class="repo-meta">${escapeHtml(formatLabel(entry.repoType))}</div>
-        <div class="repo-meta">${escapeHtml(formatLabel(entry.language))}</div>
+    .map((entry) => `
+      <li class="repo-item">
+        <div class="repo-main">
+          <h3><a href="/repos/${encodeURIComponent(entry.owner)}/${encodeURIComponent(entry.repo)}">${escapeHtml(entry.fullName)}</a></h3>
+          <div class="repo-meta">
+            <span>${escapeHtml(formatLabel(entry.repoType))}</span>
+            <span>${escapeHtml(formatLabel(entry.language))}</span>
+          </div>
+        </div>
+        <div class="repo-score-box">
+          <div class="repo-score-num">${escapeHtml(entry.repoScore)}</div>
+          <div class="repo-score-label">RepoScore</div>
+        </div>
       </li>`)
     .join('')}</ul>`;
 }
@@ -803,29 +720,67 @@ function renderCategoryPage(options) {
   <style>${getCategoryPageStyles()}</style>
 </head>
 <body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a class="brand" href="/">RepoForge</a>
+      <nav class="nav-links">
+        <a href="/repos/type/all">Repositories</a>
+        <a href="/repos/language/all">Languages</a>
+        <a href="/repos/topic/all">Topics</a>
+        <a href="/repos/top">Top Repositories</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <form class="search-bar" id="global-search-form">
+      <input class="search-input" id="global-search-input" placeholder="Search GitHub repo..." required>
+      <button style="display:none" type="submit"></button>
+    </form>
+  </header>
+
   <div class="wrap">
-    <header class="header">
-      <a class="brand" href="https://repoforge.dev">RepoForge</a>
-      <div class="hero">
-        <h1>${escapeHtml(heading)}</h1>
-        <p class="category-copy">${escapeHtml(description)}</p>
-        ${contextLinks.length ? `<div class="context-links">${contextLinks
-          .map((link) => `<a href="${escapeHtml(link.href)}">${escapeHtml(link.label)}</a>`)
-          .join('')}</div>` : ''}
-      </div>
-    </header>
+    <div class="repo-header">
+      <h1 class="category-title">${escapeHtml(heading)}</h1>
+      <p class="category-subtitle">${escapeHtml(description)}</p>
+      ${contextLinks.length ? `<div style="margin-bottom: 24px;">${contextLinks
+      .map((link) => `<a href="${escapeHtml(link.href)}" style="color:var(--accent);margin-right:16px;text-decoration:none;">${escapeHtml(link.label)}</a>`)
+      .join('')}</div>` : ''}
+    </div>
+
     <main>
-      <section class="panel list-panel">
-        <h2>Repository List</h2>
+      <section class="panel" style="background:transparent;border:none;padding:0;">
         ${renderRepositoryList(entries)}
         ${renderPagination(basePath, currentPage, totalPages)}
       </section>
     </main>
+
     <footer class="footer">
-      <a href="https://repoforge.dev">Analyze another repository</a>
-      <a href="/repos/top">Browse GitHub repository analysis</a>
+      <p><strong>About RepoForge</strong><br>RepoForge analyzes GitHub repositories to help developers discover high-quality open-source projects.</p>
+      <div class="footer-links">
+        <a href="/docs">Documentation</a>
+        <a href="https://github.com/repoforge-dev/repo-score">GitHub</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
     </footer>
   </div>
+  <script>
+    function setupSearch(formId, inputId) {
+      const form = document.getElementById(formId);
+      const input = document.getElementById(inputId);
+      if (!form || !input) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const value = String(input.value || '').trim()
+          .replace(/^https?:\\/\\/github\\.com\\//i, '')
+          .replace(/\\.git$/i, '')
+          .replace(/^\\/+|\\/+$/g, '');
+        const match = value.match(/^([A-Za-z0-9_.-]+)\\/([A-Za-z0-9_.-]+)$/);
+        if (!match) { input.focus(); return; }
+        window.location.href = '/repos/' + match[1] + '/' + match[2];
+      });
+    }
+    setupSearch('global-search-form', 'global-search-input');
+  </script>
 </body>
 </html>`;
 }

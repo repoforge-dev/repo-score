@@ -19,280 +19,313 @@ function renderHomePage() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RepoForge</title>
-  <meta name="description" content="Analyze GitHub repositories with RepoScore.">
+  <meta name="description" content="RepoForge analyzes GitHub repositories to help developers discover high-quality open-source projects.">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f3f6fb;
-      --panel: #ffffff;
-      --text: #142033;
-      --muted: #617085;
-      --border: #e6e8ee;
-      --accent: #0f5bd8;
-      --shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+      color-scheme: dark;
+      --bg: #0B0F14;
+      --panel: #11161D;
+      --text: #E6EDF3;
+      --muted: #8B949E;
+      --border: #1F2937;
+      --accent: #3B82F6;
+      --success: #10B981;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(180deg, #f8fbff 0%, #f3f6fb 100%);
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
       color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .top-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+    }
+    .search-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      width: 250px;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
     }
     .wrap {
       max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px;
     }
-    .brand {
-      display: inline-block;
-      margin-bottom: 18px;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
     .hero {
-      margin-bottom: 28px;
-      padding: 18px 0 6px;
+      text-align: center;
+      margin-bottom: 48px;
     }
     h1 {
-      margin: 0 0 12px;
-      font-size: 42px;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-    }
-    .tagline {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 20px;
-      line-height: 1.4;
-    }
-    .description {
-      max-width: 760px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-      margin-bottom: 28px;
-    }
-    .analyzer-panel {
-      padding: 28px;
-    }
-    .form {
-      display: grid;
-      grid-template-columns: minmax(0, 600px) auto;
-      justify-content: start;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-    .input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #dfe3ea;
-      color: var(--text);
-      background: #ffffff;
-    }
-    .button {
-      background: #0f5bd8;
-      color: #ffffff;
-      padding: 12px 20px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      font-weight: 600;
-    }
-    .button:hover {
-      background: #0c4cb4;
-    }
-    .examples {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-    .examples a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      margin-right: 18px;
-    }
-    .section-title {
-      margin: 0 0 12px;
-      font-size: 24px;
+      margin: 0 0 16px;
+      font-size: 3rem;
       line-height: 1.2;
       letter-spacing: -0.02em;
+      font-weight: 700;
     }
-    .section-copy {
-      margin: 0 0 18px;
+    .tagline {
+      margin: 0 auto 32px;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      max-width: 600px;
     }
+    .hero-form {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .hero-input {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 400px;
+    }
+    .hero-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .btn {
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover { background: #2563eb; }
+    .btn-secondary {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-secondary:hover { background: var(--border); }
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      gap: 24px;
+      margin-bottom: 48px;
     }
     .feature-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      border: 1px solid #e6e8ee;
-      padding: 22px;
-      background: #ffffff;
-      box-shadow: var(--shadow);
+      padding: 24px;
     }
     .feature-card h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-      line-height: 1.25;
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
     }
     .feature-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 1rem;
     }
-    .trust-links a {
+    .category-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .category-section h2 {
+      margin: 0 0 24px;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .category-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .category-links a {
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
-      margin-right: 18px;
+      padding: 12px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .category-links a:hover {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
     }
     .footer {
-      margin-top: 60px;
-      padding-top: 20px;
-      border-top: 1px solid #e5e8ef;
-      font-size: 15px;
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      margin-top: 48px;
       text-align: center;
+      color: var(--muted);
     }
-    .footer a,
-    .footer span {
+    .footer p {
+      margin: 0 0 16px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    .footer-links a {
       color: var(--muted);
       text-decoration: none;
-      margin: 0 12px;
     }
-    .footer a {
-      color: var(--accent);
-      font-weight: 600;
+    .footer-links a:hover {
+      color: var(--text);
     }
     @media (max-width: 900px) {
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    @media (max-width: 640px) {
-      .wrap {
-        padding: 40px 16px;
-      }
-      .panel {
-        padding: 24px;
-      }
-      .form {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 34px;
-      }
-      .tagline {
-        font-size: 18px;
-      }
+      .feature-grid { grid-template-columns: 1fr; }
+      .hero-input { width: 100%; max-width: 400px; }
+      .hero-form { flex-direction: column; align-items: center; }
+      .hero-form .btn { width: 100%; max-width: 400px; }
+      .top-nav { flex-direction: column; gap: 16px; align-items: stretch; padding: 16px; }
+      .nav-left { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: space-between; flex-wrap: wrap; }
+      .search-input { width: 100%; }
     }
   </style>
 </head>
 <body>
+  <header class="top-nav">
+    <div class="nav-left">
+      <a class="brand" href="/">RepoForge</a>
+      <nav class="nav-links">
+        <a href="/repos/type/all">Repositories</a>
+        <a href="/repos/language/all">Languages</a>
+        <a href="/repos/topic/all">Topics</a>
+        <a href="/repos/top">Top Repositories</a>
+        <a href="/about">About</a>
+      </nav>
+    </div>
+    <form class="search-bar" id="global-search-form">
+      <input class="search-input" id="global-search-input" placeholder="Search GitHub repo..." required>
+      <button style="display:none" type="submit"></button>
+    </form>
+  </header>
+
   <div class="wrap">
-    <a class="brand" href="/">RepoForge</a>
-    <header class="hero">
-      <h1>RepoForge</h1>
-      <p class="tagline">Analyze GitHub repositories with RepoScore</p>
-      <p class="description">Instantly evaluate documentation, structure, maintenance activity, discoverability, and adoption signals.</p>
-    </header>
-
-    <section class="panel analyzer-panel">
-      <form class="form" id="repo-form">
-        <input
-          class="input"
-          id="repo-input"
-          name="repo"
-          type="text"
-          placeholder="owner/repo&#10;example: vercel/next.js"
-          aria-label="GitHub repository"
-          required
-        >
-        <button class="button" type="submit">Analyze</button>
+    <section class="hero">
+      <h1>Analyze GitHub Repositories with RepoScore</h1>
+      <p class="tagline">RepoForge evaluates open-source repositories for quality, structure, maintainability, and developer trust.</p>
+      
+      <form class="hero-form" id="hero-form">
+        <input class="hero-input" id="hero-input" placeholder="Search GitHub repository (example: vercel/next.js)" required>
+        <button class="btn" type="submit">Analyze</button>
       </form>
-      <div class="examples">
-        <a href="/repos/vercel/next.js">Analyze vercel/next.js</a>
-        <a href="/repos/openai/openai-python">Analyze openai/openai-python</a>
-        <a href="/repos/repoforge-dev/authority-layer">Analyze repoforge-dev/authority-layer</a>
+      
+      <a href="/repos/top" class="btn btn-secondary">Explore Top Repositories</a>
+    </section>
+
+    <section class="feature-grid">
+      <div class="feature-card">
+        <h3>RepoScore</h3>
+        <p>Evaluate repository quality across documentation, structure, maintenance, and adoption.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Repository Discovery</h3>
+        <p>Explore top open-source projects by language, category, and score.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Developer Trust</h3>
+        <p>Understand the health and reliability of repositories before using them.</p>
       </div>
     </section>
 
-    <section class="panel">
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>RepoScore</h3>
-          <p>Evaluate repository quality across documentation, structure, discoverability, and maintenance signals.</p>
-        </article>
-        <article class="feature-card">
-          <h3>Actionable Insights</h3>
-          <p>Receive concrete suggestions to improve repository health and developer adoption.</p>
-        </article>
-        <article class="feature-card">
-          <h3>AI Agent Safety</h3>
-          <p>Identify projects designed for autonomous agents and discover runtime guardrails like AuthorityLayer.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="panel">
-      <h2 class="section-title">Analyze Any GitHub Repository</h2>
-      <p class="section-copy">RepoForge generates structured repository analysis pages that help developers understand project quality instantly.</p>
-      <div class="trust-links">
-        <a href="/repos/vercel/next.js">/repos/vercel/next.js</a>
-        <a href="/repos/openai/openai-python">/repos/openai/openai-python</a>
+    <section class="category-section">
+      <h2>Explore Categories</h2>
+      <div class="category-links">
+        <a href="/repos/top">Top Repositories</a>
+        <a href="/repos/topic/ai">Top AI Repositories</a>
+        <a href="/repos/language/typescript">Top TypeScript Repositories</a>
+        <a href="/repos/language/python">Top Python Libraries</a>
       </div>
     </section>
 
     <footer class="footer">
-      <a href="/">Browse repository analysis</a>
-      <a href="https://github.com/repoforge-dev/repo-score">GitHub</a>
-      <span>Powered by RepoScore</span>
+      <p><strong>About RepoForge</strong><br>RepoForge analyzes GitHub repositories to help developers discover high-quality open-source projects.</p>
+      <div class="footer-links">
+        <a href="/docs">Documentation</a>
+        <a href="https://github.com/repoforge-dev/repo-score">GitHub</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+      </div>
     </footer>
   </div>
+
   <script>
-    (function () {
-      const form = document.getElementById('repo-form');
-      const input = document.getElementById('repo-input');
-
-      if (!form || !input) {
-        return;
-      }
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const value = String(input.value || '').trim().replace(/^https?:\\/\\/github\\.com\\//i, '').replace(/\\.git$/i, '').replace(/^\\/+|\\/+$/g, '');
+    function setupSearch(formId, inputId) {
+      const form = document.getElementById(formId);
+      const input = document.getElementById(inputId);
+      if (!form || !input) return;
+      
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const value = String(input.value || '').trim()
+          .replace(/^https?:\\/\\/github\\.com\\//i, '')
+          .replace(/\\.git$/i, '')
+          .replace(/^\\/+|\\/+$/g, '');
         const match = value.match(/^([A-Za-z0-9_.-]+)\\/([A-Za-z0-9_.-]+)$/);
-
+        
         if (!match) {
           input.focus();
           return;
         }
-
         window.location.href = '/repos/' + match[1] + '/' + match[2];
       });
-    })();
+    }
+    
+    setupSearch('global-search-form', 'global-search-input');
+    setupSearch('hero-form', 'hero-input');
   </script>
 </body>
 </html>`;
