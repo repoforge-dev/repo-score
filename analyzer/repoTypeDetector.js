@@ -126,15 +126,15 @@ function hasReadmeKeyword(readme, patterns) {
 function getAgentRuntimeSignals(files, dependencyMap, readme) {
   return [
     hasPath(files, [/agent.*runtime/, /runtime.*agent/, /execution-loop/, /run-loop/, /agent-runner/, /orchestrator/]) ||
-      /\bagent runtime\b|\bexecution loop\b|\bautonomous execution\b/.test(readme),
+    /\bagent runtime\b|\bexecution loop\b|\bautonomous execution\b/.test(readme),
     hasPath(files, [/tool-execution/, /tool-runner/, /tools\/registry/, /tool-registry/, /tool-manager/]) ||
-      /\btool execution\b|\btool registry\b|\btool calling\b/.test(readme),
+    /\btool execution\b|\btool registry\b|\btool calling\b/.test(readme),
     hasPath(files, [/memory\//, /memory-store/, /agent-memory/, /memory-manager/]) ||
-      /\bagent memory\b|\bmemory store\b/.test(readme),
+    /\bagent memory\b|\bmemory store\b/.test(readme),
     hasPath(files, [/planner\//, /planning\//, /task-planner/, /plan-executor/]) ||
-      /\bplanner\b|\bplanning module\b/.test(readme),
+    /\bplanner\b|\bplanning module\b/.test(readme),
     hasPath(files, [/decision-loop/, /goal-manager/, /autonomous/, /policy-engine/]) ||
-      /\bautonomous agent\b|\bautonomous loop\b|\bdecision loop\b/.test(readme),
+    /\bautonomous agent\b|\bautonomous loop\b|\bdecision loop\b/.test(readme),
     countDependencies(dependencyMap, AGENT_FRAMEWORK_DEPENDENCIES) >= 2,
   ].filter(Boolean).length;
 }
@@ -442,6 +442,14 @@ function collectTopicSignals(scores, topics) {
     if (topic.includes('agent') || topic.includes('autonomous-agent')) {
       addScore(scores, 'ai-agent-framework', 'topics', 2);
     }
+
+    if (topic.includes('agent-runtime') || topic.includes('agent-guardrails') || topic.includes('agent-security') ||
+      topic.includes('ai-guardrails') || topic.includes('ai-safety') || topic.includes('ai-runtime') ||
+      topic.includes('runtime-guardrails') || topic.includes('runtime-safety') || topic.includes('llm-guardrails') ||
+      topic.includes('ai-infrastructure') || topic.includes('agentic-ai')) {
+      addScore(scores, 'ai-tooling', 'topics', 5);
+      addScore(scores, 'library', 'topics', 2);
+    }
   }
 }
 
@@ -561,8 +569,9 @@ function collectMetadataSignals(scores, repoMetadata) {
     addScore(scores, 'ai-agent-framework', 'metadata', 2);
   }
 
-  if (description.includes('guardrails') || description.includes('runtime limits') || description.includes('loop limits')) {
-    addScore(scores, 'analysis-tool', 'metadata', 6);
+  if (description.includes('guardrails') || description.includes('runtime limits') || description.includes('runtime guardrails') || description.includes('runtime safety')) {
+    addScore(scores, 'ai-tooling', 'metadata', 8);
+    addScore(scores, 'library', 'metadata', 4);
   }
 
   if (language === 'python') {
@@ -661,12 +670,13 @@ function applySafetyGuards(scores, input, dependencyMap) {
   }
 
   if (
-    (description.includes('guardrails') || description.includes('runtime limits') || description.includes('loop limits')) &&
+    (description.includes('guardrails') || description.includes('runtime limits') || description.includes('runtime guardrails')) &&
     hasPath(files, [/^docs\/architecture\.md$/, /^docs\/enforcement\.md$/, /doctor\.(ts|js|py)$/])
   ) {
-    scores['analysis-tool'] += 10;
-    scores['ai-agent-framework'] = Math.min(scores['ai-agent-framework'], 8);
-    scores['cli-tool'] = Math.min(scores['cli-tool'], 6);
+    // This is a runtime safety library, not an analysis tool
+    scores['ai-tooling'] += 12;
+    scores['library'] += 8;
+    scores['analysis-tool'] = Math.min(scores['analysis-tool'], 4);
   }
 
   if (
