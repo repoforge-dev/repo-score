@@ -13,6 +13,7 @@ const TYPE_PRIORITY = [
   'application',
   'library',
   'learning-resource',
+  'reference',
   'dataset',
   'template',
   'developer-tool',
@@ -306,7 +307,11 @@ function collectStructureSignals(scores, input, dependencyMap) {
     addScore(scores, 'library', 'structure', 5);
   }
 
-  if (hasPath(files, [/^app\//, /^pages\//, /^public\//, /^server\//, /^api\//, /^client\//, /^web\//])) {
+  // Require at least two of these well-known app-structure folders to count — 'web/' alone is often just a docs site
+  const appDirs = ['app', 'pages', 'public', 'server', 'api', 'client'].filter(d =>
+    hasPath(files, [new RegExp('^' + d + '\/')])
+  );
+  if (appDirs.length >= 2 || (appDirs.length >= 1 && hasPath(files, [/^web\//]))) {
     addScore(scores, 'application', 'structure', 6);
   }
 
@@ -450,6 +455,30 @@ function collectTopicSignals(scores, topics) {
       addScore(scores, 'ai-tooling', 'topics', 5);
       addScore(scores, 'library', 'topics', 2);
     }
+
+    // Curated awesome/reference lists
+    if (topic === 'awesome' || topic === 'awesome-list' || topic === 'lists' || topic === 'list' ||
+      topic === 'resources' || topic === 'resource' || topic === 'reference' ||
+      topic === 'books' || topic === 'cheatsheets' || topic === 'unicorns' ||
+      topic === 'collections' || topic === 'free' || topic === 'free-software') {
+      addScore(scores, 'reference', 'topics', 5);
+    }
+
+    // Dataset signals — only strong dataset indicators, not scientific analysis library topics
+    if (topic === 'dataset' || topic === 'public-api' || topic === 'public-apis') {
+      addScore(scores, 'dataset', 'topics', 5);
+    }
+    // 'api' and 'apis' alone are moderate dataset signals
+    if (topic === 'api' || topic === 'apis') {
+      addScore(scores, 'dataset', 'topics', 3);
+    }
+
+    // Tutorial/learning signals (not education — interview prep, projects)
+    if (topic.includes('tutorial') || topic.includes('interview') || topic.includes('interview-preparation') ||
+      topic === 'interview-questions' || topic === 'project' || topic.includes('beginner-project') ||
+      topic === 'data-structures' || topic === 'computer-science') {
+      addScore(scores, 'learning-resource', 'topics', 3);
+    }
   }
 }
 
@@ -504,6 +533,16 @@ function collectReadmeSignals(scores, readme) {
 
   if (hasReadmeKeyword(readme, [/\bkernel\b/, /\bsource tree\b/, /\bdrivers\b/, /\boperating system\b/])) {
     addScore(scores, 'system-project', 'readme', 5);
+  }
+
+  // Curated lists / references
+  if (hasReadmeKeyword(readme, [/\ba curated list\b/, /\ba collection of\b/, /\bcurated list of\b/, /\bawesome list\b/])) {
+    addScore(scores, 'reference', 'readme', 6);
+  }
+
+  // Dataset / API list — strong signal when the README describes a list of APIs
+  if (hasReadmeKeyword(readme, [/\ba (collective|curated) list of.{0,40}api/])) {
+    addScore(scores, 'dataset', 'readme', 10);
   }
 }
 
@@ -574,6 +613,25 @@ function collectMetadataSignals(scores, repoMetadata) {
     addScore(scores, 'library', 'metadata', 4);
   }
 
+  // Curated lists / references
+  if (/^a(n opinionated)? (curated |awesome |collective )?list of/i.test(description) ||
+    /^:books:|freely available|collection of inspiring|a curated list/i.test(description) ||
+    description.includes('awesome list') || description.includes('cheatsheet') ||
+    (/counting stars/i.test(description))) {
+    addScore(scores, 'reference', 'metadata', 10);
+  }
+
+  // Dataset / API list
+  if (/a (collective|curated) list of.{0,30}api/i.test(description) ||
+    (description.includes('list of') && (description.includes(' api') || description.includes('apis')))) {
+    addScore(scores, 'dataset', 'metadata', 10);
+  }
+
+  // Interactive web application
+  if (/interactive (roadmap|guide|content)/i.test(description) || description.includes('interactive roadmap')) {
+    addScore(scores, 'application', 'metadata', 10);
+  }
+
   if (language === 'python') {
     addScore(scores, 'library', 'metadata', 1);
   }
@@ -607,15 +665,32 @@ function applySafetyGuards(scores, input, dependencyMap) {
     Number(hasPath(files, [/next\.config\./, /vite\.config\./, /nuxt\.config\./, /svelte\.config\./])) +
     Number(hasPath(files, [/^routes\//, /^router\//, /^middleware\//, /^plugins\//])) +
     Number(hasDependency(dependencyMap, FRAMEWORK_DEPENDENCIES)) +
-    Number(topics.some((topic) => topic.includes('framework'))) +
-    Number(/\bframework\b/.test(readme)) +
-    Number(String(input.repoMetadata?.description || '').toLowerCase().includes('framework'));
+    // Exclude curated-list topics like 'python-framework' — these describe what the list covers, not the repo being a framework
+    Number(topics.some((topic) => topic === 'framework' || topic === 'javascript-framework' || topic === 'nodejs-framework' || topic === 'nestjs' || topic === 'react')) +
+    Number(/\bframework\b/.test(readme) && !/\ba curated list\b|\bcollection of\b/.test(readme)) +
+    Number(String(input.repoMetadata?.description || '').toLowerCase().includes('framework') && !/list of|collection of/i.test(description));
 
   if (frameworkSignals < 2) {
     scores['framework'] = Math.min(scores['framework'], 10);
   } else {
     scores['language-tooling'] = Math.min(scores['language-tooling'], 8);
     scores['framework'] += 6;
+  }
+
+  // Protect reference and dataset types from being overridden by generic library/framework/application signals
+  const referenceScore = scores['reference'] || 0;
+  const datasetScore = scores['dataset'] || 0;
+  if (referenceScore >= 10) {
+    scores['framework'] = Math.min(scores['framework'], 8);
+    scores['library'] = Math.min(scores['library'], 8);
+    scores['application'] = Math.min(scores['application'], 8);
+    // If dataset is also strong, let it win over reference (e.g. public-apis is a dataset, not just a reference)
+    if (datasetScore >= referenceScore - 5) {
+      scores['reference'] = Math.min(scores['reference'], datasetScore - 1);
+    }
+  }
+  if (datasetScore >= 10) {
+    scores['library'] = Math.min(scores['library'], 8);
   }
 
   const languageToolingSignals =
@@ -709,6 +784,75 @@ function applySafetyGuards(scores, input, dependencyMap) {
 
   if (aiToolingSignals < 2) {
     scores['ai-tooling'] = Math.min(scores['ai-tooling'], 6);
+  }
+
+  // --- Library protection ---
+  // Repos with explicit 'library' phrasing should not become framework or dataset
+  if (/\blibrary for\b|\bjavascript library\b|\bpython library\b|\butility library\b|\ba library\b/i.test(description) ||
+    (description.includes('library') && !description.includes('list of'))) {
+    // Cap framework at library level
+    scores['framework'] = Math.min(scores['framework'], Math.max((scores['library'] || 0) - 2, 8));
+    // Cap dataset
+    scores['dataset'] = Math.min(scores['dataset'], 8);
+    // Protect library score itself: data manipulation libraries are always libraries
+    if (/data analysis|manipulation library|data manipulation/i.test(description)) {
+      scores['library'] += 6;
+      scores['dataset'] = Math.min(scores['dataset'], 6);
+    }
+    // Cap application for non-private library repos (libraries may have web/docs dirs)
+    if (!(packageJson && packageJson.private)) {
+      scores['application'] = Math.min(scores['application'], Math.max((scores['library'] || 0) - 1, 10));
+    }
+  }
+
+  // --- Active scientific/ML library protection ---
+  // scikit-learn / numpy / pandas style repos: has Python source + data-science/ml topics = library
+  const hasDataScienceLib =
+    hasPath(files, [/\.(py|pyx|pxd)$/]) &&
+    topics.some(t => t === 'data-science' || t === 'machine-learning' || t === 'data-analysis' || t === 'statistics' || t === 'pandas' || t === 'numpy') &&
+    (
+      // Has a named package directory matching a common ML lib
+      hasPath(files, [/^(pandas|sklearn|numpy|scipy|torch|tensorflow|matplotlib|seaborn)\//]) ||
+      // OR the description explicitly mentions 'machine learning in python/r' or 'data analysis'
+      /machine learning in (python|r)\b|data analysis.+python|Python library for/i.test(description)
+    );
+  if (hasDataScienceLib) {
+    scores['library'] += 10;
+    scores['learning-resource'] = Math.min(scores['learning-resource'], 8);
+    scores['dataset'] = Math.min(scores['dataset'], 8);
+  }
+
+  // --- Learning-resource for content-only repos ---
+  // Repos with tutorial/interview topics but NO actual source code are learning resources
+  const hasTutorialTopics = topics.some(t =>
+    t.includes('tutorial') || t.includes('interview') || t.includes('algorithms') || t.includes('computer-science')
+  );
+  const hasSourceFiles = hasPath(files, [/\.(js|ts|py|go|rb|java|c|cpp|cs|rs)$/]);
+  if (hasTutorialTopics && !hasSourceFiles) {
+    scores['learning-resource'] += 12;
+    scores['developer-tool'] = Math.min(scores['developer-tool'], 4);
+    scores['library'] = Math.min(scores['library'], 6);
+    scores['application'] = Math.min(scores['application'], 6);
+  }
+
+  // Interview-prep repos that have source files but no private package + no real app structure
+  // are primarily learning resources (e.g. system-design-primer)
+  if (topics.some(t => t === 'interview-practice' || t === 'interview-questions' || t === 'interview-preparation') &&
+    !hasPath(files, [/^(app|server|client)\//]) &&
+    hasSourceFiles) {
+    scores['learning-resource'] += 8;
+    scores['library'] = Math.min(scores['library'], 8);
+    scores['sdk'] = Math.min(scores['sdk'], 6);
+    scores['application'] = Math.min(scores['application'], 6);
+  }
+
+  // --- Active web application protection ---
+  // Private repos with interactive ui + src/ + public/ are clearly web applications
+  if (packageJson && packageJson.private &&
+    /interactive (roadmap|guide|tool|content|platform)|visual tool/i.test(description) &&
+    hasPath(files, [/^src\//])) {
+    scores['application'] += 10;
+    scores['library'] = Math.min(scores['library'], Math.max((scores['application'] || 0) - 2, 8));
   }
 }
 

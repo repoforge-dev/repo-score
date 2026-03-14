@@ -682,7 +682,7 @@
   },
   "analysis": {
     "repo": "donnemartin/system-design-primer",
-    "repoType": "application",
+    "repoType": "learning-resource",
     "language": "python",
     "repoScore": 88,
     "scores": {

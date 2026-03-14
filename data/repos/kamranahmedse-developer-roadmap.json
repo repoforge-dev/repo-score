@@ -48360,7 +48360,7 @@
   },
   "analysis": {
     "repo": "kamranahmedse/developer-roadmap",
-    "repoType": "ai-tooling",
+    "repoType": "application",
     "language": "typescript",
     "repoScore": 100,
     "scores": {
